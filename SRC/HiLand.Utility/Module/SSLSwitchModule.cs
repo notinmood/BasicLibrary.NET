@@ -7,7 +7,7 @@ using HiLand.Utility.Web;
 namespace HiLand.Utility.Module
 {
     /// <summary>
-    /// 根据需求进行http和https之间进行切换
+    /// 根据需求进行http和https之间进行切换的模块
     /// </summary>
     public class SSLSwitchModule : IHttpModule
     {

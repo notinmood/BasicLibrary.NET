@@ -3,7 +3,7 @@ using System.Web;
 
 namespace HiLand.Utility.Module
 {
-    //TODO:
+    //TODO:xieran20121024 尚未完成
     /// <summary>
     /// 修正模板页中客户端资源路径的Module
     /// </summary>
