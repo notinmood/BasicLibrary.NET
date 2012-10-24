@@ -2,6 +2,9 @@
 
 namespace HiLand.Utility.IO
 {
+    /// <summary>
+    /// 文件MINE类型
+    /// </summary>
     public static class ContentTypes
     {
         private static Dictionary<string, string> list = new Dictionary<string, string>();

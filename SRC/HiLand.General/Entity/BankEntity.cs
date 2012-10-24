@@ -21,7 +21,7 @@ namespace HiLand.General.Entity
         }
 
         private Guid bankGuid = Guid.Empty;
-         [DBFieldAttribute(IsBusinessPrimaryKey = true)]
+        [DBFieldAttribute(IsBusinessPrimaryKey = true)]
         public Guid BankGuid
         {
             get { return bankGuid; }
@@ -42,7 +42,7 @@ namespace HiLand.General.Entity
             set { bankNo = value; }
         }
 
-        private Logics isPrimary= Logics.True;
+        private Logics isPrimary = Logics.True;
         public Logics IsPrimary
         {
             get { return isPrimary; }

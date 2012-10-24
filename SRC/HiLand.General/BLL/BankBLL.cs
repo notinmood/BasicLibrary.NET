@@ -3,6 +3,8 @@ using HiLand.General.Entity;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Utility.Enums;
 using HiLand.General.DALCommon;
+using System;
+using System.Collections.Generic;
 
 namespace HiLand.General.BLL
 {
@@ -29,6 +31,29 @@ namespace HiLand.General.BLL
             }
 
             return isSuccessful;
+        }
+
+        /// <summary>
+        /// 获取某用户缺省的银行账户信息
+        /// </summary>
+        /// <param name="userGuid"></param>
+        /// <returns></returns>
+        public BankEntity GetPrimary(Guid userGuid)
+        {
+            BankEntity bankEntity = BankEntity.Empty;
+            string whereClause = string.Format(" UserGuid='{0}' ",userGuid);
+            List < BankEntity > list= base.GetList(whereClause);
+            if (list != null)
+            {
+                bankEntity=  list.Find(e=>e.IsPrimary== Logics.True);
+            }
+
+            if (bankEntity == null)
+            {
+                bankEntity = BankEntity.Empty;
+            }
+
+            return bankEntity;
         }
 
         /// <summary>
