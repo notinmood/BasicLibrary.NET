@@ -5,7 +5,7 @@ using System.Text;
 namespace HiLand.Utility.Algorithm
 {
     /// <summary>
-    /// 编辑距离算法
+    /// 编辑距离算法(计算两个文档的相似度)
     /// </summary>
     public class Levenshtein
     {
