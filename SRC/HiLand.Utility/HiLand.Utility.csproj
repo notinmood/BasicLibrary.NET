@@ -266,7 +266,7 @@
     <Compile Include="Event\Predicates.cs" />
     <Compile Include="Event\SearchEventArgs.cs" />
     <Compile Include="Event\SearchEventHandle.cs" />
-    <Compile Include="IO\ContentType.cs" />
+    <Compile Include="IO\ContentTypes.cs" />
     <Compile Include="IO\FileHelper.cs" />
     <Compile Include="Handler\AuthCodeHandler.cs" />
     <Compile Include="Handler\UserControlRendering\UserControlRenderingHandler.cs" />
