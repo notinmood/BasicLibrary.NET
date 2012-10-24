@@ -4,6 +4,9 @@ using System.Text;
 
 namespace HiLand.Utility.Algorithm.DirtyWordsFilter
 {
+    /// <summary>
+    /// 哈希过滤方式
+    /// </summary>
     public class HashFilter : IWordFilter
     {
         int m_maxLen; //关键字最大长度

@@ -5,7 +5,7 @@ using System.Text;
 namespace HiLand.Utility.Algorithm.DirtyWordsFilter
 {
     /// <summary>
-    /// 从.net 编译出来的.
+    /// hash运算辅助器（从.net 编译出来的.）
     /// </summary>
     /// <remarks>
     /// 这是一个内部类型
