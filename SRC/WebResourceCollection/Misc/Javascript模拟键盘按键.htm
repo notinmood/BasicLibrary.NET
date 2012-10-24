@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>Simulate Event</title>
+    <script type="text/javascript">
+        function simulateKeyEvent(target, keyCode) {
+            if (!target) {
+                alert("Target is not exist");
+            }
+
+            var customEvent = null;
+            var a = typeof document.createEvent;
+
+            if (typeof document.createEvent == "function") {
+                try {
+                    //firefox
+                    customEvent = document.createEvent("KeyEvents");
+                    customEvent.initKeyEvent("keypress", true, true, window, false,
+                    false, false, false, keyCode, keyCode);
+
+                } catch (ex) {
+                    document.write("Shit happends. This example is only demonstrating event simulation in firefox and IE.");
+                }
+                target.dispatchEvent(customEvent);
+
+            } else if (document.createEventObject) { //IE
+
+                customEvent = document.createEventObject();
+
+                customEvent.bubbles = true;
+                customEvent.cancelable = true;
+                customEvent.view = window;
+                customEvent.ctrlKey = false;
+                customEvent.altKey = false;
+                customEvent.shiftKey = false;
+                customEvent.metaKey = false;
+                customEvent.keyCode = keyCode;
+
+                target.fireEvent("onkeypress", customEvent);
+
+            } else {
+                document.write("This example is only demonstrating event simulation in firefox and IE.");
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+    <input id="testinput" type="button" value="kick you" />
+</body>
+<script type="text/javascript">
+    var target = document.getElementById("testinput");
+    target.onkeypress = function (event) {
+        var event = (event) ? event : window.event;
+        if (event.keyCode == 27) {
+            alert('"ESC" pressed');
+        }
+    };
+    simulateKeyEvent(target, 27);
+</script>
+
+</html>

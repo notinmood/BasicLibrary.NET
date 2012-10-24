@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{461EC125-8906-4F63-96FF-17B4B10A65E0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HiLand.Framework</RootNamespace>
+    <AssemblyName>HiLand.Framework</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\HiLand.Framework.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Libs\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2">
+      <HintPath>..\Libs\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BusinessCore\BLL\BusinessDepartmentBLL.cs" />
+    <Compile Include="BusinessCore\BLL\BusinessGroupBLL.cs" />
+    <Compile Include="BusinessCore\BLL\BusinessPermissionBLL.cs" />
+    <Compile Include="BusinessCore\BLL\BusinessRoleBLL.cs" />
+    <Compile Include="BusinessCore\BLL\BusinessUserBLL.cs" />
+    <Compile Include="BusinessCore\Cores\BusinessDepartment.cs" />
+    <Compile Include="BusinessCore\Cores\BusinessGroup.cs" />
+    <Compile Include="BusinessCore\Cores\BusinessKernal.cs" />
+    <Compile Include="BusinessCore\Cores\BusinessPermission.cs" />
+    <Compile Include="BusinessCore\Cores\BusinessRole.cs" />
+    <Compile Include="BusinessCore\Cores\BusinessUser.cs" />
+    <Compile Include="BusinessCore\Cores\IBusinessDepartment.cs" />
+    <Compile Include="BusinessCore\Cores\IBusinessGroup.cs" />
+    <Compile Include="BusinessCore\Cores\IBusinessRole.cs" />
+    <Compile Include="BusinessCore\Cores\IBusinessUser.cs" />
+    <Compile Include="BusinessCore\Cores\IExecutorObject.cs" />
+    <Compile Include="BusinessCore\DALCommon\BusinessDepartmentCommonDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\BusinessGroupCommonDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\BusinessPermissionCommonDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\BusinessRoleCommonDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\BusinessUserCommonDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\IBusinessDepartmentDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\IBusinessPermissionDAL.cs" />
+    <Compile Include="BusinessCore\DALSqlite\BusinessDepartmentDAL.cs" />
+    <Compile Include="BusinessCore\DALSqlite\BusinessGroupDAL.cs" />
+    <Compile Include="BusinessCore\DALSqlite\BusinessPermissionDAL.cs" />
+    <Compile Include="BusinessCore\DALSqlite\BusinessRoleDAL.cs" />
+    <Compile Include="BusinessCore\DALSqlite\BusinessUserDAL.cs" />
+    <Compile Include="BusinessCore\DAL\BusinessDepartmentDAL.cs" />
+    <Compile Include="BusinessCore\DAL\BusinessGroupDAL.cs" />
+    <Compile Include="BusinessCore\DAL\BusinessPermissionDAL.cs" />
+    <Compile Include="BusinessCore\DAL\BusinessRoleDAL.cs" />
+    <Compile Include="BusinessCore\DAL\BusinessUserDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\IBusinessGroupDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\IBusinessRoleDAL.cs" />
+    <Compile Include="BusinessCore\DALCommon\IBusinessUserDAL.cs" />
+    <Compile Include="BusinessCore\Enum\DepartmentTypes.cs" />
+    <Compile Include="BusinessCore\Enum\EducationalBackgrounds.cs" />
+    <Compile Include="BusinessCore\Enum\PermissionModes.cs" />
+    <Compile Include="BusinessCore\Enum\PermissionKinds.cs" />
+    <Compile Include="FoundationLayer\Attributes\DBFieldAttribute.cs" />
+    <Compile Include="FoundationLayer\Attributes\PropertyInfoWithDBFieldAttributeCollection.cs" />
+    <Compile Include="FoundationLayer\BaseBLL.cs" />
+    <Compile Include="FoundationLayer\BaseComputerDAL.cs" />
+    <Compile Include="FoundationLayer\BaseDAL.cs" />
+    <Compile Include="FoundationLayer\BaseModel.cs" />
+    <Compile Include="FoundationLayer\BaseSqlDAL.cs" />
+    <Compile Include="FoundationLayer\BaseSqliteDAL.cs" />
+    <Compile Include="FoundationLayer\GeneralCacheKeys.cs" />
+    <Compile Include="FoundationLayer\IDAL.cs" />
+    <Compile Include="FoundationLayer\IModel.cs" />
+    <Compile Include="FoundationLayer\IModelExtensible.cs" />
+    <Compile Include="Permission\Control\PermissionButton.cs" />
+    <Compile Include="Permission\Control\PermissionButton2.cs" />
+    <Compile Include="Permission\Control\PermissionHyperLink.cs" />
+    <Compile Include="Permission\Control\PermissionLinkButton.cs" />
+    <Compile Include="Permission\Control\PermissionMisc.cs" />
+    <Compile Include="Membership\IUser.cs" />
+    <Compile Include="Membership\PermissionItem.cs" />
+    <Compile Include="Membership\UserCookie.cs" />
+    <Compile Include="Membership\UserFactory.cs" />
+    <Compile Include="Permission\Module\GeneralLoginValidateModule.cs" />
+    <Compile Include="Permission\Module\PathRoleLoginValidateModule.cs" />
+    <Compile Include="Permission\PermissionValidation.cs" />
+    <Compile Include="Platform\Events\PluginEventArgs.cs" />
+    <Compile Include="Platform\Events\PluginEventHandle.cs" />
+    <Compile Include="Platform\Plugins\ApplicationAttribute.cs" />
+    <Compile Include="Platform\Plugins\ApplicationService.cs" />
+    <Compile Include="Platform\Plugins\IApplication.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HiLand.Utility\HiLand.Utility.csproj">
+      <Project>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</Project>
+      <Name>HiLand.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FoundationLayer\给实体添加扩展属性的注意事项.txt" />
+    <Content Include="SettingList.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FoundationLayer\业务逻辑部分架构图.vsd" />
+    <None Include="FoundationLayer\数据访问部分架构图.vsd" />
+    <None Include="FoundationLayer\数据访问部分的框架结构说明.doc" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

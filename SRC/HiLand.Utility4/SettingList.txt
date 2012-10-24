@@ -1,0 +1,4 @@
+﻿配置项列表
+===============================
+1、SQLMode: SQL语句的模式（标准sql语句、或者其他单独某数据库厂商的模式，可选，默认值为stand-SQL）(MVC\Controls\QueryControl.cs)
+2、mvcControlCssPrefix：MVC空间的Css名称前缀 （MVC\Controls\BaseControl.cs）

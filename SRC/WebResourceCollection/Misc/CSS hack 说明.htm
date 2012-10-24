@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <pre>
+        常用CSS书写技巧
+
+/*******************************************************************************/
+      不同的浏览器，比如Internet Explorer 6,Internet Explorer 7,Mozilla Firefox等，对CSS的解析认识不一样，因此会导致生成的页面效果不一样，得不到我们所需要的页面效果。这个时候我们就需要针对不同的浏览器去写不同的CSS，让它能够同时兼容不同的浏览器，能在不同的浏览器中也能得到我们想要的页面效果。这个针对不同的浏览器写不同的CSS code的过程，就叫CSS hack,也叫写CSS hack。
+      由于不同的浏览器对CSS的支持及解析结果不一样，还由于CSS中的优先级的关系。我们就可以根据这个来针对不同的浏览器来写不同的CSS。
+      比如 IE6能识别下划线"_"和星号" * "，IE7能识别星号" * "，但不能识别下划线"_"，而firefox两个都不能认识。等等
+书写顺序，一般是将识别能力强的浏览器的CSS写在后面。下面列举常用的CSS hack方法
+
+1：!important
+!important作用是提高指定样式规则的应用优先权。
+IE7以及所有标准浏览器能识别!important
+区别IE6与IE7与其他浏览器
+.browserTest
+{
+    border:20px solid #60A179 !important;
+    border:20px solid #00F;
+}
+在Mozilla中或者IE7浏览时候，能够理解!important的优先级，因此显示#60A179的颜色：
+在IE6中浏览时候，不能够理解!important的优先级，因此显示#00F的颜色：
+
+2：*
+IE都能识别*；标准浏览器(如火狐)不能识别*
+区别IE6与火狐
+.browserTest
+{
+    border:20px solid #60A179;
+    *border:20px solid #00F;
+}
+区别IE7与火狐
+.browserTest
+{
+   border:20px solid #60A179;
+   *border:20px solid #00F;
+}
+区别IE7，IE6与火狐
+.browserTest
+{
+   border:20px solid #60A179;
+   *border:20px solid #00F !important;
+   *border:20px solid ###;
+}
+
+3：_
+IE6支持下划线，IE7和firefox均不支持下划线
+区别IE7，IE6与火狐
+.browserTest
+{
+   border:20px solid #60A179;
+   *border:20px solid #00F;
+   _border:20px solid ###;
+}
+/*不管是什么方法，书写的顺序都是firefox的写在前面，IE7的写在中间，IE6的写在最后面*/
+
+4：*+html 与 *html
+*+html 与 *html 是IE特有的标签, firefox 暂不支持.而*+html 又为 IE7特有标签
+.browserTest { width: 120px; }      /* FireFox fixed */
+*html .browserTest { width: 80px;}  /* ie6 fixed */
+*+html .browserTest { width: 60px;} /* ie7 fixed */
+注意:
+*+html 对IE7的HACK 必须保证HTML顶部有如下声明：
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+/*****************************************************************************/
+
+/*****************************************************************************/
+以下是一些常用的CSS兼容技巧
+1)火狐下给div设置padding后会导致width和height 增加, 但IE不会.(可用!important解决)
+
+2)垂直居中，将 line-height设置为当前div相同的高度, 再通过vertical-align: middle；( 注意内容不要换行)
+
+3)水平居中，margin:0 auto;(当然不是万能)
+
+4)若需给a标签内内容加上样式, 需要设置 display: block;(常见于导航标签)
+
+5)浮动IE产生的双倍距离
+在IE下，当一个div设置了float后，然后给他设置margin，就会出现加倍的margin，解决的办法是给div设置display:inline。
+<div id=”float”></div>
+相应的css为
+#float
+{
+   float:left;
+   margin:5px;/*IE下理解为10px*/
+   display:inline;/*IE下再理解为5px*/
+}
+Block元素的特点是:总是在新行上开始,高度,宽度,行高,边距都可以控制(块元素);Inline元素的特点是:和其他元素在同一行上,...不可控制(内嵌元素);
+
+6)IE和FF对盒模型的解释区别
+#browserTest{ width: 650px !important;width: 648px;padding-left:2px;background:#fff; } 
+browserTest显示的宽度是650px；
+IE Box的总宽度是:width+padding+border+margin宽度总和；
+FF Box的总宽度就是:width的宽度，padding+border+margin的宽度在含在width内。
+如果有BOX{WIDTH:"300"; PADDING:"5PX";}
+则BOX在IE的宽度应该为:310
+而在FF的宽度则是300
+所以在BOX有填充的情况下应该这样使用
+BOX{WIDTH:"300" !IMPORTANT; WIDTH:"290";}
+
+7)ul标签在FF下面默认有list-style和padding, 最好事先声明, 以避免不必要的麻烦;(常见于导航标签和内容列表)
+
+8)作为外部wrapper的div不要定死高度, 最好还加上 overflow: hidden;以达到高度自适应;
+
+9)页面的最小宽度
+min-width是个非常方便的CSS命令，它可以指定元素最小也不能小于某个宽度，这样就能保证排版一直正确。但IE不认得这个，
+而它实际上把width当做最小宽度来使。为了让这一命令在IE上也能用，可以把一个<div> 放到 <body> 标签下，然后为div指定一个类：
+然后CSS这样设计：
+#container{ min-width: 600px; width:expression(document.body.clientWidth < 600? "600px": "auto" );}
+第一个min-width是正常的；但第2行的width使用了Javascript，这只有IE才认得，这也会让你的HTML文档不太正规。它实际上通过Javascript的判断来实现最小宽度。
+
+10:万能float闭合
+将以下代码加入Global CSS 中,给需要闭合的div加上
+<style>
+/* Clear Fix */
+.clearfix:after
+{
+   content:".";
+   display:block;
+   height:0;
+   clear:both;
+   visibility:hidden;
+}
+*html .clearfix{
+   height:1%;
+}
+*+html .clearfix{
+   height:1%;
+}
+.clearfix
+{
+   display:inline-block;
+}
+/* Hide from IE Mac */
+.clearfix {display:block；}
+/* End hide from IE Mac */
+/* end of clearfix */
+</style>
+/**********************************************/
+<div id="wrap">
+   <div class="column_left">
+     <h1>Float left</h1>
+   </div>
+   <div class="column_right">
+     <h1>Float right</h1>
+   </div>
+</div>
+#wrap{ border:6px #ccc solid; overflow:auto; _height:1%;}
+.column_left{ float:left; width:20%; padding:10px;}
+.column_right{ float:right; width:75%; padding:10px; border-left:6px #eee solid;}  
+    </pre>
+</body>
+</html>

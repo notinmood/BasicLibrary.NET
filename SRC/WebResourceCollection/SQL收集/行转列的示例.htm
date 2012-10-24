@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+
+    <h1 class="postTitle">
+        <a id="cb_post_title_url" class="postTitle2" 
+            href="http://www.cnblogs.com/Athrun/archive/2008/08/16/1269190.html">
+        详细介绍SQL交叉表的实例</a>
+    </h1>
+    <div class="clear">
+    </div>
+    <div class="postBody">
+        <div id="cnblogs_post_body">
+            <p>
+                <span style="font-family: Arial"><span style="font-size: 10pt">
+                　　很简单的一个东西，见网上好多朋友问“怎么实现交叉表？”，以下是我写的一个例子，数据库基于SQL SERVER 2000。<br />
+                　　<br />
+                　　交叉表实例<br />
+                　　<br />
+                　　建表：<br />
+                　　<br />
+                　　在查询分析器里运行：<br />
+                　　<br />
+                　　CREATE TABLE [Test] (<br />
+                　　<br />
+                　　[id] [int] IDENTITY (1, 1) NOT NULL ,<br />
+                　　<br />
+                　　[name] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,<br />
+                　　<br />
+                　　[subject] [nvarchar] (50) COLLATE Chinese_PRC_CI_AS NULL ,<br />
+                　　<br />
+                　　[Source] [numeric](18, 0) NULL<br />
+                　　<br />
+                　　) ON [PRIMARY]<br />
+                　　<br />
+                　　GO<br />
+                　　<br />
+                　　INSERT INTO [test] ([name],[subject],[Source]) values (N&#39;张三&#39;,N&#39;语文&#39;,60)<br />
+                　　<br />
+                　　INSERT INTO [test] ([name],[subject],[Source]) values (N&#39;李四&#39;,N&#39;数学&#39;,70)<br />
+                　　<br />
+                　　INSERT INTO [test] ([name],[subject],[Source]) values (N&#39;王五&#39;,N&#39;英语&#39;,80)<br />
+                　　<br />
+                　　INSERT INTO [test] ([name],[subject],[Source]) values (N&#39;王五&#39;,N&#39;数学&#39;,75)<br />
+                　　<br />
+                　　INSERT INTO [test] ([name],[subject],[Source]) values (N&#39;王五&#39;,N&#39;语文&#39;,57)<br />
+                　　<br />
+                　　INSERT INTO [test] ([name],[subject],[Source]) values (N&#39;李四&#39;,N&#39;语文&#39;,80) 
+                [bitsCN.Com]
+                <br />
+                　　<br />
+                　　INSERT INTO [test] ([name],[subject],[Source]) values (N&#39;张三&#39;,N&#39;英语&#39;,100)<br />
+                　　<br />
+                　　Go<br />
+                　　<br />
+                <img alt="" border="0" height="261" 
+                    src="http://www.bitscn.com/upimg/2006-04-12/195049_01_305.jpg" width="413" />　</span></span></p>
+            <p>
+                <span style="font-family: Arial"><span style="font-size: 10pt">　　交叉表语句的实现：<br />
+                　　<br />
+                　　用于：交叉表的列数是确定的<br />
+                　　<br />
+                　　select name,sum(case subject when &#39;数学&#39; then source else 0 end) as &#39;数学&#39;,<br />
+                　　<br />
+                　　sum(case subject when &#39;英语&#39; then source else 0 end) as &#39;英语&#39;,<br />
+                　　<br />
+                　　sum(case subject when &#39;语文&#39; then source else 0 end) as &#39;语文&#39;<br />
+                　　<br />
+                　　from test<br />
+                　　<br />
+                　　group by name<br />
+                　　<br />
+                　　--用于：交叉表的列数是不确定的<br />
+                　　<br />
+                　　declare @sql varchar(8000)<br />
+                　　<br />
+                　　set @sql = &#39;select name,&#39;<br />
+                　　<br />
+                　　select @sql = @sql + &#39;sum(case subject when &#39;&#39;&#39;+subject+&#39;&#39;&#39;<br />
+                　　<br />
+                　　then source else 0 end) as &#39;&#39;&#39;+subject+&#39;&#39;&#39;,&#39;<br />
+                　　<br />
+                　　from (select distinct subject from test) as a<br />
+                　　<br />
+                　　select @sql = left(@sql,len(@sql)-1) + &#39; from test group by name&#39;<br />
+                　　<br />
+                　　exec(@sql)<br />
+                　　<br />
+                　　go</span></span></p>
+        </div>
+    </div>
+
+</body>
+</html>

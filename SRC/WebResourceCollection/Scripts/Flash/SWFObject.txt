@@ -1,0 +1,14 @@
+﻿第一步，在页面中声明一个div块，作为flash显示的区域，如下：
+<div class="flash" id="flashcontent">
+</div>
+
+第二步，在页面中使用如下代码
+<script type="text/javascript">
+        // <![CDATA[
+    var so = new SWFObject("@Url.Content("~/Content/flash/flash.swf")", "thumbnailSlider", "701", "254", "9", "#CCCCCC");
+    so.addParam("base", "Flash");
+    so.addParam("quality", "high");
+    so.addParam("wmode", "transparent");
+    so.write("flashcontent"); //填充到上面id为flashcontent的div块中
+        // ]]>
+</script>

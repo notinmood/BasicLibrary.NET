@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jQuery/jquery-1.4.4.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jQuery.PlugIn/jQuery.hiland.general.js" type="text/javascript"></script>
+</head>
+<body>
+    <input id="testConcat" type="button" value="Concat" />
+    <input id="testUrlParser" type="button" value="UrlParser" />
+    <script type="text/javascript">
+        (function () {
+            $.extend({
+                /*迁移后的代码都放到jQuery.hiland.general.js的 UrlUtil中了*/
+            })
+        })(jQuery)
+    </script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#testConcat").click(function () {
+                alert($.UrlUtil("http://www.sina.com.cn").concat("aa", "bbs/ss").concat("cc", "中国").show(true));
+            });
+
+            $("#testUrlParser").click(function () {
+                alert($.UrlParser("http://user:password@www.codebit.cn:9901/pub/article.php?offset=10&perpage=10#fragment").getHost());
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<data>
+  <!--Core_Permission-->
+  <item key="NoPermissionDisplayInfo">Cannot use the function because no this permission</item>
+
+</data>

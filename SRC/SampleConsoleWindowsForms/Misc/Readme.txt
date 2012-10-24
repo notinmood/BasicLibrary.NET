@@ -1,0 +1,2 @@
+﻿本项目为插件结构的win类型测试项目
+测试时请将ApplicationSample项目编译的后的dll手工拷贝到bin\plugins目录下进行。

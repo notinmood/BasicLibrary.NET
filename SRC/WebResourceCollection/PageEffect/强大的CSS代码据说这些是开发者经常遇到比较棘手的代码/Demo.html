@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    1.简单又好的 Blockquote 样式
+    <style type="text/css">
+        blockquote {
+        background:#f9f9f9;
+        border-left:10px solid #ccc;
+        margin:1.5em 10px;
+        padding:.5em 10px;
+        quotes:"\201C""\201D""\2018""\2019";
+        }
+        blockquote:before {
+        color:#ccc;
+         content:open-quote;
+         font-size:4em;
+         line-height:.1em;
+         margin-right:.25em;
+         vertical-align:-.4em;
+         }
+         blockquote p {
+         display:inline;
+         }
+    </style>
+    <blockquote>
+        <p>qingdao</p>
+        <p>我们生活在这里，工作在这里。</p>
+        <p>time flying...</p>
+    </blockquote>
+
+    2.隐藏和文本文字缩进
+<style type="text/css">
+ h1 {
+     text-indent:-9999px;
+     margin:0 auto;
+     width:auto;
+     height:auto;
+     background:transparent url("../../images/save.gif") no-repeat scroll;
+ }
+</style>
+<h1>我是一个标题</h1>
+上面CSS代码设置text-indent 为负值，正好文字移到了左边，可以实现部分文字隐藏<br /><br />
+
+    3. CSS文字阴影效果
+    <style type="text/css">
+    p { text-shadow: 1px 1px 1px #000; }
+        </style>
+    <p>CSS文字阴影效果</p>
+
+    <br /><br />
+    4.设置ul阴影效果和边框圆角
+<style type="text/css">
+ul.box {
+position: relative;
+z-index: 1; /* prevent shadows falling behind containers with backgrounds */
+overflow: hidden;
+list-style: none;
+margin: 0;
+padding: 0; }
+
+ul.box li {
+ position: relative;
+ float: left;
+ width: 250px;
+ height: 150px;
+ padding: 0;
+ border: 1px solid #efefef;
+ margin: 0 30px 30px 0;
+ background: #fff;
+ -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+ -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; 
+ box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset; }
+ 
+ ul.box li:before,
+ ul.box li:after {
+ content: '';
+ z-index: -1;
+ position: absolute;
+ left: 10px;
+ bottom: 10px;
+ width: 70%;
+ max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+ max-height: 100px;
+ height: 55%;
+ -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+ -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+ box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+ -webkit-transform: skew(-15deg) rotate(-6deg);
+ -moz-transform: skew(-15deg) rotate(-6deg);
+ -ms-transform: skew(-15deg) rotate(-6deg);
+ -o-transform: skew(-15deg) rotate(-6deg);
+ transform: skew(-15deg) rotate(-6deg); }
+ 
+ ul.box li:after {
+ left: auto;
+ right: 10px;
+ -webkit-transform: skew(15deg) rotate(6deg);
+ -moz-transform: skew(15deg) rotate(6deg);
+ -ms-transform: skew(15deg) rotate(6deg);
+ -o-transform: skew(15deg) rotate(6deg);
+ transform: skew(15deg) rotate(6deg); }
+    </style>
+    <ul class="box">
+        <li>qingdao<br />qingdao city</li>
+        <li>beijing</li>
+        <li>shanghai</li>
+    </ul>
+
+    <br /><br />
+
+
+    6.固定页脚位置
+<style type="text/css">
+#footer {
+   position:fixed;
+   left:0px;
+   bottom:0px;
+   height:32px;
+   width:100%;
+   background:#333;
+}
+/* IE 6 */
+ * html #footer {
+    position:absolute;
+    top:expression((0-(footer.offsetHeight)+(document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight)+(ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop))+'px');
+ }
+    </style>
+    <div id="footer">
+        我是页脚。我能兼容ie6.
+    </div>
+
+</body>
+</html>

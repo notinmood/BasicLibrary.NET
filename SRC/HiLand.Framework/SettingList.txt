@@ -1,0 +1,9 @@
+﻿配置项列表
+===============================
+1.1<add key="isEMailMustUnique" value="true"/> 用户注册是是否要求EMail在系统内唯一，缺省值为true（BusinessCore\DALCommon\BusinessUserCommonDAL.cs）
+1.2<add key="isIDCardMustUnique" value="true"/> 用户注册是是否要求身份证在系统内唯一，缺省值为true（BusinessCore\DALCommon\BusinessUserCommonDAL.cs）
+2.CoreDALDLLName 核心数据（用户角色权限等）的数据访问层DLL的名称
+3.CoreDALNameSpace 核心数据（用户角色权限等）的数据访问层NameSpace的名称
+4.HiGeneralDALDLLName 通用业务的数据访问层DLL的名称
+5.HiGeneralDALNameSpace 通用业务的数据访问层NameSpace的名称
+6.NoPermissionPage 用户无权操作时跳转的页面，可选 （Permission\PermissionValidation.cs）

@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../../Scripts/jQuery/jquery-1.4.4.min.js"></script>
+    <script src="../../Scripts/jQuery.PlugIn/jquery.cascadingDropDown.js"></script>
+</head>
+<body>
+    <select name="level1" id="level1">
+        <option>请选择</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+    <select name="level2" id="level2">
+    </select>
+    <select name="level3" id="level3">
+    </select>
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#level2").CascadingDropDown("#level1", 'ContentHandler.ashx', {});
+            $("#level3").CascadingDropDown("#level2", 'ContentHandler.ashx', {});
+        });
+    </script>
+</body>
+</html>

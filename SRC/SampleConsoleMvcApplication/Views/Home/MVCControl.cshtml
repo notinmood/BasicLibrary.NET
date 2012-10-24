@@ -1,0 +1,16 @@
+﻿@{
+    ViewBag.Title = "MVCControl";
+}
+@using HiLand.Utility4.MVC;
+@using HiLand.Utility4.Data;
+@using HiLand.Utility4.MVC.Controls;
+@using HiLand.Framework4.Permission.Controls;
+
+<h2>MVCControl</h2>
+
+@Html.HiA("myA").Action("Bar").Controller("Main").Area("Manage").RouteValue(new { pp = "pp", pwd = "sss",tt="sssssssssss" }).Value("To Bar").Render(new { uu = "ii" })
+
+@Html.HiSubmit("mySubmit").Value("我的提交").Render()
+
+@Html.HiCheckBox("ssss").Value("ssssss").Render(new{uu="ii"})
+

@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jQuery/jquery-1.4.4.min.js"></script>
+</head>
+<body>
+    <select id="Select1">
+        <option value="">请选择</option>
+        <option value="qingdao">青岛</option>
+        <option value="beijing">北京</option>
+        <option value="shanghai">上海</option>
+    </select>
+    <input id="displayContent" type="text" />
+    <input id="Button1" type="button" value="button" />
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Select1").change(function () {
+                var valueSelected = $(this).children('option:selected').val();
+                var textSelected = "";
+                if (valueSelected != "") {
+                    textSelected = $(this).children('option:selected').text();
+                }
+
+                $("#displayContent").val(textSelected);
+            });
+
+            $("#Button1").click(function () {
+                var info = $("#displayContent").val();
+                alert(info);
+            });
+        });
+    </script>
+</body>
+</html>

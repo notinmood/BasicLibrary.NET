@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2004B1A8-5A1C-4310-B95B-5E792399E823}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>WebApplicationConsole</RootNamespace>
+    <AssemblyName>WebApplicationConsole</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2, Version=2.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="About.aspx" />
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Login.aspx" />
+    <Content Include="AuthCodeDemo\Default.aspx" />
+    <Content Include="脏词过滤测试.txt" />
+    <Content Include="CacheUsing.aspx" />
+    <Content Include="CurrentUserDemo\Index.aspx" />
+    <Content Include="EnumHelperTest.aspx" />
+    <Content Include="FileTest.aspx" />
+    <Content Include="GeneralValidateDemo\ModuleA\ModuleA1\Default.aspx" />
+    <Content Include="GeneralValidateDemo\ModuleA\ModuleA1\DemoOnly.aspx" />
+    <Content Include="GeneralValidateDemo\ModuleA\ModuleA2\PermissionSetting.aspx" />
+    <Content Include="GeneralValidateDemo\ModuleB\ModuleB1\Default.aspx" />
+    <Content Include="HLAjaxHandlerDemo\TestPage.htm" />
+    <Content Include="IOTest\EnsureDatePathTest.aspx" />
+    <Content Include="IOTest\PathCombineTest.aspx" />
+    <Content Include="LanguageResourceTest.aspx" />
+    <Content Include="MemberCloneTest.aspx" />
+    <Content Include="Membership\ExtensiblePropertyTest.aspx" />
+    <Content Include="Membership\MembershipManage.aspx" />
+    <Content Include="MessageBoxDemo\default.aspx" />
+    <Content Include="MessageBoxDemo\test.aspx" />
+    <Content Include="MiscTest\FlaggedEnumTest.aspx" />
+    <Content Include="MyLogin.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="CheckDirAdmin\default.aspx" />
+    <Content Include="CheckDirRole\default.aspx" />
+    <Content Include="Misc\Readme.txt" />
+    <Content Include="OfficeDemo\ExcelTest.aspx" />
+    <Content Include="PageDesignDemo\Digg.com\bg.png" />
+    <Content Include="PageDesignDemo\Digg.com\DiggNav.htm" />
+    <Content Include="PageDesignDemo\Digg.com\DiggNav.css" />
+    <Content Include="PageDesignDemo\Digg.com\Readme.txt" />
+    <Content Include="PageDesignDemo\Readme.txt" />
+    <Content Include="PermissionButtonTest.aspx" />
+    <Content Include="ReflectHelperTest.aspx" />
+    <Content Include="RequestHelperTest.aspx" />
+    <Content Include="Resources\resourceTest2.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Resources\resourceTest.xml" />
+    <Content Include="UrlInfoTest.aspx" />
+    <Content Include="从字符串中解析数学表达式RPNTest.aspx" />
+    <Content Include="SQLiteTest.aspx" />
+    <Content Include="SSLJumpTest.aspx" />
+    <Content Include="Styles\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.1.js" />
+    <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="ResourceUsing.aspx" />
+    <Content Include="XMLHelperDemo\GetNodeValueTest.aspx" />
+    <Content Include="XMLHelperDemo\XMLFileDemo.xml" />
+    <Content Include="字符串编辑距离测试.aspx" />
+    <Content Include="字符串解析测试.aspx" />
+    <Content Include="脏词过滤测试.aspx" />
+    <Content Include="身份证号码解析验证.aspx" />
+    <Content Include="集合操作测试.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.aspx.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="About.aspx.designer.cs">
+      <DependentUpon>About.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AuthCodeDemo\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AuthCodeDemo\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CacheUsing.aspx.cs">
+      <DependentUpon>CacheUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CacheUsing.aspx.designer.cs">
+      <DependentUpon>CacheUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ClassesForTest\GraduateStudent.cs" />
+    <Compile Include="ClassesForTest\Person.cs" />
+    <Compile Include="ClassesForTest\SomethingElse.cs" />
+    <Compile Include="ClassesForTest\Student.cs" />
+    <Compile Include="ClassesForTest\Worker.cs" />
+    <Compile Include="CurrentUserDemo\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CurrentUserDemo\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EnumHelperTest.aspx.cs">
+      <DependentUpon>EnumHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EnumHelperTest.aspx.designer.cs">
+      <DependentUpon>EnumHelperTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FileTest.aspx.cs">
+      <DependentUpon>FileTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FileTest.aspx.designer.cs">
+      <DependentUpon>FileTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleA\ModuleA1\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleA\ModuleA1\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleA\ModuleA1\DemoOnly.aspx.cs">
+      <DependentUpon>DemoOnly.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleA\ModuleA1\DemoOnly.aspx.designer.cs">
+      <DependentUpon>DemoOnly.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleA\ModuleA2\PermissionSetting.aspx.cs">
+      <DependentUpon>PermissionSetting.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleA\ModuleA2\PermissionSetting.aspx.designer.cs">
+      <DependentUpon>PermissionSetting.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleB\ModuleB1\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeneralValidateDemo\ModuleB\ModuleB1\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="HLAjaxHandlerDemo\Student.cs" />
+    <Compile Include="IOTest\EnsureDatePathTest.aspx.cs">
+      <DependentUpon>EnsureDatePathTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IOTest\EnsureDatePathTest.aspx.designer.cs">
+      <DependentUpon>EnsureDatePathTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="IOTest\PathCombineTest.aspx.cs">
+      <DependentUpon>PathCombineTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="IOTest\PathCombineTest.aspx.designer.cs">
+      <DependentUpon>PathCombineTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LanguageResourceTest.aspx.cs">
+      <DependentUpon>LanguageResourceTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LanguageResourceTest.aspx.designer.cs">
+      <DependentUpon>LanguageResourceTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MemberCloneTest.aspx.cs">
+      <DependentUpon>MemberCloneTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MemberCloneTest.aspx.designer.cs">
+      <DependentUpon>MemberCloneTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\BankEntityExt.cs" />
+    <Compile Include="Membership\BusinessUserExt.cs" />
+    <Compile Include="Membership\ExtensiblePropertyTest.aspx.cs">
+      <DependentUpon>ExtensiblePropertyTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\ExtensiblePropertyTest.aspx.designer.cs">
+      <DependentUpon>ExtensiblePropertyTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\MembershipManage.aspx.cs">
+      <DependentUpon>MembershipManage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Membership\MembershipManage.aspx.designer.cs">
+      <DependentUpon>MembershipManage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Membership\UserInfo.cs" />
+    <Compile Include="MessageBoxDemo\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageBoxDemo\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MessageBoxDemo\test.aspx.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MessageBoxDemo\test.aspx.designer.cs">
+      <DependentUpon>test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MiscTest\FlaggedEnumTest.aspx.cs">
+      <DependentUpon>FlaggedEnumTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MiscTest\FlaggedEnumTest.aspx.designer.cs">
+      <DependentUpon>FlaggedEnumTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MyLogin.aspx.cs">
+      <DependentUpon>MyLogin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MyLogin.aspx.designer.cs">
+      <DependentUpon>MyLogin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckDirAdmin\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckDirAdmin\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckDirRole\default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckDirRole\default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="OfficeDemo\ExcelTest.aspx.cs">
+      <DependentUpon>ExcelTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="OfficeDemo\ExcelTest.aspx.designer.cs">
+      <DependentUpon>ExcelTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionButtonTest.aspx.cs">
+      <DependentUpon>PermissionButtonTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PermissionButtonTest.aspx.designer.cs">
+      <DependentUpon>PermissionButtonTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReflectHelperTest.aspx.cs">
+      <DependentUpon>ReflectHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReflectHelperTest.aspx.designer.cs">
+      <DependentUpon>ReflectHelperTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RequestHelperTest.aspx.cs">
+      <DependentUpon>RequestHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RequestHelperTest.aspx.designer.cs">
+      <DependentUpon>RequestHelperTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UrlInfoTest.aspx.cs">
+      <DependentUpon>UrlInfoTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UrlInfoTest.aspx.designer.cs">
+      <DependentUpon>UrlInfoTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="从字符串中解析数学表达式RPNTest.aspx.cs">
+      <DependentUpon>从字符串中解析数学表达式RPNTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="从字符串中解析数学表达式RPNTest.aspx.designer.cs">
+      <DependentUpon>从字符串中解析数学表达式RPNTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+    </Compile>
+    <Compile Include="ResourceUsing.aspx.cs">
+      <DependentUpon>ResourceUsing.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ResourceUsing.aspx.designer.cs">
+      <DependentUpon>ResourceUsing.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SQLiteTest.aspx.cs">
+      <DependentUpon>SQLiteTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SQLiteTest.aspx.designer.cs">
+      <DependentUpon>SQLiteTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SSLJumpTest.aspx.cs">
+      <DependentUpon>SSLJumpTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SSLJumpTest.aspx.designer.cs">
+      <DependentUpon>SSLJumpTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="XMLHelperDemo\GetNodeValueTest.aspx.cs">
+      <DependentUpon>GetNodeValueTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="XMLHelperDemo\GetNodeValueTest.aspx.designer.cs">
+      <DependentUpon>GetNodeValueTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="字符串编辑距离测试.aspx.cs">
+      <DependentUpon>字符串编辑距离测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="字符串编辑距离测试.aspx.designer.cs">
+      <DependentUpon>字符串编辑距离测试.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="字符串解析测试.aspx.cs">
+      <DependentUpon>字符串解析测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="字符串解析测试.aspx.designer.cs">
+      <DependentUpon>字符串解析测试.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="脏词过滤测试.aspx.cs">
+      <DependentUpon>脏词过滤测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="脏词过滤测试.aspx.designer.cs">
+      <DependentUpon>脏词过滤测试.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="身份证号码解析验证.aspx.cs">
+      <DependentUpon>身份证号码解析验证.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="身份证号码解析验证.aspx.designer.cs">
+      <DependentUpon>身份证号码解析验证.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="集合操作测试.aspx.cs">
+      <DependentUpon>集合操作测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="集合操作测试.aspx.designer.cs">
+      <DependentUpon>集合操作测试.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="GeneralValidateDemo\ModuleB\ModuleB2\" />
+    <Folder Include="GeneralValidateDemo\ModuleB\ModuleB3\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+    <Content Include="Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Applications\Applications.csproj">
+      <Project>{964BBF20-0119-410A-8E18-4E3CDFDABD97}</Project>
+      <Name>Applications</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiLand.Framework\HiLand.Framework.csproj">
+      <Project>{461EC125-8906-4F63-96FF-17B4B10A65E0}</Project>
+      <Name>HiLand.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiLand.General\HiLand.General.csproj">
+      <Project>{E6B62810-D354-410E-B5D4-EFDE27C2C2C7}</Project>
+      <Name>HiLand.General</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiLand.Utility4\HiLand.Utility4.csproj">
+      <Project>{DCEC4525-16E2-4A20-A816-E775E063E187}</Project>
+      <Name>HiLand.Utility4</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiLand.Utility\HiLand.Utility.csproj">
+      <Project>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</Project>
+      <Name>HiLand.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AuthCodeDemo\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="HLAjaxHandlerDemo\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OfficeDemo\myExcel.xls" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57225</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost/scw</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

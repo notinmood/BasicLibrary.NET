@@ -1,0 +1,55 @@
+﻿@using HiLand.Utility4.MVC.Controls;
+@using HiLand.Utility.Enums.OP;
+@using HiLand.Utility.Enums;
+@using System.Web.UI.WebControls;
+@using HiLand.Utility4.Data;
+@using HiLand.Utility4.MVC;
+
+@{
+    ViewBag.Title = "Index";
+
+
+    string myData = MVCHelper.GetCustomData("myData");
+    int myInt= MVCHelper.GetCustomData<int>("myInt2");
+    Type myType = MVCHelper.GetCustomData<Type>("myType");
+
+    string queryCondtion= this.ViewBag.queryCondtion;
+    if(queryCondtion== null)
+    {
+        queryCondtion = string.Empty;
+    }
+    
+    ListItemCollection collection= EnumBuilder.BuildItemCollection(typeof(Sexes),string.Empty);
+    
+    List<SelectListItem> itemList= EnumEx.BuildSelectItemList(typeof(Sexes),string.Empty);
+    List<SelectListItem> itemList2 = EnumEx.BuildSelectItemList<Sexes>(string.Empty);
+
+    List<QueryConditionItem> conditionItems = new List<QueryConditionItem>();
+
+    QueryConditionItem item1 = new QueryConditionItem();
+    item1.ConditionType= typeof(string);
+    item1.ConditionDisplayName = "用户名称";
+    item1.ConditionFieldName = "UserName";
+    conditionItems.Add(item1);
+
+    QueryConditionItem item2 = new QueryConditionItem();
+    item2.ConditionType = typeof(HiLand.Utility.Enums.Sexes);
+    item2.ConditionDisplayName = "用户性别";
+    item2.ConditionFieldName = "UserSex";
+    conditionItems.Add(item2);
+}
+
+<h2>Index</h2>
+
+@collection.Count
+
+@using (Html.BeginForm()) {
+    <div></div>
+    @Html.HiQuery("myQuery").QueryConditionList(conditionItems).Render();
+    
+    <input type="submit" />
+}
+
+查询表达式为：<br />
+@queryCondtion
+

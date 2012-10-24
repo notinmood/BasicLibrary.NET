@@ -1,0 +1,84 @@
+﻿0.扩展属性的原理（亦可参见原理图）：
+	实体的扩展属性就是那些不需要具体的确定的数据库字段映射的属性。通过一个“中间库”作为中介，
+	让扩展属性（一个或者多个）可以在实体和数据库之间转换。这些属性是统一记录在数据库表的
+	2个字段（PropertyNames和PropertyValues）中，其中PropertyNames记录的是所有扩展属性的
+	名称，PropertyValues内记录的是所有扩展属性的值（各个名称和值是使用了一个特殊的算法对应的）。
+	具体转换流程如下：
+		a.从数据库读取实体的时候，将数据库表字段PropertyNames和PropertyValues内的信息，保存在
+		实体的属性PropertyNames和PropertyValues中。
+		b.第一次访问某个扩展属性的时候，系统会自动通过实体的属性PropertyNames和PropertyValues
+		来构建“中间库”，这个中间库就是格式化好的“名值对”了。
+		c.接下来我们就可以通过这个带格式的“中间库”，对扩展属性进行各种读写操作了（在外部对扩展属性的
+		操作方式就跟普通的属性一样了）。
+		d.当向数据库写回数据的时候，在通过特定算法，将在“中间库”的扩展属性按照一定规则处理后
+		（主要就是扩展属性的名称统一放在一起，扩展属性的值统一放在一起），然后保存在数据库表的
+		字段PropertyNames和PropertyValues内。
+	
+1.实体对应的数据库表必须有如下两个字段PropertyNames和PropertyValues（ntext类型）
+2.实体必须实现接口IModelExtensible，内部的代码如下（可以直接拷贝使用）
+
+	    private string propertyName = string.Empty;
+        /// <summary>
+        /// 扩展属性的名字
+        /// </summary>
+        public virtual string PropertyNames
+        {
+            get { return this.propertyName; }
+            set { this.propertyName = value; }
+        }
+
+        private string propertyValue = string.Empty;
+        /// <summary>
+        /// 扩展属性的值
+        /// </summary>
+        public virtual string PropertyValues
+        {
+            get { return this.propertyValue; }
+            set { this.propertyValue = value; }
+        }
+
+
+        private ExtentiblePropertyRepository extensiableRepository = null;
+        /// <summary>
+        /// 扩展属性记录库
+        /// </summary>
+        public ExtentiblePropertyRepository ExtensiableRepository
+        {
+            get
+            {
+                if (extensiableRepository == null)
+                {
+                    extensiableRepository = new ExtentiblePropertyRepository(this.PropertyNames,this.PropertyValues);
+                }
+
+                return extensiableRepository;
+            }
+        }
+
+3.数据访问类中方法PrepareParasAll内，包含以下代码
+            if (entity is IModelExtensible)
+            {
+                SqlParameter paraPropertyNames = list.Find(paramater => paramater.ParameterName == "@PropertyNames");
+                SqlParameter paraPropertyValues = list.Find(paramater => paramater.ParameterName == "@PropertyValues");
+
+                if (paraPropertyNames != null && paraPropertyValues != null)
+                {
+                    SerializerData serializerData = ((IModelExtensible)entity).ExtensiableRepository.GetSerializerData();
+                    paraPropertyNames.Value = serializerData.Keys ?? string.Empty;
+                    paraPropertyValues.Value = serializerData.Values ?? string.Empty;
+                }
+            }
+
+4.扩展属性使用时，代码的格式通常如下
+		public string ExtProteryA
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("ExtProteryA");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("ExtProteryA", value);
+            }
+        }
+		即，扩展属性的值记录在“扩展库”中，读和写的时候都是对这个扩展库中某个元素的操作。

@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@using HiLand.Utility4.MVC;
+@using HiLand.Utility4.Data;
+<h2>@ViewBag.Message</h2>
+<p>
+    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">
+        http://asp.net/mvc</a>.
+</p>
+<p>
+    @Html.Link("新浪网", "http://www.sina.com.cn", new  { city="qingdao",myColor="red"})
+    @{
+        String[] names = new string[2] { "Cary", "James" };
+        System.Linq.Expressions.Expression<Func<String, Boolean>> expression1 = (x) => x.StartsWith("C");
+        //@"Expression is {0}".Format(expression1.ToString());
+        foreach (String name in names.Where(expression1.Compile()))
+        {
+            //"{0}".Format(name);
+            @string.Format( "{0 }",name);
+        }
+    }
+
+    @{
+        List<SelectListItem> list = new List<SelectListItem>();
+        SelectListItem item0 = new SelectListItem();
+        item0.Selected = true;
+        item0.Text = "shandong";
+        item0.Value = "37";
+        list.Add(item0);
+        
+        SelectListItem item1 = new SelectListItem();
+        item1.Text = "qingdao";
+        item1.Value = "3702";
+        list.Add(item1);
+
+        SelectListItem item2 = new SelectListItem();
+        item2.Text = "jinan";
+        item2.Value = "3701";
+        list.Add(item2);
+        }
+    @Html.DropDownListWithHierachical("helle",list,null)
+
+    @{
+        int a = Convert.ToInt32('a');
+        int A = Convert.ToInt32('A');
+        int z = Convert.ToInt32('z');
+        int Z = Convert.ToInt32('Z');
+        }
+        @a @z @A @Z
+
+        @Html.DropDownListAllEnglishChars("qst",null)
+</p>

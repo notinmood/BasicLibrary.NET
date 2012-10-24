@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <!--<script src="script.js" type="text/javascript"></script>-->
+    <script type="text/javascript">
+
+        // 说明：一个非常健全的 Javascript 链接(URL)解析类
+        // 整理：http://www.CodeBit.cn
+
+        /**
+        * @projectDescription   Poly9's polyvalent URLParser class
+        *
+        * @author   Denis Laprise - denis@poly9.com - http://poly9.com
+        * @version  0.1
+        * @namespace    Poly9
+        *
+        * See the unit test file for more examples.
+        * URLParser is freely distributable under the terms of an MIT-style license.
+        */
+
+        if (typeof Poly9 == 'undefined') {
+            var Poly9 = {};
+        }
+
+        /**
+        * Creates an URLParser instance
+        *
+        * @classDescription    Creates an URLParser instance
+        * @return {Object} return an URLParser object
+        * @param {String} url  The url to parse
+        * @constructor
+        * @exception {String}  Throws an exception if the specified url is invalid
+        */
+        Poly9.URLParser = function (url) {
+
+            this._fields = {
+                'Username': 4,
+                'Password': 5,
+                'Port': 7,
+                'Protocol': 2,
+                'Host': 6,
+                'Pathname': 8,
+                'URL': 0,
+                'Querystring': 9,
+                'Fragment': 10
+            };
+
+            this._values = {};
+            this.version = 0.1;
+            this._regex = /^((\w+):\/\/)?((\w+):?(\w+)?@)?([^\/\?:]+):?(\d+)?(\/?[^\?#]+)?\??([^#]+)?#?(\w*)/;
+
+            for (var f in this._fields) {
+                this['get' + f] = this._makeGetter(f);
+            }
+
+            if (typeof url != 'undefined') {
+                this._parse(url);
+            }
+        }
+
+        /**
+        * @method
+        * @param {String} url  The url to parse
+        * @exception {String}  Throws an exception if the specified url is invalid
+        */
+        Poly9.URLParser.prototype.setURL = function (url) {
+            this._parse(url);
+        }
+
+        Poly9.URLParser.prototype._initValues = function () {
+            for (var f in this._fields) {
+                this._values[f] = '';
+            }
+        }
+
+        Poly9.URLParser.prototype._parse = function (url) {
+            this._initValues();
+            var r = this._regex.exec(url);
+            if (!r) throw "DPURLParser::_parse -> Invalid URL";
+
+            for (var f in this._fields) if (typeof r[this._fields[f]] != 'undefined') {
+                this._values[f] = r[this._fields[f]];
+            }
+        }
+
+        Poly9.URLParser.prototype._makeGetter = function (field) {
+            return function () {
+                return this._values[field];
+            }
+        }
+ 
+</script>
+    <script type="text/javascript">
+        var url = 'http://user:password@www.codebit.cn:9901/pub/article.php?offset=10&perpage=10#fragment';
+
+        var p = new Poly9.URLParser(url);
+
+        document.write("<strong>URL:</strong> " + url + "<br /><br />");
+        document.write("解析结果如下：<br /><br />");
+        document.write("<strong>Protocol:</strong> " + p.getProtocol() + "<br />");
+        document.write("<strong>Username:</strong> " + p.getUsername() + "<br />");
+        document.write("<strong>Password:</strong> " + p.getPassword() + "<br />");
+        document.write("<strong>Host:</strong> " + p.getHost() + "<br />");
+        document.write("<strong>Port:</strong> " + p.getPort() + "<br />");
+        document.write("<strong>Pathname:</strong> " + p.getPathname() + "<br />");
+        document.write("<strong>Query String:</strong> " + p.getQuerystring() + "<br />");
+        document.write("<strong>Fragment:</strong> " + p.getFragment() + "<br />");
+ 
+    </script>
+</body>
+</html>

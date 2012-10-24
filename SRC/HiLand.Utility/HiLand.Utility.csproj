@@ -1,0 +1,408 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HiLand.Utility</RootNamespace>
+    <AssemblyName>HiLand.Utility</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <DocumentationFile>bin\Debug\HiLand.Utility.XML</DocumentationFile>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\Libs\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2">
+      <HintPath>..\Libs\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\Libs\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Newtonsoft.Json.Net20">
+      <HintPath>..\Libs\Newtonsoft.Json.Net20.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI">
+      <HintPath>..\Libs\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Algorithm\AlgorithmMisc.cs" />
+    <Compile Include="Algorithm\DirtyWordsFilter\HashFilter.cs" />
+    <Compile Include="Algorithm\DirtyWordsFilter\HashHelpers.cs" />
+    <Compile Include="Algorithm\DirtyWordsFilter\HashStringSet.cs" />
+    <Compile Include="Algorithm\DirtyWordsFilter\IWordFilter.cs" />
+    <Compile Include="Algorithm\Levenshtein.cs" />
+    <Compile Include="Algorithm\OddEven.cs" />
+    <Compile Include="Algorithm\Sorts.cs" />
+    <Compile Include="Algorithm\Sort\CountingSorter.cs" />
+    <Compile Include="Algorithm\Sort\EbullitionSorter.cs" />
+    <Compile Include="Algorithm\Sort\HeapSorter.cs" />
+    <Compile Include="Algorithm\Sort\InsertionSorter.cs" />
+    <Compile Include="Algorithm\Sort\MergeSorter.cs" />
+    <Compile Include="Algorithm\Sort\QuickSorter.cs" />
+    <Compile Include="Algorithm\Sort\RadixSorter.cs" />
+    <Compile Include="Algorithm\Sort\SelectionSorter.cs" />
+    <Compile Include="Algorithm\Sort\ShellSorter.cs" />
+    <Compile Include="AOP\Interceptor\EmptyObjectInterceptor.cs" />
+    <Compile Include="AOP\CodePacking.cs" />
+    <Compile Include="AOP\Interceptor\SQLInjectionInterceptor.cs" />
+    <Compile Include="Cache\CacheFactory.cs" />
+    <Compile Include="Cache\CacheHelper.cs" />
+    <Compile Include="Cache\CacheKeys.cs" />
+    <Compile Include="Cache\CoreCacheKeys.cs" />
+    <Compile Include="Cache\ICache.cs" />
+    <Compile Include="Cache\WebCache.cs" />
+    <Compile Include="Core\EnvironmentHelper.cs" />
+    <Compile Include="Core\ApplicationModes.cs" />
+    <Compile Include="DataBase\ClauseModel.cs" />
+    <Compile Include="DataBase\CommonHelper.cs" />
+    <Compile Include="DataBase\CommonHelperEx.cs" />
+    <Compile Include="DataBase\ConditionConnectors.cs" />
+    <Compile Include="DataBase\ConditionModel.cs" />
+    <Compile Include="DataBase\CPQuery.cs" />
+    <Compile Include="DataBase\DataReaderHelper.cs" />
+    <Compile Include="DataBase\DataRowHelper.cs" />
+    <Compile Include="DataBase\CommonGeneral.cs" />
+    <Compile Include="DataBase\SqlDataBaseHelper.cs" />
+    <Compile Include="DataBase\SqlGeneral.cs" />
+    <Compile Include="DataBase\SqlHelper.cs" />
+    <Compile Include="DataBase\SqlHelperEx.cs" />
+    <Compile Include="DataBase\SQLiteGeneral.cs" />
+    <Compile Include="DataBase\SQLiteHelper.cs" />
+    <Compile Include="DataBase\SQLiteHelperEx.cs" />
+    <Compile Include="DataBase\SqlMisc.cs" />
+    <Compile Include="DataBase\SqlWhereClauseBuilder.cs" />
+    <Compile Include="DataBase\WhereClauseBuilder.cs" />
+    <Compile Include="Data\AssemblyHelper.cs" />
+    <Compile Include="Data\CollectionHelper.cs" />
+    <Compile Include="Data\Converter.cs" />
+    <Compile Include="Data\EnumHelper.cs" />
+    <Compile Include="Data\ExceptionHelper.cs" />
+    <Compile Include="Data\FlagHelper.cs" />
+    <Compile Include="Data\GuidHelper.cs" />
+    <Compile Include="Data\HtmlHelper.cs" />
+    <Compile Include="Data\JsonHelper.cs" />
+    <Compile Include="Data\DateTimeHelper.cs" />
+    <Compile Include="Data\ObjectHelper.cs" />
+    <Compile Include="Data\OperatorHelper.cs" />
+    <Compile Include="Data\ProxyClassHelper.cs" />
+    <Compile Include="Data\RegexHelper.cs" />
+    <Compile Include="Data\TypeHelper.cs" />
+    <Compile Include="Data\XmlHelper.cs" />
+    <Compile Include="Drawing\WaterMarker.cs" />
+    <Compile Include="Drawing\WaterMarkPositions.cs" />
+    <Compile Include="Entity\AutoCompleteEntity.cs" />
+    <Compile Include="Entity\CascadingCollection.cs" />
+    <Compile Include="Entity\EntityHelper.cs" />
+    <Compile Include="Entity\IDCard.cs" />
+    <Compile Include="Entity\IEmpty.cs" />
+    <Compile Include="Entity\DataForChange.cs" />
+    <Compile Include="Entity\Status\ILogicStatusInfo.cs" />
+    <Compile Include="Entity\Status\ISystemStatusInfo.cs" />
+    <Compile Include="Entity\Status\LogicStatusInfo.cs" />
+    <Compile Include="Entity\Status\SystemStatusInfo.cs" />
+    <Compile Include="Entity\ZTreeNodeEntity.cs" />
+    <Compile Include="Enums\CompareModes.cs" />
+    <Compile Include="Enums\ConditionItemRelationships.cs" />
+    <Compile Include="Enums\DataBaseTypes.cs" />
+    <Compile Include="Enums\DataLoadTypes.cs" />
+    <Compile Include="Enums\DataSelectModes.cs" />
+    <Compile Include="Enums\DataSelectTypes.cs" />
+    <Compile Include="Enums\DataUsingModes.cs" />
+    <Compile Include="Enums\DateFormats.cs" />
+    <Compile Include="Enums\DepartmentUserTypes.cs" />
+    <Compile Include="Enums\LevelTypes.cs" />
+    <Compile Include="Enums\ExecuterTypes.cs" />
+    <Compile Include="Enums\FieldExtendModes.cs" />
+    <Compile Include="Enums\JobStatuses.cs" />
+    <Compile Include="Enums\LogLevels.cs" />
+    <Compile Include="Enums\MaritalStatuses.cs" />
+    <Compile Include="Enums\NumberBase.cs" />
+    <Compile Include="Enums\OP\EnumItemDescriptionHelper.cs" />
+    <Compile Include="Enums\PassingParamValueSourceTypes.cs" />
+    <Compile Include="Enums\PermissionDataTypes.cs" />
+    <Compile Include="Enums\SystemStatuses.cs" />
+    <Compile Include="Enums\UserStatuses.cs" />
+    <Compile Include="Environments\ComputerHelper.cs" />
+    <Compile Include="Event\EventHelper.cs" />
+    <Compile Include="Handler\Ajax\AjaxHandler.cs" />
+    <Compile Include="Handler\Ajax\FormAttribute.cs" />
+    <Compile Include="Handler\Ajax\ParameterAttribute.cs" />
+    <Compile Include="Handler\Ajax\QueryStringAttribute.cs" />
+    <Compile Include="IO\Extend\FileEnums.cs" />
+    <Compile Include="IO\Extend\FileWrapper.cs" />
+    <Compile Include="IO\IOEnum.cs" />
+    <Compile Include="IO\IOEnvent.cs" />
+    <Compile Include="IO\IOHelper.cs" />
+    <Compile Include="Finance\CAMLoan.cs" />
+    <Compile Include="Finance\CompoundRateConverter.cs" />
+    <Compile Include="Finance\CPMLoan.cs" />
+    <Compile Include="Finance\Enum.cs" />
+    <Compile Include="Finance\LoanHelper.cs" />
+    <Compile Include="Finance\Payment.cs" />
+    <Compile Include="Finance\RateConverter.cs" />
+    <Compile Include="Finance\RMB.cs" />
+    <Compile Include="Finance\SimpleRateConverter.cs" />
+    <Compile Include="IO\PathHelper.cs" />
+    <Compile Include="Mathes\StringParse\Operand.cs" />
+    <Compile Include="Mathes\StringParse\OperandTypes.cs" />
+    <Compile Include="Mathes\StringParse\Operator.cs" />
+    <Compile Include="Mathes\StringParse\OperatorTypes.cs" />
+    <Compile Include="Mathes\StringParse\RPN.cs" />
+    <Compile Include="Native\ControlHelper.cs" />
+    <Compile Include="Native\DialogMisc.cs" />
+    <Compile Include="Native\IdentityScope.cs" />
+    <Compile Include="Native\MessageBoxHelper.cs" />
+    <Compile Include="Net\FTP\FTPHelper.cs" />
+    <Compile Include="Net\Mail\MailHelper.cs" />
+    <Compile Include="Office\ExcelHelper.cs" />
+    <Compile Include="Pattern\EmptyFactory.cs" />
+    <Compile Include="Reflection\ExtendKeyAttribute.cs" />
+    <Compile Include="Reflection\MemberInfoWithAttributeCollection.cs" />
+    <Compile Include="Security\HashHelper.cs" />
+    <Compile Include="Serialization\ExtentiblePropertyRepositoryHelper.cs" />
+    <Compile Include="Setting\INIConfig.cs" />
+    <Compile Include="Setting\SectionHandler\PermissionDataConfig.cs" />
+    <Compile Include="Setting\SectionHandler\PermissionDataEntity.cs" />
+    <Compile Include="Setting\SectionHandler\PermissionDataSectionHandler.cs" />
+    <Compile Include="Setting\SectionHandler\SystemTaskSectionConfig.cs" />
+    <Compile Include="Setting\SectionHandler\SystemTaskSectionEntity.cs" />
+    <Compile Include="Setting\SectionHandler\SystemTaskSectionHandler.cs" />
+    <Compile Include="UI\HttpPostedFileHelper.cs" />
+    <Compile Include="Web\CookieHelper.cs" />
+    <Compile Include="Web\RequestHelper.cs" />
+    <Compile Include="Data\SQLInjectionHelper.cs" />
+    <Compile Include="Data\StringHelper.cs" />
+    <Compile Include="Drawing\Thumbnail.cs" />
+    <Compile Include="Drawing\ThumbnailCutModes.cs" />
+    <Compile Include="Entity\EntityValidation.cs" />
+    <Compile Include="Entity\ValidateAttribute.cs" />
+    <Compile Include="Entity\ValidateTypes.cs" />
+    <Compile Include="Enums\AttchmentTypes.cs" />
+    <Compile Include="Enums\CharCategories.cs" />
+    <Compile Include="Enums\CommonStatuses.cs" />
+    <Compile Include="Enums\CompressTypes.cs" />
+    <Compile Include="Enums\CreateUserRoleStatuses.cs" />
+    <Compile Include="Enums\EarthCoordinates.cs" />
+    <Compile Include="Enums\Logics.cs" />
+    <Compile Include="Enums\LoginStatuses.cs" />
+    <Compile Include="Enums\MathCoordinates.cs" />
+    <Compile Include="Enums\NoPermissionControlDisplayModes.cs" />
+    <Compile Include="Enums\OP\EnumDataSource.cs" />
+    <Compile Include="Enums\OP\EnumItemDescriptionAttribute.cs" />
+    <Compile Include="Enums\OP\EnumBuilder.cs" />
+    <Compile Include="Enums\PageDisplayStatuses.cs" />
+    <Compile Include="Enums\PermissionButtonTypes.cs" />
+    <Compile Include="Enums\PermissionTypes.cs" />
+    <Compile Include="Enums\SearchOperators.cs" />
+    <Compile Include="Enums\Sexes.cs" />
+    <Compile Include="Enums\EncryptTypes.cs" />
+    <Compile Include="Enums\UserTypes.cs" />
+    <Compile Include="Enums\WorkKinds.cs" />
+    <Compile Include="Event\Actions.cs" />
+    <Compile Include="Event\EventArgs.cs" />
+    <Compile Include="Event\EventHandle.cs" />
+    <Compile Include="Event\Funcs.cs" />
+    <Compile Include="Event\Predicates.cs" />
+    <Compile Include="Event\SearchEventArgs.cs" />
+    <Compile Include="Event\SearchEventHandle.cs" />
+    <Compile Include="IO\ContentType.cs" />
+    <Compile Include="IO\FileHelper.cs" />
+    <Compile Include="Handler\AuthCodeHandler.cs" />
+    <Compile Include="Handler\UserControlRendering\UserControlRenderingHandler.cs" />
+    <Compile Include="Handler\UserControlRendering\UserControlRenderingPropertyAttribute.cs" />
+    <Compile Include="Handler\UserControlRendering\UserControlRenderingPropertySource.cs" />
+    <Compile Include="Misc\MenuInfo.cs" />
+    <Compile Include="Data\RandomHelper.cs" />
+    <Compile Include="Module\AntiSQLInjectionModule.cs" />
+    <Compile Include="Module\CompressModule.cs" />
+    <Compile Include="Module\MasterClientResourcePathModule.cs" />
+    <Compile Include="Module\SSLSwitchModule.cs" />
+    <Compile Include="Reflection\ReflectHelper.cs" />
+    <Compile Include="Setting\SectionHandler\SSLSwitchConfig.cs" />
+    <Compile Include="Setting\SectionHandler\SSLSwitchEntity.cs" />
+    <Compile Include="Setting\SectionHandler\SSLSwitchHandler.cs" />
+    <Compile Include="UI\DDLLogics.cs" />
+    <Compile Include="UI\DDLWorkKinds.cs" />
+    <Compile Include="Web\ClientBrowser.cs" />
+    <Compile Include="Web\DownloadHelper.cs" />
+    <Compile Include="Paging\PagedEntity.cs" />
+    <Compile Include="Pattern\Singleton.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\Images.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Images.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\Javascript.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Javascript.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\ResourcesManager.cs" />
+    <Compile Include="Security\EncryptService.cs" />
+    <Compile Include="Serialization\ExtentiblePropertyRepository.cs" />
+    <Compile Include="Serialization\Serializer.cs" />
+    <Compile Include="Serialization\SerializerData.cs" />
+    <Compile Include="Setting\Config.cs" />
+    <Compile Include="Setting\SectionHandler\GeneralValidateConfig.cs" />
+    <Compile Include="Setting\SectionHandler\GeneralValidateEntity.cs" />
+    <Compile Include="Setting\SectionHandler\GeneralValidateSectionHandler.cs" />
+    <Compile Include="Setting\SectionHandler\PathRoleValidateConfig.cs" />
+    <Compile Include="Setting\SectionHandler\PathRoleValidateEntity.cs" />
+    <Compile Include="Setting\SectionHandler\PathRoleValidateSectionHandler.cs" />
+    <Compile Include="UI\AuthCode.cs" />
+    <Compile Include="UI\CCommonSearch.cs" />
+    <Compile Include="UI\DDLCompressTypes.cs" />
+    <Compile Include="UI\DDLCommonControl.cs" />
+    <Compile Include="UI\DDLCommonStatus.cs" />
+    <Compile Include="UI\DDLSex.cs" />
+    <Compile Include="UI\DDLUserType.cs" />
+    <Compile Include="UI\MessageBox.cs" />
+    <Compile Include="UI\UserControlViewManager.cs" />
+    <Compile Include="Web\BrowseHistory.cs" />
+    <Compile Include="Web\ClientPage.cs" />
+    <Compile Include="Web\CookieInfo.cs" />
+    <Compile Include="Web\ResponseHelper.cs" />
+    <Compile Include="Web\SessionHelper.cs" />
+    <Compile Include="Web\UrlInfo.cs" />
+    <Compile Include="Web\WebHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Algorithm\DirtyWordsFilter\DirtyWord.txt" />
+    <Content Include="Algorithm\DirtyWordsFilter\Readme.txt" />
+    <Content Include="Algorithm\Levenshtein.txt" />
+    <Content Include="AOP\Interceptor\EmptyObjectInterceptor_Readme.txt" />
+    <Content Include="AOP\Readme.txt" />
+    <Content Include="Drawing\Readme.txt" />
+    <Content Include="Entity\Readme.txt" />
+    <Content Include="Finance\Readme.txt" />
+    <Content Include="Handler\Ajax\Readme.txt" />
+    <Content Include="Mathes\StringParse\RPNReadme.txt" />
+    <Content Include="Native\IdentityScope.txt" />
+    <Content Include="Native\Readme.txt" />
+    <Content Include="Office\readme.txt" />
+    <Content Include="SettingList.txt" />
+    <Content Include="Setting\SectionHandler\PermissionDataReadme.txt" />
+    <Content Include="Setting\SectionHandler\SectionHandlerReadme.txt" />
+    <Content Include="Web\CookieInfoReadme.txt" />
+    <EmbeddedResource Include="Resources\img_allow.gif" />
+    <Content Include="Pattern\singleton.html" />
+    <Content Include="Resources\CommonReadme.txt" />
+    <EmbeddedResource Include="Resources\Images.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Images.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resource_zh-CN.xml" />
+    <EmbeddedResource Include="Resources\Resource_en-US.xml" />
+    <EmbeddedResource Include="Resources\img_disable.gif" />
+    <EmbeddedResource Include="Resources\img_right.gif" />
+    <EmbeddedResource Include="Resources\img_sort_asc.gif" />
+    <EmbeddedResource Include="Resources\img_sort_desc.gif" />
+    <EmbeddedResource Include="Resources\img_wrong.gif" />
+    <Content Include="Setting\SectionHandler\GeneralValidateReadme.txt" />
+    <Content Include="SQLScripts\CoreChinaAreaScript.sql" />
+    <Content Include="SQLScripts\Readme.txt" />
+    <EmbeddedResource Include="Resources\CommonJavaScript.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\Javascript.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Javascript.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Culture\" />
+    <Folder Include="Entity\Reflection\" />
+    <Folder Include="Logging\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Security\.NET提供的加密算法概述.doc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

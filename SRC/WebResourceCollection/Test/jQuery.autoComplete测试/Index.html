@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Fancy Validate - jQuery UI Autocomplete</title>
+    <link href="css/ui-lightness/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+    <script src="../../Scripts/jQuery/jquery-1.4.4.min.js"></script>
+    <script src="js/jquery-ui-1.8.17.custom.min.js"></script>
+</head>
+<body>
+    <form action="?" id="fancyform">
+        <fieldset>
+            <legend>jQuery UI Autocomplete</legend>
+            <div>内容显示：<input id="displayContent" type="text" /></div>
+            <div>
+                ajax返回JSON(随便输)：<input id="ajax2" type="text" />
+            </div>
+        </fieldset>
+    </form>
+        <script>
+            function getExtraParam(){
+                return "myssss";
+            }
+
+        $(function () {
+            // ajax 返回json数组
+            $("#ajax2").autocomplete({
+                minLength: 2,
+                source: function (request, response) {
+                    request["autoCompleteExtraParam"] = getExtraParam();
+                    $.ajax({
+                        url: "remoteJSON.ashx",
+                        dataType: "json",
+                        data: request,
+                        success: function (data) {
+                            response(data);
+                        }
+                    });
+                },
+                select: function (event, ui) {
+                    $("#displayContent").val(ui.item.name);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

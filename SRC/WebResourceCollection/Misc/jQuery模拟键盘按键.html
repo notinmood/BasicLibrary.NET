@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jQuery/jquery-1.4.4.min.js"></script>
+    <script src="../Scripts/jQuery.PlugIn/jQuery.hiland.general.js"></script>
+</head>
+<body>
+    <script type="text/javascript">
+
+        jQuery(document).ready(function ($) {
+            // 绑定事件处理程序  
+            $('body').keypress(function (e) {
+                if (e.keyCode == "27") {
+                    alert("ESC 被按下");
+                }
+                else {
+                    //alert(e.keyCode);
+                }
+                //console.log(e);
+            });
+            // 模拟按键
+            $('body').simulateKeyPress('27');
+        });
+    </script>
+</body>
+</html>

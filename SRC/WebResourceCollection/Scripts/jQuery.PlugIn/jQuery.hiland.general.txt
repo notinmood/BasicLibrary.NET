@@ -1,0 +1,30 @@
+﻿**将本js在具体项目中应用时，请使用压缩工具进行压缩（例如http://app.baidu.com/app/enter?appid=152856）
+
+0.快速对齐控件的方法
+$(document).ready(function () {
+    $("lable").quickAlign();
+})
+
+1.有两个js是处理页面上表格和列表项的奇偶行样式的，使用方式如下：
+$(document).ready(function () {
+    //方式1.（页面上所有的表格（或列表项）都会受影响）
+	//$.effectRow();
+
+	//方式2.指定页面上具体的某个表格（或者列表）进行格式化
+    $("table").effectRow();
+})
+
+3.拼接url参数（a.自动判断是加入？还是&，b.还会对参数的特殊字符编码，c可以在获取最后拼接的url时指定是否要加入一个随机数（show方法内））
+$.UrlUtil("http://www.sina.com.cn").concat("aa", "bbs/ss").concat("cc", "中国").show(true)
+
+4.获取url中的各个部分
+$.UrlParser("http://user:password@www.codebit.cn:9901/pub/article.php?offset=10&perpage=10#fragment").getHost()
+其余方法为
+getProtocol()
+getUsername()
+getPassword()
+getHost()
+getPort()
+getPathname()
+getQuerystring() 
+getFragment()

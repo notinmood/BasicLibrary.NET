@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E6B62810-D354-410E-B5D4-EFDE27C2C2C7}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HiLand.General</RootNamespace>
+    <AssemblyName>HiLand.General</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <DocumentationFile>bin\Debug\HiLand.General.XML</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.2.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.DynamicProxy2">
+      <HintPath>..\Libs\Castle.DynamicProxy2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.SQLite, Version=1.0.66.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Libs\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BLL\BankBLL.cs" />
+    <Compile Include="BLL\BasicSettingBLL.cs" />
+    <Compile Include="BLL\EnterpriseBLL.cs" />
+    <Compile Include="BLL\EntityEx.cs" />
+    <Compile Include="BLL\RemindBLL.cs" />
+    <Compile Include="BLL\LoanBasicBLL.cs" />
+    <Compile Include="BLL\LoanScheduleBLL.cs" />
+    <Compile Include="BLL\LogBLL.cs" />
+    <Compile Include="BLL\NewsBLL.cs" />
+    <Compile Include="BLL\NewsCategoryBLL.cs" />
+    <Compile Include="BLL\ResidentalBLL.cs" />
+    <Compile Include="BLL\ShoppingCartBLL.cs" />
+    <Compile Include="BLL\SimpleProductBLL.cs" />
+    <Compile Include="BLL\SimpleProductCategoryBLL.cs" />
+    <Compile Include="BLL\ImageBLL.cs" />
+    <Compile Include="DALCommon\BankCommonDAL.cs" />
+    <Compile Include="DALCommon\BasicSettingCommonDAL.cs" />
+    <Compile Include="DALCommon\EnterpriseCommonDAL.cs" />
+    <Compile Include="DALCommon\IBankDAL.cs" />
+    <Compile Include="DALCommon\ILogDAL.cs" />
+    <Compile Include="DALCommon\RemindCommonDAL.cs" />
+    <Compile Include="DALCommon\IBasicSettingDAL.cs" />
+    <Compile Include="DALCommon\ImageCommonDAL.cs" />
+    <Compile Include="DALCommon\LoanBasicCommonDAL.cs" />
+    <Compile Include="DALCommon\LoanScheduleCommonDAL.cs" />
+    <Compile Include="DALCommon\LogCommonDAL.cs" />
+    <Compile Include="DALCommon\NewsCategoryCommonDAL.cs" />
+    <Compile Include="DALCommon\NewsCommonDAL.cs" />
+    <Compile Include="DALCommon\ResidentalCommonDAL.cs" />
+    <Compile Include="DALCommon\ShoppingCartCommonDAL.cs" />
+    <Compile Include="DALCommon\SimpleProductCategoryCommonDAL.cs" />
+    <Compile Include="DALCommon\SimpleProductCommonDAL.cs" />
+    <Compile Include="DALSqlite\BankDAL.cs" />
+    <Compile Include="DALSqlite\BasicSettingDAL.cs" />
+    <Compile Include="DALSqlite\EnterpriseDAL.cs" />
+    <Compile Include="DALSqlite\ImageDAL.cs" />
+    <Compile Include="DALSqlite\LoanBasicDAL.cs" />
+    <Compile Include="DALSqlite\LoanScheduleDAL.cs" />
+    <Compile Include="DALSqlite\LogDAL.cs" />
+    <Compile Include="DALSqlite\NewsCategoryDAL.cs" />
+    <Compile Include="DALSqlite\NewsDAL.cs" />
+    <Compile Include="DALSqlite\RemindDAL.cs" />
+    <Compile Include="DALSqlite\ResidentalDAL.cs" />
+    <Compile Include="DALSqlite\ShoppingCartDAL.cs" />
+    <Compile Include="DALSqlite\SimpleProductCategoryDAL.cs" />
+    <Compile Include="DALSqlite\SimpleProductDAL.cs" />
+    <Compile Include="DAL\BankDAL.cs" />
+    <Compile Include="DAL\BasicSettingDAL.cs" />
+    <Compile Include="DAL\EnterpriseDAL.cs" />
+    <Compile Include="DALCommon\ILoanBasicDAL.cs" />
+    <Compile Include="DALCommon\ILoanScheduleDAL.cs" />
+    <Compile Include="DAL\RemindDAL.cs" />
+    <Compile Include="DAL\LoanBasicDAL.cs" />
+    <Compile Include="DAL\LoanScheduleDAL.cs" />
+    <Compile Include="DAL\LogDAL.cs" />
+    <Compile Include="DAL\NewsCategoryDAL.cs" />
+    <Compile Include="DAL\NewsDAL.cs" />
+    <Compile Include="DAL\ResidentalDAL.cs" />
+    <Compile Include="DAL\ShoppingCartDAL.cs" />
+    <Compile Include="DAL\SimpleProductCategoryDAL.cs" />
+    <Compile Include="DAL\SimpleProductDAL.cs" />
+    <Compile Include="DAL\ImageDAL.cs" />
+    <Compile Include="Entity\BankEntity.cs" />
+    <Compile Include="Entity\BasicSettingEntity.cs" />
+    <Compile Include="Entity\EnterpriseEntity.cs" />
+    <Compile Include="Entity\RemindEntity.cs" />
+    <Compile Include="Entity\LoanBasicEntity.cs" />
+    <Compile Include="Entity\LoanScheduleEntity.cs" />
+    <Compile Include="Entity\LogEntity.cs" />
+    <Compile Include="Entity\NewsCategoryEntity.cs" />
+    <Compile Include="Entity\NewsEntity.cs" />
+    <Compile Include="Entity\RemindEnum.cs" />
+    <Compile Include="Entity\ResidentalEntity.cs" />
+    <Compile Include="Entity\ShoppingCartEntity.cs" />
+    <Compile Include="Entity\SimpleProductCategoryEntity.cs" />
+    <Compile Include="Entity\SimpleProductEntity.cs" />
+    <Compile Include="Entity\ImageEntity.cs" />
+    <Compile Include="GeneralEnum.cs" />
+    <Compile Include="Misc.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HiLand.Framework\HiLand.Framework.csproj">
+      <Project>{461EC125-8906-4F63-96FF-17B4B10A65E0}</Project>
+      <Name>HiLand.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HiLand.Utility\HiLand.Utility.csproj">
+      <Project>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</Project>
+      <Name>HiLand.Utility</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ReaderMe.txt" />
+    <Content Include="SettingList.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

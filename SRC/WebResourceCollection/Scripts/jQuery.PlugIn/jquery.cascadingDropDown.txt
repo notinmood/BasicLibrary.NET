@@ -1,0 +1,60 @@
+﻿详细：
+
+$(targetID).CascadingDropDown(sourceID, actionPath, settings)
+
+    targetID
+		即将自动填充选择列表的ID.
+    sourceID
+		change事件的下拉框ID（即父控件ID）.
+    actionPath
+		post数据的URL
+
+参数：
+
+    promptText
+		下拉框第一个选项
+		默认: -- 请选择 --
+    loadingText
+		当加载时.
+		默认:加载中..
+    errorText
+		出错时
+		默认: 加载失败.
+    postData
+		post完成后的数据
+		如:
+		postData: function () {
+			return { prefix: $('#txtPrefix').val(), customerID: $('#customerID').val() };
+		}
+		将会 prefix=foo&customerID=bar 方式传参.
+		默认: 以序列化 serialize 一定要有控件的name属性 不然无法序列化
+
+    onLoading (event)
+		正在加载……
+    onLoaded (event)
+		加载完成后……
+
+    textfield：对应数据库 值 字段
+		valuefiled：对应数据库 id 字段
+		默认：
+
+		textfield: 'text',
+
+		valuefiled: 'value'
+
+ 
+
+后台处理数据：
+
+if (context.Request.Params["ddlProvince"] != null)
+
+{
+
+ sql = String.Format("SELECT  CityId, CityName FROM T_City where ProvinceId='{0}'", context.Request.Params["ddlProvince"]);
+
+}
+
+
+if (context.Request.Params["ddlRegion"] != null)
+
+sql = String.Format("SELECT ProvinceId,ProvinceName FROM T_Province where RegionId='{0}'", context.Request.Params["ddlRegion"]);

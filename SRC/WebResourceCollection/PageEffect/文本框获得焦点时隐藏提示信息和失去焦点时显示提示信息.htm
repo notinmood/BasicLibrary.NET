@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jQuery/jquery-1.4.4.min.js" type="text/javascript"></script>
+</head>
+<body>
+<input type="text" value="" title="请输入内容" />
+<script type="text/javascript">
+     $(function() {
+         var $input = $("input");
+         
+         $input.each(function() {
+             var $title = $(this).attr("title");
+                     
+             $(this).val($title);
+                         
+            $(this).focus(function() {
+                if($(this).val() === $title) {
+                    $(this).val('');
+                }
+            })
+            
+            .blur(function() {
+                if($(this).val() === "") {
+                    $(this).val($title);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

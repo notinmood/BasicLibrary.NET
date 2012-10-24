@@ -1,0 +1,14 @@
+# git ignore file
+*.user           #User specific solution and project settings
+*.suo
+*.sln.cache
+*/[bB]in/         #Build output
+*/[oO]bj/
+
+/build
+*.csproj.user
+*ReSharper.user
+_ReSharper*
+*resharper*
+*.cache
+* Thumbs.db

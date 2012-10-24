@@ -1,0 +1,236 @@
+﻿/*0.以下内容为框架的应用样式*/
+
+
+/*1.以下为设置布局的样式*/
+/*以下为CSS清除浮动的代码，其必须在浮动元素所在容器的闭合标签之前运用
+（同时还通过height:1;margin-top:-1解决了不占用页面高度的问题）*/
+.clear
+{
+    clear: both;
+    height: 1px;
+    margin-top: -1px;
+    overflow: hidden;
+}
+/*TODO:还可以在浮动元素的容器上进行设置清除class*/
+
+
+/*2.以下内容为元素的应用样式*/
+.hl_abstract
+{
+    padding: 15px;
+    border: dotted 2px #999;
+    color: #999;
+    font-family: 'Microsoft Yahei';
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.hl_firstTitle
+{
+    margin: 10px 0;
+    font-family: 'Microsoft Yahei';
+    text-align: left;
+    padding: 6px 20px;
+    color: #fff;
+    background: #55895B;
+    font-size: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    clear: both;
+}
+
+.hl_secondTitle
+{
+    margin: 10px 0;
+    font-family: 'Microsoft Yahei';
+    padding: 6px 20px;
+    background: #93C8A2;
+    color: #fff;
+    font-size: 18px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    clear: both;
+}
+
+.hl_thirdTitle
+{
+    margin: 10px 0;
+    padding: 6px 20px;
+    font-family: 'Microsoft Yahei';
+    margin: 15px 0;
+    font-size: 16px;
+    color: fff;
+    background: #C6EFD2;
+    color: #999;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    clear: both;
+}
+.hl_noteInfo
+{
+    margin: 10px 0;
+    padding: 15px 20px 15px 60px;
+    background: #FCFAA9 url('hlimages/yellow-pin.png') no-repeat 20px 0;
+    font-size: 15px;
+    font-family: 'Microsoft Yahei';
+    box-shadow: 0 0 8px #aaa;
+    clear: both;
+}
+
+.hl_demo
+{
+    text-align: left;
+    padding: 6px 20px;
+    overflow: auto;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    background: orange;
+    color: #fff;
+    font-size: 16px;
+    clear: both;
+}
+
+/*颜色渐变*/
+.hl_gradient
+{
+    background: -webkit-gradient(linear, left top, left bottom, from(#74b8d7), to(#437fbc));
+    background: -moz-linear-gradient(top,  #74b8d7,  #437fbc);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#74b8d7', endColorstr='#437fbc');
+}
+
+/*文字阴影*/
+.text-shadow
+{
+    text-shadow: 2px 2px 4px #666;
+}
+
+/*打印分页*/
+.page-break
+{
+    page-break-before: always;
+}
+
+/*透明*/
+.transparent
+{
+    filter: alpha(opacity=50);
+    -moz-opacity: 0.5;
+    -khtml-opacity: 0.5;
+    opacity: 0.5;
+}
+
+
+/*图片的边框*/
+.hl_imageBorder
+{
+    border: 1px solid #fff;
+}
+
+/*以下为设置table的样式*/
+table.slimTable
+{
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 10px;
+    border-collapse: collapse;
+    border: 1px solid #888;
+    width: 100%;
+}
+
+table.slimTable pre
+{
+    width: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+}
+
+table.slimTable th
+{
+    vertical-align: baseline;
+    padding: 5px 15px 5px 5px;
+    background-color: #ccc;
+    border: 1px solid #888;
+    text-align: left;
+}
+
+table.slimTable td
+{
+    vertical-align: text-top;
+    padding: 5px 15px 5px 5px;
+    background-color: #efefef;
+    border: 1px solid #aaa;
+}
+
+
+/*以下代码用于控制表格内容超过一行的部分，用省略号代替】【支持IE6】，
+本方法用于解决表格单元格内容过多时的美观问题，主要涉及到4句CSS样式：
+1. table-layout: fixed 由于table-layout的默认值是auto，即table的宽高将取决于其内容的多寡，如果内容的体积无法估测，那么最终表格的呈现形式也无法保证了，fixed一下就好了。（注意：此样式是关键）
+2. white-space: nowrap 是为了保证无论单元格（TD）中文本内容有多少，都不会自动换行，此时多余的内容会在水平方向撑破单元格。
+3. overflow: hidden 隐藏超出单元格的部分。
+4. text-overflow: ellipsis 将被隐藏的那部分用省略号代替。
+在线演示：http://www.cnblogs.com/warrentech/archive/2012/05/09/table_ellipsis.html
+本地演示：WebResourceCollection\PageEffect\表格内容超过一行的部分，用省略号代替.htm
+*/
+table.overflowTable
+{
+    table-layout: fixed;
+    /*还需要在表格中指定宽度*/
+}
+
+table.overflowTable td
+{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/*通用的内容超过指定宽度的部分，用省略号代替的样式*/
+.overflowContainer
+{
+    /*还需要在容器中指定宽度*/
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    }
+    
+    
+/*常用的各种提醒样式*/
+.hl_Status
+{
+    margin: 10px 0;
+    font-family: 'Microsoft Yahei';
+    text-align: left;
+    padding: 15px 20px 15px 75px;
+    color: #fff;
+    font-size: 20px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    clear: both;
+}
+
+.hl_Success
+{
+    background: #55895B url('hlimages/hl_status_ok_48.png') no-repeat 20px 0;
+}
+
+.hl_Failuer
+{
+    background: #55895B url('hlimages/hl_status_cancel_48.png') no-repeat 20px 0;
+}
+
+.hl_Tip
+{
+    background: #55895B url('hlimages/hl_status_tip_48.png') no-repeat 20px 0;
+}
+
+.hl_Warnning
+{
+    background: #55895B url('hlimages/hl_status_alert_48.png') no-repeat 20px 0;
+}

@@ -1,0 +1,5 @@
+﻿1.使用的时候，需要修改文件中第二行的 google分析服务的账号
+（当然这个号，需要到google分析网站（http://www.google.com/analytics/）上进行注册得到）
+	_gaq.push(['_setAccount', 'UA-7019498-2']);
+2.在页面中直接引用这个GoogleAnalytics.js文件即可
+	<script src="@Url.Content("~/Scripts/GoogleAnalytics.js")" type="text/javascript"></script>

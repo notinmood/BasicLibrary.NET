@@ -1,0 +1,9 @@
+﻿1.本BLL要加载什么类型的DAL，要根据配置文件进行反射。配置文件中要配置具体DAL实现类型的 DLL名称和命名空间名称
+	（配置文件中不包含类的名称）。
+2.配置文件中有2个节点是关于DAL类型确定的，分别为
+	HiGeneralDALDLLName= ""
+	HiGeneralDALNameSpace= ""
+3.DAL中具体类型的名称必须符合约定，约定规则为DAL中接口的名称去掉I。比如：
+	接口的名称为INewsCategoryDAL，那么DAL类的名称必须为NewsCategoryDAL
+4.DAL中具体类型的方法必须为virtual,这样便于动态代理使用
+5.********TODO：需要将DAL目录的下类型的基类统一修改成CommonDAL下的 泛数据库数据访问类

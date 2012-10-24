@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jQuery/jquery-1.4.4.min.js"></script>
+
+</head>
+<body>
+
+    <script type="text/javascript">
+        function aa() {
+            alert("sssssssssss");
+        }
+
+        $(document).ready(function () {
+            try {
+                if (typeof eval("aa") == "function") {
+                    eval("aa")();
+                }
+            } catch (e) {
+                alert("error");
+            }
+
+        });
+    </script>
+</body>
+</html>

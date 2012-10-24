@@ -1,0 +1,3 @@
+﻿0.特别注意。MVC模式中不能使用module的方式进行截获判断权限，而应该使用标签ATTRIBUTE的方式。
+1.UserAuthorizeAttribute一般用于后台按照用户类型进行登录认证的场景
+2.PermissionAuthorizeAttribute用于自定义权限（比如根据管理员分配的权限）进行登录认证的场景

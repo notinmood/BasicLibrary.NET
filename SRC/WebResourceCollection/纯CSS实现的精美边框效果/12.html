@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+body{
+    background: #eee;
+    font-size: 11px;
+    font-family: 'Open Sans', sans-serif;
+    color: #4A4A4A ;
+    text-align: center;
+}
+
+.wrap {
+    margin: 20px auto;
+    display: block;
+    width: 300px;
+    height: 310px;
+    padding: 20px;
+    position: relative;
+    background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #aaaeaf), color-stop(100%, #689ecd));
+    background-image: -webkit-linear-gradient(#aaaeaf, #689ecd);
+    background-image: -moz-linear-gradient(#aaaeaf, #689ecd);
+    background-image: -o-linear-gradient(#aaaeaf, #689ecd);
+    background-image: -ms-linear-gradient(#aaaeaf, #689ecd);
+    background-image: linear-gradient(#aaaeaf, #689ecd);
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    border-radius: 3px;
+    -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.2);
+}
+
+.wrap * {
+    position: relative;
+}
+
+.wrap::before {
+    background: white;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    bottom: 1px;
+    content: '';
+    left: 1px;
+    position: absolute;
+    right: 1px;
+    top: 1px;
+}
+
+.wrap img {
+    width: 100%;
+    margin-top: 15px;
+}
+
+p{ 
+    margin-top: 15px;
+    text-align: justify;
+}
+
+h1{
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 5px; 
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+}
+
+a{
+    text-decoration: none;
+    color: #4A4A4A !important;
+}
+
+a:hover{
+    text-decoration: underline;
+    color: #6B6B6B !important ;
+}
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Sample Box</h1>
+        <img src="http://www.wpthemegenerator.com/wp-content/uploads/2012/06/Image.jpg">
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam luctus consectetur dolor a porttitor. Curabitur id sem sed ante fringilla pulvinar et id lectus. Nullam justo ipsum, hendrerit ut commodo nec, pellentesque nec erat. Pellentesque pharetra.
+        </p>
+        <br />
+        <a href="http://www.designshock.com/">DesignShock.com </a>
+    </div>
+</body>
+</html>

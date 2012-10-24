@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/jquery-1.4.1.min.js" type="text/javascript"></script>
+</head>
+<body>
+    <input name="x" />+
+    <input name="y" />= <span id="result"></span>
+    <br />
+    <button id="Calc">
+        计算</button>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //绑定按钮点击事件
+            $("#Calc").click(function () {
+                //方法1.
+                $.post("/HLAjaxHandlerDemo/WebApplicationConsole.HLAjaxHandlerDemo.Student,WebApplicationConsole/Add.aspx", { x: $("input[name='x']").val(), y: $("input[name='y']").val() }, function (result) {
+                    $("#result").text(result);
+                }, "text");
+
+                ////方法2.
+                //                $.post("/HLAjaxHandlerDemo/WebApplicationConsole.HLAjaxHandlerDemo.Student/Add.aspx", { x: $("input[name='x']").val(), y: $("input[name='y']").val() }, function (result) {
+                //                    $("#result").text(result);
+                //                }, "text");
+
+                ////方法3.
+                //                $.post("/HLAjaxHandlerDemo/WebApplicationConsole/HLAjaxHandlerDemo/Student/Add.aspx", { x: $("input[name='x']").val(), y: $("input[name='y']").val() }, function (result) {
+                //                    $("#result").text(result);
+                //                }, "text");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿
+0.调用
+using (IdentityScope c = new IdentityScope("用户名", "域/IP", "密码"))
+{
+    string[] filelist = System.IO.Directory.GetDirectories(@"\\192.168.1.7\Test");
+}
+
+1.注意 如果你所访问的计算机位于域内，调用时传入域的名字，并且修改
+bool bImpersonated = LogonUser(sUsername, sDomain, sPassword, LOGON32_LOGON_INTERACTIVE, LOGON32_PROVIDER_DEFAULT, ref pExistingTokenHandle);
+
+2.注意 如果你所访问的计算机不在域内，调用是传入IP即可，并修改
+bool bImpersonated = LogonUser(sUsername, sDomain, sPassword, 
+LOGON32_LOGON_NEW_CREDENTIALS, LOGON32_PROVIDER_DEFAULT, ref pExistingTokenHandle);
+
+3.注意 有时报“登录失败: 未知的用户名或错误密码” 错误，就说明你的参数传错了，注意下LogonUser的第四个参数

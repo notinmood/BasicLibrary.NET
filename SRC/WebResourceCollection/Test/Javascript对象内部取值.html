@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="../Scripts/hiland.general.js"></script>
+    <script type="text/javascript">
+        var data = {
+            a: {
+                b: {
+                    c: [123, 456, {
+                        d: [789, "想要的数据"]
+                    }]
+                }
+            }
+        };
+
+        var mydata = data.tryGetValue("a.b.c[2].d[1]", "");
+        alert(mydata); //弹出"想要的数据";
+    </script>
+</head>
+<body>
+</body>
+</html>

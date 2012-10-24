@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="DiggNav.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="middlebar" style="height:250px">
+        <ul class="menu">
+            <li class="menuItem"><a href="#"  >Profile</a>
+            <ul class="submenu" id="sm_1">
+                <li><a href="p1.html">Profile</a></li>
+                <li><a href="p2.hmtl">Inbox </a></li>
+                <li><a href="p3.hmtl">Log-out</a></li>
+            </ul>
+            </li>
+        </ul>
+    </div
+    <div>ssssssssssssssss</div>
+    <script type="text/javascript">
+        function showlayer(layer) {
+            var myLayer = document.getElementById(layer);
+            if (myLayer.style.display == "none" || myLayer.style.display == "") {
+                myLayer.style.display = "block";
+            } else {
+                myLayer.style.display = "none";
+            }
+        }
+    </script>
+    <script type="text/javascript" src="../../Scripts/jquery-1.4.1.min.js"></script>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $(".menuItem").hover(
+		function () {
+		    $("#sm_1").slideToggle(800);
+		}, function () {
+		    $("#sm_1").slideUp(1000)
+		})
+        })
+</script>
+</body>
+</html>
