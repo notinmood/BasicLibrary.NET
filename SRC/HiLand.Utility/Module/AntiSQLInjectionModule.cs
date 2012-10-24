@@ -6,7 +6,7 @@ using HiLand.Utility.Data;
 namespace HiLand.Utility.Module
 {
     /// <summary>
-    /// 
+    /// 阻止SQL标本注入的模块
     /// </summary>
     /// <remarks>
     /// 1.使用此模块验证SQL注入，需要在web.config中配置节点sqlErrorPage,表示出错后的跳转页面
@@ -15,11 +15,18 @@ namespace HiLand.Utility.Module
     /// </remarks>
     public class AntiSQLInjectionModule : IHttpModule
     {
+        /// <summary>
+        /// 是否资源
+        /// </summary>
         public void Dispose()
         {
             //
         }
 
+        /// <summary>
+        /// 初始化
+        /// </summary>
+        /// <param name="context"></param>
         public void Init(HttpApplication context)
         {
             context.AcquireRequestState += new EventHandler(context_AcquireRequestState);
