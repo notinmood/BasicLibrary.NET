@@ -425,5 +425,36 @@ namespace HiLand.Utility4.MVC.Controls
         /// 查询条件项的数据类型
         /// </summary>
         public Type ConditionType { get; set; }
+
+        /// <summary>
+        /// 查询条件项的附加数据
+        /// </summary>
+        /// <remarks>
+        /// 其格式为 key1:value1||key2:value2
+        /// </remarks>
+        public string AddonData 
+        {
+            get; 
+            set; 
+        }
+
+        /// <summary>
+        /// 获取查询条件附加数据中的某个附加信息的值
+        /// </summary>
+        /// <returns></returns>
+        public string GetAddonItem(string itemName)
+        {
+            string result = string.Empty;
+            if (string.IsNullOrWhiteSpace(AddonData) == false)
+            {
+                Dictionary<string, string> addonDic = StringHelper.SplitToDictionary(AddonData, ":", "||");
+                if (addonDic.ContainsKey(itemName))
+                {
+                    result = addonDic[itemName];
+                }
+            }
+
+            return result;
+        }
     }
 }
