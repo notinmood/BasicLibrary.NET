@@ -6,6 +6,9 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.Entity
 {
+    /// <summary>
+    /// 企业实体
+    /// </summary>
     public class EnterpriseEntity : BaseModel<EnterpriseEntity>
     {
         public override string[] BusinessKeyNames
@@ -206,19 +209,83 @@ namespace HiLand.General.Entity
             }
         }
 
-        //private string propertyNames = String.Empty;
-        //public string PropertyNames
-        //{
-        //    get { return propertyNames; }
-        //    set { propertyNames = value; }
-        //}
+        private string enterpriseDescription = String.Empty;
+        /// <summary>
+        /// 企业描述
+        /// </summary>
+        public string EnterpriseDescription
+        {
+            get { return enterpriseDescription; }
+            set { enterpriseDescription = value; }
+        }
 
-        //private string propertyValues = String.Empty;
-        //public string PropertyValues
-        //{
-        //    get { return propertyValues; }
-        //    set { propertyValues = value; }
-        //}
+        private string enterpriseMemo = String.Empty;
+        /// <summary>
+        /// 企业备注
+        /// </summary>
+        public string EnterpriseMemo
+        {
+            get { return enterpriseMemo; }
+            set { enterpriseMemo = value; }
+        }
+
+        private string enterpriseWWW = String.Empty;
+        /// <summary>
+        /// 企业网址
+        /// </summary>
+        public string EnterpriseWWW
+        {
+            get { return enterpriseWWW; }
+            set { enterpriseWWW = value; }
+        }
+
+        private int staffScope;
+        /// <summary>
+        /// 人员规模
+        /// </summary>
+        public int StaffScope
+        {
+            get { return staffScope; }
+            set { staffScope = value; }
+        }
+
+        private int enterpriseLevel;
+        /// <summary>
+        /// 企业级别
+        /// </summary>
+        /// <remarks>
+        /// 可以是合作意向的级别，企业自身的级别等
+        /// </remarks>
+        public int EnterpriseLevel
+        {
+            get { return enterpriseLevel; }
+            set { enterpriseLevel = value; }
+        }
+
+        private string enterpriseRank = String.Empty;
+        /// <summary>
+        /// 企业等级
+        /// </summary>
+        /// <remarks>可以根据具体场景，规定此字段的含义</remarks>
+        public string EnterpriseRank
+        {
+            get { return enterpriseRank; }
+            set { enterpriseRank = value; }
+        }
+
+        private string createUserKey = String.Empty;
+        public string CreateUserKey
+        {
+            get { return createUserKey; }
+            set { createUserKey = value; }
+        }
+
+        private DateTime createDate = DateTimeHelper.Min;
+        public DateTime CreateDate
+        {
+            get { return createDate; }
+            set { createDate = value; }
+        }
         #endregion
     }
 }

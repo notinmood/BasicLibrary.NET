@@ -5,6 +5,9 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.Entity
 {
+    /// <summary>
+    /// 提醒信息实体
+    /// </summary>
     public class RemindEntity : BaseModel<RemindEntity>
     {
         public override string[] BusinessKeyNames

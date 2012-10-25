@@ -9,8 +9,8 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.DALCommon
 {
-    public class EnterpriseCommonDAL< TTransaction, TConnection, TCommand, TDataReader, TParameter>
-        : BaseDAL<EnterpriseEntity,  TTransaction, TConnection, TCommand, TDataReader, TParameter>
+    public class EnterpriseCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
+        : BaseDAL<EnterpriseEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>
         where TConnection : class,IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction
@@ -65,9 +65,10 @@ namespace HiLand.General.DALCommon
                 entity.EnterpriseGuid = GuidHelper.NewGuid();
             }
 
-            string commandText = @"Insert Into [GeneralEnterprise] (
+            string commandText = string.Format(@"Insert Into [GeneralEnterprise] (
 			        [EnterpriseGuid],
 			        [CompanyName],
+			        [CompanyNameShort],
 			        [BusinessType],
 			        [TradingName],
 			        [Industry],
@@ -85,42 +86,57 @@ namespace HiLand.General.DALCommon
 			        [AssociatedEnterpriseGuid],
 			        [ContactPerson],
 			        [AreaCode],
-			        [CompanyNameShort],
 			        [CanUsable],
 			        [Longitude],
 			        [Lantitude],
-                    [BrokerKey],
+			        [BrokerKey],
+			        [EnterpriseDescription],
+			        [EnterpriseMemo],
+			        [EnterpriseWWW],
+			        [StaffScope],
+			        [EnterpriseLevel],
+			        [EnterpriseRank],
+			        [CreateUserKey],
+			        [CreateDate],
 			        [PropertyNames],
 			        [PropertyValues]
                 ) 
                 Values (
-			        @EnterpriseGuid,
-			        @CompanyName,
-			        @BusinessType,
-			        @TradingName,
-			        @Industry,
-			        @EnterpriseCode,
-			        @TaxCode,
-			        @PrincipleAddress,
-			        @PostCode,
-			        @Telephone,
-			        @Fax,
-			        @Email,
-			        @EstablishedYears,
-			        @EstablishedTime,
-			        @GrossIncome,
-			        @Profit,
-			        @AssociatedEnterpriseGuid,
-			        @ContactPerson,
-			        @AreaCode,
-			        @CompanyNameShort,
-			        @CanUsable,
-			        @Longitude,
-			        @Lantitude,
-                    @BrokerKey,
-			        @PropertyNames,
-			        @PropertyValues
-                )";
+			        {0}EnterpriseGuid,
+			        {0}CompanyName,
+			        {0}CompanyNameShort,
+			        {0}BusinessType,
+			        {0}TradingName,
+			        {0}Industry,
+			        {0}EnterpriseCode,
+			        {0}TaxCode,
+			        {0}PrincipleAddress,
+			        {0}PostCode,
+			        {0}Telephone,
+			        {0}Fax,
+			        {0}Email,
+			        {0}EstablishedYears,
+			        {0}EstablishedTime,
+			        {0}GrossIncome,
+			        {0}Profit,
+			        {0}AssociatedEnterpriseGuid,
+			        {0}ContactPerson,
+			        {0}AreaCode,
+			        {0}CanUsable,
+			        {0}Longitude,
+			        {0}Lantitude,
+			        {0}BrokerKey,
+			        {0}EnterpriseDescription,
+			        {0}EnterpriseMemo,
+			        {0}EnterpriseWWW,
+			        {0}StaffScope,
+			        {0}EnterpriseLevel,
+			        {0}EnterpriseRank,
+			        {0}CreateUserKey,
+			        {0}CreateDate,
+			        {0}PropertyNames,
+			        {0}PropertyValues
+                )", ParameterNamePrefix);
 
             TParameter[] sqlParas = PrepareParasAll(entity);
 
@@ -135,34 +151,42 @@ namespace HiLand.General.DALCommon
         /// <returns></returns>
         public override bool Update(EnterpriseEntity entity)
         {
-            string commandText = @"Update [GeneralEnterprise] Set   
-					[EnterpriseGuid] = @EnterpriseGuid,
-					[CompanyName] = @CompanyName,
-					[BusinessType] = @BusinessType,
-					[TradingName] = @TradingName,
-					[Industry] = @Industry,
-					[EnterpriseCode] = @EnterpriseCode,
-					[TaxCode] = @TaxCode,
-					[PrincipleAddress] = @PrincipleAddress,
-					[PostCode] = @PostCode,
-					[Telephone] = @Telephone,
-					[Fax] = @Fax,
-					[Email] = @Email,
-					[EstablishedYears] = @EstablishedYears,
-					[EstablishedTime] = @EstablishedTime,
-					[GrossIncome] = @GrossIncome,
-					[Profit] = @Profit,
-					[AssociatedEnterpriseGuid] = @AssociatedEnterpriseGuid,
-					[ContactPerson] = @ContactPerson,
-					[AreaCode] = @AreaCode,
-					[CompanyNameShort] = @CompanyNameShort,
-					[CanUsable] = @CanUsable,
-					[Longitude] = @Longitude,
-					[Lantitude] = @Lantitude,
-                    [BrokerKey]= @BrokerKey,
-					[PropertyNames] = @PropertyNames,
-					[PropertyValues] = @PropertyValues
-             Where [EnterpriseGuid] = @EnterpriseGuid";
+            string commandText = string.Format(@"Update [GeneralEnterprise] Set   
+					[EnterpriseGuid] = {0}EnterpriseGuid,
+				    [CompanyName] = {0}CompanyName,
+				    [CompanyNameShort] = {0}CompanyNameShort,
+				    [BusinessType] = {0}BusinessType,
+				    [TradingName] = {0}TradingName,
+				    [Industry] = {0}Industry,
+				    [EnterpriseCode] = {0}EnterpriseCode,
+				    [TaxCode] = {0}TaxCode,
+				    [PrincipleAddress] = {0}PrincipleAddress,
+				    [PostCode] = {0}PostCode,
+				    [Telephone] = {0}Telephone,
+				    [Fax] = {0}Fax,
+				    [Email] = {0}Email,
+				    [EstablishedYears] = {0}EstablishedYears,
+				    [EstablishedTime] = {0}EstablishedTime,
+				    [GrossIncome] = {0}GrossIncome,
+				    [Profit] = {0}Profit,
+				    [AssociatedEnterpriseGuid] = {0}AssociatedEnterpriseGuid,
+				    [ContactPerson] = {0}ContactPerson,
+				    [AreaCode] = {0}AreaCode,
+				    [CanUsable] = {0}CanUsable,
+				    [Longitude] = {0}Longitude,
+				    [Lantitude] = {0}Lantitude,
+				    [BrokerKey] = {0}BrokerKey,
+				    [EnterpriseDescription] = {0}EnterpriseDescription,
+				    [EnterpriseMemo] = {0}EnterpriseMemo,
+				    [EnterpriseWWW] = {0}EnterpriseWWW,
+				    [StaffScope] = {0}StaffScope,
+				    [EnterpriseLevel] = {0}EnterpriseLevel,
+				    [EnterpriseRank] = {0}EnterpriseRank,
+				    [CreateUserKey] = {0}CreateUserKey,
+				    [CreateDate] = {0}CreateDate,
+				    [PropertyNames] = {0}PropertyNames,
+				    [PropertyValues] = {0}PropertyValues
+             Where [EnterpriseGuid] = @EnterpriseGuid", ParameterNamePrefix);
 
             TParameter[] sqlParas = PrepareParasAll(entity);
 
@@ -181,30 +205,39 @@ namespace HiLand.General.DALCommon
         {
             List<TParameter> list = new List<TParameter>()
             {
-			    GenerateParameter("EnterpriseGuid",entity.EnterpriseGuid== Guid.Empty?Guid.NewGuid():entity.EnterpriseGuid),
-			    GenerateParameter("CompanyName",entity.CompanyName??string.Empty),
-			    GenerateParameter("BusinessType",(int)entity.BusinessType),
-			    GenerateParameter("TradingName",entity.TradingName??string.Empty),
-			    GenerateParameter("Industry",entity.Industry??string.Empty),
-			    GenerateParameter("EnterpriseCode",entity.EnterpriseCode??string.Empty),
-			    GenerateParameter("TaxCode",entity.TaxCode??string.Empty),
-			    GenerateParameter("PrincipleAddress",entity.PrincipleAddress??string.Empty),
-			    GenerateParameter("PostCode",entity.PostCode??string.Empty),
-			    GenerateParameter("Telephone",entity.Telephone??string.Empty),
-			    GenerateParameter("Fax",entity.Fax??string.Empty),
-			    GenerateParameter("Email",entity.Email??string.Empty),
+			    GenerateParameter("EnterpriseID",entity.EnterpriseID),
+			    GenerateParameter("EnterpriseGuid",entity.EnterpriseGuid),
+			    GenerateParameter("CompanyName",entity.CompanyName?? String.Empty),
+			    GenerateParameter("CompanyNameShort",entity.CompanyNameShort?? String.Empty),
+			    GenerateParameter("BusinessType",entity.BusinessType),
+			    GenerateParameter("TradingName",entity.TradingName?? String.Empty),
+			    GenerateParameter("Industry",entity.Industry?? String.Empty),
+			    GenerateParameter("EnterpriseCode",entity.EnterpriseCode?? String.Empty),
+			    GenerateParameter("TaxCode",entity.TaxCode?? String.Empty),
+			    GenerateParameter("PrincipleAddress",entity.PrincipleAddress?? String.Empty),
+			    GenerateParameter("PostCode",entity.PostCode?? String.Empty),
+			    GenerateParameter("Telephone",entity.Telephone?? String.Empty),
+			    GenerateParameter("Fax",entity.Fax?? String.Empty),
+			    GenerateParameter("Email",entity.Email?? String.Empty),
 			    GenerateParameter("EstablishedYears",entity.EstablishedYears),
 			    GenerateParameter("EstablishedTime",entity.EstablishedTime),
 			    GenerateParameter("GrossIncome",entity.GrossIncome),
 			    GenerateParameter("Profit",entity.Profit),
 			    GenerateParameter("AssociatedEnterpriseGuid",entity.AssociatedEnterpriseGuid),
-			    GenerateParameter("ContactPerson",entity.ContactPerson??string.Empty),
-			    GenerateParameter("AreaCode",entity.AreaCode??string.Empty),
-			    GenerateParameter("CompanyNameShort",entity.CompanyNameShort??string.Empty),
-			    GenerateParameter("CanUsable",(int)entity.CanUsable),
+			    GenerateParameter("ContactPerson",entity.ContactPerson?? String.Empty),
+			    GenerateParameter("AreaCode",entity.AreaCode?? String.Empty),
+			    GenerateParameter("CanUsable",entity.CanUsable),
 			    GenerateParameter("Longitude",entity.Longitude),
 			    GenerateParameter("Lantitude",entity.Lantitude),
-                GenerateParameter("BrokerKey",entity.BrokerKey??string.Empty)
+			    GenerateParameter("BrokerKey",entity.BrokerKey?? String.Empty),
+			    GenerateParameter("EnterpriseDescription",entity.EnterpriseDescription?? String.Empty),
+			    GenerateParameter("EnterpriseMemo",entity.EnterpriseMemo?? String.Empty),
+			    GenerateParameter("EnterpriseWWW",entity.EnterpriseWWW?? String.Empty),
+			    GenerateParameter("StaffScope",entity.StaffScope),
+			    GenerateParameter("EnterpriseLevel",entity.EnterpriseLevel),
+			    GenerateParameter("EnterpriseRank",entity.EnterpriseRank?? String.Empty),
+			    GenerateParameter("CreateUserKey",entity.CreateUserKey?? String.Empty),
+			    GenerateParameter("CreateDate",entity.CreateDate)
             };
 
             paraList.AddRange(list);
@@ -231,6 +264,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CompanyName"))
                 {
                     entity.CompanyName = reader.GetString(reader.GetOrdinal("CompanyName"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CompanyNameShort"))
+                {
+                    entity.CompanyNameShort = reader.GetString(reader.GetOrdinal("CompanyNameShort"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "BusinessType"))
                 {
@@ -300,10 +337,6 @@ namespace HiLand.General.DALCommon
                 {
                     entity.AreaCode = reader.GetString(reader.GetOrdinal("AreaCode"));
                 }
-                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CompanyNameShort"))
-                {
-                    entity.CompanyNameShort = reader.GetString(reader.GetOrdinal("CompanyNameShort"));
-                }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CanUsable"))
                 {
                     entity.CanUsable = (Logics)reader.GetInt32(reader.GetOrdinal("CanUsable"));
@@ -316,9 +349,41 @@ namespace HiLand.General.DALCommon
                 {
                     entity.Lantitude = reader.GetDecimal(reader.GetOrdinal("Lantitude"));
                 }
-                if (DataReaderHelper.IsExistField(reader, "BrokerKey") && Convert.IsDBNull(reader["BrokerKey"]) == false)
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "BrokerKey"))
                 {
                     entity.BrokerKey = reader.GetString(reader.GetOrdinal("BrokerKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseDescription"))
+                {
+                    entity.EnterpriseDescription = reader.GetString(reader.GetOrdinal("EnterpriseDescription"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseMemo"))
+                {
+                    entity.EnterpriseMemo = reader.GetString(reader.GetOrdinal("EnterpriseMemo"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseWWW"))
+                {
+                    entity.EnterpriseWWW = reader.GetString(reader.GetOrdinal("EnterpriseWWW"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "StaffScope"))
+                {
+                    entity.StaffScope = reader.GetInt32(reader.GetOrdinal("StaffScope"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel"))
+                {
+                    entity.EnterpriseLevel = reader.GetInt32(reader.GetOrdinal("EnterpriseLevel"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseRank"))
+                {
+                    entity.EnterpriseRank = reader.GetString(reader.GetOrdinal("EnterpriseRank"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserKey"))
+                {
+                    entity.CreateUserKey = reader.GetString(reader.GetOrdinal("CreateUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateDate"))
+                {
+                    entity.CreateDate = reader.GetDateTime(reader.GetOrdinal("CreateDate"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "PropertyNames"))
                 {

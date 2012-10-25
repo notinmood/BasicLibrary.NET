@@ -5,6 +5,9 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.Entity
 {
+    /// <summary>
+    /// 人员在银行的账户信息
+    /// </summary>
     public class BankEntity : BaseModel<BankEntity>
     {
         public override string[] BusinessKeyNames
