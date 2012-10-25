@@ -432,19 +432,19 @@ namespace HiLand.Utility4.MVC.Controls
         /// <remarks>
         /// 其格式为 key1:value1||key2:value2
         /// </remarks>
-        public string AddonData 
+        public string AddonData
         {
-            get; 
-            set; 
+            get;
+            set;
         }
 
         /// <summary>
         /// 获取查询条件附加数据中的某个附加信息的值
         /// </summary>
         /// <returns></returns>
-        public string GetAddonItem(string itemName)
+        public string GetAddonItem(string itemName, string defaultValue = StringHelper.Empty)
         {
-            string result = string.Empty;
+            string result = defaultValue;
             if (string.IsNullOrWhiteSpace(AddonData) == false)
             {
                 Dictionary<string, string> addonDic = StringHelper.SplitToDictionary(AddonData, ":", "||");
