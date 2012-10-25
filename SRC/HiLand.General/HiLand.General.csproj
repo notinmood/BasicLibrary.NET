@@ -137,7 +137,6 @@
     <Compile Include="Entity\SimpleProductEntity.cs" />
     <Compile Include="Entity\ImageEntity.cs" />
     <Compile Include="GeneralEnum.cs" />
-    <Compile Include="Misc.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

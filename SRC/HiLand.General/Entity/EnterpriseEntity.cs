@@ -53,11 +53,28 @@ namespace HiLand.General.Entity
             set { tradingName = value; }
         }
 
-        private string industry = String.Empty;
-        public string Industry
+        private string industryKey = String.Empty;
+        /// <summary>
+        /// 所属行业
+        /// </summary>
+        /// <remarks>
+        /// 1、如果需要使用用户自定义的多级别的行业信息，可以用此属性记录关联Guid
+        /// 2、如果是简单的行业信息，可以用此属性直接记录行业名称的文字
+        /// </remarks>
+        public string IndustryKey
         {
-            get { return industry; }
-            set { industry = value; }
+            get { return industryKey; }
+            set { industryKey = value; }
+        }
+
+        private IndustryTypes industryType = IndustryTypes.NonSet;
+        /// <summary>
+        /// 行业类型
+        /// </summary>
+        public IndustryTypes IndustryType
+        {
+            get { return industryType; }
+            set { industryType = value; }
         }
 
         private string enterpriseCode = String.Empty;

@@ -71,7 +71,8 @@ namespace HiLand.General.DALCommon
 			        [CompanyNameShort],
 			        [BusinessType],
 			        [TradingName],
-			        [Industry],
+			        [IndustryKey],
+                    [IndustryType],
 			        [EnterpriseCode],
 			        [TaxCode],
 			        [PrincipleAddress],
@@ -107,7 +108,8 @@ namespace HiLand.General.DALCommon
 			        {0}CompanyNameShort,
 			        {0}BusinessType,
 			        {0}TradingName,
-			        {0}Industry,
+			        {0}IndustryKey,
+                    {0}IndustryType,
 			        {0}EnterpriseCode,
 			        {0}TaxCode,
 			        {0}PrincipleAddress,
@@ -157,7 +159,8 @@ namespace HiLand.General.DALCommon
 				    [CompanyNameShort] = {0}CompanyNameShort,
 				    [BusinessType] = {0}BusinessType,
 				    [TradingName] = {0}TradingName,
-				    [Industry] = {0}Industry,
+				    [IndustryKey] = {0}IndustryKey,
+                    [IndustryType] = {0}IndustryType,
 				    [EnterpriseCode] = {0}EnterpriseCode,
 				    [TaxCode] = {0}TaxCode,
 				    [PrincipleAddress] = {0}PrincipleAddress,
@@ -211,7 +214,8 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("CompanyNameShort",entity.CompanyNameShort?? String.Empty),
 			    GenerateParameter("BusinessType",entity.BusinessType),
 			    GenerateParameter("TradingName",entity.TradingName?? String.Empty),
-			    GenerateParameter("Industry",entity.Industry?? String.Empty),
+			    GenerateParameter("IndustryKey = {0}IndustryKey,",entity.IndustryKey?? String.Empty),
+                GenerateParameter("IndustryType = {0}IndustryType,",entity.IndustryType),
 			    GenerateParameter("EnterpriseCode",entity.EnterpriseCode?? String.Empty),
 			    GenerateParameter("TaxCode",entity.TaxCode?? String.Empty),
 			    GenerateParameter("PrincipleAddress",entity.PrincipleAddress?? String.Empty),
@@ -277,9 +281,13 @@ namespace HiLand.General.DALCommon
                 {
                     entity.TradingName = reader.GetString(reader.GetOrdinal("TradingName"));
                 }
-                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "Industry"))
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "IndustryKey"))
                 {
-                    entity.Industry = reader.GetString(reader.GetOrdinal("Industry"));
+                    entity.IndustryKey = reader.GetString(reader.GetOrdinal("IndustryKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "IndustryType"))
+                {
+                    entity.IndustryType = (IndustryTypes)reader.GetInt32(reader.GetOrdinal("IndustryType"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseCode"))
                 {
