@@ -1,10 +1,10 @@
-﻿using HiLand.General.DAL;
-using HiLand.General.Entity;
-using HiLand.Framework.FoundationLayer;
-using HiLand.Utility.Enums;
-using HiLand.General.DALCommon;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using HiLand.Framework.FoundationLayer;
+using HiLand.General.DAL;
+using HiLand.General.DALCommon;
+using HiLand.General.Entity;
+using HiLand.Utility.Enums;
 
 namespace HiLand.General.BLL
 {

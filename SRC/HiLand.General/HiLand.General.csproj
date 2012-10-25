@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="BLL\BankBLL.cs" />
     <Compile Include="BLL\BasicSettingBLL.cs" />
+    <Compile Include="BLL\AreaBLL.cs" />
     <Compile Include="BLL\EnterpriseBLL.cs" />
     <Compile Include="BLL\EntityEx.cs" />
     <Compile Include="BLL\RemindBLL.cs" />
@@ -71,6 +72,7 @@
     <Compile Include="BLL\ImageBLL.cs" />
     <Compile Include="DALCommon\BankCommonDAL.cs" />
     <Compile Include="DALCommon\BasicSettingCommonDAL.cs" />
+    <Compile Include="DALCommon\AreaCommonDAL.cs" />
     <Compile Include="DALCommon\EnterpriseCommonDAL.cs" />
     <Compile Include="DALCommon\IBankDAL.cs" />
     <Compile Include="DALCommon\ILogDAL.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="DALCommon\SimpleProductCommonDAL.cs" />
     <Compile Include="DALSqlite\BankDAL.cs" />
     <Compile Include="DALSqlite\BasicSettingDAL.cs" />
+    <Compile Include="DALSqlite\AreaDAL.cs" />
     <Compile Include="DALSqlite\EnterpriseDAL.cs" />
     <Compile Include="DALSqlite\ImageDAL.cs" />
     <Compile Include="DALSqlite\LoanBasicDAL.cs" />
@@ -102,6 +105,7 @@
     <Compile Include="DALSqlite\SimpleProductDAL.cs" />
     <Compile Include="DAL\BankDAL.cs" />
     <Compile Include="DAL\BasicSettingDAL.cs" />
+    <Compile Include="DAL\AreaDAL.cs" />
     <Compile Include="DAL\EnterpriseDAL.cs" />
     <Compile Include="DALCommon\ILoanBasicDAL.cs" />
     <Compile Include="DALCommon\ILoanScheduleDAL.cs" />
@@ -118,6 +122,7 @@
     <Compile Include="DAL\ImageDAL.cs" />
     <Compile Include="Entity\BankEntity.cs" />
     <Compile Include="Entity\BasicSettingEntity.cs" />
+    <Compile Include="Entity\AreaEntity.cs" />
     <Compile Include="Entity\EnterpriseEntity.cs" />
     <Compile Include="Entity\RemindEntity.cs" />
     <Compile Include="Entity\LoanBasicEntity.cs" />
