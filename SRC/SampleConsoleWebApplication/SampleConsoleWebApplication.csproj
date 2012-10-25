@@ -77,6 +77,7 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="AuthCodeDemo\Default.aspx" />
+    <Content Include="ContentTypes测试.aspx" />
     <Content Include="脏词过滤测试.txt" />
     <Content Include="CacheUsing.aspx" />
     <Content Include="CurrentUserDemo\Index.aspx" />
@@ -190,6 +191,13 @@
     <Compile Include="ClassesForTest\SomethingElse.cs" />
     <Compile Include="ClassesForTest\Student.cs" />
     <Compile Include="ClassesForTest\Worker.cs" />
+    <Compile Include="ContentTypes测试.aspx.cs">
+      <DependentUpon>ContentTypes测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentTypes测试.aspx.designer.cs">
+      <DependentUpon>ContentTypes测试.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CurrentUserDemo\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -510,8 +518,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57225</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>5700</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/scw</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

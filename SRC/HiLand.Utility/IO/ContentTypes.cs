@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Configuration;
+using HiLand.Utility.Setting;
 
 namespace HiLand.Utility.IO
 {
@@ -8,7 +11,43 @@ namespace HiLand.Utility.IO
     public static class ContentTypes
     {
         private static Dictionary<string, string> list = new Dictionary<string, string>();
+        /// <summary>
+        /// 静态构建函数
+        /// </summary>
         static ContentTypes()
+        {
+            LoadDefaultMIME();
+            LoadOuterMIME();
+        }
+
+        /// <summary>
+        /// 根据扩展名获取文件的ContentType信息
+        /// </summary>
+        /// <param name="fileExtension"></param>
+        /// <returns></returns>
+        public static string GetContentType(string fileExtension)
+        {
+            string result = string.Empty;
+
+            if (string.IsNullOrEmpty(fileExtension) == false)
+            {
+                if (fileExtension.StartsWith("."))
+                {
+                    fileExtension = fileExtension.Substring(1);
+                }
+                if (list.ContainsKey(fileExtension))
+                {
+                    result = list[fileExtension];
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 载入缺省的ContentType信息
+        /// </summary>
+        private static void LoadDefaultMIME()
         {
             list["ez"] = "application/andrew-inset";
             list["hqx"] = "application/mac-binhex40";
@@ -148,43 +187,26 @@ namespace HiLand.Utility.IO
             list["avi"] = "video/x-msvideo";
             list["movie"] = "video/x-sgi-movie";
             list["ice"] = "x-conference/x-cooltalk";
-
-            //其他类型的ContentType可以从外部载入
-            LoadOuterContentTypes();
         }
 
         /// <summary>
-        /// 根据扩展名获取文件的ContentType信息
+        /// 其他类型的ContentType可以从外部config中载入
         /// </summary>
-        /// <param name="fileExtension"></param>
-        /// <returns></returns>
-        public static string GetContentType(string fileExtension)
+        private static void LoadOuterMIME()
         {
-            string result = string.Empty;
-
-            if (string.IsNullOrEmpty(fileExtension) == false)
+            NameValueCollection contentTypeSection = Config.GetSection<NameValueCollection>("contentTypeSection");
+            if (contentTypeSection != null)
             {
-                if (fileExtension.StartsWith("."))
+                foreach (string key in contentTypeSection.Keys)
                 {
-                    fileExtension = fileExtension.Substring(1);
-                }
-                if (list.ContainsKey(fileExtension))
-                {
-                    result = list[fileExtension];
+                    string keyFixed = key;
+                    if (keyFixed.StartsWith("."))
+                    {
+                        keyFixed = keyFixed.Substring(1);
+                    }
+                    list[keyFixed] = contentTypeSection[key];
                 }
             }
-
-            return result;
-        }
-
-        
-        /// <summary>
-        /// 其他类型的ContentType可以从外部载入
-        /// </summary>
-        private static void LoadOuterContentTypes()
-        {
-            //TODO:xieran 20121024其他类型的ContentType可以考虑写一个方法从外部载入
-            //载入时需要考虑从应用程序的根目录下载入（Web、Native的根目录算法不一致，需要特别注意）
         }
     }
 }

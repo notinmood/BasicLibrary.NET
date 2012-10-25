@@ -4,3 +4,10 @@
 1.cacheClassType 表示一个能提供缓存功能的类型描述，可选 （Cache\CacheFactory.cs）
 2.taskExcuteHour 系统任务缺省的执行时刻中小时点值 ，可选（Setting\SectionHandler\SystemTaskSectionHandler.cs）
 3.taskExcuteMinute系统任务缺省的执行时刻中分钟数值，可选（Setting\SectionHandler\SystemTaskSectionHandler.cs）
+4.contentTypeSection 除了系统已经提供的MIME类型外，可以通过这个Section添加新的信息，其是一个NameValueSectionHandler类型
+	<section name="contentTypeSection" type="System.Configuration.NameValueSectionHandler"/>
+	
+	<contentTypeSection>
+		<add key=".xieran" value="hilandsoft" />
+		<add key="doc" value="word" />
+	</contentTypeSection>

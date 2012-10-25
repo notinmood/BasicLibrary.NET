@@ -158,7 +158,14 @@ namespace HiLand.Utility.Setting
         /// <returns></returns>
         public static T GetSection<T>(string sectionName)
         {
-            T result = (T)ConfigurationManager.GetSection(sectionName);
+            T result = default(T);
+
+            object section= ConfigurationManager.GetSection(sectionName);
+            if (section != null)
+            { 
+                result= (T)section;
+            }
+
             return result;
         }
         #endregion
