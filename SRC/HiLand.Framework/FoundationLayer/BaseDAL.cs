@@ -8,6 +8,9 @@ using HiLand.Utility.Serialization;
 
 namespace HiLand.Framework.FoundationLayer
 {
+    //TODO:xieran20121025 生成参数、载入数据等方法缺省可以考虑使用ORM自动实现，
+    //当然各子类中对方法可以通过手工操作的方式对方法进行重写以提高程序性能
+
     /// <summary>
     /// 数据访问的基类
     /// </summary>
