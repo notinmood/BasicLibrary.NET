@@ -6,6 +6,54 @@ using HiLand.Utility.Enums.OP;
 namespace HiLand.General
 {
     /// <summary>
+    /// 人员规模
+    /// </summary>
+    public enum StaffScopes
+    {
+        /// <summary>
+        /// 微型
+        /// </summary>
+        [EnumItemDescription("staffCount", "1-10人")]
+        [EnumItemDescription("zh-CN", "微型")]
+        Little = 10,
+
+        /// <summary>
+        /// 小型
+        /// </summary>
+        [EnumItemDescription("staffCount", "10-50人")]
+        [EnumItemDescription("zh-CN", "小型")]
+        Small = 50,
+        
+        /// <summary>
+        /// 中型
+        /// </summary>
+        [EnumItemDescription("staffCount", "50-100人")]
+        [EnumItemDescription("zh-CN", "中型")]
+        Middle = 100,
+
+        /// <summary>
+        /// 大型
+        /// </summary>
+        [EnumItemDescription("staffCount", "100-300人")]
+        [EnumItemDescription("zh-CN", "大型")]
+        Big = 300,
+
+        /// <summary>
+        /// 非常大型
+        /// </summary>
+        [EnumItemDescription("staffCount", "300-1000人")]
+        [EnumItemDescription("zh-CN", "非常大型")]
+        Large = 1000,
+
+        /// <summary>
+        /// 巨型
+        /// </summary>
+        [EnumItemDescription("staffCount", "1000人以上")]
+        [EnumItemDescription("zh-CN", "巨型")]
+        Huge = 1001,
+    }
+
+    /// <summary>
     /// 企业性质
     /// </summary>
     public enum EnterpriseTypes
@@ -62,45 +110,45 @@ namespace HiLand.General
         /// 国有企业
         /// </summary>
         [EnumItemDescription("zh-CN", "国有企业")]
-        CompanyNation=90,
+        CompanyNation = 90,
 
         /// <summary>
         /// 集体企业
         /// </summary>
         [EnumItemDescription("zh-CN", "集体企业")]
-        CompanyGroup=100,
+        CompanyGroup = 100,
 
         /// <summary>
         /// 政府机构，国家机关
         /// </summary>
         [EnumItemDescription("zh-CN", "国家机关")]
-        GovernmentAgency=110,
+        GovernmentAgency = 110,
 
         /// <summary>
         /// 社会团体
         /// </summary>
         [EnumItemDescription("zh-CN", "社会团体")]
-        SocialOrganization=120,
+        SocialOrganization = 120,
 
 
         /// <summary>
         /// 教育
         /// </summary>
         [EnumItemDescription("zh-CN", "教育")]
-        Eduction=130,
+        Eduction = 130,
 
         /// <summary>
         /// 事业单位
         /// </summary>
         [EnumItemDescription("zh-CN", "事业单位")]
-        PublicInstitution=140,
+        PublicInstitution = 140,
 
 
         /// <summary>
         /// 军队
         /// </summary>
         [EnumItemDescription("zh-CN", "军队")]
-        Army=150,
+        Army = 150,
 
         /// <summary>
         /// 其他

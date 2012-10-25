@@ -256,11 +256,11 @@ namespace HiLand.General.Entity
             set { enterpriseWWW = value; }
         }
 
-        private int staffScope;
+        private StaffScopes staffScope;
         /// <summary>
         /// 人员规模
         /// </summary>
-        public int StaffScope
+        public StaffScopes StaffScope
         {
             get { return staffScope; }
             set { staffScope = value; }

@@ -43,7 +43,7 @@ namespace HiLand.General.DALCommon
         }
 
         /// <summary>
-        /// 分页存储过程的名字
+        /// 分页存储过程名称
         /// </summary>
         protected override string PagingSPName
         {
@@ -375,7 +375,7 @@ namespace HiLand.General.DALCommon
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "StaffScope"))
                 {
-                    entity.StaffScope = reader.GetInt32(reader.GetOrdinal("StaffScope"));
+                    entity.StaffScope = (StaffScopes)reader.GetInt32(reader.GetOrdinal("StaffScope"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel"))
                 {

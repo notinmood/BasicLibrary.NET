@@ -100,5 +100,16 @@ namespace HiLand.General.BLL
 
             return base.GetList(whereClause);
         }
+
+        #region 各种常用的按照类别获取数据的需求(需要数据库内的数据支持)
+        /// <summary>
+        /// 获取所有的行业类型
+        /// </summary>
+        /// <returns></returns>
+        public List<BasicSettingEntity> GetListOfIndustryType()
+        {
+            return GetListByCategory("IndustryType");
+        }
+        #endregion
     }
 }
