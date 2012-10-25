@@ -8,6 +8,9 @@ using System.Collections.Generic;
 
 namespace HiLand.General.BLL
 {
+    /// <summary>
+    /// 人员在银行的账户信息业务逻辑
+    /// </summary>
     public class BankBLL : BaseBLL<BankBLL, BankEntity, BankDAL, IBankDAL>
     {
         public override bool Create(BankEntity model)
