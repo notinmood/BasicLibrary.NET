@@ -162,6 +162,7 @@
     <Compile Include="Entity\Status\LogicStatusInfo.cs" />
     <Compile Include="Entity\Status\SystemStatusInfo.cs" />
     <Compile Include="Entity\ZTreeNodeEntity.cs" />
+    <Compile Include="Enums\CommonLevels.cs" />
     <Compile Include="Enums\CompareModes.cs" />
     <Compile Include="Enums\ConditionItemRelationships.cs" />
     <Compile Include="Enums\DataBaseTypes.cs" />

@@ -266,14 +266,14 @@ namespace HiLand.General.Entity
             set { staffScope = value; }
         }
 
-        private int enterpriseLevel;
+        private CommonLevels enterpriseLevel;
         /// <summary>
         /// 企业级别
         /// </summary>
         /// <remarks>
         /// 可以是合作意向的级别，企业自身的级别等
         /// </remarks>
-        public int EnterpriseLevel
+        public CommonLevels EnterpriseLevel
         {
             get { return enterpriseLevel; }
             set { enterpriseLevel = value; }

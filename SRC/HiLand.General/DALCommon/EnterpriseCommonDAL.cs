@@ -379,7 +379,7 @@ namespace HiLand.General.DALCommon
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel"))
                 {
-                    entity.EnterpriseLevel = reader.GetInt32(reader.GetOrdinal("EnterpriseLevel"));
+                    entity.EnterpriseLevel = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseRank"))
                 {
