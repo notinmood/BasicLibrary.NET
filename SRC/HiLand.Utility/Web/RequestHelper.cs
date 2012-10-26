@@ -138,6 +138,7 @@ namespace HiLand.Utility.Web
             return result;
         }
 
+        //TODO:xieran20121026 考虑对返回值加入HttpUtility.UrlDecode();去除编码
         /// <summary>
         /// 获取请求信息的参数值
         /// </summary>
