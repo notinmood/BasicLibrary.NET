@@ -200,7 +200,8 @@ namespace HiLand.Utility4.MVC.Controls
 
             if (queryConditionItem.ConditionType.IsEnum == true)
             {
-                ListItemCollection coll = EnumBuilder.BuildItemCollection(queryConditionItem.ConditionType, true);
+                string enumDisplayCategory = queryConditionItem.GetAddonItem("enumDisplayCategory");
+                ListItemCollection coll = EnumBuilder.BuildItemCollection(queryConditionItem.ConditionType, enumDisplayCategory, true);
                 result.AppendFormat("<select name=\"{0}\">", conditionValueFullName);
 
                 foreach (ListItem currentItem in coll)

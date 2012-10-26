@@ -62,7 +62,7 @@ namespace HiLand.Framework.BusinessCore
         }
 
         private List<BusinessGroup> groups = new List<BusinessGroup>();
-        //TODO:xieran 20120831 需要获取用户所属组的逻辑
+        //TODO:xieran20120831 需要获取用户所属组的逻辑
         /// <summary>
         /// 用户所属组
         /// </summary>

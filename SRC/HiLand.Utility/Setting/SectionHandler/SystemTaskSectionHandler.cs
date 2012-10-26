@@ -50,7 +50,7 @@ namespace HiLand.Utility.Setting.SectionHandler
                         }
                         break;
                     default:
-                        //TODO:xieran 20120926 需要添加其他各种任务执行周期类型（每小时，每周，每月等）
+                        //TODO:xieran20120926 需要添加其他各种任务执行周期类型（每小时，每周，每月等）
                         break;
                 }
             }

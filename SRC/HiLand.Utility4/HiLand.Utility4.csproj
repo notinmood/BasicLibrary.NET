@@ -109,6 +109,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MVC\SectionHandler\readme.txt" />
+    <Content Include="ReadmeAndTODO.txt" />
     <Content Include="SettingList.txt" />
   </ItemGroup>
   <ItemGroup>

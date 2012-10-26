@@ -404,7 +404,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
             TParameter[] sqlParas = new TParameter[] { GenerateParameter("UserGuid", userGuid) };
             return HelperExInstance.ExecuteSingleRowNonQuery(commandText, sqlParas);
 
-            //TODO:xieran20121001删除用户时需要删除用户关联的信息（比如权限数据）
+            //TODO:xieran20121001 删除用户时需要删除用户关联的信息（比如权限数据）
         }
 
         /// <summary>

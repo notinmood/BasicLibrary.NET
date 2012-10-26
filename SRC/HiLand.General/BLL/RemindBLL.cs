@@ -30,7 +30,7 @@ namespace HiLand.General.BLL
                     userList = BusinessUserBLL.GetUsersByDepartment(receiveExcutorGuid);
                     break;
                 case ExecuterTypes.Group:
-                    //TODO:xieran 20120927 
+                    //TODO:xieran20120927 
                     break;
                 case ExecuterTypes.Role:
                     userList = BusinessRoleBLL.GetUsers(receiveExcutorGuid);
