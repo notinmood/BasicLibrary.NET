@@ -40,7 +40,7 @@ namespace HiLand.Utility.Office
                 IRow headerRow = sheet.CreateRow(rowIndex);
                 foreach (DataColumn column in sourceTable.Columns)
                 {
-                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.ColumnName);
+                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.Caption);
                 }
                 headerRow = null;
                 rowIndex++;
