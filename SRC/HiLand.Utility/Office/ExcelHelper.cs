@@ -87,7 +87,7 @@ namespace HiLand.Utility.Office
             //1.创建表头
             foreach (KeyValuePair<string, string> kvp in fieldsMap)
             {
-                PropertyInfo piMatched = null;// propertyArray.First(s => s.Name == kvp.Key);
+                PropertyInfo piMatched = null;
                 foreach (PropertyInfo piItem in propertyArray)
                 {
                     if (piItem.Name == kvp.Key)
