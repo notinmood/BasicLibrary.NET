@@ -50,7 +50,7 @@ namespace HiLand.Utility.Reflection
             object result = null;
             Type type = typeof(TModel);
             PropertyInfo propertyInfo = type.GetProperty(propertyName);
-            if (propertyInfo == null && propertyInfo.CanRead == true)
+            if (propertyInfo != null && propertyInfo.CanRead == true)
             {
                 result = propertyInfo.GetValue(model, null);
             }
