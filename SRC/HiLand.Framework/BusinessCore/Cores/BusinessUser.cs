@@ -738,7 +738,31 @@ namespace HiLand.Framework.BusinessCore
             }
         }
 
+        /// <summary>
+        /// 用户的年龄
+        /// </summary>
+        /// <remarks>
+        /// 用户的年龄通过生日计算得来；如果未设置生日，年龄将返回0；
+        /// </remarks>
+        public virtual int UserAge
+        {
+            get 
+            {
+                if (this.userBirthDay == DateTimeHelper.Min)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return DateTime.Today.Year - this.userBirthDay.Year;
+                }
+            }
+        }
+
         private DateTime userBirthDay = DateTimeHelper.Min;
+        /// <summary>
+        /// 用户的生日
+        /// </summary>
         public virtual DateTime UserBirthDay
         {
             get
