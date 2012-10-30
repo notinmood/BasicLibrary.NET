@@ -9,6 +9,9 @@ using HiLand.Utility.IO;
 
 namespace HiLand.Utility.Web
 {
+    /// <summary>
+    /// 请求对象帮助器
+    /// </summary>
     public class RequestHelper
     {
         /// <summary>
