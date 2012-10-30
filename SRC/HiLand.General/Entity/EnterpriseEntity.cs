@@ -176,6 +176,9 @@ namespace HiLand.General.Entity
         }
 
         private string companyNameShort = String.Empty;
+        /// <summary>
+        /// 企业简称（如果没有填写简称其会获取全称）
+        /// </summary>
         public string CompanyNameShort
         {
             get 
