@@ -55,7 +55,7 @@ namespace HiLand.Utility.Web
             }
             else
             {
-                originalUrlWithoutQuery = request.Url.OriginalString.Substring(0, request.Url.OriginalString.IndexOf(queryInfo));
+                originalUrlWithoutQuery = request.Url.OriginalString.Substring(0, request.Url.OriginalString.IndexOf("?"));
             }
 
             string result = string.Empty;
