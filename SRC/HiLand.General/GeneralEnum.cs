@@ -11,6 +11,13 @@ namespace HiLand.General
     public enum StaffScopes
     {
         /// <summary>
+        /// 未设置
+        /// </summary>
+        [EnumItemDescription("staffCount", "未设置")]
+        [EnumItemDescription("zh-CN", "未设置")]
+        NonSet=0,
+
+        /// <summary>
         /// 微型
         /// </summary>
         [EnumItemDescription("staffCount", "1-10人")]
