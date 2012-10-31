@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Reflection;
+using HiLand.Utility.Data;
+using HiLand.Utility.DataBase;
 using HiLand.Utility.Reflection;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
@@ -101,6 +103,7 @@ namespace HiLand.Utility.Office
                 {
                     DataColumn dc = new DataColumn(kvp.Key, piMatched.PropertyType);
                     dc.Caption = kvp.Value;
+                    dc.DataType= typeof(string);
                     dataTable.Columns.Add(dc);
                 }
             }
@@ -111,7 +114,12 @@ namespace HiLand.Utility.Office
                 DataRow row = dataTable.NewRow();
                 foreach (KeyValuePair<string, string> kvp in fieldsMap)
                 {
-                    row[kvp.Key] = ReflectHelper.GetPropertyValue(item, kvp.Key);
+                    if (DataRowHelper.IsExistField(row, kvp.Key))
+                    {
+                        object targetValue= ReflectHelper.GetPropertyValue(item, kvp.Key);
+                        object friendlyValue = TypeHelper.GetFriendlyValue(targetValue);
+                        row[kvp.Key] = friendlyValue;
+                    }
                 }
                 dataTable.Rows.Add(row);
             }
