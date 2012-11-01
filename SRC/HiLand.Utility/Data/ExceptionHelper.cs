@@ -13,7 +13,6 @@ namespace HiLand.Utility.Data
         /// 得到异常的消息串，主要获得了StackTrace属性
         /// </summary>
         /// <param name="e"></param>
-        /// <param name="showAllMessage">是否显示所有错误信息</param>
         /// <returns></returns>
         public static string GetExceptionMessage(Exception e)
         {
