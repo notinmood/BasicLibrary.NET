@@ -5,7 +5,7 @@ using HiLand.Utility.Data;
 namespace HiLand.Utility.Setting.SectionHandler
 {
     /// <summary>
-    /// 
+    /// 获取config节点，创建配置信息实体
     /// </summary>
     /// <remarks>
     /// 配置节点section的组成结构如下：

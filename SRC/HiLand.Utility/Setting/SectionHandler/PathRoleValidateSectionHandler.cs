@@ -26,6 +26,13 @@ namespace HiLand.Utility.Setting.SectionHandler
     /// </remarks>
     public class PathRoleValidateSectionHandler : IConfigurationSectionHandler
     {
+        /// <summary>
+        /// 获取config节点，创建配置信息实体
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="configContext"></param>
+        /// <param name="section"></param>
+        /// <returns></returns>
         public object Create(object parent, object configContext, System.Xml.XmlNode section)
         {
             PathRoleValidateConfig config = new PathRoleValidateConfig();

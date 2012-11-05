@@ -2589,6 +2589,7 @@
     <Content Include="Test\jQuery.autoComplete测试\js\jquery-ui-widget-combobox.js" />
     <Content Include="Test\jquery.cascadingDropDown测试\Index.html" />
     <Content Include="Test\LoanScheduleTest.aspx" />
+    <Content Include="Test\SalaryTaxTest.aspx" />
     <Content Include="Test\sprite技术测试.htm" />
     <Content Include="Test\Converter中Guid转换测试.aspx" />
     <Content Include="Test\WhereClauserBuilderTest.aspx" />
@@ -2719,6 +2720,13 @@
     </Compile>
     <Compile Include="Test\Converter中Guid转换测试.aspx.designer.cs">
       <DependentUpon>Converter中Guid转换测试.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\SalaryTaxTest.aspx.cs">
+      <DependentUpon>SalaryTaxTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\SalaryTaxTest.aspx.designer.cs">
+      <DependentUpon>SalaryTaxTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test\WhereClauserBuilderTest.aspx.cs">
       <DependentUpon>WhereClauserBuilderTest.aspx</DependentUpon>

@@ -186,6 +186,7 @@
     <Compile Include="Enums\UserStatuses.cs" />
     <Compile Include="Environments\ComputerHelper.cs" />
     <Compile Include="Event\EventHelper.cs" />
+    <Compile Include="Finance\SalaryTaxHelper.cs" />
     <Compile Include="Handler\Ajax\AjaxHandler.cs" />
     <Compile Include="Handler\Ajax\FormAttribute.cs" />
     <Compile Include="Handler\Ajax\ParameterAttribute.cs" />
@@ -226,6 +227,9 @@
     <Compile Include="Setting\SectionHandler\PermissionDataConfig.cs" />
     <Compile Include="Setting\SectionHandler\PermissionDataEntity.cs" />
     <Compile Include="Setting\SectionHandler\PermissionDataSectionHandler.cs" />
+    <Compile Include="Setting\SectionHandler\SalaryTaxConfig.cs" />
+    <Compile Include="Setting\SectionHandler\SalaryTaxEntity.cs" />
+    <Compile Include="Setting\SectionHandler\SalaryTaxSectionHandler.cs" />
     <Compile Include="Setting\SectionHandler\SystemTaskSectionConfig.cs" />
     <Compile Include="Setting\SectionHandler\SystemTaskSectionEntity.cs" />
     <Compile Include="Setting\SectionHandler\SystemTaskSectionHandler.cs" />
@@ -362,6 +366,7 @@
     <Content Include="Office\readme.txt" />
     <Content Include="SettingList.txt" />
     <Content Include="Setting\SectionHandler\PermissionDataReadme.txt" />
+    <Content Include="Setting\SectionHandler\SalaryTaxReadme.txt" />
     <Content Include="Setting\SectionHandler\SectionHandlerReadme.txt" />
     <Content Include="Web\CookieInfoReadme.txt" />
     <EmbeddedResource Include="Resources\img_allow.gif" />

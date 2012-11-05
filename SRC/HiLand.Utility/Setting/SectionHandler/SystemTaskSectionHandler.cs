@@ -11,7 +11,7 @@ namespace HiLand.Utility.Setting.SectionHandler
     public class SystemTaskSectionHandler : IConfigurationSectionHandler
     {
         /// <summary>
-        /// 
+        /// 获取config节点，创建配置信息实体
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="configContext"></param>
