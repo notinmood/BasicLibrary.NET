@@ -477,10 +477,6 @@
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Applications\Applications.csproj">
-      <Project>{964BBF20-0119-410A-8E18-4E3CDFDABD97}</Project>
-      <Name>Applications</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HiLand.Framework\HiLand.Framework.csproj">
       <Project>{461EC125-8906-4F63-96FF-17B4B10A65E0}</Project>
       <Name>HiLand.Framework</Name>

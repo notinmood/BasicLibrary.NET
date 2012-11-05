@@ -2462,6 +2462,7 @@
     <Content Include="Misc\http状态说明详细列表.htm" />
     <Content Include="Misc\Javascript模拟键盘按键.htm" />
     <Content Include="Misc\jQuery模拟键盘按键.html" />
+    <Content Include="Misc\服务端持续输出信息到客户端.aspx" />
     <Content Include="PageEffect\CSS表格效果2.htm" />
     <Content Include="PageEffect\DIV居中.htm" />
     <Content Include="PageEffect\js 复制地址和标题给好友 兼容火狐ie.html" />
@@ -2656,6 +2657,13 @@
     <Content Include="编码规范\Readme.txt" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Misc\服务端持续输出信息到客户端.aspx.cs">
+      <DependentUpon>服务端持续输出信息到客户端.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Misc\服务端持续输出信息到客户端.aspx.designer.cs">
+      <DependentUpon>服务端持续输出信息到客户端.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SendMail.aspx.cs">
       <DependentUpon>SendMail.aspx</DependentUpon>
@@ -2811,7 +2819,9 @@
       <Name>HiLand.Utility</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="其他\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
