@@ -126,7 +126,14 @@ namespace HiLand.Utility.Reflection
         /// <returns></returns>
         public static TAttribute GetAttribute<TAttribute>(MemberInfo memberInfo) where TAttribute : Attribute
         {
-            return (TAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(TAttribute), true);
+            if (memberInfo == null)
+            {
+                return null;
+            }
+            else
+            {
+                return (TAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(TAttribute), true);
+            }
         }
 
         /// <summary>

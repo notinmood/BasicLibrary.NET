@@ -13,6 +13,8 @@
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="相同属性赋值测试" />
         <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="继承对象复制测试" />
     
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="获取Attribute测试" />
+    
     </div>
     </form>
 </body>

@@ -106,6 +106,7 @@
     <Compile Include="AOP\Interceptor\EmptyObjectInterceptor.cs" />
     <Compile Include="AOP\CodePacking.cs" />
     <Compile Include="AOP\Interceptor\SQLInjectionInterceptor.cs" />
+    <Compile Include="Attributes\EnumItemIsDisplayInListAttribute.cs" />
     <Compile Include="Cache\CacheFactory.cs" />
     <Compile Include="Cache\CacheHelper.cs" />
     <Compile Include="Cache\CacheKeys.cs" />
