@@ -14,6 +14,22 @@ namespace HiLand.Utility4.MVC.Controls
     /// </summary>
     public class QueryControl : BaseControl<QueryControl>
     {
+        private string queryButtonTextForOpen = "<i class=\"icon-zoom-in  icon-white\"></i>展开查询";
+        public QueryControl QueryButtonTextForOpen(string data)
+        {
+            this.queryButtonTextForOpen = data;
+            return this;
+        }
+
+        //TODO:xieran20121108需要在下面JS中使用这个变量
+        private string queryButtonTextForClose = "<i class=\"icon-zoom-out  icon-white\"></i>收起查询";
+        public QueryControl QueryButtonTextForClose(string data)
+        {
+            this.queryButtonTextForClose = data;
+            return this;
+        }
+
+
         /// <summary>
         /// 输出控件Html代码
         /// </summary>
@@ -29,7 +45,7 @@ namespace HiLand.Utility4.MVC.Controls
             sb.AppendFormat("<th style=\"width: 5%;\">{0}</th>", "符号");
             sb.AppendFormat("<th style=\"width: auto;\">{0}</th>", "值");
             sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", ")");
-            sb.AppendFormat("<th style=\"width: 10%;\">{0}<span class=\"queryButton buttons\"><i class=\"icon-search\"></i>展开查询</span>{1}</th>", "", GetQueryControlDisplayStatusString());
+            sb.AppendFormat("<th style=\"width: 10%;\">{0}<span class=\"queryButton buttons\">{2}</span>{1}</th>", "", GetQueryControlDisplayStatusString(), this.queryButtonTextForOpen);
             sb.Append("</tr>");
 
             for (int i = 0; i < queryConditionList.Count; i++)
@@ -88,13 +104,13 @@ namespace HiLand.Utility4.MVC.Controls
                                 var trObject = $(this).parents('tr');
                                 trObject.siblings().show();
                                 trObject.find('.queryStatus').val('open');
-                                $(this).html('<i class=\'icon-search\'></i>收起查询');
+                                $(this).html('<i class=\'icon-zoom-out  icon-white\'></i>收起查询');
                             },
                             function () { 
                                 var trObject = $(this).parents('tr');                                
                                 trObject.siblings().hide(); 
                                 trObject.find('.queryStatus').val('closed');
-                                $(this).html('<i class=\'icon-search\'></i>展开查询');
+                                $(this).html('<i class=\'icon-zoom-in  icon-white\'></i>展开查询');
                             }
                         );
                     });
