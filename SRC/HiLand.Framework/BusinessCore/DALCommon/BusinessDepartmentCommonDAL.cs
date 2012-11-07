@@ -133,7 +133,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
         /// <returns></returns>
         public BusinessDepartment GetByCode(string departmentCode)
         {
-            string commandText = string.Format("SELECT * FROM [{0}]  WHERE  {1}", TableName, GetKeysWhereClause());
+            string commandText = string.Format("SELECT * FROM [{0}]  WHERE   [DepartmentCode]= @DepartmentCode ", TableName);
             TParameter[] sqlParas = new TParameter[] { GenerateParameter("DepartmentCode", departmentCode) };
             return CommonGeneralInstance.GetEntity<BusinessDepartment>(commandText, sqlParas, Load);
         }

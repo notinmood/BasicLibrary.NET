@@ -520,6 +520,11 @@ namespace HiLand.Framework.BusinessCore
                     this.department = BusinessDepartmentBLL.Instance.GetByCode(this.DepartmentCode);
                 }
 
+                if (this.department == null)
+                {
+                    this.department = BusinessDepartment.Empty;
+                }
+
                 return this.department;
             }
         }
