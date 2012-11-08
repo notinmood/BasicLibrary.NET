@@ -298,6 +298,8 @@ namespace HiLand.Framework.BusinessCore.BLL
             }
             else
             {
+                //如果口令不相同，那么再将原来的口令赋值回去
+                entity.Password = passwordInSystem;
                 isSuccessful = false;
                 return isSuccessful;
             }

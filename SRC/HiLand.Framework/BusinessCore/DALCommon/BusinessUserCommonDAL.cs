@@ -1077,6 +1077,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
         #endregion
 
         #region 辅助方法
+        //TODO:xieran20121108 口令处理这个地方考虑加一个重载，参数为口令，口令加密算法，口令加密盐的简单实体
+        
         /// <summary>
         /// 处理用户口令的加密逻辑
         /// </summary>
