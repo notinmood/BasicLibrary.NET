@@ -1089,6 +1089,26 @@ namespace HiLand.Framework.BusinessCore
             }
         }
 
+        private string userEducationalSchool = String.Empty;
+        /// <summary>
+        /// 毕业院校
+        /// </summary>
+        public string UserEducationalSchool
+        {
+            get { return userEducationalSchool; }
+            set { userEducationalSchool = value; }
+        }
+
+        private string socialSecurityNumber = String.Empty;
+        /// <summary>
+        /// 社保卡号
+        /// </summary>
+        public string SocialSecurityNumber
+        {
+            get { return socialSecurityNumber; }
+            set { socialSecurityNumber = value; }
+        }
+
         protected bool isEmpty = false;
         /// <summary>
         /// 当前实例是否为空对象

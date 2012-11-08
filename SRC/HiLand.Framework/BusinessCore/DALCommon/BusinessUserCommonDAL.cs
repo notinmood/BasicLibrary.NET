@@ -215,6 +215,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 [UserNation],
                 [UserCountry],
                 [UserEducationalBackground],
+                [UserEducationalSchool],
+			    [SocialSecurityNumber],
                 [PropertyNames],
                 [PropertyValues]) 
            VALUES (
@@ -269,6 +271,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 {0}UserNation,
                 {0}UserCountry,
                 {0}UserEducationalBackground,
+			    {0}UserEducationalSchool,
+			    {0}SocialSecurityNumber,
                 {0}PropertyNames,
                 {0}PropertyValues)",
             ParameterNamePrefix);
@@ -358,6 +362,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                     [UserNation]={0}UserNation,
                     [UserCountry]={0}UserCountry,
                     [UserEducationalBackground]={0}UserEducationalBackground,
+				    [UserEducationalSchool] = {0}UserEducationalSchool,
+				    [SocialSecurityNumber] = {0}SocialSecurityNumber,
                     [PropertyNames] = {0}PropertyNames,
 					[PropertyValues] = {0}PropertyValues
              Where [UserGuid] = {0}UserGuid", ParameterNamePrefix);
@@ -471,6 +477,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 GenerateParameter("UserNation",entity.UserNation??string.Empty),
                 GenerateParameter("UserCountry",entity.UserCountry??string.Empty),
                 GenerateParameter("UserEducationalBackground",entity.UserEducationalBackground),
+                GenerateParameter("UserEducationalSchool",entity.UserEducationalSchool?? String.Empty),
+			    GenerateParameter("SocialSecurityNumber",entity.SocialSecurityNumber?? String.Empty),
                 GenerateParameter("PropertyNames",""),
                 GenerateParameter("PropertyValues","")
             };
@@ -1366,6 +1374,15 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "UserEducationalBackground"))
                 {
                     entity.UserEducationalBackground = (EducationalBackgrounds)reader.GetInt32(reader.GetOrdinal("UserEducationalBackground"));
+                }
+
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "UserEducationalSchool"))
+                {
+                    entity.UserEducationalSchool = reader.GetString(reader.GetOrdinal("UserEducationalSchool"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "SocialSecurityNumber"))
+                {
+                    entity.SocialSecurityNumber = reader.GetString(reader.GetOrdinal("SocialSecurityNumber"));
                 }
 
                 if (DataReaderHelper.IsExistField(reader, "PropertyNames") && Convert.IsDBNull(reader["PropertyNames"]) == false)
