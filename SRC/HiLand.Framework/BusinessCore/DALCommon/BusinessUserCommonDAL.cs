@@ -127,6 +127,12 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 entity.UserGuid = GuidHelper.NewGuid();
             }
 
+            //如果未指定注册日期，那么就将当前日期作为其注册日期
+            if (entity.UserRegisterDate == DateTimeHelper.Min)
+            {
+                entity.UserRegisterDate = DateTime.Now;
+            }
+
             bool isExist = true;
             status = CreateUserRoleStatuses.Successful;
 

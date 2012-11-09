@@ -18,6 +18,7 @@ namespace HiLand.Framework.BusinessCore.BLL
         /// <param name="ownerKey">所有者的标识(通常是Guid)</param>
         /// <param name="permissionItemGuid">待验证的项目的Guid(通常是子模块的Guid)</param>
         /// <param name="permissionItemValue">待验证的项目的值</param>
+        /// <param name="permissionMode">权限模式（允许权限还是拒绝权限）</param>
         /// <returns></returns>
         public bool HasPermission(string ownerKey,PermissionModes permissionMode, Guid permissionItemGuid, int permissionItemValue)
         {
@@ -41,12 +42,11 @@ namespace HiLand.Framework.BusinessCore.BLL
         /// 获取某所有者拥有的所有权限的集合
         /// </summary>
         /// <param name="ownerKey">所有者标识</param>
+        /// <param name="permissionMode">权限模式（允许权限还是拒绝权限）</param>
         public List<BusinessPermission> GetPermissions(string ownerKey,PermissionModes permissionMode)
         {
             string whereClause = string.Format("OwnerKey='{0}' AND PermissionMode={1} ", ownerKey,(int)permissionMode);
             return this.LoadDAL.GetList(Logics.False, whereClause,0,string.Empty);
         }
-
-        
     }
 }
