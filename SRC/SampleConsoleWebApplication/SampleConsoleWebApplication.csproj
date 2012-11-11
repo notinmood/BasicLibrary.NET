@@ -79,6 +79,7 @@
     <Content Include="AuthCodeDemo\Default.aspx" />
     <Content Include="CompressHelperTest.aspx" />
     <Content Include="ContentTypes测试.aspx" />
+    <Content Include="ConverterTest.aspx" />
     <Content Include="脏词过滤测试.txt" />
     <Content Include="CacheUsing.aspx" />
     <Content Include="CurrentUserDemo\Index.aspx" />
@@ -206,6 +207,13 @@
     </Compile>
     <Compile Include="ContentTypes测试.aspx.designer.cs">
       <DependentUpon>ContentTypes测试.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConverterTest.aspx.cs">
+      <DependentUpon>ConverterTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConverterTest.aspx.designer.cs">
+      <DependentUpon>ConverterTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="CurrentUserDemo\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
