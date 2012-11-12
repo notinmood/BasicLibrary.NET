@@ -29,6 +29,18 @@ namespace HiLand.Utility4.MVC.Controls
             return this;
         }
 
+        private bool isDisplayBrackets = true;
+        /// <summary>
+        /// 是否显示括号运算符(其可以在多个条件之间设置优先级)
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public QueryControl IsDisplayBrackets(bool data)
+        {
+            this.isDisplayBrackets = data;
+            return this;
+        }
+
 
         /// <summary>
         /// 输出控件Html代码
@@ -40,11 +52,17 @@ namespace HiLand.Utility4.MVC.Controls
             sb.AppendFormat("<table class=\"{0}\" style=\"width: 100%;\">", this.cssClassName);
 
             sb.Append("<tr>");
-            sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", "(");
+            if (this.isDisplayBrackets == true)
+            {
+                sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", "(");
+            }
             sb.AppendFormat("<th style=\"width: 20%;\">{0}</th>", "名称");
             sb.AppendFormat("<th style=\"width: 5%;\">{0}</th>", "符号");
             sb.AppendFormat("<th style=\"width: auto;\">{0}</th>", "值");
-            sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", ")");
+            if (this.isDisplayBrackets == true)
+            {
+                sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", ")");
+            }
             sb.AppendFormat("<th style=\"width: 10%;\">{0}<span class=\"queryButton buttons\">{2}</span>{1}</th>", "", GetQueryControlDisplayStatusString(), this.queryButtonTextForOpen);
             sb.Append("</tr>");
 
@@ -57,11 +75,17 @@ namespace HiLand.Utility4.MVC.Controls
                     isLastItem = true;
                 }
                 sb.Append("<tr>");
-                sb.AppendFormat("<td >{0}</td>", GetLeftBracketsString(i));
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<td >{0}</td>", GetLeftBracketsString(i));
+                }
                 sb.AppendFormat("<td >{0}</td>", GetConditionNameString(currentItem, i));
                 sb.AppendFormat("<td >{0}</td>", GetConditionOperatorString(currentItem, i));
                 sb.AppendFormat("<td >{0}</td>", GetConditionValueString(currentItem, i));
-                sb.AppendFormat("<td >{0}</td>", GetRightBracketsString(i));
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<td >{0}</td>", GetRightBracketsString(i));
+                }
                 sb.AppendFormat("<td >{0}</td>", GetRelationshipString(i, isLastItem));
                 sb.Append("</tr>");
             }
@@ -76,7 +100,7 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetQueryControlDisplayStatusString()
         {
-            string queryControlDisplayStatusFullName = this.name + QueryControlHelper.QueryControlDisplayStatus;
+            string queryControlDisplayStatusFullName = this.name + QueryControlHelper.QueryControlDisplayStatusStringConst;
             string queryControlDisplayStatusValue = MVCHelper.GetParam(queryControlDisplayStatusFullName, "closed");
             return string.Format("<input type=\"hidden\" name=\"{0}\" class=\"queryStatus\" value=\"{1}\">", queryControlDisplayStatusFullName, queryControlDisplayStatusValue);
         }
@@ -150,7 +174,7 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetLeftBracketsString(int number)
         {
-            string leftBracketsFullName = this.name + QueryControlHelper.LeftBracketsName + number;
+            string leftBracketsFullName = this.name + QueryControlHelper.LeftBracketsNameStringConst + number;
             string leftBracketsValue = MVCHelper.GetParam(leftBracketsFullName);
             string checkedString = string.Empty;
             if (leftBracketsValue.ToLower() == "on")
@@ -168,7 +192,7 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetRightBracketsString(int number)
         {
-            string rightBracketsFullName = this.name + QueryControlHelper.RightBracketsName + number;
+            string rightBracketsFullName = this.name + QueryControlHelper.RightBracketsNameStringConst + number;
             string rightBracketsValue = MVCHelper.GetParam(rightBracketsFullName);
             string checkedString = string.Empty;
             if (rightBracketsValue.ToLower() == "on")
@@ -187,7 +211,31 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetConditionNameString(QueryConditionItem queryConditionItem, int number)
         {
-            return string.Format("{0}<input type=\"hidden\" name=\"{1}\" value=\"{2}\" />", queryConditionItem.ConditionDisplayName, this.name + QueryControlHelper.ConditionFieldName + number, queryConditionItem.ConditionFieldName);
+            if (queryConditionItem.isMultiFieldName == true)
+            {
+                string conditionFieldFullName = this.name + QueryControlHelper.ConditionFieldNameStringConst + number;
+                string conditionFieldValue = MVCHelper.GetParam(conditionFieldFullName);
+
+                StringBuilder sb = new StringBuilder();
+                sb.AppendFormat("<select name=\"{0}\">", this.name + QueryControlHelper.ConditionFieldNameStringConst + number);
+                for (int i = 0; i < queryConditionItem.ConditionFieldNames.Length; i++)
+                {
+                    string selectedString = string.Empty;
+                    if (conditionFieldValue == queryConditionItem.ConditionFieldNames[i])
+                    {
+                        selectedString = "selected=\"selected\"";
+                    }
+
+                    sb.AppendFormat("<option value=\"{0}\" {1}>{2}</option>", queryConditionItem.ConditionFieldNames[i], selectedString, queryConditionItem.ConditionDisplayNames[i]);
+                }
+                sb.Append("</select>");
+
+                return sb.ToString();
+            }
+            else
+            {
+                return string.Format("{0}<input type=\"hidden\" name=\"{1}\" value=\"{2}\" />", queryConditionItem.ConditionDisplayName, this.name + QueryControlHelper.ConditionFieldNameStringConst + number, queryConditionItem.ConditionFieldName);
+            }
         }
 
         /// <summary>
@@ -201,9 +249,9 @@ namespace HiLand.Utility4.MVC.Controls
             StringBuilder result = new StringBuilder();
 
             //记录查询条件值的类型
-            result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", this.name + QueryControlHelper.ConditionTypeName + number, TypeHelper.GetTypeShortDescription(queryConditionItem.ConditionType));
+            result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", this.name + QueryControlHelper.ConditionTypeNameStringConst + number, TypeHelper.GetTypeShortDescription(queryConditionItem.ConditionType));
 
-            string conditionValueFullName = this.name + QueryControlHelper.ConditionValueName + number;
+            string conditionValueFullName = this.name + QueryControlHelper.ConditionValueNameStringConst + number;
             string conditionValueValue = MVCHelper.GetParam(conditionValueFullName);
 
             //TODO:xieran20121001 日期类型需要使用日期输入框
@@ -251,7 +299,7 @@ namespace HiLand.Utility4.MVC.Controls
         {
             StringBuilder result = new StringBuilder();
 
-            string conditionOperatorFullName = this.name + QueryControlHelper.ConditionOperatorName + number;
+            string conditionOperatorFullName = this.name + QueryControlHelper.ConditionOperatorNameStringConst + number;
             string conditionOperatorValue = MVCHelper.GetParam(conditionOperatorFullName);
             result.AppendFormat("<select name=\"{0}\">", conditionOperatorFullName);
 
@@ -333,11 +381,11 @@ namespace HiLand.Utility4.MVC.Controls
                 {
                     result.AppendFormat("<input type=\"submit\" />");
                 }
-                result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\" />", this.name + QueryControlHelper.ConditionCountName, number + 1);
+                result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\" />", this.name + QueryControlHelper.ConditionCountNameStringConst, number + 1);
             }
             else
             {
-                string conditionRelationshipFullName = this.name + QueryControlHelper.ConditionRelationshipName + number;
+                string conditionRelationshipFullName = this.name + QueryControlHelper.ConditionRelationshipNameStringConst + number;
                 string conditionRelationshipValue = MVCHelper.GetParam(conditionRelationshipFullName);
                 string selectedStringForAND = string.Empty;
                 string selectedStringForOr = string.Empty;
@@ -397,9 +445,49 @@ namespace HiLand.Utility4.MVC.Controls
 
     /// <summary>
     /// 查询条件项
+    /// ConditionFieldName和ConditionDisplayName可以设置多个字段的信息，
+    /// 多个字段之间用“,”进行分割。但是这个多个字段必须是同种数据类型的。设置时，
+    /// 请注意ConditionFieldName和ConditionDisplayName的内部的数量保证一致。
     /// </summary>
     public class QueryConditionItem
     {
+        /// <summary>
+        /// 在字段名称里面是否包含多个值
+        /// </summary>
+        internal bool isMultiFieldName
+        {
+            get
+            {
+                if (this.conditionDisplayName.IndexOf(",") > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        internal string[] ConditionDisplayNames
+        {
+            get
+            {
+                string[] result = StringHelper.SplitToArray(this.ConditionDisplayName);
+                return result;
+            }
+        }
+
+        internal string[] ConditionFieldNames
+        {
+            get
+            {
+                string[] result = StringHelper.SplitToArray(this.ConditionFieldName);
+                return result;
+            }
+        }
+
+
         private string conditionDisplayName = string.Empty;
         /// <summary>
         /// 查询条件项显示的名称
@@ -424,7 +512,7 @@ namespace HiLand.Utility4.MVC.Controls
 
         private string conditionFieldName = string.Empty;
         /// <summary>
-        /// 查询条件项对应的数据库字段名称
+        /// 查询条件项对应的数据库字段名称（可以设置多个字段，多个字段之间用“,”进行分割。但是这个多个字段必须是同种数据类型的）
         /// </summary>
         public string ConditionFieldName
         {

@@ -29,11 +29,11 @@ namespace HiLand.Utility4.MVC.Controls
 
             UrlInfo urlInfo = UrlInfo.New(baseUrl);
 
-            string queryControlDisplayStatusFullName = queryControlName + QueryControlDisplayStatus;
+            string queryControlDisplayStatusFullName = queryControlName + QueryControlDisplayStatusStringConst;
             string queryControlDisplayStatusValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, queryControlDisplayStatusFullName, "closed");
             urlInfo.Concat(queryControlDisplayStatusFullName, queryControlDisplayStatusValue);
 
-            string queryCountFullName = queryControlName + ConditionCountName;
+            string queryCountFullName = queryControlName + ConditionCountNameStringConst;
             int queryConditionCount = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, queryCountFullName, 0);
             if (queryConditionCount > 0)
             {
@@ -41,37 +41,37 @@ namespace HiLand.Utility4.MVC.Controls
 
                 for (int i = 0; i < queryConditionCount; i++)
                 {
-                    string leftBracketsFullName = queryControlName + LeftBracketsName + i;
+                    string leftBracketsFullName = queryControlName + LeftBracketsNameStringConst + i;
                     string leftBracketsValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, leftBracketsFullName, string.Empty).ToLower();
                     if (leftBracketsValue == "on")
                     {
                         urlInfo.Concat(leftBracketsFullName, leftBracketsValue);
                     }
 
-                    string conditionFieldFullName = queryControlName + ConditionFieldName + i;
+                    string conditionFieldFullName = queryControlName + ConditionFieldNameStringConst + i;
                     string conditionFieldValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionFieldFullName, string.Empty);
                     urlInfo.Concat(conditionFieldFullName, conditionFieldValue);
 
-                    string conditionTypeFullName = queryControlName + ConditionTypeName + i;
+                    string conditionTypeFullName = queryControlName + ConditionTypeNameStringConst + i;
                     string conditionTypeValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionTypeFullName, string.Empty);
                     urlInfo.Concat(conditionTypeFullName, conditionTypeValue);
 
-                    string conditionValueFullName = queryControlName + ConditionValueName + i;
+                    string conditionValueFullName = queryControlName + ConditionValueNameStringConst + i;
                     string conditionValueValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionValueFullName, string.Empty);
                     urlInfo.Concat(conditionValueFullName, conditionValueValue);
 
-                    string conditionOperatorFullName = queryControlName + ConditionOperatorName + i;
+                    string conditionOperatorFullName = queryControlName + ConditionOperatorNameStringConst + i;
                     string conditionOperatorValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionOperatorFullName, string.Empty);
                     urlInfo.Concat(conditionOperatorFullName, conditionOperatorValue);
 
-                    string rightBracketsFullName = queryControlName + RightBracketsName + i;
+                    string rightBracketsFullName = queryControlName + RightBracketsNameStringConst + i;
                     string rightBracketsValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, rightBracketsFullName, string.Empty).ToLower();
                     if (rightBracketsValue == "on")
                     {
                         urlInfo.Concat(rightBracketsFullName, rightBracketsValue);
                     }
 
-                    string conditionRelationshipFullName = queryControlName + ConditionRelationshipName + i;
+                    string conditionRelationshipFullName = queryControlName + ConditionRelationshipNameStringConst + i;
                     string conditionRelationshipValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionRelationshipFullName, string.Empty);
                     if (string.IsNullOrEmpty(conditionRelationshipValue) == false)
                     {
@@ -91,17 +91,19 @@ namespace HiLand.Utility4.MVC.Controls
         public static string GetQueryCondition(string queryControlName)
         {
             StringBuilder sb = new StringBuilder(" 1=1 AND ");
+            //每次循环结束时的，与下个查询条件之间的关系运算符
+            string lastConditionRelationshipValue = "AND";
 
-            string queryControlDisplayStatusFullName = queryControlName + QueryControlDisplayStatus;
+            string queryControlDisplayStatusFullName = queryControlName + QueryControlDisplayStatusStringConst;
             string queryControlDisplayStatusValue = RequestHelper.GetValue(queryControlDisplayStatusFullName, "closed");
             MVCHelper.SetCustomData(queryControlDisplayStatusFullName, queryControlDisplayStatusValue);
 
-            int queryConditionCount = RequestHelper.GetValue(queryControlName + ConditionCountName, 0);
+            int queryConditionCount = RequestHelper.GetValue(queryControlName + ConditionCountNameStringConst, 0);
             if (queryConditionCount > 0)
             {
                 for (int i = 0; i < queryConditionCount; i++)
                 {
-                    string leftBracketsFullName = queryControlName + LeftBracketsName + i;
+                    string leftBracketsFullName = queryControlName + LeftBracketsNameStringConst + i;
                     string leftBracketsValue = RequestHelper.GetValue(leftBracketsFullName, string.Empty).ToLower();
                     if (leftBracketsValue == "on")
                     {
@@ -109,20 +111,30 @@ namespace HiLand.Utility4.MVC.Controls
                         MVCHelper.SetCustomData(leftBracketsFullName, leftBracketsValue);
                     }
 
-                    string conditionFieldValue = RequestHelper.GetValue(queryControlName + ConditionFieldName + i, string.Empty);
-                    string conditionTypeValue = RequestHelper.GetValue(queryControlName + ConditionTypeName + i, string.Empty);
+                    string conditionFieldFullName= queryControlName + ConditionFieldNameStringConst + i;
+                    string conditionFieldValue = RequestHelper.GetValue(conditionFieldFullName, string.Empty);
+                    MVCHelper.SetCustomData(conditionFieldFullName, conditionFieldValue);
 
-                    string conditionValueFullName = queryControlName + ConditionValueName + i;
+                    string conditionTypeValue = RequestHelper.GetValue(queryControlName + ConditionTypeNameStringConst + i, string.Empty);
+
+                    string conditionValueFullName = queryControlName + ConditionValueNameStringConst + i;
                     string conditionValueValue = RequestHelper.GetValue(conditionValueFullName, string.Empty);
                     MVCHelper.SetCustomData(conditionValueFullName, conditionValueValue);
 
-                    string conditionOperatorFullName = queryControlName + ConditionOperatorName + i;
+                    string conditionOperatorFullName = queryControlName + ConditionOperatorNameStringConst + i;
                     string conditionOperatorValue = RequestHelper.GetValue(conditionOperatorFullName, string.Empty);
                     MVCHelper.SetCustomData(conditionOperatorFullName, conditionOperatorValue);
 
                     if (string.IsNullOrEmpty(conditionValueValue) == true)
                     {
-                        sb.Append(" 1=1 ");
+                        if (lastConditionRelationshipValue == "AND")
+                        {
+                            sb.Append(" 1=1 ");
+                        }
+                        else
+                        {
+                            sb.Append(" 1=2 ");
+                        }
                     }
                     else
                     {
@@ -162,7 +174,7 @@ namespace HiLand.Utility4.MVC.Controls
                         }
                     }
 
-                    string rightBracketsFullName = queryControlName + RightBracketsName + i;
+                    string rightBracketsFullName = queryControlName + RightBracketsNameStringConst + i;
                     string rightBracketsValue = RequestHelper.GetValue(rightBracketsFullName, string.Empty).ToLower();
                     if (rightBracketsValue == "on")
                     {
@@ -170,11 +182,12 @@ namespace HiLand.Utility4.MVC.Controls
                         MVCHelper.SetCustomData(rightBracketsFullName, rightBracketsValue);
                     }
 
-                    string conditionRelationshipFullName = queryControlName + ConditionRelationshipName + i;
+                    string conditionRelationshipFullName = queryControlName + ConditionRelationshipNameStringConst + i;
                     string conditionRelationshipValue = RequestHelper.GetValue(conditionRelationshipFullName, string.Empty);
                     if (string.IsNullOrEmpty(conditionRelationshipValue) == false)
                     {
                         sb.AppendFormat(" {0} ", conditionRelationshipValue);
+                        lastConditionRelationshipValue = conditionRelationshipValue.ToUpper();
                         MVCHelper.SetCustomData(conditionRelationshipFullName, conditionRelationshipValue);
                     }
                 }
@@ -190,18 +203,18 @@ namespace HiLand.Utility4.MVC.Controls
 
 
         #region 文本常量定义
-        public static string ConditionCountName = "||ConditionCountName";
-        public static string QueryControlDisplayStatus = "||QueryControlDisplayStatus";
+        internal static string ConditionCountNameStringConst = "||ConditionCountName";
+        internal static string QueryControlDisplayStatusStringConst = "||QueryControlDisplayStatus";
 
-        public static string LeftBracketsName = "||LeftBracketsName||";
-        public static string RightBracketsName = "||RightBracketsName||";
+        internal static string LeftBracketsNameStringConst = "||LeftBracketsName||";
+        internal static string RightBracketsNameStringConst = "||RightBracketsName||";
 
-        public static string ConditionValueName = "||ConditionValueName||";
-        public static string ConditionFieldName = "||ConditionFieldName||";
-        public static string ConditionTypeName = "||ConditionTypeName||";
+        internal static string ConditionValueNameStringConst = "||ConditionValueName||";
+        internal static string ConditionFieldNameStringConst = "||ConditionFieldName||";
+        internal static string ConditionTypeNameStringConst = "||ConditionTypeName||";
 
-        public static string ConditionOperatorName = "||ConditionOperatorName||";
-        public static string ConditionRelationshipName = "||ConditionRelationshipName||";
+        internal static string ConditionOperatorNameStringConst = "||ConditionOperatorName||";
+        internal static string ConditionRelationshipNameStringConst = "||ConditionRelationshipName||";
         #endregion
     }
 }
