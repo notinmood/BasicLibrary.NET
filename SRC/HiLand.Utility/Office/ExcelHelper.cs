@@ -77,7 +77,8 @@ namespace HiLand.Utility.Office
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <param name="entityList"></param>
-        /// <param name="fieldsMap">实体的属性名称与Excel列名的映射字典</param>
+        /// <param name="fieldsMap">实体的属性名称与Excel列名的映射字典,其中字典的Key支持二级属性，比如CurrentBank.AccountNumber
+        /// 其会加载属性CurrentBank的子属性AccountNumber的信息</param>
         /// <returns></returns>
         public static Stream WriteExcel<T>(IList<T> entityList, Dictionary<string, string> fieldsMap)
         {
@@ -97,13 +98,29 @@ namespace HiLand.Utility.Office
                         piMatched = piItem;
                         break;
                     }
+
+                    if (kvp.Key.IndexOf(".") > 0)
+                    {
+                        string propertyNameOfLevel1 = StringHelper.GetBeforeSeperatorString(kvp.Key, ".");
+                        string propertyNameOfLevel2 = StringHelper.GetAfterSeperatorString(kvp.Key, ".");
+                        if (piItem.Name == propertyNameOfLevel1)
+                        {
+                            Type propertyTypeOfLevel1 = piItem.PropertyType;
+                            PropertyInfo propertyInfoOfLevel2 = propertyTypeOfLevel1.GetProperty(propertyNameOfLevel2);
+                            if (propertyInfoOfLevel2 != null)
+                            {
+                                piMatched = propertyInfoOfLevel2;
+                                break;
+                            }
+                        }
+                    }
                 }
 
                 if (piMatched != null)
                 {
                     DataColumn dc = new DataColumn(kvp.Key, piMatched.PropertyType);
                     dc.Caption = kvp.Value;
-                    dc.DataType= typeof(string);
+                    dc.DataType = typeof(string);
                     dataTable.Columns.Add(dc);
                 }
             }
@@ -116,7 +133,7 @@ namespace HiLand.Utility.Office
                 {
                     if (DataRowHelper.IsExistField(row, kvp.Key))
                     {
-                        object targetValue= ReflectHelper.GetPropertyValue(item, kvp.Key);
+                        object targetValue = ReflectHelper.GetPropertyValue(item, kvp.Key);
                         object friendlyValue = TypeHelper.GetFriendlyValue(targetValue);
                         row[kvp.Key] = friendlyValue;
                     }

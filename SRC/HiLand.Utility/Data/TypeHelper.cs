@@ -139,6 +139,11 @@ namespace HiLand.Utility.Data
         /// <returns></returns>
         public static string GetFriendlyValue(object data, string addon)
         {
+            if (data == null)
+            {
+                return string.Empty;
+            }
+
             Type targetType = data.GetType();
             string datetimeFormat = "yyyy/MM/dd";
             string enumDisplayCategory = "zh-CN";

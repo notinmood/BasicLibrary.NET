@@ -47,15 +47,56 @@ namespace HiLand.Utility.Reflection
         /// <returns></returns>
         public static object GetPropertyValue<TModel>(TModel model, string propertyName)
         {
-            object result = null;
             Type type = typeof(TModel);
-            PropertyInfo propertyInfo = type.GetProperty(propertyName);
-            if (propertyInfo != null && propertyInfo.CanRead == true)
-            {
-                result = propertyInfo.GetValue(model, null);
-            }
+            return  GetPropertyValue(type, model, propertyName);
+        }
 
-            return result;
+        /// <summary>
+        /// 通过属性名称获取给定对象的属性值（如果在此对象上属性名称不存在，那么返回null）
+        /// </summary>
+        /// <param name="modelType"></param>
+        /// <param name="model"></param>
+        /// <param name="propertyName">支持二级属性，比如CurrentBank.AccountNumber
+        /// 其会加载属性CurrentBank的子属性AccountNumber的信息</param>
+        /// <returns></returns>
+        public static object GetPropertyValue(Type modelType, object model, string propertyName)
+        {
+            object result = null;
+            Type type = modelType;
+            if (propertyName.IndexOf(".") > 0)
+            {
+                string propertyNameOfLevelThis = StringHelper.GetBeforeSeperatorString(propertyName, ".");
+                string propertyNameOfLevelNext = StringHelper.GetAfterSeperatorString(propertyName, ".");
+                object propertyValueOfLevelThis = GetPropertyValue(modelType, model, propertyNameOfLevelThis);
+
+                if (propertyValueOfLevelThis == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    PropertyInfo piOfLevelThis= modelType.GetProperty(propertyNameOfLevelThis);
+                    if (piOfLevelThis == null)
+                    {
+                        return string.Empty;
+                    }
+                    else
+                    {
+                        Type propertyTypeOfLevelThis = piOfLevelThis.PropertyType;
+                        return GetPropertyValue(propertyTypeOfLevelThis, propertyValueOfLevelThis, propertyNameOfLevelNext);
+                    }
+                }
+            }
+            else
+            {
+                PropertyInfo propertyInfo = type.GetProperty(propertyName);
+                if (propertyInfo != null && propertyInfo.CanRead == true)
+                {
+                    result = propertyInfo.GetValue(model, null);
+                }
+
+                return result;
+            }
         }
 
         /// <summary>
