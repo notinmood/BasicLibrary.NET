@@ -473,8 +473,7 @@ namespace HiLand.Utility4.MVC.Controls
         {
             get
             {
-                string[] result = StringHelper.SplitToArray(this.ConditionDisplayName);
-                return result;
+                return StringHelper.SplitToArray(this.ConditionDisplayName);
             }
         }
 
@@ -482,8 +481,7 @@ namespace HiLand.Utility4.MVC.Controls
         {
             get
             {
-                string[] result = StringHelper.SplitToArray(this.ConditionFieldName);
-                return result;
+                return StringHelper.SplitToArray(this.ConditionFieldName);
             }
         }
 
