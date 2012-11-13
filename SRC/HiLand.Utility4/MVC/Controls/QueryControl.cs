@@ -254,13 +254,13 @@ namespace HiLand.Utility4.MVC.Controls
             string conditionValueFullName = this.name + QueryControlHelper.ConditionValueNameStringConst + number;
             string conditionValueValue = MVCHelper.GetParam(conditionValueFullName);
 
-            //TODO:xieran20121001 日期类型需要使用日期输入框
-            if (queryConditionItem.ConditionType == typeof(String) ||
-                (TypeHelper.ConfirmIsNumberType(queryConditionItem.ConditionType) == true && queryConditionItem.ConditionType.IsEnum == false) ||
-                queryConditionItem.ConditionType == typeof(DateTime))
-            {
-                result.AppendFormat("<input type=\"text\" name=\"{0}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue);
-            }
+            ////TODO:xieran20121001 日期类型需要使用日期输入框
+            //if (queryConditionItem.ConditionType == typeof(String) ||
+            //    (TypeHelper.ConfirmIsNumberType(queryConditionItem.ConditionType) == true && queryConditionItem.ConditionType.IsEnum == false) ||
+            //    queryConditionItem.ConditionType == typeof(DateTime))
+            //{
+            //    result.AppendFormat("<input type=\"text\" name=\"{0}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue);
+            //}
 
             if (queryConditionItem.ConditionType.IsEnum == true)
             {
@@ -286,6 +286,36 @@ namespace HiLand.Utility4.MVC.Controls
 
                 result.Append("</select>");
             }
+            else
+            {
+                if (queryConditionItem.ConditionValueItems.Count > 0)
+                {
+                    result.AppendFormat("<select name=\"{0}\">", conditionValueFullName);
+                    foreach (ListItem currentItem in queryConditionItem.ConditionValueItems)
+                    {
+                        string itemSelectedString = string.Empty;
+                        if (string.IsNullOrEmpty(currentItem.Value) == false)
+                        {
+                            if (currentItem.Value == conditionValueValue)
+                            {
+                                itemSelectedString = "selected";
+                            }
+                        }
+                        result.AppendFormat("<option value=\"{0}\" {1}>{2}</option>", currentItem.Value, itemSelectedString, currentItem.Text);
+                    }
+
+                    result.Append("</select>");
+                }
+                else
+                {
+                    //TODO:xieran20121001 日期类型需要使用日期输入框
+                    //if (queryConditionItem.ConditionType == typeof(String) ||
+                    //    (TypeHelper.ConfirmIsNumberType(queryConditionItem.ConditionType) == true && queryConditionItem.ConditionType.IsEnum == false) ||
+                    //    queryConditionItem.ConditionType == typeof(DateTime))
+                    result.AppendFormat("<input type=\"text\" name=\"{0}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue);
+                }
+            }
+
             return result.ToString();
         }
 
@@ -527,7 +557,18 @@ namespace HiLand.Utility4.MVC.Controls
         /// <summary>
         /// 查询条件项的数据类型
         /// </summary>
+        /// <remarks>请一定跟数据库字段的类型匹配（如果设置ConditionValueItems的值系统也会将其进行转换）</remarks>
         public Type ConditionType { get; set; }
+
+        private List<ListItem> conditionValueItems = new List<ListItem>();
+        /// <summary>
+        /// 查询条件值的各个可选择项（在控件内部使用下拉列表的方式来呈现）
+        /// </summary>
+        public List<ListItem> ConditionValueItems
+        {
+            get { return conditionValueItems; }
+            set { this.conditionValueItems = value; }
+        }
 
         /// <summary>
         /// 查询条件项的附加数据
