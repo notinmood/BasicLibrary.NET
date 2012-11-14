@@ -459,7 +459,7 @@ namespace HiLand.Framework.FoundationLayer
             {
                 foreach (IDbDataParameter currentPara in paras)
                 {
-                    //TODO:这个地方至少应该加入SQL注入的处理
+                    //TODO:xieran20111010 这个地方至少应该加入SQL注入的处理
                     whereClauseWithPara = whereClauseWithPara.Replace(currentPara.ParameterName, currentPara.Value.ToString());
                 }
             }

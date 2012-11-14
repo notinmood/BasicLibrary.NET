@@ -161,7 +161,7 @@ namespace HiLand.Framework.FoundationLayer
         /// <summary>
         /// 获取实体列表
         /// </summary>
-        /// <param name="onlyDisplayUsable"></param>
+        /// <param name="paras"></param>
         /// <param name="whereClause"></param>
         /// <returns></returns>
         public virtual List<TModel> GetList(string whereClause, params IDbDataParameter[] paras)
