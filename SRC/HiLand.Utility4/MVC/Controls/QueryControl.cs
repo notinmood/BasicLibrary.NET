@@ -254,14 +254,6 @@ namespace HiLand.Utility4.MVC.Controls
             string conditionValueFullName = this.name + QueryControlHelper.ConditionValueNameStringConst + number;
             string conditionValueValue = MVCHelper.GetParam(conditionValueFullName);
 
-            ////TODO:xieran20121001 日期类型需要使用日期输入框
-            //if (queryConditionItem.ConditionType == typeof(String) ||
-            //    (TypeHelper.ConfirmIsNumberType(queryConditionItem.ConditionType) == true && queryConditionItem.ConditionType.IsEnum == false) ||
-            //    queryConditionItem.ConditionType == typeof(DateTime))
-            //{
-            //    result.AppendFormat("<input type=\"text\" name=\"{0}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue);
-            //}
-
             if (queryConditionItem.ConditionType.IsEnum == true)
             {
                 string enumDisplayCategory = queryConditionItem.GetAddonItem("enumDisplayCategory");

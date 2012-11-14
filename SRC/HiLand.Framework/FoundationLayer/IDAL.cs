@@ -94,5 +94,20 @@ namespace HiLand.Framework.FoundationLayer
         /// <param name="orderClause">排序条件语句</param>
         /// <returns></returns>
         PagedEntityCollection<TModel> GetPagedCollection(int startIndex, int pageSize, string whereClause, string orderClause);
+
+        /// <summary>
+        /// 获取单条执行结果
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        object GetScalar(string sqlClause, params IDbDataParameter[] paras);
+
+        /// <summary>
+        /// 非查询的方式执行语句
+        /// </summary>
+        /// <param name="paras"></param>
+        /// <param name="sqlClause"></param>
+        void ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras);
     }
 }

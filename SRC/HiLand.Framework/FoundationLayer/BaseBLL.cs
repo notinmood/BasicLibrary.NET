@@ -356,11 +356,6 @@ namespace HiLand.Framework.FoundationLayer
             return CacheHelper.Access<String, int>(cacheKey, CacheMintues, SaveDAL.GetTotalCount, whereClause);
         }
 
-        //public virtual List<TModel> GetList<IDbDataParameter>(ClauseModel<IDbDataParameter> clauseModel) //where TParameter : IDbDataParameter
-        //{
-        //    return GetList(Logics.False,clauseModel.CluaseString,0,string.Empty,clauseModel.ParameterList.ToArray());
-        //}
-
         /// <summary>
         ///  获取实体对象列表
         /// </summary>
@@ -427,6 +422,30 @@ namespace HiLand.Framework.FoundationLayer
             string cacheKey = GeneralCacheKeys<TModel>.GetEntityListKey(sqlClause);
             return CacheHelper.Access<string, List<TModel>>(cacheKey, CacheMintues, SaveDAL.GetList, sqlClause);
         }
+
+        /// <summary>
+        /// 获取单条执行结果
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        public virtual object GetScalar(string sqlClause, params IDbDataParameter[] paras)
+        {
+            string sqlClauseString = GetRealWhereClauseString(sqlClause, paras);
+            string cacheKey = GeneralCacheKeys<TModel>.GetScalarKey(sqlClause);
+            return CacheHelper.Access<string, IDbDataParameter[], object>(cacheKey, CacheMintues, SaveDAL.GetScalar, sqlClause,paras);
+        }
+
+        //TODO:xieran20121114 需要综合考虑缓存的情形再使用,此方法暂时不向外暴漏
+        ///// <summary>
+        ///// 非查询的方式执行语句
+        ///// </summary>
+        ///// <param name="sqlClause"></param>
+        ///// <param name="param"></param>
+        //public virtual void ExcuteNonQuery(string sqlClause, params IDbDataParameter[] param)
+        //{
+        //    HelperExInstance.ExecuteNonQuery(sqlClause, param as TParameter[]);
+        //}
 
         /// <summary>
         /// 

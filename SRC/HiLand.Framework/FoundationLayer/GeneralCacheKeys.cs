@@ -111,6 +111,16 @@ namespace HiLand.Framework.FoundationLayer
         }
 
         /// <summary>
+        /// 获取按照GetScalar的各个参数生成的Key
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <returns></returns>
+        public static string GetScalarKey(string sqlClause)
+        {
+            return string.Format(CacheKeys.EntityScalarFormat, GetApplicationName(), GetModelName(), sqlClause);
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="startIndex"></param>

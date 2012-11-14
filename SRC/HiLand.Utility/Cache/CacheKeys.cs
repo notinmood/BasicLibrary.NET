@@ -40,5 +40,10 @@ namespace HiLand.Utility.Cache
         /// {0}:表示模块的名字；{1}：表示实体的名字；{2}:StartIndex；{3}:EndIndex；{4}:WhereClause；{5}:OrderByClause
         /// </summary>
         public const string EntityPageCollectionFormat = "{0}-{1}||s-StartIndex{2}-EndIndex{3}-WhereClause{4}-OrderByClause{5}";
+
+        /// <summary>
+        /// {0}:表示模块的名字；{1}：表示实体的名字；{2}：表示Sql语句
+        /// </summary>
+        public const string EntityScalarFormat = "{0}-{1}||s-Scalar:{2}";
     }
 }

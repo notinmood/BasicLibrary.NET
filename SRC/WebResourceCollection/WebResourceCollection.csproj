@@ -2650,10 +2650,10 @@
     <Content Include="纯CSS实现的精美边框效果\10.html" />
     <Content Include="纯CSS实现的精美边框效果\11.html" />
     <Content Include="纯CSS实现的精美边框效果\12.html" />
-    <Content Include="纯CSS实现的精美边框效果\13透明胶带效果.html" />
+    <Content Include="纯CSS实现的精美边框效果\13.透明胶带效果.html" />
     <Content Include="纯CSS实现的精美边框效果\14.html" />
-    <Content Include="纯CSS实现的精美边框效果\15多页效果.html" />
-    <Content Include="纯CSS实现的精美边框效果\16镜框效果.html" />
+    <Content Include="纯CSS实现的精美边框效果\15.多页效果.html" />
+    <Content Include="纯CSS实现的精美边框效果\16.镜框效果.html" />
     <Content Include="纯CSS实现的精美边框效果\readme.txt" />
     <Content Include="编码规范\Readme.txt" />
   </ItemGroup>

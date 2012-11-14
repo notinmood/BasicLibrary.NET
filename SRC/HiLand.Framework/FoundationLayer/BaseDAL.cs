@@ -239,6 +239,29 @@ namespace HiLand.Framework.FoundationLayer
         }
         #endregion
 
+        #region  
+        /// <summary>
+        /// 获取单条执行结果
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        public virtual object GetScalar(string sqlClause, params IDbDataParameter[] paras)
+        {
+            return HelperExInstance.ExecuteScalar(sqlClause, paras as TParameter[]);
+        }
+
+        /// <summary>
+        /// 非查询的方式执行语句
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        public virtual void ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras)
+        {
+            HelperExInstance.ExecuteNonQuery(sqlClause, paras as TParameter[]);
+        }
+        #endregion
+
         #region 辅助方法
         /// <summary>
         /// 获取主键形成的过滤条件
