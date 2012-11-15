@@ -86,9 +86,9 @@ namespace HiLand.Framework.BusinessCore
         /// <summary>
         /// 主体、客体行为对象的类型
         /// </summary>
-        public ExecuterTypes ExecutorType
+        public ExecutorTypes ExecutorType
         {
-            get { return ExecuterTypes.Group; }
+            get { return ExecutorTypes.Group; }
         }
         #endregion
 

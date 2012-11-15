@@ -11,9 +11,9 @@ namespace HiLand.General.Entity
     public enum RemindCategories
     {
         /// <summary>
-        /// 无
+        /// 未设置
         /// </summary>
-        [EnumItemDescription("zh-CN", "无")]
+        [EnumItemDescription("zh-CN", "未设置")]
         None = 0,
 
         /// <summary>

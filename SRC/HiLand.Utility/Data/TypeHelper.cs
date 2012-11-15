@@ -148,7 +148,7 @@ namespace HiLand.Utility.Data
             string datetimeFormat = "yyyy/MM/dd";
             string enumDisplayCategory = "zh-CN";
 
-            Dictionary<string, string> addonDic = StringHelper.SplitToDictionary(addon, ":");
+            Dictionary<string, string> addonDic = StringHelper.SplitToDictionary(addon, ":", "||");
             if (addonDic.ContainsKey("datetime"))
             {
                 datetimeFormat = addonDic["datetime"];

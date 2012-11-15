@@ -303,7 +303,7 @@ namespace HiLand.Framework.FoundationLayer
         /// <summary>
         /// 获取主键形成过滤条件是的参数集合
         /// </summary>
-        /// <param name="keyValues"></param>
+        /// <param name="guidKeyValue"></param>
         /// <returns></returns>
         protected TParameter[] GetGuidKeyParameters(Guid guidKeyValue)
         {

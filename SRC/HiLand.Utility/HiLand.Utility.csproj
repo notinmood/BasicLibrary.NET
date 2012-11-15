@@ -175,7 +175,7 @@
     <Compile Include="Enums\DateFormats.cs" />
     <Compile Include="Enums\DepartmentUserTypes.cs" />
     <Compile Include="Enums\LevelTypes.cs" />
-    <Compile Include="Enums\ExecuterTypes.cs" />
+    <Compile Include="Enums\ExecutorTypes.cs" />
     <Compile Include="Enums\FieldExtendModes.cs" />
     <Compile Include="Enums\JobStatuses.cs" />
     <Compile Include="Enums\LogLevels.cs" />

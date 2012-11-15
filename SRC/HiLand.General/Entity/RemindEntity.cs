@@ -12,7 +12,7 @@ namespace HiLand.General.Entity
     {
         public override string[] BusinessKeyNames
         {
-            get { return new string[] { "BankGuid" }; }
+            get { return new string[] { "RemindGuid" }; }
         }
 
         #region 基本信息
@@ -141,6 +141,16 @@ namespace HiLand.General.Entity
         {
             get { return readDate; }
             set { readDate = value; }
+        }
+
+        private Logics readStatus= Logics.False;
+        /// <summary>
+        /// 是否已读状态
+        /// </summary>
+        public Logics ReadStatus
+        {
+            get { return readStatus; }
+            set { readStatus = value; }
         }
 
         private string resourceKey = String.Empty;

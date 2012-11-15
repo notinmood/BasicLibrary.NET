@@ -34,8 +34,7 @@ namespace HiLand.Utility.Setting.SectionHandler
                                 }
 
                                 SystemTaskOfDailyExcutorEntity entity = new SystemTaskOfDailyExcutorEntity();
-                                entity.AddonInfo = XmlHelper.GetNodeValue(taskNode, string.Empty, "addonInfo");
-                                entity.AddonDetails = XmlHelper.GetNodeValue(taskNode, string.Empty, "addonDetails");
+                                entity.Addon = XmlHelper.GetNodeValue(taskNode, string.Empty, "addon");
                                 entity.Name = XmlHelper.GetNodeValue(taskNode, string.Empty, "name");
                                 entity.ExcuteHour = XmlHelper.GetNodeValue(taskNode, string.Empty, "excuteHour", Config.GetAppSetting("taskExcuteHour", 0));
                                 entity.ExcuteMinute = XmlHelper.GetNodeValue(taskNode, string.Empty, "excuteMinute", Config.GetAppSetting("taskExcuteMinute", 0));

@@ -43,11 +43,11 @@ namespace HiLand.Framework.BusinessCore
             set { ownerKey = value; }
         }
 
-        private ExecuterTypes ownerType;
+        private ExecutorTypes ownerType;
         /// <summary>
         /// 权限所有者的类型
         /// </summary>
-        public ExecuterTypes OwnerType
+        public ExecutorTypes OwnerType
         {
             get { return ownerType; }
             set { ownerType = value; }

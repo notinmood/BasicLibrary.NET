@@ -11,7 +11,7 @@ namespace HiLand.Utility.Enums
     /// 行为主体：行为的主动提出对象、使用对象（如某人执行某事的时候，某人即为行为主体）
     /// 行为客体：行为指派的被动对象（如给某人赋权限的时候，某人即为行为的客体）
     /// </remarks>
-    public enum ExecuterTypes
+    public enum ExecutorTypes
     {
         /// <summary>
         /// 部门

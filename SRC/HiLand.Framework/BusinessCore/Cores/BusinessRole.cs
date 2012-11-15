@@ -178,9 +178,9 @@ namespace HiLand.Framework.BusinessCore
         /// <summary>
         /// 主体、客体行为对象的类型
         /// </summary>
-        public ExecuterTypes ExecutorType
+        public ExecutorTypes ExecutorType
         {
-            get { return ExecuterTypes.Role; }
+            get { return ExecutorTypes.Role; }
         }
         #endregion
     }
