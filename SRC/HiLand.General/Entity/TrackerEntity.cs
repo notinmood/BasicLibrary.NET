@@ -38,8 +38,8 @@ namespace HiLand.General.Entity
             set { relativeKey = value; }
         }
 
-        private int canUsable;
-        public int CanUsable
+        private Logics canUsable;
+        public Logics CanUsable
         {
             get { return canUsable; }
             set { canUsable = value; }

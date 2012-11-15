@@ -40,6 +40,16 @@ namespace HiLand.Utility.Setting.SectionHandler
             set { this.excuteMinute = value; }
         }
 
+        private bool isUse = false;
+        /// <summary>
+        /// 是否启用此任务
+        /// </summary>
+        public bool IsUse
+        {
+            get { return this.isUse; }
+            set { this.isUse = value; }
+        }
+
         private string addon = string.Empty;
         /// <summary>
         /// 任务的附属信息

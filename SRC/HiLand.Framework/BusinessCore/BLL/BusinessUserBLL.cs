@@ -532,7 +532,22 @@ namespace HiLand.Framework.BusinessCore.BLL
         /// <returns></returns>
         public static List<BusinessUser> GetList(UserTypes userType)
         {
-            string whereClause = string.Format(" UserType={0} ",(int)userType);
+            return GetList(userType,null);
+        }
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="userType">用户类型</param>
+        /// <param name="userStatus">用户状态</param>
+        /// <returns></returns>
+        public static List<BusinessUser> GetList(UserTypes userType,UserStatuses? userStatus)
+        {
+            string whereClause = string.Format(" UserType={0} ", (int)userType);
+            if (userStatus.HasValue)
+            {
+                whereClause += string.Format(" AND UserStatus={0} ",(int)userStatus.Value);
+            }
             return GetList(whereClause);
         }
 

@@ -284,4 +284,46 @@ namespace HiLand.General
         Relative = 50,
         Boarding = 60,
     }
+
+    /// <summary>
+    /// 提醒类型
+    /// </summary>
+    public enum RemindCategories
+    {
+        /// <summary>
+        /// 未设置
+        /// </summary>
+        [EnumItemDescription("zh-CN", "未设置")]
+        None = 0,
+
+        /// <summary>
+        /// 员工生日提醒
+        /// </summary>
+        [EnumItemDescription("zh-CN", "员工生日提醒")]
+        BirthdayRemindOfEmployee = 1,
+
+        /// <summary>
+        /// 劳务人员生日提醒
+        /// </summary>
+        [EnumItemDescription("zh-CN", "劳务人员生日提醒")]
+        BirthdayRemindOfLabor = 2,
+
+        /// <summary>
+        /// 企业用户生日提醒
+        /// </summary>
+        [EnumItemDescription("zh-CN", "企业用户生日提醒")]
+        BirthdayRemindOfEnterpriseStaff = 3,
+
+        /// <summary>
+        /// 企业合同到期提醒
+        /// </summary>
+        [EnumItemDescription("zh-CN", "企业合同到期提醒")]
+        ContractRemindOfEnterprise = 11,
+
+        /// <summary>
+        /// 劳务人员合同到期提醒
+        /// </summary>
+        [EnumItemDescription("zh-CN", "劳务人员合同到期提醒")]
+        ContractRemindOfLabor = 12,
+    }
 }

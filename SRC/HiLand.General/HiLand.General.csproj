@@ -134,7 +134,6 @@
     <Compile Include="Entity\LogEntity.cs" />
     <Compile Include="Entity\NewsCategoryEntity.cs" />
     <Compile Include="Entity\NewsEntity.cs" />
-    <Compile Include="Entity\RemindEnum.cs" />
     <Compile Include="Entity\ResidentalEntity.cs" />
     <Compile Include="Entity\ShoppingCartEntity.cs" />
     <Compile Include="Entity\SimpleProductCategoryEntity.cs" />
