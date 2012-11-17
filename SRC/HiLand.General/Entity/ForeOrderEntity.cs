@@ -10,7 +10,7 @@ namespace HiLand.General.Entity
     /// <summary>
     /// （产品等）预定数据实体
     /// </summary>
-    public class ForeOrderEntity : BaseModel<TrackerEntity>
+    public class ForeOrderEntity : BaseModel<ForeOrderEntity>
     {
         public override string[] BusinessKeyNames
         {
@@ -175,6 +175,14 @@ namespace HiLand.General.Entity
         {
             get { return foreOrderUnitFee; }
             set { foreOrderUnitFee = value; }
+        }
+
+        /// <summary>
+        /// 总价
+        /// </summary>
+        public decimal ForeOrderTotalFee
+        {
+            get { return foreOrderUnitFee * foreOrderAmount; }
         }
 
         private Logics foreOrderPaid;

@@ -31,7 +31,7 @@ namespace HiLand.General.DALCommon
         /// </summary>
         protected override string TableName
         {
-            get { return "GeneralTracker"; }
+            get { return "GeneralForeOrder"; }
         }
 
         /// <summary>
