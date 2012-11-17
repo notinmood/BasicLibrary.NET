@@ -185,7 +185,7 @@ namespace HiLand.General.Entity
             get { return foreOrderUnitFee * foreOrderAmount; }
         }
 
-        private Logics foreOrderPaid;
+        private Logics foreOrderPaid= Logics.True;
         /// <summary>
         /// 费用是否已付
         /// </summary>
@@ -209,8 +209,8 @@ namespace HiLand.General.Entity
             set { foreOrderMemo2 = value; }
         }
 
-        private int canUsable;
-        public int CanUsable
+        private Logics canUsable= Logics.True;
+        public Logics CanUsable
         {
             get { return canUsable; }
             set { canUsable = value; }

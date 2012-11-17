@@ -55,7 +55,7 @@ namespace HiLand.General.DALCommon
         /// </summary>
         protected override string PagingSPName
         {
-            get { return "usp_General_ForeOrderGuid_SelectPaging"; }
+            get { return "usp_General_ForeOrder_SelectPaging"; }
         }
         #endregion
 
@@ -303,7 +303,7 @@ namespace HiLand.General.DALCommon
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CanUsable"))
                 {
-                    entity.CanUsable = reader.GetInt32(reader.GetOrdinal("CanUsable"));
+                    entity.CanUsable = (Logics)reader.GetInt32(reader.GetOrdinal("CanUsable"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateTime"))
                 {
