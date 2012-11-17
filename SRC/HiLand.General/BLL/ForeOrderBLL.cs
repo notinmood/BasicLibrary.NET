@@ -11,9 +11,9 @@ using HiLand.Utility.Enums;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 回访、跟踪业务逻辑类
+    /// （产品等）预定数据实体逻辑类
     /// </summary>
-    public class TrackerBLL : BaseBLL<TrackerBLL, TrackerEntity, TrackerDAL>
+    public class ForeOrderBLL : BaseBLL<ForeOrderBLL, ForeOrderEntity, ForeOrderDAL>
     {
         
     }

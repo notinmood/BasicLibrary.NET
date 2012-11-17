@@ -41,6 +41,18 @@ namespace HiLand.Utility4.MVC.Controls
             return this;
         }
 
+        private bool isDisplayTableHead = false;
+        /// <summary>
+        /// 是否显示表头
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public QueryControl IsDisplayTableHead(bool data)
+        {
+            this.isDisplayTableHead = data;
+            return this;
+        }
+
 
         /// <summary>
         /// 输出控件Html代码
@@ -52,18 +64,32 @@ namespace HiLand.Utility4.MVC.Controls
             sb.AppendFormat("<table class=\"{0}\" style=\"width: 100%;\">", this.cssClassName);
 
             sb.Append("<tr>");
-            if (this.isDisplayBrackets == true)
+            if (isDisplayTableHead == true)
             {
-                sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", "(");
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", "(");
+                }
+                sb.AppendFormat("<th style=\"width: 20%;\">{0}</th>", "名称");
+                sb.AppendFormat("<th style=\"width: 5%;\">{0}</th>", "符号");
+                sb.AppendFormat("<th style=\"width: auto;\">{0}</th>", "值");
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", ")");
+                }
             }
-            sb.AppendFormat("<th style=\"width: 20%;\">{0}</th>", "名称");
-            sb.AppendFormat("<th style=\"width: 5%;\">{0}</th>", "符号");
-            sb.AppendFormat("<th style=\"width: auto;\">{0}</th>", "值");
-            if (this.isDisplayBrackets == true)
+            else
             {
-                sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", ")");
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.Append("<th colspan=\"5\" style=\"width: 88%;\"></th>");
+                }
+                else
+                {
+                    sb.Append("<th colspan=\"3\" style=\"width: 88%;\"></th>");
+                }
             }
-            sb.AppendFormat("<th style=\"width: 10%;\">{0}<span class=\"queryButton buttons\">{2}</span>{1}</th>", "", GetQueryControlDisplayStatusString(), this.queryButtonTextForOpen);
+            sb.AppendFormat("<th style=\"width: 12%;\">{0}<span class=\"queryButton btn btn-warning\">{2}</span>{1}</th>", "", GetQueryControlDisplayStatusString(), this.queryButtonTextForOpen);
             sb.Append("</tr>");
 
             for (int i = 0; i < queryConditionList.Count; i++)

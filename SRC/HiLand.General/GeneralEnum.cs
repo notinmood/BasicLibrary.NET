@@ -326,4 +326,34 @@ namespace HiLand.General
         [EnumItemDescription("zh-CN", "劳务人员合同到期提醒")]
         ContractRemindOfLabor = 12,
     }
+
+    /// <summary>
+    /// 预定产品或者服务的履行状态
+    /// </summary>
+    public enum ForeOrderStatuses
+    {
+        /// <summary>
+        /// 未设置
+        /// </summary>
+        [EnumItemDescription("zh-CN", "未设置")]
+        UnSet=0,
+
+        /// <summary>
+        /// 已预订
+        /// </summary>
+        [EnumItemDescription("zh-CN", "已预订")]
+        Fore=1,
+        
+        /// <summary>
+        /// 已兑付
+        /// </summary>
+        [EnumItemDescription("zh-CN", "已兑付")]
+        Excuted=10,
+        
+        /// <summary>
+        /// 已取消
+        /// </summary>
+        [EnumItemDescription("zh-CN", "已取消")]
+        Cancle= 101,
+    }
 }

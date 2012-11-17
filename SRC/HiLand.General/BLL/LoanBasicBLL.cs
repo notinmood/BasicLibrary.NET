@@ -12,7 +12,7 @@ using HiLand.Utility.Finance;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 贷款基本信息逻辑类
+    /// 贷款基本信息业务逻辑类
     /// </summary>
     public class LoanBasicBLL : BaseBLL<LoanBasicBLL, LoanBasicEntity, LoanBasicDAL, ILoanBasicDAL>
     {

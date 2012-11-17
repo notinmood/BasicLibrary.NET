@@ -10,7 +10,7 @@ using HiLand.Utility.Enums;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 地区逻辑类
+    /// 地区业务逻辑类
     /// </summary>
     public class AreaBLL : BaseBLL<AreaBLL, AreaEntity, AreaDAL>
     {

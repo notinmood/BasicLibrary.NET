@@ -9,7 +9,7 @@ using HiLand.Utility.Enums;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 人员在银行的账户信息业务逻辑
+    /// 人员在银行的账户信息业务逻辑类
     /// </summary>
     public class BankBLL : BaseBLL<BankBLL, BankEntity, BankDAL, IBankDAL>
     {

@@ -11,7 +11,7 @@ using HiLand.Utility.Enums;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 购物车逻辑类
+    /// 购物车业务逻辑类
     /// </summary>
     public class ShoppingCartBLL : BaseBLL<ShoppingCartBLL, ShoppingCartEntity, ShoppingCartDAL>
     {

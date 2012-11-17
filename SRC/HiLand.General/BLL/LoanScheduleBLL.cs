@@ -9,7 +9,7 @@ using HiLand.Utility.Data;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 还款日程逻辑类
+    /// 还款日程业务逻辑类
     /// </summary>
     public class LoanScheduleBLL : BaseBLL<LoanScheduleBLL, LoanScheduleEntity, LoanScheduleDAL>
     {

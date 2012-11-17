@@ -11,7 +11,7 @@ using HiLand.Utility.Enums;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 信息提醒逻辑类
+    /// 信息提醒业务逻辑类
     /// </summary>
     public class RemindBLL : BaseBLL<RemindBLL, RemindEntity, RemindDAL>
     {
