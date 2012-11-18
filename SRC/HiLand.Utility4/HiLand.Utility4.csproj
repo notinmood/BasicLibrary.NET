@@ -111,6 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MVC\SectionHandler\readme.txt" />
+    <Content Include="Office\WordHelper.txt" />
     <Content Include="ReadmeAndTODO.txt" />
     <Content Include="SettingList.txt" />
   </ItemGroup>

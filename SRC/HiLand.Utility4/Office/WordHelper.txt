@@ -1,0 +1,4 @@
+﻿1、目前对于word的操作，限定格式为office2007+
+2、对于word的操作主要是基于word内部子文件的 字符串替换 和 流内容替换；后续再考虑使用Open Xml SDK方式进行操作。
+	（Open XML SDK 2.0 Productivity Tool。这个工具的主要目的是对Word、PowerPoint或者Excel等office文档进行反向工程。
+	接着，它会生成可以重新创建这个文档的C#代码。这个工具还能用来验证文档。http://www.weibo.com/1087372422/z5JgC3Ddv）
