@@ -77,18 +77,56 @@ namespace HiLand.Utility4.Office
         }
 
         /// <summary>
+        /// 获取DOCX文件中某个子文件的文本内容
+        /// </summary>
+        /// <param name="docxStream">docx文件流</param>
+        /// <param name="innerfileFullName">docx内部子文件全名称</param>
+        /// <returns></returns>
+        public static string GetTextContent(Stream docxStream, string innerfileFullName)
+        {
+            string content = string.Empty;
+            try
+            {
+                //打开docx文件  
+                using (Package zip = Package.Open(docxStream, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                {
+                    foreach (PackagePart part in zip.GetParts())
+                    {
+                        //寻找内部xml文件  
+                        if (part.Uri.OriginalString == innerfileFullName)
+                        {
+                            using (StreamReader sr = new StreamReader(part.GetStream()))
+                            {
+                                content = sr.ReadToEnd();
+                                sr.Close();
+                            }
+
+                            zip.Close();
+                            break;
+                        }
+                    }
+                }
+            }
+            catch
+            {
+                //throw new Exception(ex.Message);
+            }
+            return content;
+        }
+
+        /// <summary>
         /// 替换DOCX文件中某个子文件的文本内容
         /// </summary>
-        /// <param name="docxFileFullPath">docx文件流</param>
+        /// <param name="docxStream">docx文件流</param>
         /// <param name="innerfileFullName">docx内部子文件全名称</param>
         /// <param name="originalContent">原文本内容</param>
         /// <param name="newContent">新的文本内容</param>
-        public static void ReplaceTextContent(string docxFileFullPath, string innerfileFullName, string originalContent, string newContent)
+        public static void ReplaceTextContent(Stream docxStream, string innerfileFullName, string originalContent, string newContent)
         {
             try
             {
                 //打开docx文件  
-                using (Package zip = Package.Open(docxFileFullPath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                using (Package zip = Package.Open(docxStream, FileMode.OpenOrCreate, FileAccess.ReadWrite))
                 {
                     foreach (PackagePart part in zip.GetParts())
                     {

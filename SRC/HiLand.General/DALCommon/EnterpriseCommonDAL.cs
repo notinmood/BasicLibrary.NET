@@ -254,6 +254,16 @@ namespace HiLand.General.DALCommon
         /// <returns></returns>
         protected override EnterpriseEntity Load(IDataReader reader)
         {
+            return StaticLoad(reader);
+        }
+
+        /// <summary>
+        /// 此方法存储为了向外暴漏
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        public static EnterpriseEntity StaticLoad(IDataReader reader)
+        {
             EnterpriseEntity entity = new EnterpriseEntity();
             if (reader != null && reader.IsClosed == false)
             {

@@ -187,6 +187,10 @@ namespace HiLand.Utility.IO
             list["avi"] = "video/x-msvideo";
             list["movie"] = "video/x-sgi-movie";
             list["ice"] = "x-conference/x-cooltalk";
+
+            list["docx"] = "application/vnd.openxmlformats-officedocument.wordprocessingml.document";
+            list["xlsx"] = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            list["pptx"] = "application/vnd.openxmlformats-officedocument.presentationml.presentation";
         }
 
         /// <summary>
