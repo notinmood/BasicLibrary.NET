@@ -87,10 +87,15 @@ namespace HiLand.General.DALCommon
 			    [RelativeKey],
 			    [RelativeName],
 			    [RelativeNameOther],
-			    [ForeOrderAmount],
+			    [ForeOrderCount],
 			    [ForeOrderUnitName],
 			    [ForeOrderUnitFee],
 			    [ForeOrderPaid],
+                [ForeOrderPayDate],
+			    [CommissionFee],
+			    [CommissionDate],
+			    [CommissionIsDrawed],
+			    [CommissionOther],
 			    [ForeOrderMemo1],
 			    [ForeOrderMemo2],
 			    [CanUsable],
@@ -113,10 +118,15 @@ namespace HiLand.General.DALCommon
 			    {0}RelativeKey,
 			    {0}RelativeName,
 			    {0}RelativeNameOther,
-			    {0}ForeOrderAmount,
+			    {0}ForeOrderCount,
 			    {0}ForeOrderUnitName,
 			    {0}ForeOrderUnitFee,
 			    {0}ForeOrderPaid,
+                {0}ForeOrderPayDate,
+			    {0}CommissionFee,
+			    {0}CommissionDate,
+			    {0}CommissionIsDrawed,
+			    {0}CommissionOther,
 			    {0}ForeOrderMemo1,
 			    {0}ForeOrderMemo2,
 			    {0}CanUsable,
@@ -153,10 +163,15 @@ namespace HiLand.General.DALCommon
 				[RelativeKey] = {0}RelativeKey,
 				[RelativeName] = {0}RelativeName,
 				[RelativeNameOther] = {0}RelativeNameOther,
-				[ForeOrderAmount] = {0}ForeOrderAmount,
+				[ForeOrderCount] = {0}ForeOrderCount,
 				[ForeOrderUnitName] = {0}ForeOrderUnitName,
 				[ForeOrderUnitFee] = {0}ForeOrderUnitFee,
 				[ForeOrderPaid] = {0}ForeOrderPaid,
+                [ForeOrderPayDate] = {0}ForeOrderPayDate,
+				[CommissionFee] = {0}CommissionFee,
+				[CommissionDate] = {0}CommissionDate,
+				[CommissionIsDrawed] = {0}CommissionIsDrawed,
+				[CommissionOther] = {0}CommissionOther,
 				[ForeOrderMemo1] = {0}ForeOrderMemo1,
 				[ForeOrderMemo2] = {0}ForeOrderMemo2,
 				[CanUsable] = {0}CanUsable,
@@ -197,10 +212,15 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("RelativeKey",entity.RelativeKey?? String.Empty),
 			    GenerateParameter("RelativeName",entity.RelativeName?? String.Empty),
 			    GenerateParameter("RelativeNameOther",entity.RelativeNameOther?? String.Empty),
-			    GenerateParameter("ForeOrderAmount",entity.ForeOrderAmount),
+			    GenerateParameter("ForeOrderCount",entity.ForeOrderCount),
 			    GenerateParameter("ForeOrderUnitName",entity.ForeOrderUnitName?? String.Empty),
 			    GenerateParameter("ForeOrderUnitFee",entity.ForeOrderUnitFee),
 			    GenerateParameter("ForeOrderPaid",entity.ForeOrderPaid),
+                GenerateParameter("ForeOrderPayDate",entity.ForeOrderPayDate),
+			    GenerateParameter("CommissionFee",entity.CommissionFee),
+			    GenerateParameter("CommissionDate",entity.CommissionDate),
+			    GenerateParameter("CommissionIsDrawed",entity.CommissionIsDrawed),
+			    GenerateParameter("CommissionOther",entity.CommissionOther?? String.Empty),
 			    GenerateParameter("ForeOrderMemo1",entity.ForeOrderMemo1?? String.Empty),
 			    GenerateParameter("ForeOrderMemo2",entity.ForeOrderMemo2?? String.Empty),
 			    GenerateParameter("CanUsable",entity.CanUsable),
@@ -277,9 +297,9 @@ namespace HiLand.General.DALCommon
                 {
                     entity.RelativeNameOther = reader.GetString(reader.GetOrdinal("RelativeNameOther"));
                 }
-                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderAmount"))
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderCount"))
                 {
-                    entity.ForeOrderAmount = reader.GetDecimal(reader.GetOrdinal("ForeOrderAmount"));
+                    entity.ForeOrderCount = reader.GetDecimal(reader.GetOrdinal("ForeOrderCount"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderUnitName"))
                 {
@@ -292,6 +312,26 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderPaid"))
                 {
                     entity.ForeOrderPaid = (Logics)reader.GetInt32(reader.GetOrdinal("ForeOrderPaid"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderPayDate"))
+                {
+                    entity.ForeOrderPayDate = reader.GetDateTime(reader.GetOrdinal("ForeOrderPayDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CommissionFee"))
+                {
+                    entity.CommissionFee = reader.GetDecimal(reader.GetOrdinal("CommissionFee"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CommissionDate"))
+                {
+                    entity.CommissionDate = reader.GetDateTime(reader.GetOrdinal("CommissionDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CommissionIsDrawed"))
+                {
+                    entity.CommissionIsDrawed = (Logics)reader.GetInt32(reader.GetOrdinal("CommissionIsDrawed"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CommissionOther"))
+                {
+                    entity.CommissionOther = reader.GetString(reader.GetOrdinal("CommissionOther"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderMemo1"))
                 {

@@ -147,14 +147,14 @@ namespace HiLand.General.Entity
             set { relativeNameOther = value; }
         }
 
-        private decimal foreOrderAmount;
+        private decimal foreOrderCount;
         /// <summary>
         /// 预定数量
         /// </summary>
-        public decimal ForeOrderAmount
+        public decimal ForeOrderCount
         {
-            get { return foreOrderAmount; }
-            set { foreOrderAmount = value; }
+            get { return foreOrderCount; }
+            set { foreOrderCount = value; }
         }
 
         private string foreOrderUnitName = String.Empty;
@@ -182,7 +182,7 @@ namespace HiLand.General.Entity
         /// </summary>
         public decimal ForeOrderTotalFee
         {
-            get { return foreOrderUnitFee * foreOrderAmount; }
+            get { return foreOrderUnitFee * foreOrderCount; }
         }
 
         private Logics foreOrderPaid= Logics.True;
@@ -193,6 +193,41 @@ namespace HiLand.General.Entity
         {
             get { return foreOrderPaid; }
             set { foreOrderPaid = value; }
+        }
+
+        private DateTime foreOrderPayDate = DateTimeHelper.Min;
+        public DateTime ForeOrderPayDate
+        {
+            get { return foreOrderPayDate; }
+            set { foreOrderPayDate = value; }
+        }
+
+        private decimal commissionFee;
+        public decimal CommissionFee
+        {
+            get { return commissionFee; }
+            set { commissionFee = value; }
+        }
+
+        private DateTime commissionDate = DateTimeHelper.Min;
+        public DateTime CommissionDate
+        {
+            get { return commissionDate; }
+            set { commissionDate = value; }
+        }
+
+        private Logics commissionIsDrawed;
+        public Logics CommissionIsDrawed
+        {
+            get { return commissionIsDrawed; }
+            set { commissionIsDrawed = value; }
+        }
+
+        private string commissionOther = String.Empty;
+        public string CommissionOther
+        {
+            get { return commissionOther; }
+            set { commissionOther = value; }
         }
 
         private string foreOrderMemo1 = String.Empty;

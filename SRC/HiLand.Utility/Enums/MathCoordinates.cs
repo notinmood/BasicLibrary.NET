@@ -4,7 +4,10 @@ using System.Text;
 
 namespace HiLand.Utility.Enums
 {
-    public enum MathCoordinates
+    /// <summary>
+    /// 直角坐标
+    /// </summary>
+    public enum RectangularCoordinates
     {
         X,
         Y,

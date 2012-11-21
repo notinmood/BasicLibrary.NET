@@ -208,6 +208,9 @@
     <Compile Include="Finance\RMB.cs" />
     <Compile Include="Finance\SimpleRateConverter.cs" />
     <Compile Include="IO\PathHelper.cs" />
+    <Compile Include="Mathes\Coordinate\CoordinateHelper.cs" />
+    <Compile Include="Mathes\Coordinate\RectangularCoordinatePoint.cs" />
+    <Compile Include="Mathes\Coordinate\SphericalCoordinatePoint.cs" />
     <Compile Include="Mathes\StringParse\Operand.cs" />
     <Compile Include="Mathes\StringParse\OperandTypes.cs" />
     <Compile Include="Mathes\StringParse\Operator.cs" />
@@ -403,6 +406,7 @@
     <Folder Include="Logging\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Mathes\Coordinate\三维空间中直角坐标与球坐标的相互转换.docx" />
     <None Include="Security\.NET提供的加密算法概述.doc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
