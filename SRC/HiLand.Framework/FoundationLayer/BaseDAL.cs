@@ -49,6 +49,17 @@ namespace HiLand.Framework.FoundationLayer
         /// 分页存储过程的名字
         /// </summary>
         protected abstract string PagingSPName { get; }
+
+        /// <summary>
+        /// GetList获取数据集合时的排序条件
+        /// </summary>
+        /// <remarks>
+        /// 如果GetList的重载方法设置了参数OrderByClause，则此属性会被覆盖
+        /// </remarks>
+        protected virtual string OrderByCondition
+        {
+            get { return string.Empty; }
+        }
         #endregion
 
         #region 数据库基本操作
@@ -205,6 +216,13 @@ namespace HiLand.Framework.FoundationLayer
             if (string.IsNullOrEmpty(orderByClause) == false)
             {
                 commandText += " Order By " + orderByClause;
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(this.OrderByCondition) == false)
+                {
+                    commandText += " Order By " + this.OrderByCondition;
+                }
             }
 
             TParameter[] sqlParas = paras as TParameter[];

@@ -175,6 +175,16 @@ namespace HiLand.General.Entity
             set { areaCode = value; }
         }
 
+        private string areaOther = String.Empty;
+        /// <summary>
+        /// 地区的其他信息
+        /// </summary>
+        public string AreaOther
+        {
+            get { return areaOther; }
+            set { areaOther = value; }
+        }
+
         private string companyNameShort = String.Empty;
         /// <summary>
         /// 企业简称（如果没有填写简称其会获取全称）

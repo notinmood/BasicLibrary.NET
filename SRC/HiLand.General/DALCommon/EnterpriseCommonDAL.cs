@@ -87,6 +87,7 @@ namespace HiLand.General.DALCommon
 			        [AssociatedEnterpriseGuid],
 			        [ContactPerson],
 			        [AreaCode],
+                    [AreaOther],
 			        [CanUsable],
 			        [Longitude],
 			        [Lantitude],
@@ -124,6 +125,7 @@ namespace HiLand.General.DALCommon
 			        {0}AssociatedEnterpriseGuid,
 			        {0}ContactPerson,
 			        {0}AreaCode,
+                    {0}AreaOther,
 			        {0}CanUsable,
 			        {0}Longitude,
 			        {0}Lantitude,
@@ -175,6 +177,7 @@ namespace HiLand.General.DALCommon
 				    [AssociatedEnterpriseGuid] = {0}AssociatedEnterpriseGuid,
 				    [ContactPerson] = {0}ContactPerson,
 				    [AreaCode] = {0}AreaCode,
+                    [AreaOther] = {0}AreaOther,
 				    [CanUsable] = {0}CanUsable,
 				    [Longitude] = {0}Longitude,
 				    [Lantitude] = {0}Lantitude,
@@ -230,6 +233,7 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("AssociatedEnterpriseGuid",entity.AssociatedEnterpriseGuid),
 			    GenerateParameter("ContactPerson",entity.ContactPerson?? String.Empty),
 			    GenerateParameter("AreaCode",entity.AreaCode?? String.Empty),
+                GenerateParameter("AreaOther",entity.AreaOther?? String.Empty),
 			    GenerateParameter("CanUsable",entity.CanUsable),
 			    GenerateParameter("Longitude",entity.Longitude),
 			    GenerateParameter("Lantitude",entity.Lantitude),
@@ -354,6 +358,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "AreaCode"))
                 {
                     entity.AreaCode = reader.GetString(reader.GetOrdinal("AreaCode"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "AreaOther"))
+                {
+                    entity.AreaOther = reader.GetString(reader.GetOrdinal("AreaOther"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CanUsable"))
                 {
