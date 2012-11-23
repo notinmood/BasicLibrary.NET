@@ -274,9 +274,9 @@ namespace HiLand.Framework.FoundationLayer
         /// </summary>
         /// <param name="sqlClause"></param>
         /// <param name="paras"></param>
-        public virtual void ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras)
+        public virtual int ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras)
         {
-            HelperExInstance.ExecuteNonQuery(sqlClause, paras as TParameter[]);
+            return HelperExInstance.ExecuteNonQuery(sqlClause, paras as TParameter[]);
         }
         #endregion
 

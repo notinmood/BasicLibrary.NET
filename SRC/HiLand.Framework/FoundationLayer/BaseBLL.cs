@@ -429,6 +429,9 @@ namespace HiLand.Framework.FoundationLayer
         /// <param name="sqlClause"></param>
         /// <param name="paras"></param>
         /// <returns></returns>
+        /// <remarks>
+        /// 虽然本方法可以执行任何sql语句，但是为了缓存保存的条理性，建议仅执行跟本实体有关的sql语句
+        /// </remarks>
         public virtual object GetScalar(string sqlClause, params IDbDataParameter[] paras)
         {
             string sqlClauseString = GetRealWhereClauseString(sqlClause, paras);
@@ -436,16 +439,26 @@ namespace HiLand.Framework.FoundationLayer
             return CacheHelper.Access<string, IDbDataParameter[], object>(cacheKey, CacheMintues, SaveDAL.GetScalar, sqlClause,paras);
         }
 
-        //TODO:xieran20121114 需要综合考虑缓存的情形再使用,此方法暂时不向外暴漏
-        ///// <summary>
-        ///// 非查询的方式执行语句
-        ///// </summary>
-        ///// <param name="sqlClause"></param>
-        ///// <param name="param"></param>
-        //public virtual void ExcuteNonQuery(string sqlClause, params IDbDataParameter[] param)
-        //{
-        //    HelperExInstance.ExecuteNonQuery(sqlClause, param as TParameter[]);
-        //}
+        /// <summary>
+        /// 非查询的方式执行语句
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// 虽然本方法可以执行任何sql语句，但是为了缓存清除的准确性，请务必仅执行跟本实体有关的sql语句
+        /// </remarks>
+        public virtual int ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras)
+        {
+            int result= SaveDAL.ExcuteNonQuery(sqlClause,paras);
+            if (result > 0)
+            { 
+                //清空本实体模型对应的所有缓存
+                CleanUpAllCache();
+            }
+
+            return result;
+        }
 
         /// <summary>
         /// 

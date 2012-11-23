@@ -108,6 +108,6 @@ namespace HiLand.Framework.FoundationLayer
         /// </summary>
         /// <param name="paras"></param>
         /// <param name="sqlClause"></param>
-        void ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras);
+        int ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras);
     }
 }
