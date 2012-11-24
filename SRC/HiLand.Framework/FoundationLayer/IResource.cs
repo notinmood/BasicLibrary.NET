@@ -53,5 +53,20 @@ namespace HiLand.Framework.FoundationLayer
         /// 资源创建时间
         /// </summary>
         DateTime CreateDate { get; set; }
+
+        /// <summary>
+        /// 资源最后更新人Key
+        /// </summary>
+        string LastUpdateUserKey { get; set; }
+
+        /// <summary>
+        /// 资源最后更新人名称
+        /// </summary>
+        string LastUpdateUserName { get; set; }
+
+        /// <summary>
+        /// 资源最后更新时间
+        /// </summary>
+        DateTime LastUpdateDate { get; set; }
     }
 }
