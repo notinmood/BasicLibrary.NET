@@ -103,6 +103,7 @@
     <Compile Include="FoundationLayer\IDAL.cs" />
     <Compile Include="FoundationLayer\IModel.cs" />
     <Compile Include="FoundationLayer\IModelExtensible.cs" />
+    <Compile Include="FoundationLayer\IResource.cs" />
     <Compile Include="Permission\Control\PermissionButton.cs" />
     <Compile Include="Permission\Control\PermissionButton2.cs" />
     <Compile Include="Permission\Control\PermissionHyperLink.cs" />
