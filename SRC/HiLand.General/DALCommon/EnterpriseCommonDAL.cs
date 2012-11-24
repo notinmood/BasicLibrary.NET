@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.General.Entity;
 using HiLand.Utility.Data;
@@ -65,6 +66,17 @@ namespace HiLand.General.DALCommon
                 entity.EnterpriseGuid = GuidHelper.NewGuid();
             }
 
+            if (entity.CreateDate == DateTimeHelper.Min)
+            {
+                entity.CreateDate = DateTime.Now;
+            }
+
+            if (string.IsNullOrEmpty(entity.CreateUserKey))
+            {
+                entity.CreateUserKey = BusinessUserBLL.CurrentUserGuid.ToString();
+                entity.CreateUserName = BusinessUserBLL.CurrentUserName;
+            }
+
             string commandText = string.Format(@"Insert Into [GeneralEnterprise] (
 			        [EnterpriseGuid],
 			        [CompanyName],
@@ -99,6 +111,7 @@ namespace HiLand.General.DALCommon
 			        [EnterpriseLevel],
 			        [EnterpriseRank],
 			        [CreateUserKey],
+                    [CreateUserName],
 			        [CreateDate],
 			        [PropertyNames],
 			        [PropertyValues]
@@ -137,6 +150,7 @@ namespace HiLand.General.DALCommon
 			        {0}EnterpriseLevel,
 			        {0}EnterpriseRank,
 			        {0}CreateUserKey,
+                    {0}CreateUserName,
 			        {0}CreateDate,
 			        {0}PropertyNames,
 			        {0}PropertyValues
@@ -189,6 +203,7 @@ namespace HiLand.General.DALCommon
 				    [EnterpriseLevel] = {0}EnterpriseLevel,
 				    [EnterpriseRank] = {0}EnterpriseRank,
 				    [CreateUserKey] = {0}CreateUserKey,
+                    [CreateUserName] = {0}CreateUserName,
 				    [CreateDate] = {0}CreateDate,
 				    [PropertyNames] = {0}PropertyNames,
 				    [PropertyValues] = {0}PropertyValues
@@ -245,6 +260,7 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("EnterpriseLevel",entity.EnterpriseLevel),
 			    GenerateParameter("EnterpriseRank",entity.EnterpriseRank?? String.Empty),
 			    GenerateParameter("CreateUserKey",entity.CreateUserKey?? String.Empty),
+                GenerateParameter("CreateUserName",entity.CreateUserName?? String.Empty),
 			    GenerateParameter("CreateDate",entity.CreateDate)
             };
 
@@ -406,6 +422,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserKey"))
                 {
                     entity.CreateUserKey = reader.GetString(reader.GetOrdinal("CreateUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserName"))
+                {
+                    entity.CreateUserName = reader.GetString(reader.GetOrdinal("CreateUserName"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateDate"))
                 {

@@ -25,7 +25,7 @@ namespace HiLand.General.Entity
         }
 
         private Guid enterpriseGuid = Guid.Empty;
-         [DBFieldAttribute(IsBusinessPrimaryKey = true)]
+        [DBFieldAttribute(IsBusinessPrimaryKey = true)]
         public Guid EnterpriseGuid
         {
             get { return enterpriseGuid; }
@@ -133,7 +133,7 @@ namespace HiLand.General.Entity
             set { establishedYears = value; }
         }
 
-        private DateTime establishedTime= DateTimeHelper.Min;
+        private DateTime establishedTime = DateTimeHelper.Min;
         public DateTime EstablishedTime
         {
             get { return establishedTime; }
@@ -191,13 +191,13 @@ namespace HiLand.General.Entity
         /// </summary>
         public string CompanyNameShort
         {
-            get 
+            get
             {
                 if (string.IsNullOrEmpty(this.companyNameShort))
                 {
                     this.companyNameShort = companyName;
                 }
-                return this.companyNameShort; 
+                return this.companyNameShort;
             }
             set { companyNameShort = value; }
         }
@@ -304,13 +304,29 @@ namespace HiLand.General.Entity
         }
 
         private string createUserKey = String.Empty;
+        /// <summary>
+        /// 资源创建人Key
+        /// </summary>
         public string CreateUserKey
         {
             get { return createUserKey; }
             set { createUserKey = value; }
         }
 
+        private string createUserName = String.Empty;
+        /// <summary>
+        /// 资源创建人名称
+        /// </summary>
+        public string CreateUserName
+        {
+            get { return createUserName; }
+            set { createUserName = value; }
+        }
+
         private DateTime createDate = DateTimeHelper.Min;
+        /// <summary>
+        /// 资源创建时间
+        /// </summary>
         public DateTime CreateDate
         {
             get { return createDate; }
