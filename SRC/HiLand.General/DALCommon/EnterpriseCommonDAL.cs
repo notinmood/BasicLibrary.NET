@@ -113,6 +113,9 @@ namespace HiLand.General.DALCommon
 			        [CreateUserKey],
                     [CreateUserName],
 			        [CreateDate],
+                    [LastUpdateUserKey],
+                    [LastUpdateUserName],
+			        [LastUpdateDate],
 			        [PropertyNames],
 			        [PropertyValues]
                 ) 
@@ -152,6 +155,9 @@ namespace HiLand.General.DALCommon
 			        {0}CreateUserKey,
                     {0}CreateUserName,
 			        {0}CreateDate,
+                    {0}LastUpdateUserKey,
+                    {0}LastUpdateUserName,
+			        {0}LastUpdateDate,
 			        {0}PropertyNames,
 			        {0}PropertyValues
                 )", ParameterNamePrefix);
@@ -169,6 +175,10 @@ namespace HiLand.General.DALCommon
         /// <returns></returns>
         public override bool Update(EnterpriseEntity entity)
         {
+            entity.LastUpdateDate = DateTime.Now;
+            entity.LastUpdateUserKey = BusinessUserBLL.CurrentUserGuid.ToString();
+            entity.LastUpdateUserName = BusinessUserBLL.CurrentUserName;
+
             string commandText = string.Format(@"Update [GeneralEnterprise] Set   
 					[EnterpriseGuid] = {0}EnterpriseGuid,
 				    [CompanyName] = {0}CompanyName,
@@ -205,6 +215,9 @@ namespace HiLand.General.DALCommon
 				    [CreateUserKey] = {0}CreateUserKey,
                     [CreateUserName] = {0}CreateUserName,
 				    [CreateDate] = {0}CreateDate,
+                    [LastUpdateUserKey] = {0}LastUpdateUserKey,
+                    [LastUpdateUserName] = {0}LastUpdateUserName,
+				    [LastUpdateDate] = {0}LastUpdateDate,
 				    [PropertyNames] = {0}PropertyNames,
 				    [PropertyValues] = {0}PropertyValues
              Where [EnterpriseGuid] = @EnterpriseGuid", ParameterNamePrefix);
@@ -261,7 +274,10 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("EnterpriseRank",entity.EnterpriseRank?? String.Empty),
 			    GenerateParameter("CreateUserKey",entity.CreateUserKey?? String.Empty),
                 GenerateParameter("CreateUserName",entity.CreateUserName?? String.Empty),
-			    GenerateParameter("CreateDate",entity.CreateDate)
+			    GenerateParameter("CreateDate",entity.CreateDate),
+                GenerateParameter("LastUpdateUserKey",entity.LastUpdateUserKey?? String.Empty),
+                GenerateParameter("LastUpdateUserName",entity.LastUpdateUserName?? String.Empty),
+			    GenerateParameter("LastUpdateDate",entity.LastUpdateDate)
             };
 
             paraList.AddRange(list);
@@ -430,6 +446,18 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateDate"))
                 {
                     entity.CreateDate = reader.GetDateTime(reader.GetOrdinal("CreateDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LastUpdateUserKey"))
+                {
+                    entity.LastUpdateUserKey = reader.GetString(reader.GetOrdinal("LastUpdateUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LastUpdateUserName"))
+                {
+                    entity.LastUpdateUserName = reader.GetString(reader.GetOrdinal("LastUpdateUserName"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LastUpdateDate"))
+                {
+                    entity.LastUpdateDate = reader.GetDateTime(reader.GetOrdinal("LastUpdateDate"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "PropertyNames"))
                 {

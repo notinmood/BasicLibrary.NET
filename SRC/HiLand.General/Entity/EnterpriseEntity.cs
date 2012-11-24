@@ -332,6 +332,36 @@ namespace HiLand.General.Entity
             get { return createDate; }
             set { createDate = value; }
         }
+
+        private string lastUpdateUserKey = String.Empty;
+        /// <summary>
+        /// 资源最后更新人Key
+        /// </summary>
+        public string LastUpdateUserKey
+        {
+            get { return lastUpdateUserKey; }
+            set { lastUpdateUserKey = value; }
+        }
+
+        private string lastUpdateUserName = String.Empty;
+        /// <summary>
+        /// 资源最后更新人名称
+        /// </summary>
+        public string LastUpdateUserName
+        {
+            get { return lastUpdateUserName; }
+            set { lastUpdateUserName = value; }
+        }
+
+        private DateTime lastUpdateDate = DateTimeHelper.Min;
+        /// <summary>
+        /// 资源最后更新时间
+        /// </summary>
+        public DateTime LastUpdateDate
+        {
+            get { return lastUpdateDate; }
+            set { lastUpdateDate = value; }
+        }
         #endregion
     }
 }
