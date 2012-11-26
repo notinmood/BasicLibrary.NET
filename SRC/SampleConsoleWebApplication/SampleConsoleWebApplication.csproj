@@ -80,6 +80,7 @@
     <Content Include="CompressHelperTest.aspx" />
     <Content Include="ContentTypes测试.aspx" />
     <Content Include="ConverterTest.aspx" />
+    <Content Include="FlagHelperTest.aspx" />
     <Content Include="脏词过滤测试.txt" />
     <Content Include="CacheUsing.aspx" />
     <Content Include="CurrentUserDemo\Index.aspx" />
@@ -235,6 +236,13 @@
     </Compile>
     <Compile Include="FileTest.aspx.designer.cs">
       <DependentUpon>FileTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FlagHelperTest.aspx.cs">
+      <DependentUpon>FlagHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FlagHelperTest.aspx.designer.cs">
+      <DependentUpon>FlagHelperTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="GeneralValidateDemo\ModuleA\ModuleA1\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -487,6 +495,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="GeneralValidateDemo\ModuleB\ModuleB2\" />
     <Folder Include="GeneralValidateDemo\ModuleB\ModuleB3\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />

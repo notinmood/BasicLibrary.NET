@@ -116,6 +116,8 @@ namespace HiLand.General.DALCommon
                     [LastUpdateUserKey],
                     [LastUpdateUserName],
 			        [LastUpdateDate],
+			        [IsProtectedByOwner],
+			        [CooperateStatus],
 			        [PropertyNames],
 			        [PropertyValues]
                 ) 
@@ -158,6 +160,8 @@ namespace HiLand.General.DALCommon
                     {0}LastUpdateUserKey,
                     {0}LastUpdateUserName,
 			        {0}LastUpdateDate,
+			        {0}IsProtectedByOwner,
+			        {0}CooperateStatus,
 			        {0}PropertyNames,
 			        {0}PropertyValues
                 )", ParameterNamePrefix);
@@ -218,6 +222,8 @@ namespace HiLand.General.DALCommon
                     [LastUpdateUserKey] = {0}LastUpdateUserKey,
                     [LastUpdateUserName] = {0}LastUpdateUserName,
 				    [LastUpdateDate] = {0}LastUpdateDate,
+				    [IsProtectedByOwner] = {0}IsProtectedByOwner,
+				    [CooperateStatus] = {0}CooperateStatus,
 				    [PropertyNames] = {0}PropertyNames,
 				    [PropertyValues] = {0}PropertyValues
              Where [EnterpriseGuid] = @EnterpriseGuid", ParameterNamePrefix);
@@ -277,7 +283,9 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("CreateDate",entity.CreateDate),
                 GenerateParameter("LastUpdateUserKey",entity.LastUpdateUserKey?? String.Empty),
                 GenerateParameter("LastUpdateUserName",entity.LastUpdateUserName?? String.Empty),
-			    GenerateParameter("LastUpdateDate",entity.LastUpdateDate)
+			    GenerateParameter("LastUpdateDate",entity.LastUpdateDate),
+                GenerateParameter("IsProtectedByOwner",entity.IsProtectedByOwner),
+			    GenerateParameter("CooperateStatus",entity.CooperateStatus)
             };
 
             paraList.AddRange(list);
@@ -458,6 +466,14 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LastUpdateDate"))
                 {
                     entity.LastUpdateDate = reader.GetDateTime(reader.GetOrdinal("LastUpdateDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "IsProtectedByOwner"))
+                {
+                    entity.IsProtectedByOwner = (Logics)reader.GetInt32(reader.GetOrdinal("IsProtectedByOwner"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CooperateStatus"))
+                {
+                    entity.CooperateStatus = reader.GetInt32(reader.GetOrdinal("CooperateStatus"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "PropertyNames"))
                 {

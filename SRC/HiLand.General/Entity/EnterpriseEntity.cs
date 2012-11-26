@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.FoundationLayer.Attributes;
 using HiLand.Utility.Data;
@@ -9,7 +10,7 @@ namespace HiLand.General.Entity
     /// <summary>
     /// 企业实体
     /// </summary>
-    public class EnterpriseEntity : BaseModel<EnterpriseEntity>
+    public class EnterpriseEntity : BaseModel<EnterpriseEntity>, IResource
     {
         public override string[] BusinessKeyNames
         {
@@ -303,6 +304,16 @@ namespace HiLand.General.Entity
             set { enterpriseRank = value; }
         }
 
+        public Guid ResourceGuid
+        {
+            get { return this.EnterpriseGuid; }
+        }
+
+        public string ResourceName
+        {
+            get { return this.CompanyName; }
+        }
+
         private string createUserKey = String.Empty;
         /// <summary>
         /// 资源创建人Key
@@ -361,6 +372,50 @@ namespace HiLand.General.Entity
         {
             get { return lastUpdateDate; }
             set { lastUpdateDate = value; }
+        }
+
+        private Logics isProtectedByOwner = Logics.True;
+        /// <summary>
+        /// 当前资源是否被保护（被保护的数据，仅能所有者修改，其他人仅能查看）
+        /// </summary>
+        public Logics IsProtectedByOwner
+        {
+            get { return this.isProtectedByOwner; }
+            set { this.isProtectedByOwner = value; }
+        }
+
+        private int cooperateStatus = 0;
+        /// <summary>
+        /// 当前企业是否已合作
+        /// </summary>
+        public int CooperateStatus
+        {
+            get { return this.cooperateStatus; }
+            set { this.cooperateStatus = value; }
+        }
+
+        private List<string> ownerKeys = new List<string>();
+        public List<string> OwnerKeys
+        {
+            get
+            {
+                if (ownerKeys.Count == 0)
+                {
+                    ownerKeys.Add(CreateUserKey);
+                    ownerKeys.Add(LastUpdateUserKey);
+                }
+
+                return ownerKeys;
+            }
+        }
+
+        //HACK:xieran20121126 此处只是为了实现接口，不要直接使用IsOwning这个属性
+        /// <summary>
+        /// 当前用户是否拥有资源的控制权(此处仅是实现接口IResource,不要直接使用.)
+        /// </summary>
+        public bool IsOwning
+        {
+            get { return true; }
         }
         #endregion
     }

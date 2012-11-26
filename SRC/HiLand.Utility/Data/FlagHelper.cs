@@ -35,7 +35,7 @@ namespace HiLand.Utility.Data
         /// <returns></returns>
         public static int AddFlag(int flaggedCollection, int flaggedItem)
         {
-            return Convert.ToInt32(flaggedCollection) | Convert.ToInt32(flaggedItem); // (TEnum)Enum.Parse(typeof(TEnum), (Convert.ToInt32(flaggedCollection) | Convert.ToInt32(flaggedItem)).ToString());
+            return Convert.ToInt32(flaggedCollection) | Convert.ToInt32(flaggedItem);
         }
 
         /// <summary>
