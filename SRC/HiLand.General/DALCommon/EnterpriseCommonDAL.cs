@@ -74,7 +74,7 @@ namespace HiLand.General.DALCommon
             if (string.IsNullOrEmpty(entity.CreateUserKey))
             {
                 entity.CreateUserKey = BusinessUserBLL.CurrentUserGuid.ToString();
-                entity.CreateUserName = BusinessUserBLL.CurrentUserName;
+                entity.CreateUserName = BusinessUserBLL.CurrentUser.UserNameDisplay;
             }
 
             string commandText = string.Format(@"Insert Into [GeneralEnterprise] (
@@ -90,6 +90,7 @@ namespace HiLand.General.DALCommon
 			        [PrincipleAddress],
 			        [PostCode],
 			        [Telephone],
+                    [TelephoneOther],
 			        [Fax],
 			        [Email],
 			        [EstablishedYears],
@@ -134,6 +135,7 @@ namespace HiLand.General.DALCommon
 			        {0}PrincipleAddress,
 			        {0}PostCode,
 			        {0}Telephone,
+                    {0}TelephoneOther,
 			        {0}Fax,
 			        {0}Email,
 			        {0}EstablishedYears,
@@ -181,7 +183,7 @@ namespace HiLand.General.DALCommon
         {
             entity.LastUpdateDate = DateTime.Now;
             entity.LastUpdateUserKey = BusinessUserBLL.CurrentUserGuid.ToString();
-            entity.LastUpdateUserName = BusinessUserBLL.CurrentUserName;
+            entity.LastUpdateUserName = BusinessUserBLL.CurrentUser.UserNameDisplay;
 
             string commandText = string.Format(@"Update [GeneralEnterprise] Set   
 					[EnterpriseGuid] = {0}EnterpriseGuid,
@@ -196,6 +198,7 @@ namespace HiLand.General.DALCommon
 				    [PrincipleAddress] = {0}PrincipleAddress,
 				    [PostCode] = {0}PostCode,
 				    [Telephone] = {0}Telephone,
+                    [TelephoneOther]= {0}TelephoneOther,
 				    [Fax] = {0}Fax,
 				    [Email] = {0}Email,
 				    [EstablishedYears] = {0}EstablishedYears,
@@ -258,6 +261,7 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("PrincipleAddress",entity.PrincipleAddress?? String.Empty),
 			    GenerateParameter("PostCode",entity.PostCode?? String.Empty),
 			    GenerateParameter("Telephone",entity.Telephone?? String.Empty),
+                GenerateParameter("TelephoneOther",entity.TelephoneOther?? String.Empty),
 			    GenerateParameter("Fax",entity.Fax?? String.Empty),
 			    GenerateParameter("Email",entity.Email?? String.Empty),
 			    GenerateParameter("EstablishedYears",entity.EstablishedYears),
@@ -362,6 +366,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "Telephone"))
                 {
                     entity.Telephone = reader.GetString(reader.GetOrdinal("Telephone"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "TelephoneOther"))
+                {
+                    entity.TelephoneOther = reader.GetString(reader.GetOrdinal("TelephoneOther"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "Fax"))
                 {

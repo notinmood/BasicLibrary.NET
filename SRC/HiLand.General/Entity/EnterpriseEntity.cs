@@ -113,6 +113,16 @@ namespace HiLand.General.Entity
             set { telephone = value; }
         }
 
+        private string telephoneOther = String.Empty;
+        /// <summary>
+        ///  其他联系电话（比如手机等）
+        /// </summary>
+        public string TelephoneOther
+        {
+            get { return telephoneOther; }
+            set { telephoneOther = value; }
+        }
+
         private string fax = String.Empty;
         public string Fax
         {
