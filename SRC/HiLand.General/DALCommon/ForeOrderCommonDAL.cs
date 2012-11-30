@@ -79,6 +79,7 @@ namespace HiLand.General.DALCommon
 			    [ForeOrderCategory],
 			    [ForeOrderStatus],
 			    [ForeOrderDate],
+                [ForeOrderDateEnd],
 			    [ForeOrderTitle],
 			    [ForeOrderDesc],
 			    [OwnerKey],
@@ -110,6 +111,7 @@ namespace HiLand.General.DALCommon
 			    {0}ForeOrderCategory,
 			    {0}ForeOrderStatus,
 			    {0}ForeOrderDate,
+                {0}ForeOrderDateEnd,
 			    {0}ForeOrderTitle,
 			    {0}ForeOrderDesc,
 			    {0}OwnerKey,
@@ -155,6 +157,7 @@ namespace HiLand.General.DALCommon
 				[ForeOrderCategory] = {0}ForeOrderCategory,
 				[ForeOrderStatus] = {0}ForeOrderStatus,
 				[ForeOrderDate] = {0}ForeOrderDate,
+                [ForeOrderDateEnd]= {0}ForeOrderDateEnd,
 				[ForeOrderTitle] = {0}ForeOrderTitle,
 				[ForeOrderDesc] = {0}ForeOrderDesc,
 				[OwnerKey] = {0}OwnerKey,
@@ -204,6 +207,7 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("ForeOrderCategory",entity.ForeOrderCategory?? String.Empty),
 			    GenerateParameter("ForeOrderStatus",entity.ForeOrderStatus),
 			    GenerateParameter("ForeOrderDate",entity.ForeOrderDate),
+                GenerateParameter("ForeOrderDateEnd",entity.ForeOrderDateEnd),
 			    GenerateParameter("ForeOrderTitle",entity.ForeOrderTitle?? String.Empty),
 			    GenerateParameter("ForeOrderDesc",entity.ForeOrderDesc?? String.Empty),
 			    GenerateParameter("OwnerKey",entity.OwnerKey?? String.Empty),
@@ -264,6 +268,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderDate"))
                 {
                     entity.ForeOrderDate = reader.GetDateTime(reader.GetOrdinal("ForeOrderDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderDateEnd"))
+                {
+                    entity.ForeOrderDateEnd = reader.GetDateTime(reader.GetOrdinal("ForeOrderDateEnd"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ForeOrderTitle"))
                 {

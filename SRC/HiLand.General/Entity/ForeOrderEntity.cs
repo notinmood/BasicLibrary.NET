@@ -62,13 +62,24 @@ namespace HiLand.General.Entity
 
         private DateTime foreOrderDate = DateTimeHelper.Min;
         /// <summary>
-        /// 预定产品或者服务的履行日期
+        /// 预定产品或者服务的履行日期（如果预定一个时间段的话，这个是时间段的开始时间）
         /// </summary>
         public DateTime ForeOrderDate
         {
             get { return foreOrderDate; }
             set { foreOrderDate = value; }
         }
+
+        private DateTime foreOrderDateEnd = DateTimeHelper.Min;
+        /// <summary>
+        /// 预定产品或者服务的履行日期(结束日期)
+        /// </summary>
+        public DateTime ForeOrderDateEnd
+        {
+            get { return foreOrderDateEnd; }
+            set { foreOrderDateEnd = value; }
+        }
+        
 
         private string foreOrderTitle = String.Empty;
         /// <summary>
