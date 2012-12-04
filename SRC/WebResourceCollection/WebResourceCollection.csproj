@@ -2465,6 +2465,7 @@
     <Content Include="Misc\服务端持续输出信息到客户端.aspx" />
     <Content Include="PageEffect\CSS表格效果2.htm" />
     <Content Include="PageEffect\DIV居中.htm" />
+    <Content Include="PageEffect\锁定表头和固定列.html" />
     <Content Include="PageEffect\IE6下png透明2.html" />
     <Content Include="PageEffect\js 复制地址和标题给好友 兼容火狐ie.html" />
     <Content Include="PageEffect\IE6下png透明.html" />
