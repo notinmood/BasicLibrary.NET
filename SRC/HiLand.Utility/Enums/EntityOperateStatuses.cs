@@ -5,11 +5,7 @@ using HiLand.Utility.Enums.OP;
 
 namespace HiLand.Utility.Enums
 {
-    //TODO:xieran20121204 考虑使用EntityOperateStatuses替代
-    /// <summary>
-    /// 创建用户角色时在状态
-    /// </summary>
-    public enum CreateUserRoleStatuses
+    public enum EntityOperateStatuses
     {
         /// <summary>
         /// 成功
@@ -42,4 +38,3 @@ namespace HiLand.Utility.Enums
         FailureUnknowReason,
     }
 }
- 
