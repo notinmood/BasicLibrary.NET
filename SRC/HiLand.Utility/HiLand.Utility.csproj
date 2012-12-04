@@ -113,6 +113,7 @@
     <Compile Include="Cache\CoreCacheKeys.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Cache\WebCache.cs" />
+    <Compile Include="Controls\ControlUtil.cs" />
     <Compile Include="Core\EnvironmentHelper.cs" />
     <Compile Include="Core\ApplicationModes.cs" />
     <Compile Include="DataBase\ClauseModel.cs" />
@@ -401,6 +402,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\HtmlControl\" />
     <Folder Include="Culture\" />
     <Folder Include="Entity\Reflection\" />
     <Folder Include="Logging\" />

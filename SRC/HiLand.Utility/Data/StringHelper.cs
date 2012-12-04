@@ -34,7 +34,7 @@ namespace HiLand.Utility.Data
         /// <summary>
         /// 字符串截取
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="data"></param>
         /// <param name="remainCharCount"></param>
         /// <param name="postFixAdded">在截取后的字符串后加入后缀</param>
         /// <returns></returns>

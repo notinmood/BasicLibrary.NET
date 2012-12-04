@@ -9,6 +9,9 @@ namespace HiLand.General.BLL
     /// </summary>
     public class EnterpriseBLL : BaseBLL<EnterpriseBLL, EnterpriseEntity, EnterpriseDAL>
     {
-
+        public override bool Create(EnterpriseEntity model)
+        {
+            return base.Create(model);
+        }
     }
 }
