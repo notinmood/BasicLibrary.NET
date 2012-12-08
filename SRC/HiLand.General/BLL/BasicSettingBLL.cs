@@ -82,7 +82,8 @@ namespace HiLand.General.BLL
                 whereClause += string.Format(" AND ([IsInnerSetting] IS NULL OR [IsInnerSetting]!={0}) ", (int)Logics.True);
             }
 
-            return base.GetList(whereClause, paras);
+            string orderbyClause = " OrderNumber desc ";
+            return base.GetList(whereClause, orderbyClause, paras);
         }
 
         /// <summary>
