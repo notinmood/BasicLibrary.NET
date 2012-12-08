@@ -4,6 +4,7 @@ using HiLand.Framework.FoundationLayer;
 using HiLand.Utility.Enums;
 using HiLand.Utility.Setting;
 using System.Collections.Generic;
+using System;
 
 namespace HiLand.General.BLL
 {
@@ -61,6 +62,7 @@ namespace HiLand.General.BLL
         public override bool Update(EnterpriseEntity model)
         {
             model = ConfirmTrimSpaceInCompanyName(model);
+            model = ConfirmLockEnterprise(model);
             return base.Update(model);
         }
 
@@ -81,6 +83,7 @@ namespace HiLand.General.BLL
             }
             else
             {
+                model = ConfirmLockEnterprise(model);
                 bool isSuccessful = Update(model);
                 if (isSuccessful == true)
                 {
@@ -152,6 +155,35 @@ namespace HiLand.General.BLL
             }
 
             return model;
+        }
+
+        /// <summary>
+        /// 确保锁定资源
+        /// </summary>
+        /// <param name="model"></param>
+        private EnterpriseEntity ConfirmLockEnterprise(EnterpriseEntity model)
+        {
+            bool isProtectedEnterpriseWhenUpdate = Config.GetAppSetting<bool>("isProtectedEnterpriseWhenUpdate", true);
+            if (isProtectedEnterpriseWhenUpdate == true)
+            {
+                model.IsProtectedByOwner = Logics.True;
+            }
+
+            return model;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="enterpriseGuid"></param>
+        /// <returns></returns>
+        public bool ReleaseEnterprise(Guid enterpriseGuid)
+        {
+            EnterpriseEntity model = Get(enterpriseGuid);
+            model.IsProtectedByOwner = Logics.False;
+            model.CreateUserKey = "";
+            model.CreateUserName = "共享";
+            return base.Update(model);
         }
     }
 }

@@ -4,3 +4,4 @@
 2.HiGeneralDALDLLName 通用业务的数据访问层DLL的名称
 3.HiGeneralDALNameSpace 通用业务的数据访问层NameSpace的名称
 4.isTrimSpaceInCompanyName 是否去除企业名称的空格进行保存，缺省为true （HiLand.General\BLL\EnterpriseBLL.cs）
+5.isProtectedEnterpriseWhenUpdate 在更新的时候是否对企业进行资源锁定包含，缺省为true （HiLand.General\BLL\EnterpriseBLL.cs）

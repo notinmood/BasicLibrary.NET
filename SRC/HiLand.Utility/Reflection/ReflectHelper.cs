@@ -231,10 +231,10 @@ namespace HiLand.Utility.Reflection
                 if (currentItem.CanRead)
                 {
                     string currentItemName = currentItem.Name;
-                    object valueInBase = currentItem.GetValue(fromEntity, null);
                     PropertyInfo piOfTo = typeOfTo.GetProperty(currentItemName);
                     if (piOfTo != null && piOfTo.CanWrite)
                     {
+                        object valueInBase = currentItem.GetValue(fromEntity, null);
                         piOfTo.SetValue(toEntity, valueInBase, null);
                     }
                 }

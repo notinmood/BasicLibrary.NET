@@ -362,8 +362,8 @@ namespace HiLand.Utility4.MVC.Controls
 
             if (queryConditionItem.ConditionType == typeof(string))
             {
-                result.Append(GetCompareModeOptionString(CompareModes.Equal, conditionOperatorValue));
                 result.Append(GetCompareModeOptionString(CompareModes.Like, conditionOperatorValue));
+                result.Append(GetCompareModeOptionString(CompareModes.Equal, conditionOperatorValue));
                 result.Append(GetCompareModeOptionString(CompareModes.LikeLeft, conditionOperatorValue));
                 result.Append(GetCompareModeOptionString(CompareModes.LikeRight, conditionOperatorValue));
             }
