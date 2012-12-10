@@ -404,6 +404,24 @@ namespace HiLand.General.Entity
             set { this.cooperateStatus = value; }
         }
 
+        /// <summary>
+        /// 是否已经合作
+        /// </summary>
+        public Logics IsCooperated
+        {
+            get
+            {
+                if (this.CooperateStatus <= 0)
+                {
+                    return Logics.False;
+                }
+                else
+                {
+                    return Logics.True;
+                }
+            }
+        }
+
         private List<string> ownerKeys = new List<string>();
         public List<string> OwnerKeys
         {
