@@ -11,7 +11,7 @@ namespace HiLand.General.BLL
     /// <summary>
     /// 日志业务逻辑类
     /// </summary>
-    public class LogBLL : BaseBLL<LogBLL, LogEntity, LogDAL, ILogDAL>
+    public class BusinessLogBLL : BaseBLL<BusinessLogBLL, BusinessLogEntity, BusinessLogDAL, IBusinessLogDAL>
     {
         /// <summary>
         /// 根据日志的名称和日期获取其状态（如果此记录不存在亦返回false）
@@ -21,7 +21,7 @@ namespace HiLand.General.BLL
         /// <returns></returns>
         public Logics GetLogStatus(string logger, DateTime logDate)
         {
-            string cacheKey = GeneralCacheKeys<LogEntity>.GetEntityBusinessKey("Logger&LogDate", logger, logDate.ToString());
+            string cacheKey = GeneralCacheKeys<BusinessLogEntity>.GetEntityBusinessKey("Logger&LogDate", logger, logDate.ToString());
             return CacheHelper.Access<string, DateTime, Logics>(cacheKey, CacheMintues, SaveDAL.GetLogStatus, logger, logDate);
         }
 
@@ -34,7 +34,7 @@ namespace HiLand.General.BLL
         /// <returns></returns>
         public Logics GetLogStatus(string logger, DateTime logDate, bool isOnlyExacteDay)
         {
-            string cacheKey = GeneralCacheKeys<LogEntity>.GetEntityBusinessKey("Logger&LogDate&isOnlyExacteDay", logger, logDate.ToString(), isOnlyExacteDay.ToString());
+            string cacheKey = GeneralCacheKeys<BusinessLogEntity>.GetEntityBusinessKey("Logger&LogDate&isOnlyExacteDay", logger, logDate.ToString(), isOnlyExacteDay.ToString());
             return CacheHelper.Access<string, DateTime,bool, Logics>(cacheKey, CacheMintues, SaveDAL.GetLogStatus, logger, logDate,isOnlyExacteDay);
         }
     }

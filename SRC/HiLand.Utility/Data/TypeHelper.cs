@@ -65,6 +65,46 @@ namespace HiLand.Utility.Data
         }
 
         /// <summary>
+        /// 判断类型是否为简单数据类型
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
+        public static bool ConfirmIsSimpleType<T>()
+        {
+            return ConfirmIsSimpleType(typeof(T));
+        }
+
+        /// <summary>
+        /// 判断类型是否为简单数据类型
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static bool ConfirmIsSimpleType(Type type)
+        {
+            if (type.IsEnum)
+            {
+                return true;
+            }
+
+            if (type == typeof(bool))
+            {
+                return true;
+            }
+
+            if (ConfirmIsNumberType(type) == true)
+            {
+                return true;
+            }
+
+            if (ConfirmIsStringType(type) == true)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// 判断给定的类型是否为数字类型
         /// </summary>
         /// <typeparam name="T"></typeparam>

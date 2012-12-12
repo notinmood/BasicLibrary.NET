@@ -48,7 +48,7 @@ namespace HiLand.Utility.Reflection
         public static object GetPropertyValue<TModel>(TModel model, string propertyName)
         {
             Type type = typeof(TModel);
-            return  GetPropertyValue(type, model, propertyName);
+            return GetPropertyValue(type, model, propertyName);
         }
 
         /// <summary>
@@ -75,7 +75,7 @@ namespace HiLand.Utility.Reflection
                 }
                 else
                 {
-                    PropertyInfo piOfLevelThis= modelType.GetProperty(propertyNameOfLevelThis);
+                    PropertyInfo piOfLevelThis = modelType.GetProperty(propertyNameOfLevelThis);
                     if (piOfLevelThis == null)
                     {
                         return string.Empty;
@@ -243,42 +243,59 @@ namespace HiLand.Utility.Reflection
             return toEntity;
         }
 
+        /// <summary>
+        /// 两个对象属性比较
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceEntity"></param>
+        /// <param name="targetEntity"></param>
+        /// <param name="resultData">属性并更的字符串说明</param>
+        /// <param name="excludePropertyName">不进行比较的属性名称集合</param>
+        /// <returns></returns>
+        public static bool Compare<T>(T sourceEntity, T targetEntity,out List<string> resultData, params string[] excludePropertyName)
+        {
+            bool result = true;
+            resultData = new List<string>();
+            Type typeOfEntity = typeof(T);
+            BindingFlags bindingFlag = BindingFlags.Instance | BindingFlags.Public;
 
+            PropertyInfo[] piArray = typeOfEntity.GetProperties(bindingFlag);
+            foreach (PropertyInfo currentItem in piArray)
+            {
+                string currentItemName = currentItem.Name;
+                bool isJumpOut = false;
+                for (int i = 0; i < excludePropertyName.Length; i++)
+                {
+                    if (currentItemName.ToLower() == excludePropertyName[i].ToLower())
+                    {
+                        isJumpOut = true;
+                        continue;
+                    }
+                }
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <typeparam name="T"></typeparam>
-        ///// <param name="propertyName"></param>
-        ///// <param name="attributeName"></param>
-        ///// <returns></returns>
-        //public static string GetMemberAttribute<T>(string propertyName, string attributeName)
-        //{
-        //    Type type= typeof(T);
-        //    return GetMemberAttribute( type,  propertyName,  attributeName);
-        //}
+                if (isJumpOut == true)
+                {
+                    continue;
+                }
 
-        //public static string GetMemberAttribute(Type type, string propertyName, string attributeName)
-        //{
-        //    string result = string.Empty;
-        //    //object[] attributeValues= GetMemberAttribute( type, propertyName);
+                if (currentItem.CanRead==true)
+                {
+                    object valueInSource = currentItem.GetValue(sourceEntity, null)??string.Empty;
+                    object valueInTarget = currentItem.GetValue(targetEntity, null)??string.Empty;
 
-        //    return result;
-        //}
+                    string valueInSourceString = valueInSource.ToString();
+                    string valueInTargetString = valueInTarget.ToString();
 
-        //public static Dictionary<string, object> GetMemberAttribute(Type type, string propertyName)
-        //{
-        //    PropertyInfo propertyInfo = type.GetProperty(propertyName);
-        //    //TODO：加入缓存容器，提高性能
-        //    Dictionary<string, object> atrributeDictionary = new Dictionary<string, object>();
-        //    object[] attributeValues = propertyInfo.GetCustomAttributes(true);
-        //    if (attributeValues != null)
-        //    {
-        //        //atrributeDictionary.Add();
-        //    }
+                    if (valueInSourceString != valueInTargetString)
+                    {
+                        result = false;
+                        resultData.Add(string.Format("属性{0}从{1}变更到{2}", currentItemName, valueInSourceString, valueInTargetString));
+                    }
+                }
+            }
 
-        //    return atrributeDictionary;
-        //}
+            return result;
+        }
     }
 }
 

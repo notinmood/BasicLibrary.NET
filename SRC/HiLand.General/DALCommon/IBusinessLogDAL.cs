@@ -7,7 +7,7 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.DALCommon
 {
-    public interface ILogDAL : IDAL<LogEntity>
+    public interface IBusinessLogDAL : IDAL<BusinessLogEntity>
     {
         /// <summary>
         /// 根据日志的名称和日期获取其状态（如果此记录不存在亦返回false）

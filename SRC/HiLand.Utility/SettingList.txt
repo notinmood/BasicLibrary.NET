@@ -11,3 +11,4 @@
 		<add key=".xieran" value="hilandsoft" />
 		<add key="doc" value="word" />
 	</contentTypeSection>
+5.isRecordOperateLog 是否记录操作日志 （Setting\Config.cs）

@@ -3,7 +3,7 @@ using HiLand.General.DALCommon;
 
 namespace HiLand.General.DALSqlite
 {
-    public class LogDAL : LogCommonDAL<SQLiteTransaction, SQLiteConnection, SQLiteCommand, SQLiteDataReader, SQLiteParameter>
+    public class OperateLogDAL : OperateLogCommonDAL<SQLiteTransaction, SQLiteConnection, SQLiteCommand, SQLiteDataReader, SQLiteParameter>
     {
         #region 计算机逻辑基本信息
         /// <summary>

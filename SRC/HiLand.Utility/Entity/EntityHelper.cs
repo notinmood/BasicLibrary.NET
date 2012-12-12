@@ -1,6 +1,8 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using HiLand.Utility.Data;
+using HiLand.Utility.Reflection;
 
 namespace HiLand.Utility.Entity
 {
@@ -38,6 +40,20 @@ namespace HiLand.Utility.Entity
             }
 
             return clonedEntity;
+        }
+
+        /// <summary>
+        /// 两个实体属性比较
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceEntity"></param>
+        /// <param name="targetEntity"></param>
+        /// <param name="resultData">属性并更的字符串说明</param>
+        /// <param name="excludePropertyName">不进行比较的属性名称集合</param>
+        /// <returns></returns>
+        public static bool Compare<T>(T sourceEntity, T targetEntity, out List<string> resultData, params string[] excludePropertyName)
+        {
+            return ReflectHelper.Compare<T>(sourceEntity, targetEntity, out resultData, excludePropertyName);
         }
     }
 }

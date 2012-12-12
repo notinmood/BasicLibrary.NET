@@ -5,6 +5,9 @@ using HiLand.Utility.Enums.OP;
 
 namespace HiLand.Utility.Enums
 {
+    /// <summary>
+    /// 实体操作的状态
+    /// </summary>
     public enum EntityOperateStatuses
     {
         /// <summary>

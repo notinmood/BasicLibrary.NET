@@ -82,5 +82,26 @@ namespace WebApplicationConsole
             [EnumItemIsDisplayInListAttribute(false)]
             Item2,
         }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            Student s1 = new Student();
+            s1.Name = "学生1";
+            s1.Number = "098977";
+            s1.Age = 30;
+
+            Student s2 = new Student();
+            s2.Name = "学生2";
+            s2.Number = "0989775";
+            s2.Age = 31;
+
+            List<string> resultData;
+            this.Button4.Text= ReflectHelper.Compare(s1, s2, out resultData).ToString();
+            this.Literal1.Text = string.Empty;
+            foreach (string item in resultData)
+            {
+                this.Literal1.Text += item+"; ";
+            }
+        }
     }
 }

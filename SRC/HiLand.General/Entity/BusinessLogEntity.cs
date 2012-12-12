@@ -6,7 +6,7 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.Entity
 {
-    public class LogEntity : BaseModel<LogEntity>
+    public class BusinessLogEntity : BaseModel<BusinessLogEntity>
     {
         public override string[] BusinessKeyNames
         {

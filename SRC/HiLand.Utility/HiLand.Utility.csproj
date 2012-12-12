@@ -183,6 +183,7 @@
     <Compile Include="Enums\LogLevels.cs" />
     <Compile Include="Enums\MaritalStatuses.cs" />
     <Compile Include="Enums\NumberBase.cs" />
+    <Compile Include="Enums\OperateTypes.cs" />
     <Compile Include="Enums\OP\EnumItemDescriptionHelper.cs" />
     <Compile Include="Enums\PassingParamValueSourceTypes.cs" />
     <Compile Include="Enums\PermissionDataTypes.cs" />

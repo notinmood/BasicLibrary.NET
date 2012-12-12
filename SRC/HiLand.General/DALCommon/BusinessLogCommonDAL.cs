@@ -9,8 +9,8 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.DALCommon
 {
-    public class LogCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
-        : BaseDAL<LogEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>, ILogDAL
+    public class BusinessLogCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
+        : BaseDAL<BusinessLogEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>, IBusinessLogDAL
         where TConnection : class,IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction
@@ -23,7 +23,7 @@ namespace HiLand.General.DALCommon
         /// </summary>
         protected override string TableName
         {
-            get { return "GeneralLog"; }
+            get { return "GeneralBusinessLog"; }
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace HiLand.General.DALCommon
         /// </summary>
         protected override string PagingSPName
         {
-            get { return "usp_General_Log_SelectPaging"; }
+            get { return "usp_General_BusinessLog_SelectPaging"; }
         }
         #endregion
 
@@ -57,7 +57,7 @@ namespace HiLand.General.DALCommon
         /// </summary>
         /// <param name="entity">实体信息</param>
         /// <returns></returns>
-        public override bool Create(LogEntity entity)
+        public override bool Create(BusinessLogEntity entity)
         {
             //在创建实体时如果实体的Guid尚未指定，那么给其赋初值
             if (entity.LogGuid == Guid.Empty)
@@ -65,7 +65,7 @@ namespace HiLand.General.DALCommon
                 entity.LogGuid = GuidHelper.NewGuid();
             }
 
-            string commandText = string.Format(@"Insert Into [GeneralLog] (
+            string commandText = string.Format(@"Insert Into [GeneralBusinessLog] (
 			    [LogGuid],
 			    [LogCategory],
 			    [LogStatus],
@@ -103,7 +103,7 @@ namespace HiLand.General.DALCommon
         /// </summary>
         /// <param name="entity">实体信息</param>
         /// <returns></returns>
-        public override bool Update(LogEntity entity)
+        public override bool Update(BusinessLogEntity entity)
         {
             throw new NotImplementedException();
         }
@@ -115,7 +115,7 @@ namespace HiLand.General.DALCommon
         /// </summary>
         /// <param name="entity"></param>
         /// <param name="paraList"></param>
-        protected override void InnerPrepareParasAll(LogEntity entity, ref List<TParameter> paraList)
+        protected override void InnerPrepareParasAll(BusinessLogEntity entity, ref List<TParameter> paraList)
         {
             List<TParameter> list = new List<TParameter>() 
             {
@@ -139,9 +139,9 @@ namespace HiLand.General.DALCommon
         /// </summary>
         /// <param name="reader"></param>
         /// <returns></returns>
-        protected override LogEntity Load(IDataReader reader)
+        protected override BusinessLogEntity Load(IDataReader reader)
         {
-            LogEntity entity = new LogEntity();
+            BusinessLogEntity entity = new BusinessLogEntity();
             if (reader != null && reader.IsClosed == false)
             {
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LogID"))
@@ -216,7 +216,7 @@ namespace HiLand.General.DALCommon
         /// <returns></returns>
         public Logics GetLogStatus(string logger, DateTime logDate, bool isOnlyExacteDay)
         {
-            string sqlClause = string.Format("SELECT [LogStatus]  FROM [GeneralLog]  WHERE [Logger]= '{0}' AND ", logger);
+            string sqlClause = string.Format("SELECT [LogStatus]  FROM [GeneralBusinessLog]  WHERE [Logger]= '{0}' AND ", logger);
             if (isOnlyExacteDay == true)
             {
                 DateTime todayWithZeroHour = logDate.Date;

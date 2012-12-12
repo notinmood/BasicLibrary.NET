@@ -169,5 +169,24 @@ namespace HiLand.Utility.Setting
             return result;
         }
         #endregion
+
+        #region 常用配置
+        private static bool? isRecordOperateLog= null;
+        /// <summary>
+        /// 是否记录操作日志
+        /// </summary>
+        public static bool IsRecordOperateLog
+        {
+            get
+            {
+                if (isRecordOperateLog.HasValue == false)
+                {
+                    isRecordOperateLog= GetAppSetting<bool>("isRecordOperateLog");
+                }
+
+                return isRecordOperateLog.Value;
+            }
+        }
+        #endregion
     }
 }
