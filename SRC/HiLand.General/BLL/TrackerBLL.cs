@@ -20,16 +20,13 @@ namespace HiLand.General.BLL
         public override bool Create(TrackerEntity model)
         {
             bool isSuccessful = base.Create(model);
-            if (isSuccessful == true)
-            {
                 RecordOperateLog(model, null, string.Format("创建企业回访信息{0}", isSuccessful == true ? "成功" : "失败"));
-            }
             return isSuccessful;
         }
 
         public override bool Update(TrackerEntity model)
         {
-            TrackerEntity originalModel = TrackerBLL.Instance.Get(model.TrackerGuid, true);
+            TrackerEntity originalModel = Get(model.TrackerGuid, true);
             bool isSuccessful = base.Update(model);
             RecordOperateLog(model, originalModel, string.Format("修改企业回访信息{0}", isSuccessful == true ? "成功" : "失败"));
             return isSuccessful;
