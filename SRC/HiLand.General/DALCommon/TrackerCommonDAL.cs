@@ -76,6 +76,7 @@ namespace HiLand.General.DALCommon
             string commandText = string.Format(@"Insert Into [GeneralTracker] (
 			    [TrackerGuid],
 			    [RelativeKey],
+			    [RelativeName],
 			    [CanUsable],
 			    [TrackerTitle],
 			    [TrackerDesc],
@@ -83,14 +84,17 @@ namespace HiLand.General.DALCommon
 			    [TrackerType],
 			    [TrackerTime],
 			    [TrackerUserKey],
+			    [TrackerUserName],
 			    [CreateTime],
 			    [CreateUserKey],
+			    [CreateUserName],
 			    [PropertyNames],
 			    [PropertyValues]
             ) 
             Values (
 			    {0}TrackerGuid,
 			    {0}RelativeKey,
+			    {0}RelativeName,
 			    {0}CanUsable,
 			    {0}TrackerTitle,
 			    {0}TrackerDesc,
@@ -98,8 +102,10 @@ namespace HiLand.General.DALCommon
 			    {0}TrackerType,
 			    {0}TrackerTime,
 			    {0}TrackerUserKey,
+			    {0}TrackerUserName,
 			    {0}CreateTime,
 			    {0}CreateUserKey,
+			    {0}CreateUserName,
 			    {0}PropertyNames,
 			    {0}PropertyValues
             )", ParameterNamePrefix);
@@ -118,20 +124,23 @@ namespace HiLand.General.DALCommon
         public override bool Update(TrackerEntity entity)
         {
             string commandText = string.Format(@"Update [GeneralTracker] Set   
-				    [TrackerGuid] = {0}TrackerGuid,
-				    [RelativeKey] = {0}RelativeKey,
-				    [CanUsable] = {0}CanUsable,
-				    [TrackerTitle] = {0}TrackerTitle,
-				    [TrackerDesc] = {0}TrackerDesc,
-				    [TrackerCategory] = {0}TrackerCategory,
-				    [TrackerType] = {0}TrackerType,
-				    [TrackerTime] = {0}TrackerTime,
-				    [TrackerUserKey] = {0}TrackerUserKey,
-				    [CreateTime] = {0}CreateTime,
-				    [CreateUserKey] = {0}CreateUserKey,
-				    [PropertyNames] = {0}PropertyNames,
-				    [PropertyValues] = {0}PropertyValues
-            Where [TrackerID] = {0}TrackerID", ParameterNamePrefix);
+				[TrackerGuid] = {0}TrackerGuid,
+				[RelativeKey] = {0}RelativeKey,
+				[RelativeName] = {0}RelativeName,
+				[CanUsable] = {0}CanUsable,
+				[TrackerTitle] = {0}TrackerTitle,
+				[TrackerDesc] = {0}TrackerDesc,
+				[TrackerCategory] = {0}TrackerCategory,
+				[TrackerType] = {0}TrackerType,
+				[TrackerTime] = {0}TrackerTime,
+				[TrackerUserKey] = {0}TrackerUserKey,
+				[TrackerUserName] = {0}TrackerUserName,
+				[CreateTime] = {0}CreateTime,
+				[CreateUserKey] = {0}CreateUserKey,
+				[CreateUserName] = {0}CreateUserName,
+				[PropertyNames] = {0}PropertyNames,
+				[PropertyValues] = {0}PropertyValues
+        Where [TrackerID] = {0}TrackerID", ParameterNamePrefix);
 
             TParameter[] sqlParas = PrepareParasAll(entity);
 
@@ -153,6 +162,7 @@ namespace HiLand.General.DALCommon
                 GenerateParameter("TrackerID",entity.TrackerID),
 			    GenerateParameter("TrackerGuid",entity.TrackerGuid),
 			    GenerateParameter("RelativeKey",entity.RelativeKey?? String.Empty),
+			    GenerateParameter("RelativeName",entity.RelativeName?? String.Empty),
 			    GenerateParameter("CanUsable",entity.CanUsable),
 			    GenerateParameter("TrackerTitle",entity.TrackerTitle?? String.Empty),
 			    GenerateParameter("TrackerDesc",entity.TrackerDesc?? String.Empty),
@@ -160,8 +170,10 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("TrackerType",entity.TrackerType),
 			    GenerateParameter("TrackerTime",entity.TrackerTime),
 			    GenerateParameter("TrackerUserKey",entity.TrackerUserKey?? String.Empty),
+			    GenerateParameter("TrackerUserName",entity.TrackerUserName?? String.Empty),
 			    GenerateParameter("CreateTime",entity.CreateTime),
-			    GenerateParameter("CreateUserKey",entity.CreateUserKey?? String.Empty)
+			    GenerateParameter("CreateUserKey",entity.CreateUserKey?? String.Empty),
+			    GenerateParameter("CreateUserName",entity.CreateUserName?? String.Empty)
             };
 
             paraList.AddRange(list);
@@ -188,6 +200,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "RelativeKey"))
                 {
                     entity.RelativeKey = reader.GetString(reader.GetOrdinal("RelativeKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "RelativeName"))
+                {
+                    entity.RelativeName = reader.GetString(reader.GetOrdinal("RelativeName"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CanUsable"))
                 {
@@ -217,6 +233,10 @@ namespace HiLand.General.DALCommon
                 {
                     entity.TrackerUserKey = reader.GetString(reader.GetOrdinal("TrackerUserKey"));
                 }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "TrackerUserName"))
+                {
+                    entity.TrackerUserName = reader.GetString(reader.GetOrdinal("TrackerUserName"));
+                }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateTime"))
                 {
                     entity.CreateTime = reader.GetDateTime(reader.GetOrdinal("CreateTime"));
@@ -224,6 +244,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserKey"))
                 {
                     entity.CreateUserKey = reader.GetString(reader.GetOrdinal("CreateUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserName"))
+                {
+                    entity.CreateUserName = reader.GetString(reader.GetOrdinal("CreateUserName"));
                 }
             }
         }

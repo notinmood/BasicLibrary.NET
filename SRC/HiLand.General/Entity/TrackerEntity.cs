@@ -38,6 +38,13 @@ namespace HiLand.General.Entity
             set { relativeKey = value; }
         }
 
+        private string relativeName = String.Empty;
+        public string RelativeName
+        {
+            get { return relativeName; }
+            set { relativeName = value; }
+        }
+
         private Logics canUsable= Logics.True;
         public Logics CanUsable
         {
@@ -87,6 +94,13 @@ namespace HiLand.General.Entity
             set { trackerUserKey = value; }
         }
 
+        private string trackerUserName = String.Empty;
+        public string TrackerUserName
+        {
+            get { return trackerUserName; }
+            set { trackerUserName = value; }
+        }
+
         private DateTime createTime = DateTimeHelper.Min;
         public DateTime CreateTime
         {
@@ -99,6 +113,13 @@ namespace HiLand.General.Entity
         {
             get { return createUserKey; }
             set { createUserKey = value; }
+        }
+
+        private string createUserName = String.Empty;
+        public string CreateUserName
+        {
+            get { return createUserName; }
+            set { createUserName = value; }
         }
         #endregion
     }

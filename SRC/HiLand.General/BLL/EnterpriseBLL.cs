@@ -249,6 +249,5 @@ namespace HiLand.General.BLL
                 }
             }
         }
-
     }
 }
