@@ -75,6 +75,7 @@
     <Compile Include="DALCommon\BankCommonDAL.cs" />
     <Compile Include="DALCommon\BasicSettingCommonDAL.cs" />
     <Compile Include="DALCommon\AreaCommonDAL.cs" />
+    <Compile Include="DALCommon\IOperateLogDAL.cs" />
     <Compile Include="DALCommon\OperateLogCommonDAL.cs" />
     <Compile Include="DALCommon\ForeOrderCommonDAL.cs" />
     <Compile Include="DALCommon\TrackerCommonDAL.cs" />

@@ -10,7 +10,7 @@ using HiLand.Utility.Enums;
 namespace HiLand.General.DALCommon
 {
     public class OperateLogCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
-        : BaseDAL<OperateLogEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>
+        : BaseDAL<OperateLogEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>, IOperateLogDAL
         where TConnection : class,IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction
@@ -252,5 +252,27 @@ namespace HiLand.General.DALCommon
             }
         }
         #endregion
+
+        /// <summary>
+        /// 获取所有的类别
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetCategoryList()
+        {
+            List<string> result = new List<string>();
+            string sqlClause = string.Format("select distinct LogCategory from GeneralOperateLog");
+            using (TDataReader reader = HelperExInstance.ExecuteReader(sqlClause))
+            {
+                if (reader != null)
+                {
+                    while (reader.Read())
+                    {
+                        result.Add(reader[0].ToString());
+                    }
+                }
+            }
+
+            return result;
+        }
     }
 }

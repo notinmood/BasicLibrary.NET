@@ -4,6 +4,7 @@ using HiLand.Framework.BusinessCore;
 using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.General.DAL;
+using HiLand.General.DALCommon;
 using HiLand.General.Entity;
 using HiLand.Utility.Data;
 using HiLand.Utility.Entity;
@@ -15,8 +16,17 @@ namespace HiLand.General.BLL
     /// <summary>
     /// 操作日志业务逻辑类
     /// </summary>
-    public class OperateLogBLL : BaseBLL<OperateLogBLL, OperateLogEntity, OperateLogDAL>
+    public class OperateLogBLL : BaseBLL<OperateLogBLL, OperateLogEntity, OperateLogDAL, IOperateLogDAL>
     {
+        /// <summary>
+        /// 获取所有的类别
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetCategoryList()
+        {
+            return this.LoadDAL.GetCategoryList();
+        }
+
         /// <summary>
         /// 记录操作日志
         /// </summary>
