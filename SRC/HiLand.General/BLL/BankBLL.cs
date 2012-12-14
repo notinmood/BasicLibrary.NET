@@ -26,6 +26,11 @@ namespace HiLand.General.BLL
             return isSuccessful;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public override bool Update(BankEntity model)
         {
             BankEntity originalModel = Get(model.BankGuid, true);
