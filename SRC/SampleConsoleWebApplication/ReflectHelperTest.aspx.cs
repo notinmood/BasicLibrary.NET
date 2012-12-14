@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using HiLand.Utility.Attributes;
 using HiLand.Utility.Data;
+using HiLand.Utility.Entity;
 using HiLand.Utility.Reflection;
 using WebApplicationConsole.ClassesForTest;
 
@@ -95,12 +96,12 @@ namespace WebApplicationConsole
             s2.Number = "0989775";
             s2.Age = 31;
 
-            List<string> resultData;
-            this.Button4.Text= ReflectHelper.Compare(s1, s2, out resultData).ToString();
+            Dictionary<string, DataForChange<string>> resultData;
+            this.Button4.Text = ReflectHelper.Compare(s1, s2, out resultData).ToString();
             this.Literal1.Text = string.Empty;
-            foreach (string item in resultData)
+            foreach (KeyValuePair<string, DataForChange<string>> item in resultData)
             {
-                this.Literal1.Text += item+"; ";
+                this.Literal1.Text += item.Key + "; ";
             }
         }
     }
