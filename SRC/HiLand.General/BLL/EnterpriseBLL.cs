@@ -183,7 +183,7 @@ namespace HiLand.General.BLL
         }
 
         /// <summary>
-        /// 
+        /// 释放资源的所有人
         /// </summary>
         /// <param name="enterpriseGuid"></param>
         /// <returns></returns>
@@ -191,9 +191,20 @@ namespace HiLand.General.BLL
         {
             EnterpriseEntity model = Get(enterpriseGuid);
             model.IsProtectedByOwner = Logics.False;
-            model.CreateUserKey = "";
-            model.CreateUserName = "共享";
+            model.ManageUserKey = "";
+            model.ManageUserName = "共享";
             return base.Update(model);
+        }
+
+        /// <summary>
+        /// 获取某资源负责人下的企业数量
+        /// </summary>
+        /// <param name="manageUserKey">资源负责人Key</param>
+        /// <returns></returns>
+        public int GetTotalCountOfManager(string manageUserKey)
+        {
+            string whereClause = string.Format(" ManageUserKey='{0}' ",manageUserKey);
+            return base.GetTotalCount(whereClause);
         }
     }
 }
