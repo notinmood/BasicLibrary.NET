@@ -21,7 +21,6 @@ namespace HiLand.General.BLL
         {
             bool isSuccessful = base.Create(model);
 
-            //RecordOperateLog(model, null, string.Format("创建企业预定信息{0}", isSuccessful == true ? "成功" : "失败"));
             OperateLogBLL.RecordOperateLog(string.Format("创建企业预定信息{0}", isSuccessful == true ? "成功" : "失败"), model.ForeOrderCategory, model.OwnerKey, model.OwnerName, model, null);
             return isSuccessful;
         }
@@ -31,7 +30,6 @@ namespace HiLand.General.BLL
             ForeOrderEntity originalModel = Get(model.ForeOrderGuid, true);
             bool isSuccessful = base.Update(model);
 
-            //RecordOperateLog(model, originalModel, string.Format("修改企业预定信息{0}", isSuccessful == true ? "成功" : "失败"));
             OperateLogBLL.RecordOperateLog(string.Format("修改企业预定信息{0}", isSuccessful == true ? "成功" : "失败"), model.ForeOrderCategory, model.OwnerKey, model.OwnerName, model, originalModel);
             return isSuccessful;
         }
