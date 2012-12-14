@@ -110,7 +110,17 @@ namespace HiLand.General.DALCommon
 			        [EnterpriseWWW],
 			        [StaffScope],
 			        [EnterpriseLevel],
+                    [EnterpriseLevel1],
+			        [EnterpriseLevel2],
+			        [EnterpriseLevel3],
+			        [EnterpriseLevel4],
+			        [EnterpriseLevel5],
+			        [EnterpriseLevel6],
+			        [EnterpriseLevel7],
 			        [EnterpriseRank],
+                    [EnterpriseKind],
+			        [ManageUserKey],
+			        [ManageUserName],
 			        [CreateUserKey],
                     [CreateUserName],
 			        [CreateDate],
@@ -155,7 +165,17 @@ namespace HiLand.General.DALCommon
 			        {0}EnterpriseWWW,
 			        {0}StaffScope,
 			        {0}EnterpriseLevel,
+                    {0}EnterpriseLevel1,
+			        {0}EnterpriseLevel2,
+			        {0}EnterpriseLevel3,
+			        {0}EnterpriseLevel4,
+			        {0}EnterpriseLevel5,
+			        {0}EnterpriseLevel6,
+			        {0}EnterpriseLevel7,
 			        {0}EnterpriseRank,
+                    {0}EnterpriseKind,
+			        {0}ManageUserKey,
+			        {0}ManageUserName,
 			        {0}CreateUserKey,
                     {0}CreateUserName,
 			        {0}CreateDate,
@@ -218,7 +238,17 @@ namespace HiLand.General.DALCommon
 				    [EnterpriseWWW] = {0}EnterpriseWWW,
 				    [StaffScope] = {0}StaffScope,
 				    [EnterpriseLevel] = {0}EnterpriseLevel,
+                    [EnterpriseLevel1] = {0}EnterpriseLevel1,
+				    [EnterpriseLevel2] = {0}EnterpriseLevel2,
+				    [EnterpriseLevel3] = {0}EnterpriseLevel3,
+				    [EnterpriseLevel4] = {0}EnterpriseLevel4,
+				    [EnterpriseLevel5] = {0}EnterpriseLevel5,
+				    [EnterpriseLevel6] = {0}EnterpriseLevel6,
+				    [EnterpriseLevel7] = {0}EnterpriseLevel7,
 				    [EnterpriseRank] = {0}EnterpriseRank,
+                    [EnterpriseKind] = {0}EnterpriseKind,
+				    [ManageUserKey] = {0}ManageUserKey,
+				    [ManageUserName] = {0}ManageUserName,
 				    [CreateUserKey] = {0}CreateUserKey,
                     [CreateUserName] = {0}CreateUserName,
 				    [CreateDate] = {0}CreateDate,
@@ -281,7 +311,17 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("EnterpriseWWW",entity.EnterpriseWWW?? String.Empty),
 			    GenerateParameter("StaffScope",entity.StaffScope),
 			    GenerateParameter("EnterpriseLevel",entity.EnterpriseLevel),
+                GenerateParameter("EnterpriseLevel1",entity.EnterpriseLevel1),
+			    GenerateParameter("EnterpriseLevel2",entity.EnterpriseLevel2),
+			    GenerateParameter("EnterpriseLevel3",entity.EnterpriseLevel3),
+			    GenerateParameter("EnterpriseLevel4",entity.EnterpriseLevel4),
+			    GenerateParameter("EnterpriseLevel5",entity.EnterpriseLevel5),
+			    GenerateParameter("EnterpriseLevel6",entity.EnterpriseLevel6),
+			    GenerateParameter("EnterpriseLevel7",entity.EnterpriseLevel7),
 			    GenerateParameter("EnterpriseRank",entity.EnterpriseRank?? String.Empty),
+                GenerateParameter("EnterpriseKind",entity.EnterpriseKind),
+			    GenerateParameter("ManageUserKey",entity.ManageUserKey?? String.Empty),
+			    GenerateParameter("ManageUserName",entity.ManageUserName?? String.Empty),
 			    GenerateParameter("CreateUserKey",entity.CreateUserKey?? String.Empty),
                 GenerateParameter("CreateUserName",entity.CreateUserName?? String.Empty),
 			    GenerateParameter("CreateDate",entity.CreateDate),
@@ -447,9 +487,50 @@ namespace HiLand.General.DALCommon
                 {
                     entity.EnterpriseLevel = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel"));
                 }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel1"))
+                {
+                    entity.EnterpriseLevel1 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel1"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel2"))
+                {
+                    entity.EnterpriseLevel2 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel2"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel3"))
+                {
+                    entity.EnterpriseLevel3 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel3"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel4"))
+                {
+                    entity.EnterpriseLevel4 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel4"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel5"))
+                {
+                    entity.EnterpriseLevel5 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel5"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel6"))
+                {
+                    entity.EnterpriseLevel6 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel6"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel7"))
+                {
+                    entity.EnterpriseLevel7 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel7"));
+                }
+
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseRank"))
                 {
                     entity.EnterpriseRank = reader.GetString(reader.GetOrdinal("EnterpriseRank"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseKind"))
+                {
+                    entity.EnterpriseKind = reader.GetInt32(reader.GetOrdinal("EnterpriseKind"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ManageUserKey"))
+                {
+                    entity.ManageUserKey = reader.GetString(reader.GetOrdinal("ManageUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ManageUserName"))
+                {
+                    entity.ManageUserName = reader.GetString(reader.GetOrdinal("ManageUserName"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserKey"))
                 {

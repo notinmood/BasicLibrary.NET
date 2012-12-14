@@ -292,7 +292,7 @@ namespace HiLand.General.Entity
 
         private CommonLevels enterpriseLevel;
         /// <summary>
-        /// 企业级别
+        /// 企业级别(综合级别，区别于下面各个EnterpriseLevelX)
         /// </summary>
         /// <remarks>
         /// 可以是合作意向的级别，企业自身的级别等
@@ -301,6 +301,76 @@ namespace HiLand.General.Entity
         {
             get { return enterpriseLevel; }
             set { enterpriseLevel = value; }
+        }
+
+        private CommonLevels enterpriseLevel1;
+        /// <summary>
+        /// 企业级别(某具体领域1的级别，可以是招工需求)
+        /// </summary>
+        public CommonLevels EnterpriseLevel1
+        {
+            get { return enterpriseLevel1; }
+            set { enterpriseLevel1 = value; }
+        }
+
+        private CommonLevels enterpriseLevel2;
+        /// <summary>
+        /// 企业级别(某具体领域2的级别，可以是招聘会)
+        /// </summary>
+        public CommonLevels EnterpriseLevel2
+        {
+            get { return enterpriseLevel2; }
+            set { enterpriseLevel2 = value; }
+        }
+
+        private CommonLevels enterpriseLevel3;
+        /// <summary>
+        /// 企业级别(某具体领域3的级别，可以是简章)
+        /// </summary>
+        public CommonLevels EnterpriseLevel3
+        {
+            get { return enterpriseLevel3; }
+            set { enterpriseLevel3 = value; }
+        }
+
+        private CommonLevels enterpriseLevel4;
+        /// <summary>
+        /// 企业级别(某具体领域4的级别，可以是广告张贴)
+        /// </summary>
+        public CommonLevels EnterpriseLevel4
+        {
+            get { return enterpriseLevel4; }
+            set { enterpriseLevel4 = value; }
+        }
+
+        private CommonLevels enterpriseLevel5;
+        /// <summary>
+        /// 企业级别(某具体领域5的级别，可以是网络服务)
+        /// </summary>
+        public CommonLevels EnterpriseLevel5
+        {
+            get { return enterpriseLevel5; }
+            set { enterpriseLevel5 = value; }
+        }
+
+        private CommonLevels enterpriseLevel6;
+        /// <summary>
+        /// 企业级别(某具体领域6的级别)
+        /// </summary>
+        public CommonLevels EnterpriseLevel6
+        {
+            get { return enterpriseLevel6; }
+            set { enterpriseLevel6 = value; }
+        }
+
+        private CommonLevels enterpriseLevel7;
+        /// <summary>
+        /// 企业级别(某具体领域7的级别)
+        /// </summary>
+        public CommonLevels EnterpriseLevel7
+        {
+            get { return enterpriseLevel7; }
+            set { enterpriseLevel7 = value; }
         }
 
         private string enterpriseRank = String.Empty;
@@ -322,6 +392,33 @@ namespace HiLand.General.Entity
         public string ResourceName
         {
             get { return this.CompanyName; }
+        }
+
+        private int enterpriseKind;
+        public int EnterpriseKind
+        {
+            get { return enterpriseKind; }
+            set { enterpriseKind = value; }
+        }
+
+        private string manageUserKey = String.Empty;
+        /// <summary>
+        /// 资源负责人Key
+        /// </summary>
+        public string ManageUserKey
+        {
+            get { return manageUserKey; }
+            set { manageUserKey = value; }
+        }
+
+        private string manageUserName = String.Empty;
+        /// <summary>
+        /// 资源负责人名称
+        /// </summary>
+        public string ManageUserName
+        {
+            get { return manageUserName; }
+            set { manageUserName = value; }
         }
 
         private string createUserKey = String.Empty;
