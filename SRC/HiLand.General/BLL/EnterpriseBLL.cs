@@ -26,7 +26,7 @@ namespace HiLand.General.BLL
             model = ConfirmTrimSpaceInCompanyName(model);
             bool result = base.Create(model);
 
-            RecordOperateLog(model, null,string.Format("创建企业{0}", result == true ? "成功" : "失败"));
+            OperateLogBLL.RecordOperateLog(string.Format("创建企业信息{0}", result == true ? "成功" : "失败"), "Enterprise", model.EnterpriseGuid.ToString(), model.CompanyName, model, null);
             return result;
         }
 
@@ -72,7 +72,7 @@ namespace HiLand.General.BLL
             model = ConfirmLockEnterprise(model);
             EnterpriseEntity originalModel = EnterpriseBLL.Instance.Get(model.EnterpriseGuid, true);
             bool result= base.Update(model);
-            RecordOperateLog(model, originalModel, string.Format("修改企业{0}", result == true ? "成功" : "失败"));
+            OperateLogBLL.RecordOperateLog(string.Format("修改企业信息{0}", result == true ? "成功" : "失败"), "Enterprise", model.EnterpriseGuid.ToString(), model.CompanyName, model, originalModel);
             return result;
         }
 
@@ -194,60 +194,6 @@ namespace HiLand.General.BLL
             model.CreateUserKey = "";
             model.CreateUserName = "共享";
             return base.Update(model);
-        }
-
-        private static void RecordOperateLog(EnterpriseEntity newModel, EnterpriseEntity originalModel, string logTitle)
-        {
-            if (Config.IsRecordOperateLog == true)
-            {
-                try
-                {
-                    OperateLogEntity logEntity = new OperateLogEntity();
-                    logEntity.CanUsable = Logics.True;
-                    logEntity.LogCategory = "Enterprise";
-                    logEntity.LogDate = DateTime.Now;
-                    if (originalModel == null)
-                    {
-                        logEntity.LogOperateName = OperateTypes.Create.ToString();
-                    }
-                    else
-                    {
-                        logEntity.LogOperateName = OperateTypes.Update.ToString();
-                    }
-                    logEntity.LogStatus = (int)Logics.True;
-                    logEntity.LogType = 0;
-                    logEntity.LogUserKey = BusinessUserBLL.CurrentUserGuid.ToString();
-                    logEntity.LogUserName = BusinessUserBLL.CurrentUser.UserNameDisplay;
-                    logEntity.RelativeKey = newModel.EnterpriseGuid.ToString();
-                    logEntity.RelativeName = newModel.CompanyName;
-                    logEntity.LogTitle = logTitle;
-
-                    if (originalModel != null)
-                    {
-                        List<string> compareResult= new List<string>();
-                        string[] excludePropertyArray= new string[]{"LastUpdateUserKey",
-                            "LastUpdateUserName",
-                            "LastUpdateDate",
-                            "PropertyNames",
-                            "PropertyValues"
-                        };
-                        EntityHelper.Compare(originalModel, newModel, out compareResult, excludePropertyArray);
-                        if (compareResult != null && compareResult.Count > 0)
-                        {
-                            logEntity.LogMessage = CollectionHelper.Concat(";", compareResult as IEnumerable<String>);
-                        }
-                        else
-                        {
-                            logEntity.LogMessage = "没有修改任何信息";
-                        }
-                    }
-
-                    OperateLogBLL.Instance.Create(logEntity);
-                }
-                catch
-                {
-                }
-            }
         }
     }
 }

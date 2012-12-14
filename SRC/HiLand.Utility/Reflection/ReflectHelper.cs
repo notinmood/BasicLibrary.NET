@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using HiLand.Utility.Data;
+using HiLand.Utility.Entity;
 
 namespace HiLand.Utility.Reflection
 {
@@ -249,13 +250,13 @@ namespace HiLand.Utility.Reflection
         /// <typeparam name="T"></typeparam>
         /// <param name="sourceEntity"></param>
         /// <param name="targetEntity"></param>
-        /// <param name="resultData">属性并更的字符串说明</param>
+        /// <param name="resultData">属性并更的信息：key为变更的属性名称；value为包含变更前值和后值的数据</param>
         /// <param name="excludePropertyName">不进行比较的属性名称集合</param>
         /// <returns></returns>
-        public static bool Compare<T>(T sourceEntity, T targetEntity,out List<string> resultData, params string[] excludePropertyName)
+        public static bool Compare<T>(T sourceEntity, T targetEntity, out Dictionary<string, DataForChange<string>> resultData, params string[] excludePropertyName)
         {
             bool result = true;
-            resultData = new List<string>();
+            resultData = new Dictionary<string, DataForChange<string>>();
             Type typeOfEntity = typeof(T);
             BindingFlags bindingFlag = BindingFlags.Instance | BindingFlags.Public;
 
@@ -278,10 +279,10 @@ namespace HiLand.Utility.Reflection
                     continue;
                 }
 
-                if (currentItem.CanRead==true)
+                if (currentItem.CanRead == true)
                 {
-                    object valueInSource = currentItem.GetValue(sourceEntity, null)??string.Empty;
-                    object valueInTarget = currentItem.GetValue(targetEntity, null)??string.Empty;
+                    object valueInSource = currentItem.GetValue(sourceEntity, null) ?? string.Empty;
+                    object valueInTarget = currentItem.GetValue(targetEntity, null) ?? string.Empty;
 
                     string valueInSourceString = valueInSource.ToString();
                     string valueInTargetString = valueInTarget.ToString();
@@ -289,7 +290,7 @@ namespace HiLand.Utility.Reflection
                     if (valueInSourceString != valueInTargetString)
                     {
                         result = false;
-                        resultData.Add(string.Format("属性{0}从{1}变更到{2}", currentItemName, valueInSourceString, valueInTargetString));
+                        resultData[currentItemName] = new DataForChange<string>(valueInSourceString, valueInTargetString);
                     }
                 }
             }

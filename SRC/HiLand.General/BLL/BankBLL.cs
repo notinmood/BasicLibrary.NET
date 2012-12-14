@@ -22,17 +22,20 @@ namespace HiLand.General.BLL
                 UpdatePrimaryData(model);
             }
 
+            OperateLogBLL.RecordOperateLog(string.Format("创建银行账户信息{0}", isSuccessful == true ? "成功" : "失败"), "Bank", model.BankGuid.ToString(), model.User.UserNameDisplay, model, null);
             return isSuccessful;
         }
 
         public override bool Update(BankEntity model)
         {
+            BankEntity originalModel = Get(model.BankGuid, true);
             bool isSuccessful = base.Update(model);
             if (isSuccessful == true && model.IsPrimary == Logics.True)
             {
                 UpdatePrimaryData(model);
             }
 
+            OperateLogBLL.RecordOperateLog(string.Format("修改银行账户信息{0}", isSuccessful == true ? "成功" : "失败"), "Bank", model.BankGuid.ToString(), model.User.UserNameDisplay, model, originalModel);
             return isSuccessful;
         }
 

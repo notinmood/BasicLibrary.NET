@@ -791,6 +791,17 @@ namespace HiLand.Framework.BusinessCore.BLL
             }
         }
 
+        /// <summary>
+        /// 当前用户向外显示的名称
+        /// </summary>
+        public static string CurrentUserNameDisplay
+        {
+            get
+            {
+                return CurrentUser.UserNameDisplay;
+            }
+        }
+
 
         /// <summary>
         /// 当前用户是否已经登录

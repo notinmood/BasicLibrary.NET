@@ -1,4 +1,6 @@
 ﻿using System;
+using HiLand.Framework.BusinessCore;
+using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.FoundationLayer.Attributes;
 using HiLand.Utility.Enums;
@@ -134,6 +136,25 @@ namespace HiLand.General.Entity
         {
             get { return email; }
             set { email = value; }
+        }
+        #endregion
+
+        #region 扩展属性
+        private BusinessUser user = null;
+        /// <summary>
+        /// 当前银行账户对应的用户信息
+        /// </summary>
+        public BusinessUser User
+        {
+            get
+            {
+                if (this.user == null)
+                { 
+                    this.user= BusinessUserBLL.Get(this.UserGuid);
+                }
+
+                return this.user;
+            }
         }
         #endregion
     }
