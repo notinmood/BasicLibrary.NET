@@ -526,8 +526,7 @@ namespace HiLand.General.Entity
             {
                 if (ownerKeys.Count == 0)
                 {
-                    ownerKeys.Add(CreateUserKey);
-                    ownerKeys.Add(LastUpdateUserKey);
+                    ownerKeys.Add(ManageUserKey);
                 }
 
                 return ownerKeys;

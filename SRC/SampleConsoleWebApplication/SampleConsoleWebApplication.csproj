@@ -81,6 +81,7 @@
     <Content Include="ContentTypes测试.aspx" />
     <Content Include="ConverterTest.aspx" />
     <Content Include="FlagHelperTest.aspx" />
+    <Content Include="RegionHelperTest.aspx" />
     <Content Include="脏词过滤测试.txt" />
     <Content Include="CacheUsing.aspx" />
     <Content Include="CurrentUserDemo\Index.aspx" />
@@ -398,6 +399,13 @@
     </Compile>
     <Compile Include="ReflectHelperTest.aspx.designer.cs">
       <DependentUpon>ReflectHelperTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="RegionHelperTest.aspx.cs">
+      <DependentUpon>RegionHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegionHelperTest.aspx.designer.cs">
+      <DependentUpon>RegionHelperTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="RequestHelperTest.aspx.cs">
       <DependentUpon>RequestHelperTest.aspx</DependentUpon>
