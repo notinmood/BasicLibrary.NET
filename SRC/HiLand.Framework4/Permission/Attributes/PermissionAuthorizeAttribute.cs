@@ -1,5 +1,8 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
+using HiLand.Utility.Setting;
+using HiLand.Utility.Web;
 
 namespace HiLand.Framework4.Permission.Attributes
 {
@@ -28,7 +31,16 @@ namespace HiLand.Framework4.Permission.Attributes
             bool isSuccessful = PermissionValidationHelper.GeneralValidate(permissionAuthorizeMode);
             if (isSuccessful == false)
             {
-                FormsAuthentication.RedirectToLoginPage();
+                string noPermissionDisplayPage = Config.GetAppSetting("noPermissionDisplayPage");
+                if (string.IsNullOrWhiteSpace(noPermissionDisplayPage))
+                {
+                    FormsAuthentication.RedirectToLoginPage();
+                }
+                else
+                {
+                    string returnUrl = RequestHelper.CurrentFullUrl;
+                    HttpContext.Current.Response.Redirect(noPermissionDisplayPage);
+                }
             }
         }
     }

@@ -45,7 +45,6 @@ namespace HiLand.Utility.Data
             where T : IComparable
         {
             //TIP:xieran20121218 重叠规则可以参考RegionHelper.vsdx
-
             if (regionDataB.Min.CompareTo(regionDataA.Min) >= 0 && regionDataB.Min.CompareTo(regionDataA.Max) <= 0)
             {
                 return true;
