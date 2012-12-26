@@ -203,18 +203,18 @@ namespace HiLand.Utility4.MVC.Controls
 
 
         #region 文本常量定义
-        internal static string ConditionCountNameStringConst = "||ConditionCountName";
-        internal static string QueryControlDisplayStatusStringConst = "||QueryControlDisplayStatus";
+        internal static string ConditionCountNameStringConst = "_ConditionCountName";
+        internal static string QueryControlDisplayStatusStringConst = "_QueryControlDisplayStatus";
 
-        internal static string LeftBracketsNameStringConst = "||LeftBracketsName||";
-        internal static string RightBracketsNameStringConst = "||RightBracketsName||";
+        internal static string LeftBracketsNameStringConst = "_LeftBracketsName_";
+        internal static string RightBracketsNameStringConst = "_RightBracketsName_";
 
-        internal static string ConditionValueNameStringConst = "||ConditionValueName||";
-        internal static string ConditionFieldNameStringConst = "||ConditionFieldName||";
-        internal static string ConditionTypeNameStringConst = "||ConditionTypeName||";
+        internal static string ConditionValueNameStringConst = "_ConditionValueName_";
+        internal static string ConditionFieldNameStringConst = "_ConditionFieldName_";
+        internal static string ConditionTypeNameStringConst = "_ConditionTypeName_";
 
-        internal static string ConditionOperatorNameStringConst = "||ConditionOperatorName||";
-        internal static string ConditionRelationshipNameStringConst = "||ConditionRelationshipName||";
+        internal static string ConditionOperatorNameStringConst = "_ConditionOperatorName_";
+        internal static string ConditionRelationshipNameStringConst = "_ConditionRelationshipName_";
         #endregion
     }
 }

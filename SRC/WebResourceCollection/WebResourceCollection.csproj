@@ -2658,6 +2658,11 @@
     <Content Include="纯CSS实现的精美边框效果\16.镜框效果.html" />
     <Content Include="纯CSS实现的精美边框效果\readme.txt" />
     <Content Include="编码规范\Readme.txt" />
+    <Content Include="页面加载等待效果\mask.css" />
+    <Content Include="页面加载等待效果\mask.js" />
+    <Content Include="页面加载等待效果\页面加载等待效果.aspx" />
+    <Content Include="页面加载等待效果\页面加载等待效果2.aspx" />
+    <Content Include="页面加载等待效果\页面加载等待效果3.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Misc\服务端持续输出信息到客户端.aspx.cs">
@@ -2768,6 +2773,27 @@
     </Compile>
     <Compile Include="zTree的使用\DataHandler.ashx.cs">
       <DependentUpon>DataHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="页面加载等待效果\页面加载等待效果.aspx.cs">
+      <DependentUpon>页面加载等待效果.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="页面加载等待效果\页面加载等待效果.aspx.designer.cs">
+      <DependentUpon>页面加载等待效果.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="页面加载等待效果\页面加载等待效果2.aspx.cs">
+      <DependentUpon>页面加载等待效果2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="页面加载等待效果\页面加载等待效果2.aspx.designer.cs">
+      <DependentUpon>页面加载等待效果2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="页面加载等待效果\页面加载等待效果3.aspx.cs">
+      <DependentUpon>页面加载等待效果3.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="页面加载等待效果\页面加载等待效果3.aspx.designer.cs">
+      <DependentUpon>页面加载等待效果3.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
