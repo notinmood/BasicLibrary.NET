@@ -542,5 +542,22 @@ namespace HiLand.General.Entity
             get { return true; }
         }
         #endregion
+
+        #region 扩展属性
+        /// <summary>
+        /// 乘车指南
+        /// </summary>
+        public string BusGuide
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("BusGuide");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("BusGuide", value);
+            }
+        }
+        #endregion
     }
 }

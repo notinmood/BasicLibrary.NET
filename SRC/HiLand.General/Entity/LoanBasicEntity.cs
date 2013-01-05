@@ -131,19 +131,6 @@ namespace HiLand.General.Entity
         }
         #endregion
 
-        //private string propertyNames = String.Empty;
-        //public string PropertyNames
-        //{
-        //    get { return propertyNames; }
-        //    set { propertyNames = value; }
-        //}
-
-        //private string propertyValues = String.Empty;
-        //public string PropertyValues
-        //{
-        //    get { return propertyValues; }
-        //    set { propertyValues = value; }
-        //}
         #endregion
     }
 }
