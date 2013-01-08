@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HiLand.Utility.Data;
 
 namespace HiLand.Utility.Setting.SectionHandler
 {
@@ -39,26 +40,28 @@ namespace HiLand.Utility.Setting.SectionHandler
             set { this.excuteMinute = value; }
         }
 
-        private string addonInfo = string.Empty;
+        private bool isUse = false;
+        /// <summary>
+        /// 是否启用此任务
+        /// </summary>
+        public bool IsUse
+        {
+            get { return this.isUse; }
+            set { this.isUse = value; }
+        }
+
+        private string addon = string.Empty;
         /// <summary>
         /// 任务的附属信息
         /// </summary>
-        public string AddonInfo
+        /// <remarks>
+        /// 格式类似如下 key1:value1||key2:value2
+        /// </remarks>
+        public string Addon
         {
-            get { return this.addonInfo; }
-            set { this.addonInfo = value; }
+            get { return this.addon; }
+            set { this.addon = value; }
         }
-
-        private string addonDetails = string.Empty;
-        /// <summary>
-        /// 任务的其他附属信息
-        /// </summary>
-        public string AddonDetails
-        {
-            get { return this.addonDetails; }
-            set { this.addonDetails = value; }
-        }
-        
 
         private Type type = null;
         /// <summary>
@@ -69,5 +72,50 @@ namespace HiLand.Utility.Setting.SectionHandler
             get { return this.type; }
             set { this.type = value; }
         }
+
+
+        #region 获取Addon内部里面设置项的值
+        private Dictionary<string, string> addonDic = null;
+
+        private Dictionary<string, string> AddonDic
+        {
+            get
+            {
+                if (addonDic == null)
+                {
+                    addonDic = StringHelper.SplitToDictionary(addon, ":", "||");
+                }
+
+                return addonDic;
+            }
+        }
+
+        /// <summary>
+        /// 获取Addon内部里面设置项的值
+        /// </summary>
+        /// <param name="addonKey"></param>
+        /// <returns></returns>
+        public string GetAddonItemValue(string addonKey)
+        {
+            string result = string.Empty;
+            if (AddonDic.ContainsKey(addonKey))
+            {
+                result = AddonDic[addonKey];
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// 获取Addon内部里面设置项的值
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="addonKey"></param>
+        /// <returns></returns>
+        public T GetAddonItemValue<T>(string addonKey)
+        {
+            return Converter.ChangeType<T>(GetAddonItemValue(addonKey));
+        }
+        #endregion
     }
 }

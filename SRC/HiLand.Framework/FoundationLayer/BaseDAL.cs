@@ -8,6 +8,9 @@ using HiLand.Utility.Serialization;
 
 namespace HiLand.Framework.FoundationLayer
 {
+    //TODO:xieran20121025 生成参数、载入数据等方法缺省可以考虑使用ORM自动实现，
+    //当然各子类中对方法可以通过手工操作的方式对方法进行重写以提高程序性能
+
     /// <summary>
     /// 数据访问的基类
     /// </summary>
@@ -46,6 +49,17 @@ namespace HiLand.Framework.FoundationLayer
         /// 分页存储过程的名字
         /// </summary>
         protected abstract string PagingSPName { get; }
+
+        /// <summary>
+        /// GetList获取数据集合时的排序条件
+        /// </summary>
+        /// <remarks>
+        /// 如果GetList的重载方法设置了参数OrderByClause，则此属性会被覆盖
+        /// </remarks>
+        protected virtual string OrderByCondition
+        {
+            get { return string.Empty; }
+        }
         #endregion
 
         #region 数据库基本操作
@@ -158,7 +172,7 @@ namespace HiLand.Framework.FoundationLayer
         /// <summary>
         /// 获取实体列表
         /// </summary>
-        /// <param name="onlyDisplayUsable"></param>
+        /// <param name="paras"></param>
         /// <param name="whereClause"></param>
         /// <returns></returns>
         public virtual List<TModel> GetList(string whereClause, params IDbDataParameter[] paras)
@@ -203,6 +217,13 @@ namespace HiLand.Framework.FoundationLayer
             {
                 commandText += " Order By " + orderByClause;
             }
+            else
+            {
+                if (string.IsNullOrEmpty(this.OrderByCondition) == false)
+                {
+                    commandText += " Order By " + this.OrderByCondition;
+                }
+            }
 
             TParameter[] sqlParas = paras as TParameter[];
             collection = CommonGeneralInstance.GetEntityList<TModel>(commandText, sqlParas, Load);
@@ -233,6 +254,29 @@ namespace HiLand.Framework.FoundationLayer
         public virtual PagedEntityCollection<TModel> GetPagedCollection(int startIndex, int pageSize, string whereClause, string orderClause)
         {
             return CommonGeneralInstance.GetPagedCollection<TModel>(PagingSPName, whereClause, orderClause, startIndex, pageSize, Load);
+        }
+        #endregion
+
+        #region  
+        /// <summary>
+        /// 获取单条执行结果
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        public virtual object GetScalar(string sqlClause, params IDbDataParameter[] paras)
+        {
+            return HelperExInstance.ExecuteScalar(sqlClause, paras as TParameter[]);
+        }
+
+        /// <summary>
+        /// 非查询的方式执行语句
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        public virtual int ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras)
+        {
+            return HelperExInstance.ExecuteNonQuery(sqlClause, paras as TParameter[]);
         }
         #endregion
 
@@ -277,7 +321,7 @@ namespace HiLand.Framework.FoundationLayer
         /// <summary>
         /// 获取主键形成过滤条件是的参数集合
         /// </summary>
-        /// <param name="keyValues"></param>
+        /// <param name="guidKeyValue"></param>
         /// <returns></returns>
         protected TParameter[] GetGuidKeyParameters(Guid guidKeyValue)
         {

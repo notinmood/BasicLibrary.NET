@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.FoundationLayer.Attributes;
 using HiLand.Utility.Data;
@@ -6,7 +7,10 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.Entity
 {
-    public class EnterpriseEntity : BaseModel<EnterpriseEntity>
+    /// <summary>
+    /// 企业实体
+    /// </summary>
+    public class EnterpriseEntity : BaseModel<EnterpriseEntity>, IResource
     {
         public override string[] BusinessKeyNames
         {
@@ -22,7 +26,7 @@ namespace HiLand.General.Entity
         }
 
         private Guid enterpriseGuid = Guid.Empty;
-         [DBFieldAttribute(IsBusinessPrimaryKey = true)]
+        [DBFieldAttribute(IsBusinessPrimaryKey = true)]
         public Guid EnterpriseGuid
         {
             get { return enterpriseGuid; }
@@ -50,11 +54,28 @@ namespace HiLand.General.Entity
             set { tradingName = value; }
         }
 
-        private string industry = String.Empty;
-        public string Industry
+        private string industryKey = String.Empty;
+        /// <summary>
+        /// 所属行业
+        /// </summary>
+        /// <remarks>
+        /// 1、如果需要使用用户自定义的多级别的行业信息，可以用此属性记录关联Guid
+        /// 2、如果是简单的行业信息，可以用此属性直接记录行业名称的文字
+        /// </remarks>
+        public string IndustryKey
         {
-            get { return industry; }
-            set { industry = value; }
+            get { return industryKey; }
+            set { industryKey = value; }
+        }
+
+        private IndustryTypes industryType = IndustryTypes.NonSet;
+        /// <summary>
+        /// 行业类型
+        /// </summary>
+        public IndustryTypes IndustryType
+        {
+            get { return industryType; }
+            set { industryType = value; }
         }
 
         private string enterpriseCode = String.Empty;
@@ -92,6 +113,16 @@ namespace HiLand.General.Entity
             set { telephone = value; }
         }
 
+        private string telephoneOther = String.Empty;
+        /// <summary>
+        ///  其他联系电话（比如手机等）
+        /// </summary>
+        public string TelephoneOther
+        {
+            get { return telephoneOther; }
+            set { telephoneOther = value; }
+        }
+
         private string fax = String.Empty;
         public string Fax
         {
@@ -113,7 +144,7 @@ namespace HiLand.General.Entity
             set { establishedYears = value; }
         }
 
-        private DateTime establishedTime= DateTimeHelper.Min;
+        private DateTime establishedTime = DateTimeHelper.Min;
         public DateTime EstablishedTime
         {
             get { return establishedTime; }
@@ -155,16 +186,29 @@ namespace HiLand.General.Entity
             set { areaCode = value; }
         }
 
+        private string areaOther = String.Empty;
+        /// <summary>
+        /// 地区的其他信息
+        /// </summary>
+        public string AreaOther
+        {
+            get { return areaOther; }
+            set { areaOther = value; }
+        }
+
         private string companyNameShort = String.Empty;
+        /// <summary>
+        /// 企业简称（如果没有填写简称其会获取全称）
+        /// </summary>
         public string CompanyNameShort
         {
-            get 
+            get
             {
                 if (string.IsNullOrEmpty(this.companyNameShort))
                 {
                     this.companyNameShort = companyName;
                 }
-                return this.companyNameShort; 
+                return this.companyNameShort;
             }
             set { companyNameShort = value; }
         }
@@ -206,19 +250,314 @@ namespace HiLand.General.Entity
             }
         }
 
-        //private string propertyNames = String.Empty;
-        //public string PropertyNames
-        //{
-        //    get { return propertyNames; }
-        //    set { propertyNames = value; }
-        //}
+        private string enterpriseDescription = String.Empty;
+        /// <summary>
+        /// 企业描述
+        /// </summary>
+        public string EnterpriseDescription
+        {
+            get { return enterpriseDescription; }
+            set { enterpriseDescription = value; }
+        }
 
-        //private string propertyValues = String.Empty;
-        //public string PropertyValues
-        //{
-        //    get { return propertyValues; }
-        //    set { propertyValues = value; }
-        //}
+        private string enterpriseMemo = String.Empty;
+        /// <summary>
+        /// 企业备注
+        /// </summary>
+        public string EnterpriseMemo
+        {
+            get { return enterpriseMemo; }
+            set { enterpriseMemo = value; }
+        }
+
+        private string enterpriseWWW = String.Empty;
+        /// <summary>
+        /// 企业网址
+        /// </summary>
+        public string EnterpriseWWW
+        {
+            get { return enterpriseWWW; }
+            set { enterpriseWWW = value; }
+        }
+
+        private StaffScopes staffScope;
+        /// <summary>
+        /// 人员规模
+        /// </summary>
+        public StaffScopes StaffScope
+        {
+            get { return staffScope; }
+            set { staffScope = value; }
+        }
+
+        private CommonLevels enterpriseLevel;
+        /// <summary>
+        /// 企业级别(综合级别，区别于下面各个EnterpriseLevelX)
+        /// </summary>
+        /// <remarks>
+        /// 可以是合作意向的级别，企业自身的级别等
+        /// </remarks>
+        public CommonLevels EnterpriseLevel
+        {
+            get { return enterpriseLevel; }
+            set { enterpriseLevel = value; }
+        }
+
+        private CommonLevels enterpriseLevel1;
+        /// <summary>
+        /// 企业级别(某具体领域1的级别，可以是招工需求)
+        /// </summary>
+        public CommonLevels EnterpriseLevel1
+        {
+            get { return enterpriseLevel1; }
+            set { enterpriseLevel1 = value; }
+        }
+
+        private CommonLevels enterpriseLevel2;
+        /// <summary>
+        /// 企业级别(某具体领域2的级别，可以是招聘会)
+        /// </summary>
+        public CommonLevels EnterpriseLevel2
+        {
+            get { return enterpriseLevel2; }
+            set { enterpriseLevel2 = value; }
+        }
+
+        private CommonLevels enterpriseLevel3;
+        /// <summary>
+        /// 企业级别(某具体领域3的级别，可以是简章)
+        /// </summary>
+        public CommonLevels EnterpriseLevel3
+        {
+            get { return enterpriseLevel3; }
+            set { enterpriseLevel3 = value; }
+        }
+
+        private CommonLevels enterpriseLevel4;
+        /// <summary>
+        /// 企业级别(某具体领域4的级别，可以是广告张贴)
+        /// </summary>
+        public CommonLevels EnterpriseLevel4
+        {
+            get { return enterpriseLevel4; }
+            set { enterpriseLevel4 = value; }
+        }
+
+        private CommonLevels enterpriseLevel5;
+        /// <summary>
+        /// 企业级别(某具体领域5的级别，可以是网络服务)
+        /// </summary>
+        public CommonLevels EnterpriseLevel5
+        {
+            get { return enterpriseLevel5; }
+            set { enterpriseLevel5 = value; }
+        }
+
+        private CommonLevels enterpriseLevel6;
+        /// <summary>
+        /// 企业级别(某具体领域6的级别)
+        /// </summary>
+        public CommonLevels EnterpriseLevel6
+        {
+            get { return enterpriseLevel6; }
+            set { enterpriseLevel6 = value; }
+        }
+
+        private CommonLevels enterpriseLevel7;
+        /// <summary>
+        /// 企业级别(某具体领域7的级别)
+        /// </summary>
+        public CommonLevels EnterpriseLevel7
+        {
+            get { return enterpriseLevel7; }
+            set { enterpriseLevel7 = value; }
+        }
+
+        private string enterpriseRank = String.Empty;
+        /// <summary>
+        /// 企业等级
+        /// </summary>
+        /// <remarks>可以根据具体场景，规定此字段的含义</remarks>
+        public string EnterpriseRank
+        {
+            get { return enterpriseRank; }
+            set { enterpriseRank = value; }
+        }
+
+        public Guid ResourceGuid
+        {
+            get { return this.EnterpriseGuid; }
+        }
+
+        public string ResourceName
+        {
+            get { return this.CompanyName; }
+        }
+
+        private int enterpriseKind;
+        public int EnterpriseKind
+        {
+            get { return enterpriseKind; }
+            set { enterpriseKind = value; }
+        }
+
+        private string manageUserKey = String.Empty;
+        /// <summary>
+        /// 资源负责人Key
+        /// </summary>
+        public string ManageUserKey
+        {
+            get { return manageUserKey; }
+            set { manageUserKey = value; }
+        }
+
+        private string manageUserName = String.Empty;
+        /// <summary>
+        /// 资源负责人名称
+        /// </summary>
+        public string ManageUserName
+        {
+            get { return manageUserName; }
+            set { manageUserName = value; }
+        }
+
+        private string createUserKey = String.Empty;
+        /// <summary>
+        /// 资源创建人Key
+        /// </summary>
+        public string CreateUserKey
+        {
+            get { return createUserKey; }
+            set { createUserKey = value; }
+        }
+
+        private string createUserName = String.Empty;
+        /// <summary>
+        /// 资源创建人名称
+        /// </summary>
+        public string CreateUserName
+        {
+            get { return createUserName; }
+            set { createUserName = value; }
+        }
+
+        private DateTime createDate = DateTimeHelper.Min;
+        /// <summary>
+        /// 资源创建时间
+        /// </summary>
+        public DateTime CreateDate
+        {
+            get { return createDate; }
+            set { createDate = value; }
+        }
+
+        private string lastUpdateUserKey = String.Empty;
+        /// <summary>
+        /// 资源最后更新人Key
+        /// </summary>
+        public string LastUpdateUserKey
+        {
+            get { return lastUpdateUserKey; }
+            set { lastUpdateUserKey = value; }
+        }
+
+        private string lastUpdateUserName = String.Empty;
+        /// <summary>
+        /// 资源最后更新人名称
+        /// </summary>
+        public string LastUpdateUserName
+        {
+            get { return lastUpdateUserName; }
+            set { lastUpdateUserName = value; }
+        }
+
+        private DateTime lastUpdateDate = DateTimeHelper.Min;
+        /// <summary>
+        /// 资源最后更新时间
+        /// </summary>
+        public DateTime LastUpdateDate
+        {
+            get { return lastUpdateDate; }
+            set { lastUpdateDate = value; }
+        }
+
+        private Logics isProtectedByOwner = Logics.True;
+        /// <summary>
+        /// 当前资源是否被保护（被保护的数据，仅能所有者修改，其他人仅能查看）
+        /// </summary>
+        public Logics IsProtectedByOwner
+        {
+            get { return this.isProtectedByOwner; }
+            set { this.isProtectedByOwner = value; }
+        }
+
+        private int cooperateStatus = 0;
+        /// <summary>
+        /// 当前企业是否已合作
+        /// </summary>
+        public int CooperateStatus
+        {
+            get { return this.cooperateStatus; }
+            set { this.cooperateStatus = value; }
+        }
+
+        /// <summary>
+        /// 是否已经合作
+        /// </summary>
+        public Logics IsCooperated
+        {
+            get
+            {
+                if (this.CooperateStatus <= 0)
+                {
+                    return Logics.False;
+                }
+                else
+                {
+                    return Logics.True;
+                }
+            }
+        }
+
+        private List<string> ownerKeys = new List<string>();
+        public List<string> OwnerKeys
+        {
+            get
+            {
+                if (ownerKeys.Count == 0)
+                {
+                    ownerKeys.Add(ManageUserKey);
+                }
+
+                return ownerKeys;
+            }
+        }
+
+        //HACK:xieran20121126 此处只是为了实现接口，不要直接使用IsOwning这个属性
+        /// <summary>
+        /// 当前用户是否拥有资源的控制权(此处仅是实现接口IResource,不要直接使用.)
+        /// </summary>
+        public bool IsOwning
+        {
+            get { return true; }
+        }
+        #endregion
+
+        #region 扩展属性
+        /// <summary>
+        /// 乘车指南
+        /// </summary>
+        public string BusGuide
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("BusGuide");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("BusGuide", value);
+            }
+        }
         #endregion
     }
 }

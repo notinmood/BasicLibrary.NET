@@ -17,7 +17,7 @@ namespace HiLand.Utility.Reflection
         private static Dictionary<Type, Dictionary<TMemberInfo, TAttribute>> typeWithExtendedMemberInfosDic = new Dictionary<Type, Dictionary<TMemberInfo, TAttribute>>();
 
         /// <summary>
-        /// 获取模型的所有被标注了TAttribute的属性信息
+        /// 获取模型的所有被标注了TAttribute特性的成员信息
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>

@@ -5,7 +5,7 @@ using HiLand.Framework.FoundationLayer;
 namespace HiLand.General.BLL
 {
     /// <summary>
-    /// 新闻类别逻辑类
+    /// 新闻类别业务逻辑类
     /// </summary>
     public class NewsCategoryBLL : BaseBLL<NewsCategoryBLL, NewsCategoryEntity, NewsCategoryDAL>
     {

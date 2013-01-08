@@ -14,7 +14,7 @@ namespace HiLand.Framework.FoundationLayer
     /// <typeparam name="TCommand"></typeparam>
     /// <typeparam name="TDataReader"></typeparam>
     /// <typeparam name="TParameter"></typeparam>
-    public class BaseComputerDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter> 
+    public abstract class BaseComputerDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter> 
         where TConnection : class,IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction

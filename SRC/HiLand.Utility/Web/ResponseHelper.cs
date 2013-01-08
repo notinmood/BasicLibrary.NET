@@ -5,6 +5,9 @@ using System.Web;
 
 namespace HiLand.Utility.Web
 {
+    /// <summary>
+    /// 响应对象帮助器
+    /// </summary>
     public static class ResponseHelper
     {
         /// <summary>

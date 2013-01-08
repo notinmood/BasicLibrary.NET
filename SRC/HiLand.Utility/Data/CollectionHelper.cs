@@ -13,6 +13,29 @@ namespace HiLand.Utility.Data
     public static class CollectionHelper
     {
         /// <summary>
+        /// 判断两个集合中是否存在至少一个共同的元素
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="collection1"></param>
+        /// <param name="collection2"></param>
+        /// <returns></returns>
+        public static bool IsExistAtLeastOneElement<T>(IEnumerable<T> collection1, IEnumerable<T> collection2)
+        {
+            foreach (T currentItemAt1 in collection1)
+            {
+                foreach (T currentItemAt2 in collection2)
+                {
+                    if (object.Equals(currentItemAt2, currentItemAt1))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
         /// 判断某个值，在给定的集合中是否存在
         /// </summary>
         /// <typeparam name="T"></typeparam>

@@ -14,6 +14,46 @@ namespace HiLand.Utility4.MVC.Controls
     /// </summary>
     public class QueryControl : BaseControl<QueryControl>
     {
+        private string queryButtonTextForOpen = "<i class=\"icon-zoom-in  icon-white\"></i>展开查询";
+        public QueryControl QueryButtonTextForOpen(string data)
+        {
+            this.queryButtonTextForOpen = data;
+            return this;
+        }
+
+        //TODO:xieran20121108需要在下面JS中使用这个变量
+        private string queryButtonTextForClose = "<i class=\"icon-zoom-out  icon-white\"></i>收起查询";
+        public QueryControl QueryButtonTextForClose(string data)
+        {
+            this.queryButtonTextForClose = data;
+            return this;
+        }
+
+        private bool isDisplayBrackets = true;
+        /// <summary>
+        /// 是否显示括号运算符(其可以在多个条件之间设置优先级)
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public QueryControl IsDisplayBrackets(bool data)
+        {
+            this.isDisplayBrackets = data;
+            return this;
+        }
+
+        private bool isDisplayTableHead = false;
+        /// <summary>
+        /// 是否显示表头
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public QueryControl IsDisplayTableHead(bool data)
+        {
+            this.isDisplayTableHead = data;
+            return this;
+        }
+
+
         /// <summary>
         /// 输出控件Html代码
         /// </summary>
@@ -24,12 +64,32 @@ namespace HiLand.Utility4.MVC.Controls
             sb.AppendFormat("<table class=\"{0}\" style=\"width: 100%;\">", this.cssClassName);
 
             sb.Append("<tr>");
-            sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", "(");
-            sb.AppendFormat("<th style=\"width: 20%;\">{0}</th>", "名称");
-            sb.AppendFormat("<th style=\"width: 5%;\">{0}</th>", "符号");
-            sb.AppendFormat("<th style=\"width: auto;\">{0}</th>", "值");
-            sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", ")");
-            sb.AppendFormat("<th style=\"width: 10%;\">{0}<span class=\"queryButton\">展开查询</span>{1}</th>", "", GetQueryControlDisplayStatusString());
+            if (isDisplayTableHead == true)
+            {
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", "(");
+                }
+                sb.AppendFormat("<th style=\"width: 20%;\">{0}</th>", "名称");
+                sb.AppendFormat("<th style=\"width: 5%;\">{0}</th>", "符号");
+                sb.AppendFormat("<th style=\"width: auto;\">{0}</th>", "值");
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<th style=\"width: 2%;\">{0}</th>", ")");
+                }
+            }
+            else
+            {
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.Append("<th colspan=\"5\" style=\"width: 88%;\"></th>");
+                }
+                else
+                {
+                    sb.Append("<th colspan=\"3\" style=\"width: 88%;\"></th>");
+                }
+            }
+            sb.AppendFormat("<th style=\"width: 12%;\">{0}<span class=\"queryButton btn btn-warning\">{2}</span>{1}</th>", "", GetQueryControlDisplayStatusString(), this.queryButtonTextForOpen);
             sb.Append("</tr>");
 
             for (int i = 0; i < queryConditionList.Count; i++)
@@ -41,11 +101,17 @@ namespace HiLand.Utility4.MVC.Controls
                     isLastItem = true;
                 }
                 sb.Append("<tr>");
-                sb.AppendFormat("<td >{0}</td>", GetLeftBracketsString(i));
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<td >{0}</td>", GetLeftBracketsString(i));
+                }
                 sb.AppendFormat("<td >{0}</td>", GetConditionNameString(currentItem, i));
                 sb.AppendFormat("<td >{0}</td>", GetConditionOperatorString(currentItem, i));
                 sb.AppendFormat("<td >{0}</td>", GetConditionValueString(currentItem, i));
-                sb.AppendFormat("<td >{0}</td>", GetRightBracketsString(i));
+                if (this.isDisplayBrackets == true)
+                {
+                    sb.AppendFormat("<td >{0}</td>", GetRightBracketsString(i));
+                }
                 sb.AppendFormat("<td >{0}</td>", GetRelationshipString(i, isLastItem));
                 sb.Append("</tr>");
             }
@@ -60,7 +126,7 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetQueryControlDisplayStatusString()
         {
-            string queryControlDisplayStatusFullName = this.name + QueryControlHelper.QueryControlDisplayStatus;
+            string queryControlDisplayStatusFullName = this.name + QueryControlHelper.QueryControlDisplayStatusStringConst;
             string queryControlDisplayStatusValue = MVCHelper.GetParam(queryControlDisplayStatusFullName, "closed");
             return string.Format("<input type=\"hidden\" name=\"{0}\" class=\"queryStatus\" value=\"{1}\">", queryControlDisplayStatusFullName, queryControlDisplayStatusValue);
         }
@@ -88,13 +154,13 @@ namespace HiLand.Utility4.MVC.Controls
                                 var trObject = $(this).parents('tr');
                                 trObject.siblings().show();
                                 trObject.find('.queryStatus').val('open');
-                                $(this).text('收起查询');
+                                $(this).html('<i class=\'icon-zoom-out  icon-white\'></i>收起查询');
                             },
                             function () { 
                                 var trObject = $(this).parents('tr');                                
                                 trObject.siblings().hide(); 
                                 trObject.find('.queryStatus').val('closed');
-                                $(this).text('展开查询');
+                                $(this).html('<i class=\'icon-zoom-in  icon-white\'></i>展开查询');
                             }
                         );
                     });
@@ -134,7 +200,7 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetLeftBracketsString(int number)
         {
-            string leftBracketsFullName = this.name + QueryControlHelper.LeftBracketsName + number;
+            string leftBracketsFullName = this.name + QueryControlHelper.LeftBracketsNameStringConst + number;
             string leftBracketsValue = MVCHelper.GetParam(leftBracketsFullName);
             string checkedString = string.Empty;
             if (leftBracketsValue.ToLower() == "on")
@@ -152,7 +218,7 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetRightBracketsString(int number)
         {
-            string rightBracketsFullName = this.name + QueryControlHelper.RightBracketsName + number;
+            string rightBracketsFullName = this.name + QueryControlHelper.RightBracketsNameStringConst + number;
             string rightBracketsValue = MVCHelper.GetParam(rightBracketsFullName);
             string checkedString = string.Empty;
             if (rightBracketsValue.ToLower() == "on")
@@ -171,7 +237,31 @@ namespace HiLand.Utility4.MVC.Controls
         /// <returns></returns>
         private string GetConditionNameString(QueryConditionItem queryConditionItem, int number)
         {
-            return string.Format("{0}<input type=\"hidden\" name=\"{1}\" value=\"{2}\" />", queryConditionItem.ConditionDisplayName, this.name + QueryControlHelper.ConditionFieldName + number, queryConditionItem.ConditionFieldName);
+            if (queryConditionItem.isMultiFieldName == true)
+            {
+                string conditionFieldFullName = this.name + QueryControlHelper.ConditionFieldNameStringConst + number;
+                string conditionFieldValue = MVCHelper.GetParam(conditionFieldFullName);
+
+                StringBuilder sb = new StringBuilder();
+                sb.AppendFormat("<select name=\"{0}\">", this.name + QueryControlHelper.ConditionFieldNameStringConst + number);
+                for (int i = 0; i < queryConditionItem.ConditionFieldNames.Length; i++)
+                {
+                    string selectedString = string.Empty;
+                    if (conditionFieldValue == queryConditionItem.ConditionFieldNames[i])
+                    {
+                        selectedString = "selected=\"selected\"";
+                    }
+
+                    sb.AppendFormat("<option value=\"{0}\" {1}>{2}</option>", queryConditionItem.ConditionFieldNames[i], selectedString, queryConditionItem.ConditionDisplayNames[i]);
+                }
+                sb.Append("</select>");
+
+                return sb.ToString();
+            }
+            else
+            {
+                return string.Format("{0}<input type=\"hidden\" name=\"{1}\" value=\"{2}\" />", queryConditionItem.ConditionDisplayName, this.name + QueryControlHelper.ConditionFieldNameStringConst + number, queryConditionItem.ConditionFieldName);
+            }
         }
 
         /// <summary>
@@ -185,22 +275,15 @@ namespace HiLand.Utility4.MVC.Controls
             StringBuilder result = new StringBuilder();
 
             //记录查询条件值的类型
-            result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", this.name + QueryControlHelper.ConditionTypeName + number, TypeHelper.GetTypeShortDescription(queryConditionItem.ConditionType));
+            result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", this.name + QueryControlHelper.ConditionTypeNameStringConst + number, TypeHelper.GetTypeShortDescription(queryConditionItem.ConditionType));
 
-            string conditionValueFullName = this.name + QueryControlHelper.ConditionValueName + number;
+            string conditionValueFullName = this.name + QueryControlHelper.ConditionValueNameStringConst + number;
             string conditionValueValue = MVCHelper.GetParam(conditionValueFullName);
-
-            //TODO:xieran20121001 日期类型需要使用日期输入框
-            if (queryConditionItem.ConditionType == typeof(String) ||
-                (TypeHelper.ConfirmIsNumberType(queryConditionItem.ConditionType) == true && queryConditionItem.ConditionType.IsEnum == false) ||
-                queryConditionItem.ConditionType == typeof(DateTime))
-            {
-                result.AppendFormat("<input type=\"text\" name=\"{0}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue);
-            }
 
             if (queryConditionItem.ConditionType.IsEnum == true)
             {
-                ListItemCollection coll = EnumBuilder.BuildItemCollection(queryConditionItem.ConditionType, true);
+                string enumDisplayCategory = queryConditionItem.GetAddonItem("enumDisplayCategory");
+                ListItemCollection coll = EnumBuilder.BuildItemCollection(queryConditionItem.ConditionType, enumDisplayCategory, true);
                 result.AppendFormat("<select name=\"{0}\">", conditionValueFullName);
 
                 foreach (ListItem currentItem in coll)
@@ -221,6 +304,36 @@ namespace HiLand.Utility4.MVC.Controls
 
                 result.Append("</select>");
             }
+            else
+            {
+                if (queryConditionItem.ConditionValueItems.Count > 0)
+                {
+                    result.AppendFormat("<select name=\"{0}\">", conditionValueFullName);
+                    foreach (ListItem currentItem in queryConditionItem.ConditionValueItems)
+                    {
+                        string itemSelectedString = string.Empty;
+                        if (string.IsNullOrEmpty(currentItem.Value) == false)
+                        {
+                            if (currentItem.Value == conditionValueValue)
+                            {
+                                itemSelectedString = "selected";
+                            }
+                        }
+                        result.AppendFormat("<option value=\"{0}\" {1}>{2}</option>", currentItem.Value, itemSelectedString, currentItem.Text);
+                    }
+
+                    result.Append("</select>");
+                }
+                else
+                {
+                    //TODO:xieran20121001 日期类型需要使用日期输入框
+                    //if (queryConditionItem.ConditionType == typeof(String) ||
+                    //    (TypeHelper.ConfirmIsNumberType(queryConditionItem.ConditionType) == true && queryConditionItem.ConditionType.IsEnum == false) ||
+                    //    queryConditionItem.ConditionType == typeof(DateTime))
+                    result.AppendFormat("<input type=\"text\" name=\"{0}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue);
+                }
+            }
+
             return result.ToString();
         }
 
@@ -234,7 +347,7 @@ namespace HiLand.Utility4.MVC.Controls
         {
             StringBuilder result = new StringBuilder();
 
-            string conditionOperatorFullName = this.name + QueryControlHelper.ConditionOperatorName + number;
+            string conditionOperatorFullName = this.name + QueryControlHelper.ConditionOperatorNameStringConst + number;
             string conditionOperatorValue = MVCHelper.GetParam(conditionOperatorFullName);
             result.AppendFormat("<select name=\"{0}\">", conditionOperatorFullName);
 
@@ -249,8 +362,8 @@ namespace HiLand.Utility4.MVC.Controls
 
             if (queryConditionItem.ConditionType == typeof(string))
             {
-                result.Append(GetCompareModeOptionString(CompareModes.Equal, conditionOperatorValue));
                 result.Append(GetCompareModeOptionString(CompareModes.Like, conditionOperatorValue));
+                result.Append(GetCompareModeOptionString(CompareModes.Equal, conditionOperatorValue));
                 result.Append(GetCompareModeOptionString(CompareModes.LikeLeft, conditionOperatorValue));
                 result.Append(GetCompareModeOptionString(CompareModes.LikeRight, conditionOperatorValue));
             }
@@ -316,11 +429,11 @@ namespace HiLand.Utility4.MVC.Controls
                 {
                     result.AppendFormat("<input type=\"submit\" />");
                 }
-                result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\" />", this.name + QueryControlHelper.ConditionCountName, number + 1);
+                result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\" />", this.name + QueryControlHelper.ConditionCountNameStringConst, number + 1);
             }
             else
             {
-                string conditionRelationshipFullName = this.name + QueryControlHelper.ConditionRelationshipName + number;
+                string conditionRelationshipFullName = this.name + QueryControlHelper.ConditionRelationshipNameStringConst + number;
                 string conditionRelationshipValue = MVCHelper.GetParam(conditionRelationshipFullName);
                 string selectedStringForAND = string.Empty;
                 string selectedStringForOr = string.Empty;
@@ -380,9 +493,47 @@ namespace HiLand.Utility4.MVC.Controls
 
     /// <summary>
     /// 查询条件项
+    /// ConditionFieldName和ConditionDisplayName可以设置多个字段的信息，
+    /// 多个字段之间用“,”进行分割。但是这个多个字段必须是同种数据类型的。设置时，
+    /// 请注意ConditionFieldName和ConditionDisplayName的内部的数量保证一致。
     /// </summary>
     public class QueryConditionItem
     {
+        /// <summary>
+        /// 在字段名称里面是否包含多个值
+        /// </summary>
+        internal bool isMultiFieldName
+        {
+            get
+            {
+                if (this.conditionDisplayName.IndexOf(",") > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
+        internal string[] ConditionDisplayNames
+        {
+            get
+            {
+                return StringHelper.SplitToArray(this.ConditionDisplayName);
+            }
+        }
+
+        internal string[] ConditionFieldNames
+        {
+            get
+            {
+                return StringHelper.SplitToArray(this.ConditionFieldName);
+            }
+        }
+
+
         private string conditionDisplayName = string.Empty;
         /// <summary>
         /// 查询条件项显示的名称
@@ -407,7 +558,7 @@ namespace HiLand.Utility4.MVC.Controls
 
         private string conditionFieldName = string.Empty;
         /// <summary>
-        /// 查询条件项对应的数据库字段名称
+        /// 查询条件项对应的数据库字段名称（可以设置多个字段，多个字段之间用“,”进行分割。但是这个多个字段必须是同种数据类型的）
         /// </summary>
         public string ConditionFieldName
         {
@@ -424,6 +575,48 @@ namespace HiLand.Utility4.MVC.Controls
         /// <summary>
         /// 查询条件项的数据类型
         /// </summary>
+        /// <remarks>请一定跟数据库字段的类型匹配（如果设置ConditionValueItems的值系统也会将其进行转换）</remarks>
         public Type ConditionType { get; set; }
+
+        private List<ListItem> conditionValueItems = new List<ListItem>();
+        /// <summary>
+        /// 查询条件值的各个可选择项（在控件内部使用下拉列表的方式来呈现）
+        /// </summary>
+        public List<ListItem> ConditionValueItems
+        {
+            get { return conditionValueItems; }
+            set { this.conditionValueItems = value; }
+        }
+
+        /// <summary>
+        /// 查询条件项的附加数据
+        /// </summary>
+        /// <remarks>
+        /// 其格式为 key1:value1||key2:value2
+        /// </remarks>
+        public string AddonData
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 获取查询条件附加数据中的某个附加信息的值
+        /// </summary>
+        /// <returns></returns>
+        public string GetAddonItem(string itemName, string defaultValue = StringHelper.Empty)
+        {
+            string result = defaultValue;
+            if (string.IsNullOrWhiteSpace(AddonData) == false)
+            {
+                Dictionary<string, string> addonDic = StringHelper.SplitToDictionary(AddonData, ":", "||");
+                if (addonDic.ContainsKey(itemName))
+                {
+                    result = addonDic[itemName];
+                }
+            }
+
+            return result;
+        }
     }
 }

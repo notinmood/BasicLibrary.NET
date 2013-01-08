@@ -356,11 +356,6 @@ namespace HiLand.Framework.FoundationLayer
             return CacheHelper.Access<String, int>(cacheKey, CacheMintues, SaveDAL.GetTotalCount, whereClause);
         }
 
-        //public virtual List<TModel> GetList<IDbDataParameter>(ClauseModel<IDbDataParameter> clauseModel) //where TParameter : IDbDataParameter
-        //{
-        //    return GetList(Logics.False,clauseModel.CluaseString,0,string.Empty,clauseModel.ParameterList.ToArray());
-        //}
-
         /// <summary>
         ///  获取实体对象列表
         /// </summary>
@@ -429,6 +424,43 @@ namespace HiLand.Framework.FoundationLayer
         }
 
         /// <summary>
+        /// 获取单条执行结果
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// 虽然本方法可以执行任何sql语句，但是为了缓存保存的条理性，建议仅执行跟本实体有关的sql语句
+        /// </remarks>
+        public virtual object GetScalar(string sqlClause, params IDbDataParameter[] paras)
+        {
+            string sqlClauseString = GetRealWhereClauseString(sqlClause, paras);
+            string cacheKey = GeneralCacheKeys<TModel>.GetScalarKey(sqlClause);
+            return CacheHelper.Access<string, IDbDataParameter[], object>(cacheKey, CacheMintues, SaveDAL.GetScalar, sqlClause,paras);
+        }
+
+        /// <summary>
+        /// 非查询的方式执行语句
+        /// </summary>
+        /// <param name="sqlClause"></param>
+        /// <param name="paras"></param>
+        /// <returns></returns>
+        /// <remarks>
+        /// 虽然本方法可以执行任何sql语句，但是为了缓存清除的准确性，请务必仅执行跟本实体有关的sql语句
+        /// </remarks>
+        public virtual int ExcuteNonQuery(string sqlClause, params IDbDataParameter[] paras)
+        {
+            int result= SaveDAL.ExcuteNonQuery(sqlClause,paras);
+            if (result > 0)
+            { 
+                //清空本实体模型对应的所有缓存
+                CleanUpAllCache();
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// 
         /// </summary>
         /// <param name="whereClauseWithPara"></param>
@@ -440,7 +472,7 @@ namespace HiLand.Framework.FoundationLayer
             {
                 foreach (IDbDataParameter currentPara in paras)
                 {
-                    //TODO:这个地方至少应该加入SQL注入的处理
+                    //TODO:xieran20111010 这个地方至少应该加入SQL注入的处理
                     whereClauseWithPara = whereClauseWithPara.Replace(currentPara.ParameterName, currentPara.Value.ToString());
                 }
             }

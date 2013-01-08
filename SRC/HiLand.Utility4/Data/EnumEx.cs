@@ -48,26 +48,6 @@ namespace HiLand.Utility4.Data
         public static List<SelectListItem> BuildSelectItemList<TEnum>(string displayTextCategory = "", string selectedValue = "") where TEnum : struct
         {
             return BuildSelectItemList(typeof(TEnum), displayTextCategory, selectedValue);
-            //List<SelectListItem> itemList = new List<SelectListItem>();
-
-            //Array array = Enum.GetValues(typeof(TEnum));
-            //for (int i = 0; i < array.Length; i++)
-            //{
-            //    TEnum currentEnumItemType = (TEnum)array.GetValue(i);
-            //    string currentEnumItemTypeText = EnumItemDescriptionAttribute.GetDisplayValue(currentEnumItemType, typeof(TEnum), displayTextCategory);
-            //    string currentEnumItemTypeValue = currentEnumItemType.ToString();
-
-            //    SelectListItem currentItem = new SelectListItem();
-            //    currentItem.Text = currentEnumItemTypeText;
-            //    currentItem.Value = currentEnumItemTypeValue;
-            //    if (selectedValue == currentEnumItemTypeValue)
-            //    {
-            //        currentItem.Selected = true;
-            //    }
-            //    itemList.Add(currentItem);
-            //}
-
-            //return itemList;
         }
 
         /// <summary>

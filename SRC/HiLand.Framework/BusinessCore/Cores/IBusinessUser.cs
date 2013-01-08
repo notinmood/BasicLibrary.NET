@@ -495,5 +495,23 @@ namespace HiLand.Framework.BusinessCore
             set;
             get;
         }
+
+        /// <summary>
+        /// 毕业院校
+        /// </summary>
+        string UserEducationalSchool
+        {
+            get;
+            set;
+        }
+
+        /// <summary>
+        /// 社保卡号
+        /// </summary>
+        string SocialSecurityNumber
+        {
+            get;
+            set;
+        }
     }
 }

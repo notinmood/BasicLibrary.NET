@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.General.Entity;
 using HiLand.Utility.Data;
@@ -9,8 +10,8 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.General.DALCommon
 {
-    public class EnterpriseCommonDAL< TTransaction, TConnection, TCommand, TDataReader, TParameter>
-        : BaseDAL<EnterpriseEntity,  TTransaction, TConnection, TCommand, TDataReader, TParameter>
+    public class EnterpriseCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
+        : BaseDAL<EnterpriseEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>
         where TConnection : class,IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction
@@ -43,7 +44,7 @@ namespace HiLand.General.DALCommon
         }
 
         /// <summary>
-        /// 分页存储过程的名字
+        /// 分页存储过程名称
         /// </summary>
         protected override string PagingSPName
         {
@@ -65,17 +66,31 @@ namespace HiLand.General.DALCommon
                 entity.EnterpriseGuid = GuidHelper.NewGuid();
             }
 
-            string commandText = @"Insert Into [GeneralEnterprise] (
+            if (entity.CreateDate == DateTimeHelper.Min)
+            {
+                entity.CreateDate = DateTime.Now;
+            }
+
+            if (string.IsNullOrEmpty(entity.CreateUserKey))
+            {
+                entity.CreateUserKey = BusinessUserBLL.CurrentUserGuid.ToString();
+                entity.CreateUserName = BusinessUserBLL.CurrentUser.UserNameDisplay;
+            }
+
+            string commandText = string.Format(@"Insert Into [GeneralEnterprise] (
 			        [EnterpriseGuid],
 			        [CompanyName],
+			        [CompanyNameShort],
 			        [BusinessType],
 			        [TradingName],
-			        [Industry],
+			        [IndustryKey],
+                    [IndustryType],
 			        [EnterpriseCode],
 			        [TaxCode],
 			        [PrincipleAddress],
 			        [PostCode],
 			        [Telephone],
+                    [TelephoneOther],
 			        [Fax],
 			        [Email],
 			        [EstablishedYears],
@@ -85,42 +100,93 @@ namespace HiLand.General.DALCommon
 			        [AssociatedEnterpriseGuid],
 			        [ContactPerson],
 			        [AreaCode],
-			        [CompanyNameShort],
+                    [AreaOther],
 			        [CanUsable],
 			        [Longitude],
 			        [Lantitude],
-                    [BrokerKey],
+			        [BrokerKey],
+			        [EnterpriseDescription],
+			        [EnterpriseMemo],
+			        [EnterpriseWWW],
+			        [StaffScope],
+			        [EnterpriseLevel],
+                    [EnterpriseLevel1],
+			        [EnterpriseLevel2],
+			        [EnterpriseLevel3],
+			        [EnterpriseLevel4],
+			        [EnterpriseLevel5],
+			        [EnterpriseLevel6],
+			        [EnterpriseLevel7],
+			        [EnterpriseRank],
+                    [EnterpriseKind],
+			        [ManageUserKey],
+			        [ManageUserName],
+			        [CreateUserKey],
+                    [CreateUserName],
+			        [CreateDate],
+                    [LastUpdateUserKey],
+                    [LastUpdateUserName],
+			        [LastUpdateDate],
+			        [IsProtectedByOwner],
+			        [CooperateStatus],
 			        [PropertyNames],
 			        [PropertyValues]
                 ) 
                 Values (
-			        @EnterpriseGuid,
-			        @CompanyName,
-			        @BusinessType,
-			        @TradingName,
-			        @Industry,
-			        @EnterpriseCode,
-			        @TaxCode,
-			        @PrincipleAddress,
-			        @PostCode,
-			        @Telephone,
-			        @Fax,
-			        @Email,
-			        @EstablishedYears,
-			        @EstablishedTime,
-			        @GrossIncome,
-			        @Profit,
-			        @AssociatedEnterpriseGuid,
-			        @ContactPerson,
-			        @AreaCode,
-			        @CompanyNameShort,
-			        @CanUsable,
-			        @Longitude,
-			        @Lantitude,
-                    @BrokerKey,
-			        @PropertyNames,
-			        @PropertyValues
-                )";
+			        {0}EnterpriseGuid,
+			        {0}CompanyName,
+			        {0}CompanyNameShort,
+			        {0}BusinessType,
+			        {0}TradingName,
+			        {0}IndustryKey,
+                    {0}IndustryType,
+			        {0}EnterpriseCode,
+			        {0}TaxCode,
+			        {0}PrincipleAddress,
+			        {0}PostCode,
+			        {0}Telephone,
+                    {0}TelephoneOther,
+			        {0}Fax,
+			        {0}Email,
+			        {0}EstablishedYears,
+			        {0}EstablishedTime,
+			        {0}GrossIncome,
+			        {0}Profit,
+			        {0}AssociatedEnterpriseGuid,
+			        {0}ContactPerson,
+			        {0}AreaCode,
+                    {0}AreaOther,
+			        {0}CanUsable,
+			        {0}Longitude,
+			        {0}Lantitude,
+			        {0}BrokerKey,
+			        {0}EnterpriseDescription,
+			        {0}EnterpriseMemo,
+			        {0}EnterpriseWWW,
+			        {0}StaffScope,
+			        {0}EnterpriseLevel,
+                    {0}EnterpriseLevel1,
+			        {0}EnterpriseLevel2,
+			        {0}EnterpriseLevel3,
+			        {0}EnterpriseLevel4,
+			        {0}EnterpriseLevel5,
+			        {0}EnterpriseLevel6,
+			        {0}EnterpriseLevel7,
+			        {0}EnterpriseRank,
+                    {0}EnterpriseKind,
+			        {0}ManageUserKey,
+			        {0}ManageUserName,
+			        {0}CreateUserKey,
+                    {0}CreateUserName,
+			        {0}CreateDate,
+                    {0}LastUpdateUserKey,
+                    {0}LastUpdateUserName,
+			        {0}LastUpdateDate,
+			        {0}IsProtectedByOwner,
+			        {0}CooperateStatus,
+			        {0}PropertyNames,
+			        {0}PropertyValues
+                )", ParameterNamePrefix);
 
             TParameter[] sqlParas = PrepareParasAll(entity);
 
@@ -135,34 +201,65 @@ namespace HiLand.General.DALCommon
         /// <returns></returns>
         public override bool Update(EnterpriseEntity entity)
         {
-            string commandText = @"Update [GeneralEnterprise] Set   
-					[EnterpriseGuid] = @EnterpriseGuid,
-					[CompanyName] = @CompanyName,
-					[BusinessType] = @BusinessType,
-					[TradingName] = @TradingName,
-					[Industry] = @Industry,
-					[EnterpriseCode] = @EnterpriseCode,
-					[TaxCode] = @TaxCode,
-					[PrincipleAddress] = @PrincipleAddress,
-					[PostCode] = @PostCode,
-					[Telephone] = @Telephone,
-					[Fax] = @Fax,
-					[Email] = @Email,
-					[EstablishedYears] = @EstablishedYears,
-					[EstablishedTime] = @EstablishedTime,
-					[GrossIncome] = @GrossIncome,
-					[Profit] = @Profit,
-					[AssociatedEnterpriseGuid] = @AssociatedEnterpriseGuid,
-					[ContactPerson] = @ContactPerson,
-					[AreaCode] = @AreaCode,
-					[CompanyNameShort] = @CompanyNameShort,
-					[CanUsable] = @CanUsable,
-					[Longitude] = @Longitude,
-					[Lantitude] = @Lantitude,
-                    [BrokerKey]= @BrokerKey,
-					[PropertyNames] = @PropertyNames,
-					[PropertyValues] = @PropertyValues
-             Where [EnterpriseGuid] = @EnterpriseGuid";
+            entity.LastUpdateDate = DateTime.Now;
+            entity.LastUpdateUserKey = BusinessUserBLL.CurrentUserGuid.ToString();
+            entity.LastUpdateUserName = BusinessUserBLL.CurrentUser.UserNameDisplay;
+
+            string commandText = string.Format(@"Update [GeneralEnterprise] Set   
+					[EnterpriseGuid] = {0}EnterpriseGuid,
+				    [CompanyName] = {0}CompanyName,
+				    [CompanyNameShort] = {0}CompanyNameShort,
+				    [BusinessType] = {0}BusinessType,
+				    [TradingName] = {0}TradingName,
+				    [IndustryKey] = {0}IndustryKey,
+                    [IndustryType] = {0}IndustryType,
+				    [EnterpriseCode] = {0}EnterpriseCode,
+				    [TaxCode] = {0}TaxCode,
+				    [PrincipleAddress] = {0}PrincipleAddress,
+				    [PostCode] = {0}PostCode,
+				    [Telephone] = {0}Telephone,
+                    [TelephoneOther]= {0}TelephoneOther,
+				    [Fax] = {0}Fax,
+				    [Email] = {0}Email,
+				    [EstablishedYears] = {0}EstablishedYears,
+				    [EstablishedTime] = {0}EstablishedTime,
+				    [GrossIncome] = {0}GrossIncome,
+				    [Profit] = {0}Profit,
+				    [AssociatedEnterpriseGuid] = {0}AssociatedEnterpriseGuid,
+				    [ContactPerson] = {0}ContactPerson,
+				    [AreaCode] = {0}AreaCode,
+                    [AreaOther] = {0}AreaOther,
+				    [CanUsable] = {0}CanUsable,
+				    [Longitude] = {0}Longitude,
+				    [Lantitude] = {0}Lantitude,
+				    [BrokerKey] = {0}BrokerKey,
+				    [EnterpriseDescription] = {0}EnterpriseDescription,
+				    [EnterpriseMemo] = {0}EnterpriseMemo,
+				    [EnterpriseWWW] = {0}EnterpriseWWW,
+				    [StaffScope] = {0}StaffScope,
+				    [EnterpriseLevel] = {0}EnterpriseLevel,
+                    [EnterpriseLevel1] = {0}EnterpriseLevel1,
+				    [EnterpriseLevel2] = {0}EnterpriseLevel2,
+				    [EnterpriseLevel3] = {0}EnterpriseLevel3,
+				    [EnterpriseLevel4] = {0}EnterpriseLevel4,
+				    [EnterpriseLevel5] = {0}EnterpriseLevel5,
+				    [EnterpriseLevel6] = {0}EnterpriseLevel6,
+				    [EnterpriseLevel7] = {0}EnterpriseLevel7,
+				    [EnterpriseRank] = {0}EnterpriseRank,
+                    [EnterpriseKind] = {0}EnterpriseKind,
+				    [ManageUserKey] = {0}ManageUserKey,
+				    [ManageUserName] = {0}ManageUserName,
+				    [CreateUserKey] = {0}CreateUserKey,
+                    [CreateUserName] = {0}CreateUserName,
+				    [CreateDate] = {0}CreateDate,
+                    [LastUpdateUserKey] = {0}LastUpdateUserKey,
+                    [LastUpdateUserName] = {0}LastUpdateUserName,
+				    [LastUpdateDate] = {0}LastUpdateDate,
+				    [IsProtectedByOwner] = {0}IsProtectedByOwner,
+				    [CooperateStatus] = {0}CooperateStatus,
+				    [PropertyNames] = {0}PropertyNames,
+				    [PropertyValues] = {0}PropertyValues
+             Where [EnterpriseGuid] = @EnterpriseGuid", ParameterNamePrefix);
 
             TParameter[] sqlParas = PrepareParasAll(entity);
 
@@ -181,30 +278,58 @@ namespace HiLand.General.DALCommon
         {
             List<TParameter> list = new List<TParameter>()
             {
-			    GenerateParameter("EnterpriseGuid",entity.EnterpriseGuid== Guid.Empty?Guid.NewGuid():entity.EnterpriseGuid),
-			    GenerateParameter("CompanyName",entity.CompanyName??string.Empty),
-			    GenerateParameter("BusinessType",(int)entity.BusinessType),
-			    GenerateParameter("TradingName",entity.TradingName??string.Empty),
-			    GenerateParameter("Industry",entity.Industry??string.Empty),
-			    GenerateParameter("EnterpriseCode",entity.EnterpriseCode??string.Empty),
-			    GenerateParameter("TaxCode",entity.TaxCode??string.Empty),
-			    GenerateParameter("PrincipleAddress",entity.PrincipleAddress??string.Empty),
-			    GenerateParameter("PostCode",entity.PostCode??string.Empty),
-			    GenerateParameter("Telephone",entity.Telephone??string.Empty),
-			    GenerateParameter("Fax",entity.Fax??string.Empty),
-			    GenerateParameter("Email",entity.Email??string.Empty),
+			    GenerateParameter("EnterpriseID",entity.EnterpriseID),
+			    GenerateParameter("EnterpriseGuid",entity.EnterpriseGuid),
+			    GenerateParameter("CompanyName",entity.CompanyName?? String.Empty),
+			    GenerateParameter("CompanyNameShort",entity.CompanyNameShort?? String.Empty),
+			    GenerateParameter("BusinessType",entity.BusinessType),
+			    GenerateParameter("TradingName",entity.TradingName?? String.Empty),
+			    GenerateParameter("IndustryKey",entity.IndustryKey?? String.Empty),
+                GenerateParameter("IndustryType",entity.IndustryType),
+			    GenerateParameter("EnterpriseCode",entity.EnterpriseCode?? String.Empty),
+			    GenerateParameter("TaxCode",entity.TaxCode?? String.Empty),
+			    GenerateParameter("PrincipleAddress",entity.PrincipleAddress?? String.Empty),
+			    GenerateParameter("PostCode",entity.PostCode?? String.Empty),
+			    GenerateParameter("Telephone",entity.Telephone?? String.Empty),
+                GenerateParameter("TelephoneOther",entity.TelephoneOther?? String.Empty),
+			    GenerateParameter("Fax",entity.Fax?? String.Empty),
+			    GenerateParameter("Email",entity.Email?? String.Empty),
 			    GenerateParameter("EstablishedYears",entity.EstablishedYears),
 			    GenerateParameter("EstablishedTime",entity.EstablishedTime),
 			    GenerateParameter("GrossIncome",entity.GrossIncome),
 			    GenerateParameter("Profit",entity.Profit),
 			    GenerateParameter("AssociatedEnterpriseGuid",entity.AssociatedEnterpriseGuid),
-			    GenerateParameter("ContactPerson",entity.ContactPerson??string.Empty),
-			    GenerateParameter("AreaCode",entity.AreaCode??string.Empty),
-			    GenerateParameter("CompanyNameShort",entity.CompanyNameShort??string.Empty),
-			    GenerateParameter("CanUsable",(int)entity.CanUsable),
+			    GenerateParameter("ContactPerson",entity.ContactPerson?? String.Empty),
+			    GenerateParameter("AreaCode",entity.AreaCode?? String.Empty),
+                GenerateParameter("AreaOther",entity.AreaOther?? String.Empty),
+			    GenerateParameter("CanUsable",entity.CanUsable),
 			    GenerateParameter("Longitude",entity.Longitude),
 			    GenerateParameter("Lantitude",entity.Lantitude),
-                GenerateParameter("BrokerKey",entity.BrokerKey??string.Empty)
+			    GenerateParameter("BrokerKey",entity.BrokerKey?? String.Empty),
+			    GenerateParameter("EnterpriseDescription",entity.EnterpriseDescription?? String.Empty),
+			    GenerateParameter("EnterpriseMemo",entity.EnterpriseMemo?? String.Empty),
+			    GenerateParameter("EnterpriseWWW",entity.EnterpriseWWW?? String.Empty),
+			    GenerateParameter("StaffScope",entity.StaffScope),
+			    GenerateParameter("EnterpriseLevel",entity.EnterpriseLevel),
+                GenerateParameter("EnterpriseLevel1",entity.EnterpriseLevel1),
+			    GenerateParameter("EnterpriseLevel2",entity.EnterpriseLevel2),
+			    GenerateParameter("EnterpriseLevel3",entity.EnterpriseLevel3),
+			    GenerateParameter("EnterpriseLevel4",entity.EnterpriseLevel4),
+			    GenerateParameter("EnterpriseLevel5",entity.EnterpriseLevel5),
+			    GenerateParameter("EnterpriseLevel6",entity.EnterpriseLevel6),
+			    GenerateParameter("EnterpriseLevel7",entity.EnterpriseLevel7),
+			    GenerateParameter("EnterpriseRank",entity.EnterpriseRank?? String.Empty),
+                GenerateParameter("EnterpriseKind",entity.EnterpriseKind),
+			    GenerateParameter("ManageUserKey",entity.ManageUserKey?? String.Empty),
+			    GenerateParameter("ManageUserName",entity.ManageUserName?? String.Empty),
+			    GenerateParameter("CreateUserKey",entity.CreateUserKey?? String.Empty),
+                GenerateParameter("CreateUserName",entity.CreateUserName?? String.Empty),
+			    GenerateParameter("CreateDate",entity.CreateDate),
+                GenerateParameter("LastUpdateUserKey",entity.LastUpdateUserKey?? String.Empty),
+                GenerateParameter("LastUpdateUserName",entity.LastUpdateUserName?? String.Empty),
+			    GenerateParameter("LastUpdateDate",entity.LastUpdateDate),
+                GenerateParameter("IsProtectedByOwner",entity.IsProtectedByOwner),
+			    GenerateParameter("CooperateStatus",entity.CooperateStatus)
             };
 
             paraList.AddRange(list);
@@ -216,6 +341,16 @@ namespace HiLand.General.DALCommon
         /// <param name="reader"></param>
         /// <returns></returns>
         protected override EnterpriseEntity Load(IDataReader reader)
+        {
+            return StaticLoad(reader);
+        }
+
+        /// <summary>
+        /// 此方法存储为了向外暴漏
+        /// </summary>
+        /// <param name="reader"></param>
+        /// <returns></returns>
+        public static EnterpriseEntity StaticLoad(IDataReader reader)
         {
             EnterpriseEntity entity = new EnterpriseEntity();
             if (reader != null && reader.IsClosed == false)
@@ -232,6 +367,10 @@ namespace HiLand.General.DALCommon
                 {
                     entity.CompanyName = reader.GetString(reader.GetOrdinal("CompanyName"));
                 }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CompanyNameShort"))
+                {
+                    entity.CompanyNameShort = reader.GetString(reader.GetOrdinal("CompanyNameShort"));
+                }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "BusinessType"))
                 {
                     entity.BusinessType = (EnterpriseTypes)reader.GetInt32(reader.GetOrdinal("BusinessType"));
@@ -240,9 +379,13 @@ namespace HiLand.General.DALCommon
                 {
                     entity.TradingName = reader.GetString(reader.GetOrdinal("TradingName"));
                 }
-                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "Industry"))
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "IndustryKey"))
                 {
-                    entity.Industry = reader.GetString(reader.GetOrdinal("Industry"));
+                    entity.IndustryKey = reader.GetString(reader.GetOrdinal("IndustryKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "IndustryType"))
+                {
+                    entity.IndustryType = (IndustryTypes)reader.GetInt32(reader.GetOrdinal("IndustryType"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseCode"))
                 {
@@ -263,6 +406,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "Telephone"))
                 {
                     entity.Telephone = reader.GetString(reader.GetOrdinal("Telephone"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "TelephoneOther"))
+                {
+                    entity.TelephoneOther = reader.GetString(reader.GetOrdinal("TelephoneOther"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "Fax"))
                 {
@@ -300,9 +447,9 @@ namespace HiLand.General.DALCommon
                 {
                     entity.AreaCode = reader.GetString(reader.GetOrdinal("AreaCode"));
                 }
-                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CompanyNameShort"))
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "AreaOther"))
                 {
-                    entity.CompanyNameShort = reader.GetString(reader.GetOrdinal("CompanyNameShort"));
+                    entity.AreaOther = reader.GetString(reader.GetOrdinal("AreaOther"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CanUsable"))
                 {
@@ -316,9 +463,106 @@ namespace HiLand.General.DALCommon
                 {
                     entity.Lantitude = reader.GetDecimal(reader.GetOrdinal("Lantitude"));
                 }
-                if (DataReaderHelper.IsExistField(reader, "BrokerKey") && Convert.IsDBNull(reader["BrokerKey"]) == false)
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "BrokerKey"))
                 {
                     entity.BrokerKey = reader.GetString(reader.GetOrdinal("BrokerKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseDescription"))
+                {
+                    entity.EnterpriseDescription = reader.GetString(reader.GetOrdinal("EnterpriseDescription"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseMemo"))
+                {
+                    entity.EnterpriseMemo = reader.GetString(reader.GetOrdinal("EnterpriseMemo"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseWWW"))
+                {
+                    entity.EnterpriseWWW = reader.GetString(reader.GetOrdinal("EnterpriseWWW"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "StaffScope"))
+                {
+                    entity.StaffScope = (StaffScopes)reader.GetInt32(reader.GetOrdinal("StaffScope"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel"))
+                {
+                    entity.EnterpriseLevel = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel1"))
+                {
+                    entity.EnterpriseLevel1 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel1"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel2"))
+                {
+                    entity.EnterpriseLevel2 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel2"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel3"))
+                {
+                    entity.EnterpriseLevel3 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel3"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel4"))
+                {
+                    entity.EnterpriseLevel4 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel4"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel5"))
+                {
+                    entity.EnterpriseLevel5 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel5"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel6"))
+                {
+                    entity.EnterpriseLevel6 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel6"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseLevel7"))
+                {
+                    entity.EnterpriseLevel7 = (CommonLevels)reader.GetInt32(reader.GetOrdinal("EnterpriseLevel7"));
+                }
+
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseRank"))
+                {
+                    entity.EnterpriseRank = reader.GetString(reader.GetOrdinal("EnterpriseRank"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "EnterpriseKind"))
+                {
+                    entity.EnterpriseKind = reader.GetInt32(reader.GetOrdinal("EnterpriseKind"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ManageUserKey"))
+                {
+                    entity.ManageUserKey = reader.GetString(reader.GetOrdinal("ManageUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ManageUserName"))
+                {
+                    entity.ManageUserName = reader.GetString(reader.GetOrdinal("ManageUserName"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserKey"))
+                {
+                    entity.CreateUserKey = reader.GetString(reader.GetOrdinal("CreateUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateUserName"))
+                {
+                    entity.CreateUserName = reader.GetString(reader.GetOrdinal("CreateUserName"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CreateDate"))
+                {
+                    entity.CreateDate = reader.GetDateTime(reader.GetOrdinal("CreateDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LastUpdateUserKey"))
+                {
+                    entity.LastUpdateUserKey = reader.GetString(reader.GetOrdinal("LastUpdateUserKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LastUpdateUserName"))
+                {
+                    entity.LastUpdateUserName = reader.GetString(reader.GetOrdinal("LastUpdateUserName"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LastUpdateDate"))
+                {
+                    entity.LastUpdateDate = reader.GetDateTime(reader.GetOrdinal("LastUpdateDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "IsProtectedByOwner"))
+                {
+                    entity.IsProtectedByOwner = (Logics)reader.GetInt32(reader.GetOrdinal("IsProtectedByOwner"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "CooperateStatus"))
+                {
+                    entity.CooperateStatus = reader.GetInt32(reader.GetOrdinal("CooperateStatus"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "PropertyNames"))
                 {

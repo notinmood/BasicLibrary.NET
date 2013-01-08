@@ -1,10 +1,15 @@
 ﻿using System;
+using HiLand.Framework.BusinessCore;
+using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.FoundationLayer.Attributes;
 using HiLand.Utility.Enums;
 
 namespace HiLand.General.Entity
 {
+    /// <summary>
+    /// 人员在银行的账户信息
+    /// </summary>
     public class BankEntity : BaseModel<BankEntity>
     {
         public override string[] BusinessKeyNames
@@ -21,7 +26,7 @@ namespace HiLand.General.Entity
         }
 
         private Guid bankGuid = Guid.Empty;
-         [DBFieldAttribute(IsBusinessPrimaryKey = true)]
+        [DBFieldAttribute(IsBusinessPrimaryKey = true)]
         public Guid BankGuid
         {
             get { return bankGuid; }
@@ -42,7 +47,7 @@ namespace HiLand.General.Entity
             set { bankNo = value; }
         }
 
-        private Logics isPrimary= Logics.True;
+        private Logics isPrimary = Logics.True;
         public Logics IsPrimary
         {
             get { return isPrimary; }
@@ -131,6 +136,25 @@ namespace HiLand.General.Entity
         {
             get { return email; }
             set { email = value; }
+        }
+        #endregion
+
+        #region 扩展属性
+        private BusinessUser user = null;
+        /// <summary>
+        /// 当前银行账户对应的用户信息
+        /// </summary>
+        public BusinessUser User
+        {
+            get
+            {
+                if (this.user == null)
+                { 
+                    this.user= BusinessUserBLL.Get(this.UserGuid);
+                }
+
+                return this.user;
+            }
         }
         #endregion
     }

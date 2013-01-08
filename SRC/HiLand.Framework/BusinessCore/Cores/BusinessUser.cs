@@ -62,7 +62,7 @@ namespace HiLand.Framework.BusinessCore
         }
 
         private List<BusinessGroup> groups = new List<BusinessGroup>();
-        //TODO:xieran 20120831 需要获取用户所属组的逻辑
+        //TODO:xieran20120831 需要获取用户所属组的逻辑
         /// <summary>
         /// 用户所属组
         /// </summary>
@@ -520,6 +520,11 @@ namespace HiLand.Framework.BusinessCore
                     this.department = BusinessDepartmentBLL.Instance.GetByCode(this.DepartmentCode);
                 }
 
+                if (this.department == null)
+                {
+                    this.department = BusinessDepartment.Empty;
+                }
+
                 return this.department;
             }
         }
@@ -738,7 +743,31 @@ namespace HiLand.Framework.BusinessCore
             }
         }
 
+        /// <summary>
+        /// 用户的年龄
+        /// </summary>
+        /// <remarks>
+        /// 用户的年龄通过生日计算得来；如果未设置生日，年龄将返回0；
+        /// </remarks>
+        public virtual int UserAge
+        {
+            get 
+            {
+                if (this.userBirthDay == DateTimeHelper.Min)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return DateTime.Today.Year - this.userBirthDay.Year;
+                }
+            }
+        }
+
         private DateTime userBirthDay = DateTimeHelper.Min;
+        /// <summary>
+        /// 用户的生日
+        /// </summary>
         public virtual DateTime UserBirthDay
         {
             get
@@ -1060,6 +1089,26 @@ namespace HiLand.Framework.BusinessCore
             }
         }
 
+        private string userEducationalSchool = String.Empty;
+        /// <summary>
+        /// 毕业院校
+        /// </summary>
+        public string UserEducationalSchool
+        {
+            get { return userEducationalSchool; }
+            set { userEducationalSchool = value; }
+        }
+
+        private string socialSecurityNumber = String.Empty;
+        /// <summary>
+        /// 社保卡号
+        /// </summary>
+        public string SocialSecurityNumber
+        {
+            get { return socialSecurityNumber; }
+            set { socialSecurityNumber = value; }
+        }
+
         protected bool isEmpty = false;
         /// <summary>
         /// 当前实例是否为空对象
@@ -1124,9 +1173,9 @@ namespace HiLand.Framework.BusinessCore
         /// <summary>
         /// 主体、客体行为对象的类型
         /// </summary>
-        public ExecuterTypes ExecutorType
+        public ExecutorTypes ExecutorType
         {
-            get { return ExecuterTypes.User; }
+            get { return ExecutorTypes.User; }
         }
         #endregion
     }

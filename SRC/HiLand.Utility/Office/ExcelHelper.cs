@@ -1,5 +1,11 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using System.Reflection;
+using HiLand.Utility.Data;
+using HiLand.Utility.DataBase;
+using HiLand.Utility.Reflection;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 
@@ -40,7 +46,7 @@ namespace HiLand.Utility.Office
                 IRow headerRow = sheet.CreateRow(rowIndex);
                 foreach (DataColumn column in sourceTable.Columns)
                 {
-                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.ColumnName);
+                    headerRow.CreateCell(column.Ordinal).SetCellValue(column.Caption);
                 }
                 headerRow = null;
                 rowIndex++;
@@ -64,6 +70,79 @@ namespace HiLand.Utility.Office
             workbook = null;
 
             return ms;
+        }
+
+        /// <summary>
+        /// 获取实体列表导出为Excel的流
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="entityList"></param>
+        /// <param name="fieldsMap">实体的属性名称与Excel列名的映射字典,其中字典的Key支持二级属性，比如CurrentBank.AccountNumber
+        /// 其会加载属性CurrentBank的子属性AccountNumber的信息</param>
+        /// <returns></returns>
+        public static Stream WriteExcel<T>(IList<T> entityList, Dictionary<string, string> fieldsMap)
+        {
+            DataTable dataTable = new DataTable();
+
+            Type entityType = typeof(T);
+            PropertyInfo[] propertyArray = entityType.GetProperties();
+
+            //1.创建表头
+            foreach (KeyValuePair<string, string> kvp in fieldsMap)
+            {
+                PropertyInfo piMatched = null;
+                foreach (PropertyInfo piItem in propertyArray)
+                {
+                    if (piItem.Name == kvp.Key)
+                    {
+                        piMatched = piItem;
+                        break;
+                    }
+
+                    if (kvp.Key.IndexOf(".") > 0)
+                    {
+                        string propertyNameOfLevel1 = StringHelper.GetBeforeSeperatorString(kvp.Key, ".");
+                        string propertyNameOfLevel2 = StringHelper.GetAfterSeperatorString(kvp.Key, ".");
+                        if (piItem.Name == propertyNameOfLevel1)
+                        {
+                            Type propertyTypeOfLevel1 = piItem.PropertyType;
+                            PropertyInfo propertyInfoOfLevel2 = propertyTypeOfLevel1.GetProperty(propertyNameOfLevel2);
+                            if (propertyInfoOfLevel2 != null)
+                            {
+                                piMatched = propertyInfoOfLevel2;
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (piMatched != null)
+                {
+                    DataColumn dc = new DataColumn(kvp.Key, piMatched.PropertyType);
+                    dc.Caption = kvp.Value;
+                    dc.DataType = typeof(string);
+                    dataTable.Columns.Add(dc);
+                }
+            }
+
+            //2.添加表数据
+            foreach (T item in entityList)
+            {
+                DataRow row = dataTable.NewRow();
+                foreach (KeyValuePair<string, string> kvp in fieldsMap)
+                {
+                    if (DataRowHelper.IsExistField(row, kvp.Key))
+                    {
+                        object targetValue = ReflectHelper.GetPropertyValue(item, kvp.Key);
+                        object friendlyValue = TypeHelper.GetFriendlyValue(targetValue);
+                        row[kvp.Key] = friendlyValue;
+                    }
+                }
+                dataTable.Rows.Add(row);
+            }
+
+            Stream outStream = ExcelHelper.WriteExcel(dataTable);
+            return outStream;
         }
 
         /// <summary>

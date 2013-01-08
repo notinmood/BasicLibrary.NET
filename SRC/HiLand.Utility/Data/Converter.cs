@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Globalization;
 using System.IO;
 using System.Reflection;
@@ -573,6 +575,58 @@ namespace HiLand.Utility.Data
         public static Guid TryToGuid(string data)
         {
             return GuidHelper.TryConvert(data);
+        }
+
+        /// <summary>
+        /// 将位于DataTable内的实体集合转换为List<T>集合
+        /// </summary>
+        /// <param name="data">待转换的DataTable数据</param>
+        /// <returns></returns>
+        public static IList<T> ToList<T>(DataTable data) where T : new()
+        {
+            IList<T> result = new List<T>();
+
+            // 取得泛型的类型
+            Type type = typeof(T);
+
+            //// 创建类型的对象（用于比较用）
+            //object convertObj = Activator.CreateInstance(type, null);
+
+            // 反射取得类型实例的属性数组
+            PropertyInfo[] propertys = type.GetProperties();
+
+            foreach (DataRow dr in data.Rows)
+            {
+                // 创建类型的对象（用于赋值用）
+                //object outputObj = Activator.CreateInstance(type, null);
+                T outputObj = new T();
+
+                foreach (PropertyInfo pi in propertys)
+                {
+                    // 如果DataTable的数据列中包含有对应的属性
+                    if (data.Columns.Contains(pi.Name))
+                    {
+                        if (pi.CanWrite == false)
+                        {
+                            continue;
+                        }
+
+                        // 取得属性的值
+                        object value = dr[pi.Name];
+
+                        if (value != DBNull.Value)
+                        {
+                            // 将对应属性的值赋给创建的类型实例的对应的属性
+                            pi.SetValue(outputObj, value, null);
+                        }
+                    }
+                }
+
+                // 添加到List中
+                result.Add(outputObj);
+            }
+
+            return result;
         }
     }
 }

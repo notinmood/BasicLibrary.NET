@@ -85,7 +85,7 @@ namespace HiLand.Utility.Web
             }
 
 
-            //TODO:xieran 目前这个做法是不对的，例如对于 ***.com.cn,就会出现问题。需要重新考虑如何通过当前域名获取主域名的事情。
+            //TODO:xieran20121026 目前这个做法是不对的，例如对于 ***.com.cn,就会出现问题。需要重新考虑如何通过当前域名获取主域名的事情。
             ////如果是www.elong.com或多级域名,需要转化为elong.com
             //if (domain.IndexOf(".") > -1)
             //{

@@ -83,6 +83,7 @@ namespace HiLand.General.DALCommon
 			    [StartDate],
 			    [ExpireDate],
 			    [ReadDate],
+    			[ReadStatus],
 			    [ResourceKey],
 			    [ProcessKey],
 			    [ActivityKey],
@@ -107,6 +108,7 @@ namespace HiLand.General.DALCommon
 			    {0}StartDate,
 			    {0}ExpireDate,
 			    {0}ReadDate,
+			    {0}ReadStatus,
 			    {0}ResourceKey,
 			    {0}ProcessKey,
 			    {0}ActivityKey,
@@ -145,6 +147,7 @@ namespace HiLand.General.DALCommon
 					[StartDate] = {0}StartDate,
 					[ExpireDate] = {0}ExpireDate,
 					[ReadDate] = {0}ReadDate,
+				    [ReadStatus] = {0}ReadStatus,
 					[ResourceKey] = {0}ResourceKey,
 					[ProcessKey] = {0}ProcessKey,
 					[ActivityKey] = {0}ActivityKey,
@@ -169,6 +172,7 @@ namespace HiLand.General.DALCommon
         {
             List<TParameter> list = new List<TParameter>()
             {
+                GenerateParameter("RemindID",entity.RemindID),
                 GenerateParameter("RemindGuid",entity.RemindGuid),
 			    GenerateParameter("SenderKey",entity.SenderKey?? String.Empty),
 			    GenerateParameter("SenderName",entity.SenderName?? String.Empty),
@@ -186,6 +190,7 @@ namespace HiLand.General.DALCommon
 			    GenerateParameter("StartDate",entity.StartDate),
 			    GenerateParameter("ExpireDate",entity.ExpireDate),
 			    GenerateParameter("ReadDate",entity.ReadDate),
+                GenerateParameter("ReadStatus",entity.ReadStatus),
 			    GenerateParameter("ResourceKey",entity.ResourceKey?? String.Empty),
 			    GenerateParameter("ProcessKey",entity.ProcessKey?? String.Empty),
 			    GenerateParameter("ActivityKey",entity.ActivityKey?? String.Empty)
@@ -275,6 +280,10 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ReadDate"))
                 {
                     entity.ReadDate = reader.GetDateTime(reader.GetOrdinal("ReadDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ReadStatus"))
+                {
+                    entity.ReadStatus = (Logics)reader.GetInt32(reader.GetOrdinal("ReadStatus"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ResourceKey"))
                 {

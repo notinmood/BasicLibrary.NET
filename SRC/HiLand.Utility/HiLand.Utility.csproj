@@ -106,12 +106,14 @@
     <Compile Include="AOP\Interceptor\EmptyObjectInterceptor.cs" />
     <Compile Include="AOP\CodePacking.cs" />
     <Compile Include="AOP\Interceptor\SQLInjectionInterceptor.cs" />
+    <Compile Include="Attributes\EnumItemIsDisplayInListAttribute.cs" />
     <Compile Include="Cache\CacheFactory.cs" />
     <Compile Include="Cache\CacheHelper.cs" />
     <Compile Include="Cache\CacheKeys.cs" />
     <Compile Include="Cache\CoreCacheKeys.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Cache\WebCache.cs" />
+    <Compile Include="Controls\ControlUtil.cs" />
     <Compile Include="Core\EnvironmentHelper.cs" />
     <Compile Include="Core\ApplicationModes.cs" />
     <Compile Include="DataBase\ClauseModel.cs" />
@@ -135,6 +137,7 @@
     <Compile Include="DataBase\WhereClauseBuilder.cs" />
     <Compile Include="Data\AssemblyHelper.cs" />
     <Compile Include="Data\CollectionHelper.cs" />
+    <Compile Include="Data\CompressHelper.cs" />
     <Compile Include="Data\Converter.cs" />
     <Compile Include="Data\EnumHelper.cs" />
     <Compile Include="Data\ExceptionHelper.cs" />
@@ -147,6 +150,7 @@
     <Compile Include="Data\OperatorHelper.cs" />
     <Compile Include="Data\ProxyClassHelper.cs" />
     <Compile Include="Data\RegexHelper.cs" />
+    <Compile Include="Data\RegionHelper.cs" />
     <Compile Include="Data\TypeHelper.cs" />
     <Compile Include="Data\XmlHelper.cs" />
     <Compile Include="Drawing\WaterMarker.cs" />
@@ -162,6 +166,7 @@
     <Compile Include="Entity\Status\LogicStatusInfo.cs" />
     <Compile Include="Entity\Status\SystemStatusInfo.cs" />
     <Compile Include="Entity\ZTreeNodeEntity.cs" />
+    <Compile Include="Enums\CommonLevels.cs" />
     <Compile Include="Enums\CompareModes.cs" />
     <Compile Include="Enums\ConditionItemRelationships.cs" />
     <Compile Include="Enums\DataBaseTypes.cs" />
@@ -171,13 +176,15 @@
     <Compile Include="Enums\DataUsingModes.cs" />
     <Compile Include="Enums\DateFormats.cs" />
     <Compile Include="Enums\DepartmentUserTypes.cs" />
+    <Compile Include="Enums\EntityOperateStatuses.cs" />
     <Compile Include="Enums\LevelTypes.cs" />
-    <Compile Include="Enums\ExecuterTypes.cs" />
+    <Compile Include="Enums\ExecutorTypes.cs" />
     <Compile Include="Enums\FieldExtendModes.cs" />
     <Compile Include="Enums\JobStatuses.cs" />
     <Compile Include="Enums\LogLevels.cs" />
     <Compile Include="Enums\MaritalStatuses.cs" />
     <Compile Include="Enums\NumberBase.cs" />
+    <Compile Include="Enums\OperateTypes.cs" />
     <Compile Include="Enums\OP\EnumItemDescriptionHelper.cs" />
     <Compile Include="Enums\PassingParamValueSourceTypes.cs" />
     <Compile Include="Enums\PermissionDataTypes.cs" />
@@ -185,6 +192,7 @@
     <Compile Include="Enums\UserStatuses.cs" />
     <Compile Include="Environments\ComputerHelper.cs" />
     <Compile Include="Event\EventHelper.cs" />
+    <Compile Include="Finance\SalaryTaxHelper.cs" />
     <Compile Include="Handler\Ajax\AjaxHandler.cs" />
     <Compile Include="Handler\Ajax\FormAttribute.cs" />
     <Compile Include="Handler\Ajax\ParameterAttribute.cs" />
@@ -204,6 +212,9 @@
     <Compile Include="Finance\RMB.cs" />
     <Compile Include="Finance\SimpleRateConverter.cs" />
     <Compile Include="IO\PathHelper.cs" />
+    <Compile Include="Mathes\Coordinate\CoordinateHelper.cs" />
+    <Compile Include="Mathes\Coordinate\RectangularCoordinatePoint.cs" />
+    <Compile Include="Mathes\Coordinate\SphericalCoordinatePoint.cs" />
     <Compile Include="Mathes\StringParse\Operand.cs" />
     <Compile Include="Mathes\StringParse\OperandTypes.cs" />
     <Compile Include="Mathes\StringParse\Operator.cs" />
@@ -225,6 +236,9 @@
     <Compile Include="Setting\SectionHandler\PermissionDataConfig.cs" />
     <Compile Include="Setting\SectionHandler\PermissionDataEntity.cs" />
     <Compile Include="Setting\SectionHandler\PermissionDataSectionHandler.cs" />
+    <Compile Include="Setting\SectionHandler\SalaryTaxConfig.cs" />
+    <Compile Include="Setting\SectionHandler\SalaryTaxEntity.cs" />
+    <Compile Include="Setting\SectionHandler\SalaryTaxSectionHandler.cs" />
     <Compile Include="Setting\SectionHandler\SystemTaskSectionConfig.cs" />
     <Compile Include="Setting\SectionHandler\SystemTaskSectionEntity.cs" />
     <Compile Include="Setting\SectionHandler\SystemTaskSectionHandler.cs" />
@@ -266,7 +280,7 @@
     <Compile Include="Event\Predicates.cs" />
     <Compile Include="Event\SearchEventArgs.cs" />
     <Compile Include="Event\SearchEventHandle.cs" />
-    <Compile Include="IO\ContentType.cs" />
+    <Compile Include="IO\ContentTypes.cs" />
     <Compile Include="IO\FileHelper.cs" />
     <Compile Include="Handler\AuthCodeHandler.cs" />
     <Compile Include="Handler\UserControlRendering\UserControlRenderingHandler.cs" />
@@ -361,6 +375,7 @@
     <Content Include="Office\readme.txt" />
     <Content Include="SettingList.txt" />
     <Content Include="Setting\SectionHandler\PermissionDataReadme.txt" />
+    <Content Include="Setting\SectionHandler\SalaryTaxReadme.txt" />
     <Content Include="Setting\SectionHandler\SectionHandlerReadme.txt" />
     <Content Include="Web\CookieInfoReadme.txt" />
     <EmbeddedResource Include="Resources\img_allow.gif" />
@@ -390,11 +405,14 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Controls\HtmlControl\" />
     <Folder Include="Culture\" />
     <Folder Include="Entity\Reflection\" />
     <Folder Include="Logging\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Data\RegionHelper.vsdx" />
+    <None Include="Mathes\Coordinate\三维空间中直角坐标与球坐标的相互转换.docx" />
     <None Include="Security\.NET提供的加密算法概述.doc" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.4.1.min.js"></script>
+</head>
+<body>
+    <div style="overflow-x: auto; width: 98%;">
+        <table id="myTable">
+            <tr>
+                <th style="width: 180px">操作
+                </th>
+                <th style="width: 250px">企业名称
+                </th>
+                <th style="width: 80px">联系人员名称
+                </th>
+                <th style="width: 30px">状态
+                </th>
+                <th style="width: 120px">联系地址
+                </th>
+            </tr>
+        </table>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var totalLength = 0;
+
+            alert($("#myTable").width());
+            $("th", "table").each(function (i, item) {
+                alert(this.width);
+                //totalLength += 1;
+            });
+
+            alert(totalLength);
+        })
+    </script>
+</body>
+</html>

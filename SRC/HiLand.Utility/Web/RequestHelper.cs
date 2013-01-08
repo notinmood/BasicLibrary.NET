@@ -9,6 +9,9 @@ using HiLand.Utility.IO;
 
 namespace HiLand.Utility.Web
 {
+    /// <summary>
+    /// 请求对象帮助器
+    /// </summary>
     public class RequestHelper
     {
         /// <summary>
@@ -55,7 +58,7 @@ namespace HiLand.Utility.Web
             }
             else
             {
-                originalUrlWithoutQuery = request.Url.OriginalString.Substring(0, request.Url.OriginalString.IndexOf(queryInfo));
+                originalUrlWithoutQuery = request.Url.OriginalString.Substring(0, request.Url.OriginalString.IndexOf("?"));
             }
 
             string result = string.Empty;
@@ -138,6 +141,7 @@ namespace HiLand.Utility.Web
             return result;
         }
 
+        //TODO:xieran20121026 考虑对返回值加入HttpUtility.UrlDecode();去除编码
         /// <summary>
         /// 获取请求信息的参数值
         /// </summary>

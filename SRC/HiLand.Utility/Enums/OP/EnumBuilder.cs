@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Text;
 using System.Web.UI.WebControls;
+using HiLand.Utility.Attributes;
+using HiLand.Utility.Reflection;
 
 namespace HiLand.Utility.Enums.OP
 {
@@ -100,9 +103,14 @@ namespace HiLand.Utility.Enums.OP
             for (int i = 0; i < array.Length; i++)
             {
                 Object currentEnumItemType = array.GetValue(i);
-                string currentEnumItemTypeText = EnumItemDescriptionHelper.GetDisplayValue(currentEnumItemType, enumType, displaySerialName);
-                ListItem currentItem = new ListItem(currentEnumItemTypeText, currentEnumItemType.ToString());
-                items.Add(currentItem);
+                FieldInfo enumItemFieldInfo = enumType.GetField(currentEnumItemType.ToString());
+                EnumItemIsDisplayInListAttribute attr = ReflectHelper.GetAttribute<EnumItemIsDisplayInListAttribute>(enumItemFieldInfo);
+                if (attr == null || attr.IsDisplayInList == true)
+                {
+                    string currentEnumItemTypeText = EnumItemDescriptionHelper.GetDisplayValue(currentEnumItemType, enumType, displaySerialName);
+                    ListItem currentItem = new ListItem(currentEnumItemTypeText, currentEnumItemType.ToString());
+                    items.Add(currentItem);
+                }
             }
 
             if (isDisplayEmptyItem == true)

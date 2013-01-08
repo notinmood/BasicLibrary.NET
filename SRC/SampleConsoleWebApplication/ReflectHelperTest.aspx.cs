@@ -4,7 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using HiLand.Utility.Attributes;
 using HiLand.Utility.Data;
+using HiLand.Utility.Entity;
 using HiLand.Utility.Reflection;
 using WebApplicationConsole.ClassesForTest;
 
@@ -29,13 +31,15 @@ namespace WebApplicationConsole
             gsFrom.Age = 20;
             gsFrom.IsMarried = true;
 
-            Worker worker = new Worker { 
-                Name="Hello",
-                FactoryName="World"
+            Worker worker = new Worker
+            {
+                Name = "Hello",
+                FactoryName = "World"
             };
 
-            SomethingElse somethingElse = new SomethingElse() { 
-                Name="beijing"
+            SomethingElse somethingElse = new SomethingElse()
+            {
+                Name = "beijing"
             };
 
             GraduateStudent gsTo = new GraduateStudent();
@@ -59,6 +63,46 @@ namespace WebApplicationConsole
             GraduateStudent gs = Converter.InheritedEntityConvert<Student, GraduateStudent>(s);
 
             int i = 9;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            TestEnum te = TestEnum.Item1;
+
+            EnumItemIsDisplayInListAttribute att = ReflectHelper.GetAttribute<EnumItemIsDisplayInListAttribute>(te.GetType().GetField("Item3"));
+            if (att != null)
+            {
+                this.Button3.Text = att.IsDisplayInList.ToString();
+            }
+        }
+
+        private enum TestEnum
+        {
+            [EnumItemIsDisplayInListAttribute(true)]
+            Item1,
+            [EnumItemIsDisplayInListAttribute(false)]
+            Item2,
+        }
+
+        protected void Button4_Click(object sender, EventArgs e)
+        {
+            Student s1 = new Student();
+            s1.Name = "学生1";
+            s1.Number = "098977";
+            s1.Age = 30;
+
+            Student s2 = new Student();
+            s2.Name = "学生2";
+            s2.Number = "0989775";
+            s2.Age = 31;
+
+            Dictionary<string, DataForChange<string>> resultData;
+            this.Button4.Text = ReflectHelper.Compare(s1, s2, out resultData).ToString();
+            this.Literal1.Text = string.Empty;
+            foreach (KeyValuePair<string, DataForChange<string>> item in resultData)
+            {
+                this.Literal1.Text += item.Key + "; ";
+            }
         }
     }
 }

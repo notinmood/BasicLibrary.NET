@@ -27,7 +27,7 @@ namespace HiLand.Utility.Web
         /// <param name="clientFileName"></param>
         public static void Down(Stream stream, string origenalFileExtesion, string clientFileName)
         {
-            string fileContentType = ContentType.GetContentTypeInfo(origenalFileExtesion);
+            string fileContentType = ContentTypes.GetContentType(origenalFileExtesion);
 
             HttpContext.Current.Response.Clear();
             HttpContext.Current.Response.AppendHeader("Content-Disposition", "attachment;filename=" + HttpUtility.UrlEncode(clientFileName, System.Text.Encoding.UTF8));
@@ -61,7 +61,7 @@ namespace HiLand.Utility.Web
         public static void TransmitFile(string origenalFileFullName, string clientFileName)
         {
             string origenalFileExtesion = Path.GetExtension(origenalFileFullName);
-            string fileContentType = ContentType.GetContentTypeInfo(origenalFileExtesion);
+            string fileContentType = ContentTypes.GetContentType(origenalFileExtesion);
             HttpContext.Current.Response.ContentType = fileContentType;
             HttpContext.Current.Response.AddHeader("Content-Disposition", "attachment;filename="+HttpUtility.UrlEncode(clientFileName, System.Text.Encoding.UTF8));
             HttpContext.Current.Response.TransmitFile(origenalFileFullName);

@@ -25,6 +25,6 @@ namespace HiLand.Framework.BusinessCore
         /// <summary>
         /// 主体、客体行为对象的类型
         /// </summary>
-        ExecuterTypes ExecutorType { get; }
+        ExecutorTypes ExecutorType { get; }
     }
 }

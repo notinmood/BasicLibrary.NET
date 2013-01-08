@@ -133,7 +133,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "OwnerType"))
                 {
-                    entity.OwnerType = (ExecuterTypes)reader.GetInt32(reader.GetOrdinal("OwnerType"));
+                    entity.OwnerType = (ExecutorTypes)reader.GetInt32(reader.GetOrdinal("OwnerType"));
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "PermissionItemGuid"))
                 {

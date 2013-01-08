@@ -5,6 +5,7 @@ using HiLand.Utility.Enums.OP;
 
 namespace HiLand.Utility.Enums
 {
+    //TODO:xieran20121204 考虑使用EntityOperateStatuses替代
     /// <summary>
     /// 创建用户角色时在状态
     /// </summary>
@@ -13,7 +14,7 @@ namespace HiLand.Utility.Enums
         /// <summary>
         /// 成功
         /// </summary>
-        [EnumItemDescription("zh-CN", "是")]
+        [EnumItemDescription("zh-CN", "成功")]
         Successful,
 
         /// <summary>

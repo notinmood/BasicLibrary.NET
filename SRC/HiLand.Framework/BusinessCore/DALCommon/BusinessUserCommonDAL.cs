@@ -127,6 +127,12 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 entity.UserGuid = GuidHelper.NewGuid();
             }
 
+            //如果未指定注册日期，那么就将当前日期作为其注册日期
+            if (entity.UserRegisterDate == DateTimeHelper.Min)
+            {
+                entity.UserRegisterDate = DateTime.Now;
+            }
+
             bool isExist = true;
             status = CreateUserRoleStatuses.Successful;
 
@@ -215,6 +221,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 [UserNation],
                 [UserCountry],
                 [UserEducationalBackground],
+                [UserEducationalSchool],
+			    [SocialSecurityNumber],
                 [PropertyNames],
                 [PropertyValues]) 
            VALUES (
@@ -269,6 +277,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 {0}UserNation,
                 {0}UserCountry,
                 {0}UserEducationalBackground,
+			    {0}UserEducationalSchool,
+			    {0}SocialSecurityNumber,
                 {0}PropertyNames,
                 {0}PropertyValues)",
             ParameterNamePrefix);
@@ -358,6 +368,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                     [UserNation]={0}UserNation,
                     [UserCountry]={0}UserCountry,
                     [UserEducationalBackground]={0}UserEducationalBackground,
+				    [UserEducationalSchool] = {0}UserEducationalSchool,
+				    [SocialSecurityNumber] = {0}SocialSecurityNumber,
                     [PropertyNames] = {0}PropertyNames,
 					[PropertyValues] = {0}PropertyValues
              Where [UserGuid] = {0}UserGuid", ParameterNamePrefix);
@@ -404,7 +416,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
             TParameter[] sqlParas = new TParameter[] { GenerateParameter("UserGuid", userGuid) };
             return HelperExInstance.ExecuteSingleRowNonQuery(commandText, sqlParas);
 
-            //TODO:xieran20121001删除用户时需要删除用户关联的信息（比如权限数据）
+            //TODO:xieran20121001 删除用户时需要删除用户关联的信息（比如权限数据）
         }
 
         /// <summary>
@@ -471,6 +483,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 GenerateParameter("UserNation",entity.UserNation??string.Empty),
                 GenerateParameter("UserCountry",entity.UserCountry??string.Empty),
                 GenerateParameter("UserEducationalBackground",entity.UserEducationalBackground),
+                GenerateParameter("UserEducationalSchool",entity.UserEducationalSchool?? String.Empty),
+			    GenerateParameter("SocialSecurityNumber",entity.SocialSecurityNumber?? String.Empty),
                 GenerateParameter("PropertyNames",""),
                 GenerateParameter("PropertyValues","")
             };
@@ -1077,6 +1091,8 @@ namespace HiLand.Framework.BusinessCore.DALCommon
         #endregion
 
         #region 辅助方法
+        //TODO:xieran20121108 口令处理这个地方考虑加一个重载，参数为口令，口令加密算法，口令加密盐的简单实体
+        
         /// <summary>
         /// 处理用户口令的加密逻辑
         /// </summary>
@@ -1364,6 +1380,15 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "UserEducationalBackground"))
                 {
                     entity.UserEducationalBackground = (EducationalBackgrounds)reader.GetInt32(reader.GetOrdinal("UserEducationalBackground"));
+                }
+
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "UserEducationalSchool"))
+                {
+                    entity.UserEducationalSchool = reader.GetString(reader.GetOrdinal("UserEducationalSchool"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "SocialSecurityNumber"))
+                {
+                    entity.SocialSecurityNumber = reader.GetString(reader.GetOrdinal("SocialSecurityNumber"));
                 }
 
                 if (DataReaderHelper.IsExistField(reader, "PropertyNames") && Convert.IsDBNull(reader["PropertyNames"]) == false)

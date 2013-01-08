@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 using HiLand.Utility.Data;
+using HiLand.Utility.Entity;
 
 namespace HiLand.Utility.Reflection
 {
@@ -47,15 +48,56 @@ namespace HiLand.Utility.Reflection
         /// <returns></returns>
         public static object GetPropertyValue<TModel>(TModel model, string propertyName)
         {
-            object result = null;
             Type type = typeof(TModel);
-            PropertyInfo propertyInfo = type.GetProperty(propertyName);
-            if (propertyInfo == null && propertyInfo.CanRead == true)
-            {
-                result = propertyInfo.GetValue(model, null);
-            }
+            return GetPropertyValue(type, model, propertyName);
+        }
 
-            return result;
+        /// <summary>
+        /// 通过属性名称获取给定对象的属性值（如果在此对象上属性名称不存在，那么返回null）
+        /// </summary>
+        /// <param name="modelType"></param>
+        /// <param name="model"></param>
+        /// <param name="propertyName">支持二级属性，比如CurrentBank.AccountNumber
+        /// 其会加载属性CurrentBank的子属性AccountNumber的信息</param>
+        /// <returns></returns>
+        public static object GetPropertyValue(Type modelType, object model, string propertyName)
+        {
+            object result = null;
+            Type type = modelType;
+            if (propertyName.IndexOf(".") > 0)
+            {
+                string propertyNameOfLevelThis = StringHelper.GetBeforeSeperatorString(propertyName, ".");
+                string propertyNameOfLevelNext = StringHelper.GetAfterSeperatorString(propertyName, ".");
+                object propertyValueOfLevelThis = GetPropertyValue(modelType, model, propertyNameOfLevelThis);
+
+                if (propertyValueOfLevelThis == null)
+                {
+                    return string.Empty;
+                }
+                else
+                {
+                    PropertyInfo piOfLevelThis = modelType.GetProperty(propertyNameOfLevelThis);
+                    if (piOfLevelThis == null)
+                    {
+                        return string.Empty;
+                    }
+                    else
+                    {
+                        Type propertyTypeOfLevelThis = piOfLevelThis.PropertyType;
+                        return GetPropertyValue(propertyTypeOfLevelThis, propertyValueOfLevelThis, propertyNameOfLevelNext);
+                    }
+                }
+            }
+            else
+            {
+                PropertyInfo propertyInfo = type.GetProperty(propertyName);
+                if (propertyInfo != null && propertyInfo.CanRead == true)
+                {
+                    result = propertyInfo.GetValue(model, null);
+                }
+
+                return result;
+            }
         }
 
         /// <summary>
@@ -126,7 +168,14 @@ namespace HiLand.Utility.Reflection
         /// <returns></returns>
         public static TAttribute GetAttribute<TAttribute>(MemberInfo memberInfo) where TAttribute : Attribute
         {
-            return (TAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(TAttribute), true);
+            if (memberInfo == null)
+            {
+                return null;
+            }
+            else
+            {
+                return (TAttribute)Attribute.GetCustomAttribute(memberInfo, typeof(TAttribute), true);
+            }
         }
 
         /// <summary>
@@ -183,10 +232,10 @@ namespace HiLand.Utility.Reflection
                 if (currentItem.CanRead)
                 {
                     string currentItemName = currentItem.Name;
-                    object valueInBase = currentItem.GetValue(fromEntity, null);
                     PropertyInfo piOfTo = typeOfTo.GetProperty(currentItemName);
                     if (piOfTo != null && piOfTo.CanWrite)
                     {
+                        object valueInBase = currentItem.GetValue(fromEntity, null);
                         piOfTo.SetValue(toEntity, valueInBase, null);
                     }
                 }
@@ -195,42 +244,59 @@ namespace HiLand.Utility.Reflection
             return toEntity;
         }
 
+        /// <summary>
+        /// 两个对象属性比较
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sourceEntity"></param>
+        /// <param name="targetEntity"></param>
+        /// <param name="resultData">属性并更的信息：key为变更的属性名称；value为包含变更前值和后值的数据</param>
+        /// <param name="excludePropertyName">不进行比较的属性名称集合</param>
+        /// <returns></returns>
+        public static bool Compare<T>(T sourceEntity, T targetEntity, out Dictionary<string, DataForChange<string>> resultData, params string[] excludePropertyName)
+        {
+            bool result = true;
+            resultData = new Dictionary<string, DataForChange<string>>();
+            Type typeOfEntity = typeof(T);
+            BindingFlags bindingFlag = BindingFlags.Instance | BindingFlags.Public;
 
+            PropertyInfo[] piArray = typeOfEntity.GetProperties(bindingFlag);
+            foreach (PropertyInfo currentItem in piArray)
+            {
+                string currentItemName = currentItem.Name;
+                bool isJumpOut = false;
+                for (int i = 0; i < excludePropertyName.Length; i++)
+                {
+                    if (currentItemName.ToLower() == excludePropertyName[i].ToLower())
+                    {
+                        isJumpOut = true;
+                        continue;
+                    }
+                }
 
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <typeparam name="T"></typeparam>
-        ///// <param name="propertyName"></param>
-        ///// <param name="attributeName"></param>
-        ///// <returns></returns>
-        //public static string GetMemberAttribute<T>(string propertyName, string attributeName)
-        //{
-        //    Type type= typeof(T);
-        //    return GetMemberAttribute( type,  propertyName,  attributeName);
-        //}
+                if (isJumpOut == true)
+                {
+                    continue;
+                }
 
-        //public static string GetMemberAttribute(Type type, string propertyName, string attributeName)
-        //{
-        //    string result = string.Empty;
-        //    //object[] attributeValues= GetMemberAttribute( type, propertyName);
+                if (currentItem.CanRead == true)
+                {
+                    object valueInSource = currentItem.GetValue(sourceEntity, null) ?? string.Empty;
+                    object valueInTarget = currentItem.GetValue(targetEntity, null) ?? string.Empty;
 
-        //    return result;
-        //}
+                    string valueInSourceString = valueInSource.ToString();
+                    string valueInTargetString = valueInTarget.ToString();
 
-        //public static Dictionary<string, object> GetMemberAttribute(Type type, string propertyName)
-        //{
-        //    PropertyInfo propertyInfo = type.GetProperty(propertyName);
-        //    //TODO：加入缓存容器，提高性能
-        //    Dictionary<string, object> atrributeDictionary = new Dictionary<string, object>();
-        //    object[] attributeValues = propertyInfo.GetCustomAttributes(true);
-        //    if (attributeValues != null)
-        //    {
-        //        //atrributeDictionary.Add();
-        //    }
+                    if (valueInSourceString != valueInTargetString)
+                    {
+                        result = false;
+                        resultData[currentItemName] = new DataForChange<string>(valueInSourceString, valueInTargetString);
+                    }
+                }
+            }
 
-        //    return atrributeDictionary;
-        //}
+            return result;
+        }
     }
 }
 

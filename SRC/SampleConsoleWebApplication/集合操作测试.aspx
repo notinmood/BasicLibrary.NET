@@ -11,6 +11,10 @@
     <div>
     
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+
+    
+        <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="判断两个集合中是否存在至少一个共同的元素" />
+
     
     </div>
     </form>

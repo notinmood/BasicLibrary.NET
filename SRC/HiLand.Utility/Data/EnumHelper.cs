@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using HiLand.Utility.Enums.OP;
 
 namespace HiLand.Utility.Data
@@ -91,7 +92,7 @@ namespace HiLand.Utility.Data
         /// <returns></returns>
         public static TEnum GetItem<TEnum>(string displayValue, string displayTextCategory)
         {
-            return GetItem<TEnum>( displayValue,  displayTextCategory, default(TEnum));
+            return GetItem<TEnum>(displayValue, displayTextCategory, default(TEnum));
         }
 
         /// <summary>

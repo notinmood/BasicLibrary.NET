@@ -77,6 +77,11 @@
     <Content Include="Account\ChangePasswordSuccess.aspx" />
     <Content Include="Account\Login.aspx" />
     <Content Include="AuthCodeDemo\Default.aspx" />
+    <Content Include="CompressHelperTest.aspx" />
+    <Content Include="ContentTypes测试.aspx" />
+    <Content Include="ConverterTest.aspx" />
+    <Content Include="FlagHelperTest.aspx" />
+    <Content Include="RegionHelperTest.aspx" />
     <Content Include="脏词过滤测试.txt" />
     <Content Include="CacheUsing.aspx" />
     <Content Include="CurrentUserDemo\Index.aspx" />
@@ -139,6 +144,7 @@
     <Content Include="字符串编辑距离测试.aspx" />
     <Content Include="字符串解析测试.aspx" />
     <Content Include="脏词过滤测试.aspx" />
+    <Content Include="计算表格的宽度.html" />
     <Content Include="身份证号码解析验证.aspx" />
     <Content Include="集合操作测试.aspx" />
   </ItemGroup>
@@ -190,6 +196,27 @@
     <Compile Include="ClassesForTest\SomethingElse.cs" />
     <Compile Include="ClassesForTest\Student.cs" />
     <Compile Include="ClassesForTest\Worker.cs" />
+    <Compile Include="CompressHelperTest.aspx.cs">
+      <DependentUpon>CompressHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CompressHelperTest.aspx.designer.cs">
+      <DependentUpon>CompressHelperTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ContentTypes测试.aspx.cs">
+      <DependentUpon>ContentTypes测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContentTypes测试.aspx.designer.cs">
+      <DependentUpon>ContentTypes测试.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ConverterTest.aspx.cs">
+      <DependentUpon>ConverterTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ConverterTest.aspx.designer.cs">
+      <DependentUpon>ConverterTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="CurrentUserDemo\Index.aspx.cs">
       <DependentUpon>Index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,6 +237,13 @@
     </Compile>
     <Compile Include="FileTest.aspx.designer.cs">
       <DependentUpon>FileTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FlagHelperTest.aspx.cs">
+      <DependentUpon>FlagHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FlagHelperTest.aspx.designer.cs">
+      <DependentUpon>FlagHelperTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="GeneralValidateDemo\ModuleA\ModuleA1\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -366,6 +400,13 @@
     <Compile Include="ReflectHelperTest.aspx.designer.cs">
       <DependentUpon>ReflectHelperTest.aspx</DependentUpon>
     </Compile>
+    <Compile Include="RegionHelperTest.aspx.cs">
+      <DependentUpon>RegionHelperTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="RegionHelperTest.aspx.designer.cs">
+      <DependentUpon>RegionHelperTest.aspx</DependentUpon>
+    </Compile>
     <Compile Include="RequestHelperTest.aspx.cs">
       <DependentUpon>RequestHelperTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -462,16 +503,13 @@
     <Folder Include="App_Data\" />
     <Folder Include="GeneralValidateDemo\ModuleB\ModuleB2\" />
     <Folder Include="GeneralValidateDemo\ModuleB\ModuleB3\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Applications\Applications.csproj">
-      <Project>{964BBF20-0119-410A-8E18-4E3CDFDABD97}</Project>
-      <Name>Applications</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HiLand.Framework\HiLand.Framework.csproj">
       <Project>{461EC125-8906-4F63-96FF-17B4B10A65E0}</Project>
       <Name>HiLand.Framework</Name>
@@ -510,8 +548,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>57225</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>5700</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost/scw</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

@@ -158,8 +158,34 @@ namespace HiLand.Utility.Setting
         /// <returns></returns>
         public static T GetSection<T>(string sectionName)
         {
-            T result = (T)ConfigurationManager.GetSection(sectionName);
+            T result = default(T);
+
+            object section= ConfigurationManager.GetSection(sectionName);
+            if (section != null)
+            { 
+                result= (T)section;
+            }
+
             return result;
+        }
+        #endregion
+
+        #region 常用配置
+        private static bool? isRecordOperateLog= null;
+        /// <summary>
+        /// 是否记录操作日志
+        /// </summary>
+        public static bool IsRecordOperateLog
+        {
+            get
+            {
+                if (isRecordOperateLog.HasValue == false)
+                {
+                    isRecordOperateLog= GetAppSetting<bool>("isRecordOperateLog");
+                }
+
+                return isRecordOperateLog.Value;
+            }
         }
         #endregion
     }

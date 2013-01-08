@@ -274,5 +274,38 @@ namespace HiLand.Utility.Data
             }
         }
         #endregion
+
+        #region 格式化
+        /// <summary>
+        /// 获取安全的字符串显示
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static string ToSaftShortDateString(DateTime data)
+        {
+            string result = string.Empty;
+            if (data != Min)
+            {
+                result = data.ToShortDateString();
+            }
+            return result;
+        }
+
+        /// <summary>
+        /// 获取安全的字符串显示
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="format"></param>
+        /// <returns></returns>
+        public static string ToSaftString(DateTime data, string format)
+        {
+            string result = string.Empty;
+            if (data != Min)
+            {
+                result = data.ToString(format);
+            }
+            return result;
+        }
+        #endregion
     }
 }

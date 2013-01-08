@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using HiLand.Framework.BusinessCore.BLL;
+using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.Membership;
 using HiLand.Framework.Permission;
 using HiLand.Utility.Data;
@@ -101,6 +102,55 @@ namespace HiLand.Framework4.Permission
             return null;
         }
 
+        #region 按照资源的所有者进行控制数据时使用
+        /// <summary>
+        /// 当前用户是否拥有资源的控制权（可以是编辑等权限）
+        /// </summary>
+        /// <param name="resource"></param>
+        /// <returns></returns>
+        public static bool IsOwning(IResource resource)
+        {
+            if (resource.IsProtectedByOwner == Logics.False)
+            {
+                return true;
+            }
+
+            bool result = true;
+            PermissionDataTypes permissionDataType = GetDataPermission();
+            switch (permissionDataType)
+            {
+                case PermissionDataTypes.None:
+                    result = false;
+                    break;
+                case PermissionDataTypes.Self:
+                    result = resource.OwnerKeys.Contains(BusinessUserBLL.CurrentUser.UserGuid.ToString());
+                    break;
+                case PermissionDataTypes.DepatmentWithSub:
+                    {
+                        List<Guid> guidList = BusinessUserBLL.GetUserGuidsByDepartment(BusinessUserBLL.CurrentUser.Department.DepartmentFullPath, true);
+                        List<string> stringList = guidList.ConvertAll<string>(item => item.ToString());
+                        result = CollectionHelper.IsExistAtLeastOneElement(stringList, resource.OwnerKeys);
+                    }
+                    break;
+                case PermissionDataTypes.DepartmentWithoutSub:
+                    {
+                        List<Guid> guidList = BusinessUserBLL.GetUserGuidsByDepartment(BusinessUserBLL.CurrentUser.Department.DepartmentFullPath, false);
+                        List<string> stringList = guidList.ConvertAll<string>(item => item.ToString());
+                        result = CollectionHelper.IsExistAtLeastOneElement(stringList, resource.OwnerKeys);
+                    }
+                    break;
+                case PermissionDataTypes.All:
+                    result = true;
+                    break;
+                default:
+                    break;
+            }
+
+            return result;
+        }
+        #endregion
+
+        #region 按照某个所有者字段过滤可以显示的数据时，使用以下方法
         /// <summary>
         /// 获取数据权限的过滤条件
         /// </summary>
@@ -142,5 +192,6 @@ namespace HiLand.Framework4.Permission
 
             return result;
         }
+        #endregion
     }
 }

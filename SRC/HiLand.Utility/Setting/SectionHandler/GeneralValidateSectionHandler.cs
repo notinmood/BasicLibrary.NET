@@ -6,6 +6,13 @@ namespace HiLand.Utility.Setting.SectionHandler
 {
     public class GeneralValidateSectionHandler : IConfigurationSectionHandler
     {
+        /// <summary>
+        /// 获取config节点，创建配置信息实体
+        /// </summary>
+        /// <param name="parent"></param>
+        /// <param name="configContext"></param>
+        /// <param name="section"></param>
+        /// <returns></returns>
         public object Create(object parent, object configContext, XmlNode section)
         {
             GeneralValidateConfig config = new GeneralValidateConfig();

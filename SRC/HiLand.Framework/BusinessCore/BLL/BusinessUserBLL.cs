@@ -298,6 +298,8 @@ namespace HiLand.Framework.BusinessCore.BLL
             }
             else
             {
+                //如果口令不相同，那么再将原来的口令赋值回去
+                entity.Password = passwordInSystem;
                 isSuccessful = false;
                 return isSuccessful;
             }
@@ -521,6 +523,32 @@ namespace HiLand.Framework.BusinessCore.BLL
         {
             string cacheKey = CoreCacheKeys.GetUserListKey(whereClause);
             return CacheHelper.Access<String, List<BusinessUser>>(cacheKey, CacheHelper.AFewTime, DALSave.GetList, whereClause);
+        }
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="userType">用户类型</param>
+        /// <returns></returns>
+        public static List<BusinessUser> GetList(UserTypes userType)
+        {
+            return GetList(userType,null);
+        }
+
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <param name="userType">用户类型</param>
+        /// <param name="userStatus">用户状态</param>
+        /// <returns></returns>
+        public static List<BusinessUser> GetList(UserTypes userType,UserStatuses? userStatus)
+        {
+            string whereClause = string.Format(" UserType={0} ", (int)userType);
+            if (userStatus.HasValue)
+            {
+                whereClause += string.Format(" AND UserStatus={0} ",(int)userStatus.Value);
+            }
+            return GetList(whereClause);
         }
 
         /// <summary>
@@ -760,6 +788,17 @@ namespace HiLand.Framework.BusinessCore.BLL
             get
             {
                 return CurrentUser.UserGuid;
+            }
+        }
+
+        /// <summary>
+        /// 当前用户向外显示的名称
+        /// </summary>
+        public static string CurrentUserNameDisplay
+        {
+            get
+            {
+                return CurrentUser.UserNameDisplay;
             }
         }
 

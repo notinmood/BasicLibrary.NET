@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Text.RegularExpressions;
 
 namespace HiLand.Utility.Data
@@ -33,7 +34,7 @@ namespace HiLand.Utility.Data
         /// <summary>
         /// 字符串截取
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="data"></param>
         /// <param name="remainCharCount"></param>
         /// <param name="postFixAdded">在截取后的字符串后加入后缀</param>
         /// <returns></returns>
@@ -329,6 +330,30 @@ namespace HiLand.Utility.Data
                 result += originalValue;
             }
 
+            return result;
+        }
+        #endregion
+
+        #region 字符串与字节数组的转换
+        /// <summary>
+        /// 获取外部字节数组的方法
+        /// </summary>
+        /// <param name="data">待转换字符串</param>
+        /// <returns></returns>
+        public static byte[] GetByteArray(string data)
+        {
+            return GetByteArray(data, Encoding.UTF8 );
+        }
+
+        /// <summary>
+        /// 获取外部字节数组的方法
+        /// </summary>
+        /// <param name="data">待转换字符串</param>
+        /// <param name="encoding">编码格式</param>
+        /// <returns></returns>
+        public static byte[] GetByteArray(string data, Encoding encoding)
+        {
+            byte[] result = encoding.GetBytes(data);
             return result;
         }
         #endregion

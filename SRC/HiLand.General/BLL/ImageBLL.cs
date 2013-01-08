@@ -9,6 +9,9 @@ using HiLand.Utility.Web;
 
 namespace HiLand.General.BLL
 {
+    /// <summary>
+    /// 图片管理业务逻辑类
+    /// </summary>
     public class ImageBLL : BaseBLL<ImageBLL, ImageEntity, ImageDAL>
     {
         /// <summary>

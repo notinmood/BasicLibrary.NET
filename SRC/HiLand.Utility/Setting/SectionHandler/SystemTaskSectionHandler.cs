@@ -11,7 +11,7 @@ namespace HiLand.Utility.Setting.SectionHandler
     public class SystemTaskSectionHandler : IConfigurationSectionHandler
     {
         /// <summary>
-        /// 
+        /// 获取config节点，创建配置信息实体
         /// </summary>
         /// <param name="parent"></param>
         /// <param name="configContext"></param>
@@ -34,9 +34,9 @@ namespace HiLand.Utility.Setting.SectionHandler
                                 }
 
                                 SystemTaskOfDailyExcutorEntity entity = new SystemTaskOfDailyExcutorEntity();
-                                entity.AddonInfo = XmlHelper.GetNodeValue(taskNode, string.Empty, "addonInfo");
-                                entity.AddonDetails = XmlHelper.GetNodeValue(taskNode, string.Empty, "addonDetails");
+                                entity.Addon = XmlHelper.GetNodeValue(taskNode, string.Empty, "addon");
                                 entity.Name = XmlHelper.GetNodeValue(taskNode, string.Empty, "name");
+                                entity.IsUse = XmlHelper.GetNodeValue<bool>(taskNode, string.Empty, "isUse", true);
                                 entity.ExcuteHour = XmlHelper.GetNodeValue(taskNode, string.Empty, "excuteHour", Config.GetAppSetting("taskExcuteHour", 0));
                                 entity.ExcuteMinute = XmlHelper.GetNodeValue(taskNode, string.Empty, "excuteMinute", Config.GetAppSetting("taskExcuteMinute", 0));
                                 string typeString = XmlHelper.GetNodeValue(taskNode, string.Empty, "type");
@@ -50,7 +50,7 @@ namespace HiLand.Utility.Setting.SectionHandler
                         }
                         break;
                     default:
-                        //TODO:xieran 20120926 需要添加其他各种任务执行周期类型（每小时，每周，每月等）
+                        //TODO:xieran20120926 需要添加其他各种任务执行周期类型（每小时，每周，每月等）
                         break;
                 }
             }

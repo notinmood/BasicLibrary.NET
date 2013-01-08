@@ -5,6 +5,8 @@
 *.sln.cache
 */[bB]in/         #Build output
 */[oO]bj/
+*.mdf
+*.ldf
 
 /build
 *.csproj.user

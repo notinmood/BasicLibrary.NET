@@ -10,7 +10,7 @@ namespace HiLand.Utility.Enums
     public enum PageDisplayModes
     {
         /// <summary>
-        /// 单存展示
+        /// 单纯展示
         /// </summary>
         Display = 0,
         /// <summary>

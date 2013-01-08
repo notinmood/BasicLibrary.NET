@@ -10,6 +10,11 @@ namespace HiLand.Utility.Enums
     public enum LevelTypes
     {  
         /// <summary>
+        /// 未设置
+        /// </summary>
+        NonSet=0,
+
+        /// <summary>
         /// 最低的
         /// </summary>
         Lowest=1,

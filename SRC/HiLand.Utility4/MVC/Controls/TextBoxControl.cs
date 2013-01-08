@@ -113,17 +113,34 @@ namespace HiLand.Utility4.MVC.Controls
         }
 
         /// <summary>
+        /// 保存实际值的隐藏域的值
+        /// </summary>
+        private string hiddenFieldValue = string.Empty;
+
+        /// <summary>
+        /// 设置保存实际值的隐藏域的值
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public TextBoxControl HiddenFieldValue(string data)
+        {
+            this.hiddenFieldValue = data;
+            return this;
+        }
+
+        /// <summary>
         /// 绘制控件核心部分的Html代码
         /// </summary>
         /// <returns></returns>
         protected override string WriteCoreHtml()
         {
             string result = base.WriteCoreHtml();
-            
+
             if (isUseAutoComplete == true)
             {
                 StringBuilder sb = new StringBuilder();
-                sb.AppendFormat("<input id=\"{0}\" name=\"{1}\" type=\"hidden\" />",hiddenFieldID, hiddenFieldName);
+                sb.AppendFormat("<input id=\"{0}\" name=\"{1}\" type=\"hidden\" value=\"{2}\" />", 
+                    hiddenFieldID, hiddenFieldName, hiddenFieldValue);
                 result += new MvcHtmlString(sb.ToString());
             }
 
@@ -176,10 +193,10 @@ namespace HiLand.Utility4.MVC.Controls
                       |>|
                     |>|);
                 |>|);
-                </script>", this.ID, 
-                          this.minLengthForWakeup, 
-                          this.dynamicLoadDataUrl, 
-                          this.selectedCallbackFunctionName, 
+                </script>", this.ID,
+                          this.minLengthForWakeup,
+                          this.dynamicLoadDataUrl,
+                          this.selectedCallbackFunctionName,
                           this.hiddenFieldID,
                           this.extraParamFunctionName
                 );
