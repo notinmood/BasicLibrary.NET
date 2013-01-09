@@ -7,10 +7,3 @@
 	接口的名称为INewsCategoryDAL，那么DAL类的名称必须为NewsCategoryDAL
 4.DAL中具体类型的方法必须为virtual,这样便于动态代理使用
 5.********TODO：需要将DAL目录的下类型的基类统一修改成CommonDAL下的 泛数据库数据访问类
-6.跟李晨沟通Git使用
-7.sss
-rdf
-是大幅放大放大
-mmm
-啊实打实大师
-
