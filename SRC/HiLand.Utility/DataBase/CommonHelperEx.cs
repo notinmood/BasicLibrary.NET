@@ -1,4 +1,7 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
+using HiLand.Utility.Data;
+using HiLand.Utility.Logging;
 using HiLand.Utility.Pattern;
 using HiLand.Utility.Setting;
 
@@ -139,8 +142,10 @@ namespace HiLand.Utility.DataBase
             {
                 isSuccessful = HelperInstance.ExecuteSingleRowNonQuery(ConnectionString, CommandType.Text, singleRowCommandText, commandParameters);
             }
-            catch
+            catch(Exception ex)
             {
+                FileLoger loger = new FileLoger();
+                loger.Log(ExceptionHelper.GetExceptionMessage(ex,true));
                 isSuccessful = false;
             }
 

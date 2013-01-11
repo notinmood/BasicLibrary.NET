@@ -2566,6 +2566,7 @@
     <Content Include="Test\CommonDBHelperTest.aspx" />
     <Content Include="Test\CSS测试.htm" />
     <Content Include="Test\DDLonChange事件.html" />
+    <Content Include="Test\FileLogerTest.aspx" />
     <Content Include="Test\FunctionDemo.aspx" />
     <Content Include="Test\GuidHelperTest.aspx" />
     <Content Include="Test\HiLandJQueryTest.htm" />
@@ -2695,6 +2696,13 @@
     </Compile>
     <Compile Include="Test\CommonDBHelperTest.aspx.designer.cs">
       <DependentUpon>CommonDBHelperTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\FileLogerTest.aspx.cs">
+      <DependentUpon>FileLogerTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\FileLogerTest.aspx.designer.cs">
+      <DependentUpon>FileLogerTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test\FunctionDemo.aspx.cs">
       <DependentUpon>FunctionDemo.aspx</DependentUpon>

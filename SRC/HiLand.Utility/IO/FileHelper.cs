@@ -178,12 +178,12 @@ namespace HiLand.Utility.IO
         public static void WriteContentToFile(string fileFullPath, string text)
         {
             string directoryPath = Path.GetDirectoryName(fileFullPath);
-            if (!Directory.Exists(directoryPath))
+            if (Directory.Exists(directoryPath)==false)
             {
                 Directory.CreateDirectory(directoryPath);
             }
 
-            using (FileStream fs = new FileStream(fileFullPath, FileMode.OpenOrCreate, FileAccess.Write))
+            using (FileStream fs = new FileStream(fileFullPath, FileMode.Append, FileAccess.Write))
             {
                 using (StreamWriter sw = new StreamWriter(fs))
                 {

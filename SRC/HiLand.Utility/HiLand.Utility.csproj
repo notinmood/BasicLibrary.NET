@@ -213,6 +213,10 @@
     <Compile Include="Finance\RMB.cs" />
     <Compile Include="Finance\SimpleRateConverter.cs" />
     <Compile Include="IO\PathHelper.cs" />
+    <Compile Include="Logging\FileLoger.cs" />
+    <Compile Include="Logging\ILogEntity.cs" />
+    <Compile Include="Logging\ILoger.cs" />
+    <Compile Include="Logging\LogEntity.cs" />
     <Compile Include="Mathes\Coordinate\CoordinateHelper.cs" />
     <Compile Include="Mathes\Coordinate\RectangularCoordinatePoint.cs" />
     <Compile Include="Mathes\Coordinate\SphericalCoordinatePoint.cs" />
@@ -409,7 +413,6 @@
     <Folder Include="Controls\HtmlControl\" />
     <Folder Include="Culture\" />
     <Folder Include="Entity\Reflection\" />
-    <Folder Include="Logging\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Data\RegionHelper.vsdx" />

@@ -238,8 +238,12 @@ namespace HiLand.Utility.Office
 
                     for (int i = headerRow.FirstCellNum; i < cellCount; i++)
                     {
-                        DataColumn column = new DataColumn(headerRow.GetCell(i).StringCellValue);
-                        table.Columns.Add(column);
+                        ICell cell = headerRow.GetCell(i);
+                        if (cell != null && cell.StringCellValue != null)
+                        {
+                            DataColumn column = new DataColumn(cell.StringCellValue);
+                            table.Columns.Add(column);
+                        }
                     }
                 }
 

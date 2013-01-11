@@ -13,6 +13,17 @@ namespace HiLand.Utility.IO
         /// <returns></returns>
         public static string GetNativeFilePath(string filePath)
         {
+            return GetNativeFilePath(filePath, true);
+        }
+
+        /// <summary>
+        /// 获取物理路径（兼容WebApp/NativeApp两种方式）
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <param name="IsAppendEndDirectorySeparatorChar">是否在路径的末尾附加目录分割标志（如果filePath是一个文件的路径，那么这个值请一定为false；如果为目录的路径这个值请为true）</param>
+        /// <returns></returns>
+        public static string GetNativeFilePath(string filePath, bool IsAppendEndDirectorySeparatorChar)
+        {
             string result = null;
             if (filePath.IndexOf(@":\") != -1 || filePath.IndexOf(@"\\") != -1)
             {
@@ -32,10 +43,21 @@ namespace HiLand.Utility.IO
                 }
             }
 
-            if (result.EndsWith(Path.DirectorySeparatorChar.ToString()) == false)
+            if (IsAppendEndDirectorySeparatorChar == true)
             {
-                result = result + Path.DirectorySeparatorChar;
+                if (result.EndsWith(Path.DirectorySeparatorChar.ToString()) == false)
+                {
+                    result = result + Path.DirectorySeparatorChar;
+                }
             }
+            else
+            {
+                if (result.EndsWith(Path.DirectorySeparatorChar.ToString()) == true)
+                {
+                    result = result.Remove(result.LastIndexOf(Path.DirectorySeparatorChar));
+                }
+            }
+
             return result;
         }
 
