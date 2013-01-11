@@ -14,6 +14,9 @@ namespace HiLand.Framework.Permission
     /// <summary>
     /// 权限验证
     /// </summary>
+    /// <remarks>
+    /// 其内使用了两套cookie体系，验证时满足其一便为通过（1.微软本身的登录cookie信息；2.Hiland的实体化User的cookie）
+    /// </remarks>
     public static class PermissionValidation
     {
         #region Cookie的读写
@@ -68,40 +71,49 @@ namespace HiLand.Framework.Permission
             HttpCookie authCookie = HttpContext.Current.Request.Cookies[cookieName];//获取web.config中的名为“AuthCookie”的Cookie值
             if (authCookie == null)
             {
-                isSuccessful = false;
-                return isSuccessful;
+                UserCookie userCookie = UserCookie.Load<UserCookie>();
+                if (string.IsNullOrEmpty(userCookie.UserName) == true)
+                {
+                    isSuccessful = false;
+                }
+                else
+                {
+                    isSuccessful = true;
+                }
             }
-
-            FormsAuthenticationTicket authTicket = null;
-            try
+            else
             {
-                //解密身份票据
-                authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                FormsAuthenticationTicket authTicket = null;
+                try
+                {
+                    //解密身份票据
+                    authTicket = FormsAuthentication.Decrypt(authCookie.Value);
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                if (authTicket == null)
+                {
+                    // 如果没有则返回
+                    isSuccessful = false;
+                    return isSuccessful;
+                }
+
+                //如果有角色可以获取传递的用户数据
+                //用户数据在登入代码中实例化FormsAuthenticationTicket时设置的。string userdata
+                string[] roles = authTicket.UserData.Split(new string[] { "[role]:" }, StringSplitOptions.RemoveEmptyEntries);
+
+                //创建标识对象
+                System.Security.Principal.IIdentity identity = new FormsIdentity(authTicket);
+
+                //创建安全主体
+                System.Security.Principal.IPrincipal principal = new System.Security.Principal.GenericPrincipal(identity, roles);
+
+                // 添加到Http上下文中
+                HttpContext.Current.User = principal;
             }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-
-            if (authTicket == null)
-            {
-                // 如果没有则返回
-                isSuccessful = false;
-                return isSuccessful;
-            }
-
-            //如果有角色可以获取传递的用户数据
-            //用户数据在登入代码中实例化FormsAuthenticationTicket时设置的。string userdata
-            string[] roles = authTicket.UserData.Split(new string[] { "[role]:" }, StringSplitOptions.RemoveEmptyEntries);
-
-            //创建标识对象
-            System.Security.Principal.IIdentity identity = new FormsIdentity(authTicket);
-
-            //创建安全主体
-            System.Security.Principal.IPrincipal principal = new System.Security.Principal.GenericPrincipal(identity, roles);
-
-            // 添加到Http上下文中
-            HttpContext.Current.User = principal;
 
             return isSuccessful;
         }

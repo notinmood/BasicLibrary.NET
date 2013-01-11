@@ -1,4 +1,5 @@
-﻿using HiLand.Utility.Setting;
+﻿using HiLand.Utility.Enums;
+using HiLand.Utility.Setting;
 using HiLand.Utility4.MVC.Controls;
 
 namespace HiLand.Framework4.Permission.Controls
@@ -94,7 +95,15 @@ namespace HiLand.Framework4.Permission.Controls
                 }
                 else
                 {
-                    return PermissionValidationHelper.GeneralValidate(action, controller, area);
+                    PermissionValidateStatuses permissionValidateStatus= PermissionValidationHelper.GeneralValidate(action, controller, area);
+                    if (permissionValidateStatus == PermissionValidateStatuses.Successful)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
                 }
             }
         }

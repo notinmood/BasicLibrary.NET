@@ -188,6 +188,7 @@
     <Compile Include="Enums\OP\EnumItemDescriptionHelper.cs" />
     <Compile Include="Enums\PassingParamValueSourceTypes.cs" />
     <Compile Include="Enums\PermissionDataTypes.cs" />
+    <Compile Include="Enums\PermissionValidateStatuses.cs" />
     <Compile Include="Enums\SystemStatuses.cs" />
     <Compile Include="Enums\UserStatuses.cs" />
     <Compile Include="Environments\ComputerHelper.cs" />

@@ -4,6 +4,7 @@ using HiLand.Framework.BusinessCore;
 using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.FoundationLayer.Attributes;
+using HiLand.General.Enums;
 using HiLand.Utility.Data;
 using HiLand.Utility.Finance;
 
@@ -72,11 +73,34 @@ namespace HiLand.General.Entity
             set { loanPurpose = value; }
         }
 
-        private Guid loanUserID = Guid.Empty;
-        public Guid LoanUserID
+        private string loanOwnerKey = String.Empty;
+        /// <summary>
+        /// 贷款人Key(个人还是企业)
+        /// </summary>
+        public string LoanOwnerKey
         {
-            get { return loanUserID; }
-            set { loanUserID = value; }
+            get { return loanOwnerKey; }
+            set { loanOwnerKey = value; }
+        }
+
+        private LoanOwnerTypes loanOwnerType;
+        /// <summary>
+        /// 贷款人类别(个人还是企业)
+        /// </summary>
+        public LoanOwnerTypes LoanOwnerType
+        {
+            get { return loanOwnerType; }
+            set { loanOwnerType = value; }
+        }
+
+        private string loanOwnerAddon = String.Empty;
+        /// <summary>
+        /// 贷款人附加信息
+        /// </summary>
+        public string LoanOwnerAddon
+        {
+            get { return loanOwnerAddon; }
+            set { loanOwnerAddon = value; }
         }
 
         private DateTime loanDate = DateTimeHelper.Min;
@@ -122,81 +146,23 @@ namespace HiLand.General.Entity
         }
 
         #region 扩展属性
-        private List<BusinessUser> usersInEnterprise = null;
+        private string loanOwnerDisplay = string.Empty;
         /// <summary>
-        /// 当前贷款对应企业内的所有人员
+        /// 贷款所属人显示信息
         /// </summary>
-        private List<BusinessUser> UsersInEnterprise
+        /// <remarks>
+        /// （实际应用中根据LoanOwnerKey去匹配，非数据库字段）
+        /// </remarks>
+        public string LoanOwnerDisplay
         {
             get
             {
-                if (usersInEnterprise == null)
-                {
-                    usersInEnterprise = BusinessUserBLL.GetUsersByDepartment(this.LoanUserID);
-                }
-
-                return usersInEnterprise;
+                return loanOwnerDisplay;
             }
-        }
-
-        public BusinessUser loadUserReal = null;
-        /// <summary>
-        /// 贷款人信息（如果是企业用户，显示第一个企业负责人）
-        /// </summary>
-        public BusinessUser LoadUserReal
-        {
-            get
+            set
             {
-                if (this.loadUserReal == null)
-                {
-                    if (usersInEnterprise == null || usersInEnterprise.Count == 0)
-                    {
-                        loadUserReal = BusinessUser.Empty;
-                    }
-                    else
-                    {
-                        loadUserReal = usersInEnterprise[0];
-                    }
-                }
-
-                return this.loadUserReal;
+                this.loanOwnerDisplay=value;
             }
-        }
-
-        private string loanUserRealName = string.Empty;
-        /// <summary>
-        /// 贷款人的名字（如果是企业用户，显示第一个企业负责人）
-        /// </summary>
-        public string LoanUserRealName
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(this.loanUserRealName))
-                {
-                    loanUserRealName = LoadUserReal.UserNameDisplay;
-                }
-
-                return loanUserRealName;
-            }
-            set { loanUserRealName = value; }
-        }
-
-        private Guid loanUserRealID = Guid.Empty;
-        /// <summary>
-        /// 贷款人的Guid（如果是企业用户，显示第一个企业负责人）
-        /// </summary>
-        public Guid LoanUserRealID
-        {
-            get
-            {
-                if (loanUserRealID == Guid.Empty)
-                {
-                    loanUserRealID = LoadUserReal.UserGuid;
-                }
-
-                return loanUserRealID;
-            }
-            set { loanUserRealID = value; }
         }
         #endregion
 

@@ -20,7 +20,7 @@ namespace HiLand.Framework4.Permission
         /// </summary>
         /// <param name="permissionAuthorizeMode">验证模式类型</param>
         /// <returns></returns>
-        public static bool GeneralValidate(PermissionAuthorizeModes permissionAuthorizeMode = PermissionAuthorizeModes.Normal)
+        public static PermissionValidateStatuses GeneralValidate(PermissionAuthorizeModes permissionAuthorizeMode = PermissionAuthorizeModes.Normal)
         {
             string areaName = MVCHelper.GetCurrentAreaName();
             string controllerName = MVCHelper.GetCurrentControllerName();
@@ -38,17 +38,17 @@ namespace HiLand.Framework4.Permission
         /// <param name="areaName"></param>
         /// <param name="permissionAuthorizeMode">验证模式类型</param>
         /// <returns></returns>
-        public static bool GeneralValidate(string actionName, string controllerName, string areaName = "", PermissionAuthorizeModes permissionAuthorizeMode = PermissionAuthorizeModes.Normal)
+        public static PermissionValidateStatuses GeneralValidate(string actionName, string controllerName, string areaName = "", PermissionAuthorizeModes permissionAuthorizeMode = PermissionAuthorizeModes.Normal)
         {
             if (permissionAuthorizeMode == PermissionAuthorizeModes.None)
             {
-                return true;
+                return PermissionValidateStatuses.Successful;
             }
 
             PermissionValidateConfig config = PermissionValidateConfig.GetConfig();
             if (config == null)
             {
-                return true;
+                return PermissionValidateStatuses.Successful;
             }
 
             KeyValuePair<Guid,int>? pemissionInfoRequired = GetPermissionInfo(config, areaName, controllerName, actionName);
@@ -56,20 +56,20 @@ namespace HiLand.Framework4.Permission
             //未配置的资源类型不需要控制权限
             if (pemissionInfoRequired == null)
             {
-                return true;
+                return PermissionValidateStatuses.Successful;
             }
             else
             {
                 bool isCookieSuccessful = PermissionValidation.ReadCookie();
                 if (isCookieSuccessful == false)
                 {
-                    return false;
+                    return PermissionValidateStatuses.FailureUnLogin;
                 }
                 else
                 {
                     if (permissionAuthorizeMode ==  PermissionAuthorizeModes.LoginedAsPass)
                     {
-                        return true;
+                        return PermissionValidateStatuses.Successful;
                     }
                 }
 
@@ -78,7 +78,7 @@ namespace HiLand.Framework4.Permission
                 //对超级管理员类型的用户不做权限限制
                 if (currentUser.UserType == UserTypes.SuperAdmin)
                 {
-                    return true;
+                    return PermissionValidateStatuses.Successful;
                 }
 
                 foreach (KeyValuePair<Guid, PermissionItem> kvp in currentUser.PermissionItems)
@@ -90,12 +90,12 @@ namespace HiLand.Framework4.Permission
 
                         if ((currentPermission.PermissionItemValue & permissionValueRequied) == permissionValueRequied)
                         {
-                            return true;
+                            return PermissionValidateStatuses.Successful;
                         }
                     }
                 }
 
-                return false;
+                return PermissionValidateStatuses.FailureNoPermission;
             }
         }
 

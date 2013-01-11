@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using HiLand.Utility.Enums;
 using HiLand.Utility.Setting;
 using HiLand.Utility.Web;
 
@@ -28,19 +29,29 @@ namespace HiLand.Framework4.Permission.Attributes
         /// <param name="filterContext"></param>
         public override void OnAuthorization(AuthorizationContext filterContext)
         {
-            bool isSuccessful = PermissionValidationHelper.GeneralValidate(permissionAuthorizeMode);
-            if (isSuccessful == false)
+            PermissionValidateStatuses permissionValidateStatuses = PermissionValidationHelper.GeneralValidate(permissionAuthorizeMode);
+
+            switch (permissionValidateStatuses)
             {
-                string noPermissionDisplayPage = Config.GetAppSetting("noPermissionDisplayPage");
-                if (string.IsNullOrWhiteSpace(noPermissionDisplayPage))
-                {
+                case PermissionValidateStatuses.FailureUnLogin:
                     FormsAuthentication.RedirectToLoginPage();
-                }
-                else
-                {
-                    string returnUrl = RequestHelper.CurrentFullUrl;
-                    HttpContext.Current.Response.Redirect(noPermissionDisplayPage);
-                }
+                    break;
+                case PermissionValidateStatuses.FailureNoPermission:
+                    string noPermissionDisplayPage = Config.GetAppSetting("noPermissionDisplayPage");
+                    if (string.IsNullOrWhiteSpace(noPermissionDisplayPage))
+                    {
+                        FormsAuthentication.RedirectToLoginPage();
+                    }
+                    else
+                    {
+                        string returnUrl = RequestHelper.CurrentFullUrl;
+                        //TODO:xieran20130111 需要加入跳转回来的url参数
+                        HttpContext.Current.Response.Redirect(noPermissionDisplayPage);
+                    }
+                    break; 
+                case PermissionValidateStatuses.Successful:
+                default:
+                    break;
             }
         }
     }
