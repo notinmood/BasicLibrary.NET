@@ -10,7 +10,7 @@ namespace HiLand.Utility.Logging
     /// <summary>
     /// 平面文件类型的日志
     /// </summary>
-    public class FileLoger : ILoger
+    public class FileLogger : ILogger
     {
         /// <summary>
         /// 记录日志
@@ -41,8 +41,10 @@ namespace HiLand.Utility.Logging
             string businessLogFileFullName = IOHelper.GetNativeFilePath(businessLogFileName, false);
             if (isAutoAppendAddonData == true)
             {
-                log = string.Format("{0}-{1}\r\n--------\r\n", DateTime.Now.ToString(), log);
+                log = string.Format("{0}-{1}\r\n", DateTime.Now.ToString(), log);
             }
+
+            log += "--------\r\n";
 
             FileHelper.WriteContentToFile(businessLogFileFullName, log);
         }

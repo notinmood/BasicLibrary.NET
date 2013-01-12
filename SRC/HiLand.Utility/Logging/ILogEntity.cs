@@ -14,28 +14,20 @@ namespace HiLand.Utility.Logging
 
         Guid LogGuid { get; set; }
 
-        string LogCategory
-        { get; set; }
+        string LogCategory { get; set; }
 
-        Logics LogStatus
-        { get; set; }
+        Logics LogStatus { get; set; }
 
-        string LogLevel
-        { get; set; }
+        string LogLevel { get; set; }
 
-        string Logger
-        { get; set; }
+        string Logger { get; set; }
 
-        string LogMessage
-        { get; set; }
+        string LogMessage { get; set; }
 
-        string LogThread
-        { get; set; }
+        string LogThread { get; set; }
 
-        string LogException
-        { get; set; }
+        string LogException { get; set; }
 
-        DateTime LogDate
-        { get; set; }
+        DateTime LogDate { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using HiLand.Utility.Setting;
 using HiLand.Utility.Pattern;
+using HiLand.Utility.Logging;
 
 namespace HiLand.Utility.DataBase
 {
@@ -138,6 +139,14 @@ namespace HiLand.Utility.DataBase
                 connection = trans.Connection as TConnection;
             }
 
+            ////logging validate
+            //FileLoger loger = new FileLoger();
+            //loger.Log(commandText, false);
+            //foreach (var p in commandParameters)
+            //{
+            //    loger.Log(string.Format("Name:{0}--Type:{1}--Value:{2}", p.ParameterName, p.DbType.ToString(), p.Value.ToString()), false);
+            //}
+
             using (TCommand cmd = new TCommand())
             {
                 PrepareCommand(cmd, connection, trans, commandType, commandText, commandParameters);
@@ -195,7 +204,7 @@ namespace HiLand.Utility.DataBase
                 cmd.Parameters.Clear();
                 return rdr;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 connection.Close();
                 throw ex;

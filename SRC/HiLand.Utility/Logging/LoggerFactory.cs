@@ -5,11 +5,10 @@ using System.Text;
 namespace HiLand.Utility.Logging
 {
     /// <summary>
-    /// 日志记录器接口
+    /// 日志创建工厂
     /// </summary>
-    public interface ILoger
+    public class LoggerFactory
     {
-        void Log(ILogEntity log);
-        void Log(string log);
+        //TODO:xieran20130112 日志创建工厂，日志配置节点功能需要添加
     }
 }

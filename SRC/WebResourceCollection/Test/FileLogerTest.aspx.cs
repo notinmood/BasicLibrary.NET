@@ -17,7 +17,7 @@ namespace WebResourceCollection.Test
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            FileLoger loger = new FileLoger();
+            FileLogger loger = new FileLogger();
             loger.Log("vbbvbs");
         }
     }

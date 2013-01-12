@@ -144,7 +144,7 @@ namespace HiLand.Utility.DataBase
             }
             catch(Exception ex)
             {
-                FileLoger loger = new FileLoger();
+                FileLogger loger = new FileLogger();
                 loger.Log(ExceptionHelper.GetExceptionMessage(ex,true));
                 isSuccessful = false;
             }
