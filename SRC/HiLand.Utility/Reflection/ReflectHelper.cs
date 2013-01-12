@@ -4,6 +4,7 @@ using System.Text;
 using System.Reflection;
 using HiLand.Utility.Data;
 using HiLand.Utility.Entity;
+using HiLand.Utility.Attributes;
 
 namespace HiLand.Utility.Reflection
 {
@@ -213,8 +214,14 @@ namespace HiLand.Utility.Reflection
 
             //1.设置字段
             FieldInfo[] fiArray = typeOfFrom.GetFields(bindingFlag);
+            Dictionary<FieldInfo, NonCopyMember> nonCopyFieldMember = MemberInfoWithAttributeCollection<FieldInfo, NonCopyMember>.GetExtendedMemberInfo<TFrom>();
             foreach (FieldInfo currentItem in fiArray)
             {
+                if (nonCopyFieldMember.ContainsKey(currentItem))
+                {
+                    continue;
+                }
+
                 string currentItemName = currentItem.Name;
                 object valueInBase = currentItem.GetValue(fromEntity);
 
@@ -227,8 +234,14 @@ namespace HiLand.Utility.Reflection
 
             //2.设置属性
             PropertyInfo[] piArray = typeOfFrom.GetProperties(bindingFlag);
+            Dictionary<PropertyInfo, NonCopyMember> nonCopyPropertyMember = MemberInfoWithAttributeCollection<PropertyInfo, NonCopyMember>.GetExtendedMemberInfo<TFrom>();
             foreach (PropertyInfo currentItem in piArray)
             {
+                if (nonCopyPropertyMember.ContainsKey(currentItem))
+                {
+                    continue;
+                }
+
                 if (currentItem.CanRead)
                 {
                     string currentItemName = currentItem.Name;

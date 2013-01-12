@@ -2,3 +2,4 @@
 ===============================
 1、SQLMode: SQL语句的模式（标准sql语句、或者其他单独某数据库厂商的模式，可选，默认值为stand-SQL）(MVC\Controls\QueryControl.cs)
 2、mvcControlCssPrefix：MVC空间的Css名称前缀 （MVC\Controls\BaseControl.cs）
+3、emptyPlaceHolderDataForQuery：查询控件中查询数据库内空字符串的占位符信息（因为在查询控件中，如果不设置查询的值这个条件会被忽略）（MVC\Controls\QueryControlHelper.cs）

@@ -2,6 +2,7 @@
 using System.Text;
 using HiLand.Utility.Data;
 using HiLand.Utility.Enums;
+using HiLand.Utility.Setting;
 using HiLand.Utility.Web;
 
 namespace HiLand.Utility4.MVC.Controls
@@ -111,7 +112,7 @@ namespace HiLand.Utility4.MVC.Controls
                         MVCHelper.SetCustomData(leftBracketsFullName, leftBracketsValue);
                     }
 
-                    string conditionFieldFullName= queryControlName + ConditionFieldNameStringConst + i;
+                    string conditionFieldFullName = queryControlName + ConditionFieldNameStringConst + i;
                     string conditionFieldValue = RequestHelper.GetValue(conditionFieldFullName, string.Empty);
                     MVCHelper.SetCustomData(conditionFieldFullName, conditionFieldValue);
 
@@ -144,20 +145,28 @@ namespace HiLand.Utility4.MVC.Controls
                             conditionType == typeof(Guid)
                             )
                         {
-                            switch (conditionOperatorValue.ToLower())
+                            string emptyPlaceHolderDataForQuery = Config.GetAppSetting("emptyPlaceHolderDataForQuery", "[无]");
+                            if (conditionValueValue == emptyPlaceHolderDataForQuery)
                             {
-                                case "likeleft":
-                                    sb.AppendFormat(" [{0}] like '{1}%' ", conditionFieldValue, conditionValueValue);
-                                    break;
-                                case "likeright":
-                                    sb.AppendFormat(" [{0}] like '%{1}' ", conditionFieldValue, conditionValueValue);
-                                    break;
-                                case "like":
-                                    sb.AppendFormat(" [{0}] like '%{1}%' ", conditionFieldValue, conditionValueValue);
-                                    break;
-                                default:
-                                    sb.AppendFormat(" [{0}] {1} '{2}' ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
-                                    break;
+                                sb.AppendFormat(" ([{0}] ='' OR [{0}] is null ) ", conditionFieldValue);
+                            }
+                            else
+                            {
+                                switch (conditionOperatorValue.ToLower())
+                                {
+                                    case "likeleft":
+                                        sb.AppendFormat(" [{0}] like '{1}%' ", conditionFieldValue, conditionValueValue);
+                                        break;
+                                    case "likeright":
+                                        sb.AppendFormat(" [{0}] like '%{1}' ", conditionFieldValue, conditionValueValue);
+                                        break;
+                                    case "like":
+                                        sb.AppendFormat(" [{0}] like '%{1}%' ", conditionFieldValue, conditionValueValue);
+                                        break;
+                                    default:
+                                        sb.AppendFormat(" [{0}] {1} '{2}' ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
+                                        break;
+                                }
                             }
                         }
                         else
