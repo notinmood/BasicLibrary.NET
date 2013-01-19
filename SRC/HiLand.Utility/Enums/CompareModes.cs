@@ -27,29 +27,31 @@ namespace HiLand.Utility.Enums
         /// <summary>
         /// 少于
         /// </summary>
-         [EnumItemDescription("zh-CN", "小于")]
-         [EnumItemDescription("stand-SQL", "<")]
+        [EnumItemDescription("zh-CN", "小于")]
+        [EnumItemDescription("date-SQL", "早于")]
+        [EnumItemDescription("stand-SQL", "<")]
         LessThan,
 
         /// <summary>
         /// 大于等于
         /// </summary>
-         [EnumItemDescription("zh-CN", "不小于")]
-         [EnumItemDescription("stand-SQL", ">=")]
+        [EnumItemDescription("zh-CN", "不小于")]
+        [EnumItemDescription("stand-SQL", ">=")]
         NotLessThan,
 
         /// <summary>
         /// 大于
         /// </summary>
-         [EnumItemDescription("zh-CN", "大于")]
-         [EnumItemDescription("stand-SQL", ">")]
+        [EnumItemDescription("zh-CN", "大于")]
+        [EnumItemDescription("date-SQL", "晚于")]
+        [EnumItemDescription("stand-SQL", ">")]
         MoreThan,
 
         /// <summary>
         /// 少于等于
         /// </summary>
-         [EnumItemDescription("zh-CN", "不大于")]
-         [EnumItemDescription("stand-SQL", "<=")]
+        [EnumItemDescription("zh-CN", "不大于")]
+        [EnumItemDescription("stand-SQL", "<=")]
         NotMoreThan,
 
         /// <summary>

@@ -12,6 +12,9 @@ namespace HiLand.Utility4.MVC.Controls
     /// <summary>
     /// 综合查询控件
     /// </summary>
+    /// <remarks>
+    /// 此控件因为为日期输入使用了选择框，那么需要使用此控件的页面加入对css文件（jQuery.tools.dateinput.css）的引用
+    /// </remarks>
     public class QueryControl : BaseControl<QueryControl>
     {
         private string queryButtonTextForOpen = "<i class=\"icon-zoom-in  icon-white\"></i>展开查询";
@@ -326,11 +329,25 @@ namespace HiLand.Utility4.MVC.Controls
                 }
                 else
                 {
-                    //TODO:xieran20121001 日期类型需要使用日期输入框
                     //if (queryConditionItem.ConditionType == typeof(String) ||
                     //    (TypeHelper.ConfirmIsNumberType(queryConditionItem.ConditionType) == true && queryConditionItem.ConditionType.IsEnum == false) ||
                     //    queryConditionItem.ConditionType == typeof(DateTime))
-                    result.AppendFormat("<input type=\"text\" name=\"{0}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue);
+
+                    string innerInputClass = string.Empty;
+
+                    if (queryConditionItem.ConditionType == typeof(DateTime))
+                    {
+                        innerInputClass = "innerDateControl";
+                        string dateInputOptions = "{format: 'yyyy/mm/dd'}";
+                        StringBuilder sb = new StringBuilder();
+                        sb.Append("<script type=\"text/javascript\">");
+                        sb.Append(" jQuery(document).ready(function () {");
+                        sb.AppendFormat("$(\".{0}\").dateinput({1});", innerInputClass, dateInputOptions);
+                        sb.Append("});</script>");
+                        result.Append(sb.ToString());
+                    }
+
+                    result.AppendFormat("<input type=\"text\" name=\"{0}\" class=\"{2}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue, innerInputClass);
                 }
             }
 
@@ -380,12 +397,8 @@ namespace HiLand.Utility4.MVC.Controls
 
             if (queryConditionItem.ConditionType == typeof(DateTime))
             {
-                result.Append(GetCompareModeOptionString(CompareModes.Equal, conditionOperatorValue));
-                result.Append(GetCompareModeOptionString(CompareModes.NotEqual, conditionOperatorValue));
-                result.Append(GetCompareModeOptionString(CompareModes.LessThan, conditionOperatorValue));
-                result.Append(GetCompareModeOptionString(CompareModes.MoreThan, conditionOperatorValue));
-                result.Append(GetCompareModeOptionString(CompareModes.NotLessThan, conditionOperatorValue));
-                result.Append(GetCompareModeOptionString(CompareModes.NotMoreThan, conditionOperatorValue));
+                result.Append(GetCompareModeOptionString(CompareModes.LessThan, conditionOperatorValue, "date-SQL"));
+                result.Append(GetCompareModeOptionString(CompareModes.MoreThan, conditionOperatorValue, "date-SQL"));
             }
 
             result.Append("</select>");
@@ -399,10 +412,10 @@ namespace HiLand.Utility4.MVC.Controls
         /// <param name="compareMode"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        private string GetCompareModeOptionString(CompareModes compareMode, string selectedValue)
+        private string GetCompareModeOptionString(CompareModes compareMode, string selectedValue,string displayTextCategory="")
         {
             string itemSelectedString = string.Empty;
-            string text = EnumHelper.GetDisplayValue(compareMode);
+            string text = EnumHelper.GetDisplayValue(compareMode, displayTextCategory);
             string value = EnumHelper.GetDisplayValue(compareMode, this.SQLMode);
 
             if (value == selectedValue)
