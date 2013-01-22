@@ -4,6 +4,7 @@ using HiLand.Framework.BusinessCore;
 using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.FoundationLayer.Attributes;
+using HiLand.General.BLL;
 using HiLand.General.Enums;
 using HiLand.Utility.Data;
 using HiLand.Utility.Finance;
@@ -75,7 +76,7 @@ namespace HiLand.General.Entity
 
         private string loanOwnerKey = String.Empty;
         /// <summary>
-        /// 贷款人Key(个人还是企业)
+        /// 贷款人Key(个人或者企业的标识号)
         /// </summary>
         public string LoanOwnerKey
         {
@@ -83,7 +84,7 @@ namespace HiLand.General.Entity
             set { loanOwnerKey = value; }
         }
 
-        private LoanOwnerTypes loanOwnerType;
+        private LoanOwnerTypes loanOwnerType= LoanOwnerTypes.Person;
         /// <summary>
         /// 贷款人类别(个人还是企业)
         /// </summary>
@@ -157,11 +158,22 @@ namespace HiLand.General.Entity
         {
             get
             {
+                if (this.loanOwnerDisplay == string.Empty)
+                { 
+                    switch (this.LoanOwnerType)
+                    {
+                        case LoanOwnerTypes.Enterprise:
+                            EnterpriseEntity enterprise = EnterpriseBLL.Instance.Get(GuidHelper.TryConvert(this.LoanOwnerKey));
+                            this.loanOwnerDisplay = enterprise.CompanyName;
+                            break;
+                         case LoanOwnerTypes.Person:
+                         default:
+                            BusinessUser owner= BusinessUserBLL.Get(GuidHelper.TryConvert(this.LoanOwnerKey));
+                            this.loanOwnerDisplay = owner.UserNameDisplay;
+                            break;
+                    }
+                }
                 return loanOwnerDisplay;
-            }
-            set
-            {
-                this.loanOwnerDisplay=value;
             }
         }
         #endregion
