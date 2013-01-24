@@ -339,6 +339,11 @@ namespace HiLand.Utility4.MVC.Controls
                     {
                         innerInputClass = "innerDateControl";
                         string dateInputOptions = "{format: 'yyyy/mm/dd'}";
+                        string dateFormat = queryConditionItem.GetAddonItem("dateFormat",string.Empty);
+                        if (dateFormat != string.Empty)
+                        {
+                            dateInputOptions = "{format: '"+ dateFormat +"'}";
+                        }
                         StringBuilder sb = new StringBuilder();
                         sb.Append("<script type=\"text/javascript\">");
                         sb.Append(" jQuery(document).ready(function () {");
@@ -397,6 +402,7 @@ namespace HiLand.Utility4.MVC.Controls
 
             if (queryConditionItem.ConditionType == typeof(DateTime))
             {
+                result.Append(GetCompareModeOptionString(CompareModes.Equal, conditionOperatorValue, "date-SQL"));
                 result.Append(GetCompareModeOptionString(CompareModes.LessThan, conditionOperatorValue, "date-SQL"));
                 result.Append(GetCompareModeOptionString(CompareModes.MoreThan, conditionOperatorValue, "date-SQL"));
             }

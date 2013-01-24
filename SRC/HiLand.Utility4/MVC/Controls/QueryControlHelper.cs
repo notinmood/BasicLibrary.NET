@@ -148,23 +148,23 @@ namespace HiLand.Utility4.MVC.Controls
                             string emptyPlaceHolderDataForQuery = Config.GetAppSetting("emptyPlaceHolderDataForQuery", "[无]");
                             if (conditionValueValue == emptyPlaceHolderDataForQuery)
                             {
-                                sb.AppendFormat(" ([{0}] ='' OR [{0}] is null ) ", conditionFieldValue);
+                                sb.AppendFormat(" ({0} ='' OR {0} is null ) ", conditionFieldValue);
                             }
                             else
                             {
                                 switch (conditionOperatorValue.ToLower())
                                 {
                                     case "likeleft":
-                                        sb.AppendFormat(" [{0}] like '{1}%' ", conditionFieldValue, conditionValueValue);
+                                        sb.AppendFormat(" {0} like '{1}%' ", conditionFieldValue, conditionValueValue);
                                         break;
                                     case "likeright":
-                                        sb.AppendFormat(" [{0}] like '%{1}' ", conditionFieldValue, conditionValueValue);
+                                        sb.AppendFormat(" {0} like '%{1}' ", conditionFieldValue, conditionValueValue);
                                         break;
                                     case "like":
-                                        sb.AppendFormat(" [{0}] like '%{1}%' ", conditionFieldValue, conditionValueValue);
+                                        sb.AppendFormat(" {0} like '%{1}%' ", conditionFieldValue, conditionValueValue);
                                         break;
                                     default:
-                                        sb.AppendFormat(" [{0}] {1} '{2}' ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
+                                        sb.AppendFormat(" {0} {1} '{2}' ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
                                         break;
                                 }
                             }
@@ -174,11 +174,11 @@ namespace HiLand.Utility4.MVC.Controls
                             if (conditionType.IsEnum == true)
                             {
                                 int enumValue = (int)Enum.Parse(conditionType, conditionValueValue);
-                                sb.AppendFormat(" [{0}] {1} {2} ", conditionFieldValue, conditionOperatorValue, enumValue);
+                                sb.AppendFormat(" {0} {1} {2} ", conditionFieldValue, conditionOperatorValue, enumValue);
                             }
                             else
                             {
-                                sb.AppendFormat(" [{0}] {1} {2} ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
+                                sb.AppendFormat(" {0} {1} {2} ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
                             }
                         }
                     }

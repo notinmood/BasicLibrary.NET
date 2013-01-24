@@ -14,6 +14,7 @@ namespace HiLand.Utility.Enums
         /// 相等
         /// </summary>
         [EnumItemDescription("zh-CN", "等于")]
+        [EnumItemDescription("date-SQL", "等于")]
         [EnumItemDescription("stand-SQL", "=")]
         Equal,
 
