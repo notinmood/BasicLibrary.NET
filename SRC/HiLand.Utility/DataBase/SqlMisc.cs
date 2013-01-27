@@ -36,7 +36,15 @@ namespace HiLand.Utility.DataBase
         {
             TParameter parameter = new TParameter();
             parameter.ParameterName = string.Format("{0}{1}", parameterNamePrefix, parameterName);
-            parameter.Value = parameterValue;
+            
+            if (parameterValue == null)
+            {
+                parameter.Value = DBNull.Value;
+            }
+            else
+            {
+                parameter.Value = parameterValue;
+            }
 
             return parameter;
         }

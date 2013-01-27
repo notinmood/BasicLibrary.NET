@@ -203,7 +203,22 @@ namespace HiLand.General.BLL
         /// <returns></returns>
         public int GetTotalCountOfManager(string manageUserKey)
         {
-            string whereClause = string.Format(" ManageUserKey='{0}' ",manageUserKey);
+            return GetTotalCountOfManager(manageUserKey,false);
+        }
+
+        /// <summary>
+        /// 获取某资源负责人下的企业数量
+        /// </summary>
+        /// <param name="manageUserKey">资源负责人Key</param>
+        /// <param name="inOnlyUnCooprated">是否仅包含未合作的企业</param>
+        /// <returns></returns>
+        public int GetTotalCountOfManager(string manageUserKey,bool inOnlyUnCooprated)
+        {
+            string whereClause = string.Format(" ManageUserKey='{0}' ", manageUserKey);
+            if (inOnlyUnCooprated == true)
+            {
+                whereClause += "  AND (CooperateStatus is null OR CooperateStatus=0)  ";
+            }
             return base.GetTotalCount(whereClause);
         }
     }
