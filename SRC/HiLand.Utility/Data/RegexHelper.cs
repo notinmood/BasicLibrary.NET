@@ -68,6 +68,11 @@ namespace HiLand.Utility.Data
         /// 中国邮政编码
         /// </summary>
         public static string PostCodeFormat = @"[1-9]\d{5}(?!\d)";
+
+        /// <summary>
+        /// 中国居民身份证
+        /// </summary>
+        public static string IDCardFormat = @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$";
         #endregion
         /* 
         匹配特定数字：

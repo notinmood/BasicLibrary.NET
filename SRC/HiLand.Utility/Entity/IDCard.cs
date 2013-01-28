@@ -150,6 +150,7 @@ namespace HiLand.Utility.Entity
             return Address.Substring(offset_start + code.Length, offset_end - offset_start - code.Length);
         }
 
+        //TODO:xieran20130128 以下身份证验证表达式可以考虑使用 RegexHelper.IDCardFormat
         /// <summary>
         /// 验证身份证号码
         /// </summary>
