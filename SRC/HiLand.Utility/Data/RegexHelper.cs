@@ -72,7 +72,7 @@ namespace HiLand.Utility.Data
         /// <summary>
         /// 中国居民身份证
         /// </summary>
-        public static string IDCardFormat = @"^(^\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$";
+        public static string IDCardFormat = @"^(\d{15}|\d{18}|\d{17}(\d|X|x))$";
         #endregion
         /* 
         匹配特定数字：

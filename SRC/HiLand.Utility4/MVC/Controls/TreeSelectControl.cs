@@ -43,6 +43,18 @@ namespace HiLand.Utility4.MVC.Controls
             }
         }
 
+        private bool isAllowSelect = true;
+        /// <summary>
+        /// 是否允许使用“选择”按钮
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public TreeSelectControl IsAllowSelect(bool data)
+        {
+            this.isAllowSelect = data;
+            return this;
+        }
+
         /// <summary>
         /// 绘制保存实际值（通常是选定节点的ID）的隐藏域
         /// </summary>
@@ -196,10 +208,13 @@ namespace HiLand.Utility4.MVC.Controls
         private string WriterTreeContainer()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("<a id='{0}_menuBtn' href='#' onclick='{0}_showMenu(); return false;'>select</a>", this.name);
-            sb.AppendFormat("<div id=\"{0}\" class=\"menuContent\" style=\"display:none; position: {1};\">", treeContainerID,this.containerLayout);
-            sb.AppendFormat("<ul id=\"{0}\" class=\"ztree\" style=\"margin-top:0; width:180px; height: 200px;\"></ul>", treeID);
-            sb.AppendFormat("</div>");
+            if (isAllowSelect == true)
+            {
+                sb.AppendFormat("<a id='{0}_menuBtn' href='#' onclick='{0}_showMenu(); return false;'>select</a>", this.name);
+                sb.AppendFormat("<div id=\"{0}\" class=\"menuContent\" style=\"display:none; position: {1};\">", treeContainerID, this.containerLayout);
+                sb.AppendFormat("<ul id=\"{0}\" class=\"ztree\" style=\"margin-top:0; width:180px; height: 200px;\"></ul>", treeID);
+                sb.AppendFormat("</div>");
+            }
             return sb.ToString();
         }
 
@@ -296,7 +311,7 @@ namespace HiLand.Utility4.MVC.Controls
             //如果是单选类型，那么点击选择后就可以立即关闭弹出树了。
             if (dataSelectType == DataSelectTypes.Radio)
             {
-                sb.AppendFormat("{0}_hideMenu();",this.name);
+                sb.AppendFormat("{0}_hideMenu();", this.name);
             }
 
 

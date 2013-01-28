@@ -209,8 +209,6 @@ namespace HiLand.Utility4.MVC.Controls
             return sb.ToString();
         }
 
-
-
         #region 文本常量定义
         internal static string ConditionCountNameStringConst = "_ConditionCountName";
         internal static string QueryControlDisplayStatusStringConst = "_QueryControlDisplayStatus";
