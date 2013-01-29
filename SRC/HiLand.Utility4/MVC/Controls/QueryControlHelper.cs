@@ -61,9 +61,19 @@ namespace HiLand.Utility4.MVC.Controls
                     string conditionValueValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionValueFullName, string.Empty);
                     urlInfo.Concat(conditionValueFullName, conditionValueValue);
 
-                    string conditionOperatorFullName = queryControlName + ConditionOperatorNameStringConst + i;
-                    string conditionOperatorValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionOperatorFullName, string.Empty);
-                    urlInfo.Concat(conditionOperatorFullName, conditionOperatorValue);
+                    string conditionPostValueFullName = queryControlName + ConditionValueNameStringConst + i + "_post";
+                    string conditionPostValueValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionPostValueFullName, string.Empty);
+
+                    if (string.IsNullOrEmpty(conditionPostValueValue) == false)
+                    {
+                        urlInfo.Concat(conditionPostValueFullName, conditionPostValueValue);
+                    }
+                    else
+                    {
+                        string conditionOperatorFullName = queryControlName + ConditionOperatorNameStringConst + i;
+                        string conditionOperatorValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, conditionOperatorFullName, string.Empty);
+                        urlInfo.Concat(conditionOperatorFullName, conditionOperatorValue);
+                    }
 
                     string rightBracketsFullName = queryControlName + RightBracketsNameStringConst + i;
                     string rightBracketsValue = RequestHelper.GetValue(PassingParamValueSourceTypes.Form, rightBracketsFullName, string.Empty).ToLower();
@@ -122,6 +132,10 @@ namespace HiLand.Utility4.MVC.Controls
                     string conditionValueValue = RequestHelper.GetValue(conditionValueFullName, string.Empty);
                     MVCHelper.SetCustomData(conditionValueFullName, conditionValueValue);
 
+                    string conditionPostValueFullName = queryControlName + ConditionValueNameStringConst + i+"_post";
+                    string conditionPostValueValue = RequestHelper.GetValue(conditionPostValueFullName, string.Empty);
+                    MVCHelper.SetCustomData(conditionPostValueFullName, conditionPostValueValue);
+
                     string conditionOperatorFullName = queryControlName + ConditionOperatorNameStringConst + i;
                     string conditionOperatorValue = RequestHelper.GetValue(conditionOperatorFullName, string.Empty);
                     MVCHelper.SetCustomData(conditionOperatorFullName, conditionOperatorValue);
@@ -152,20 +166,30 @@ namespace HiLand.Utility4.MVC.Controls
                             }
                             else
                             {
-                                switch (conditionOperatorValue.ToLower())
+                                if (string.IsNullOrEmpty(conditionPostValueValue))
                                 {
-                                    case "likeleft":
-                                        sb.AppendFormat(" {0} like '{1}%' ", conditionFieldValue, conditionValueValue);
-                                        break;
-                                    case "likeright":
-                                        sb.AppendFormat(" {0} like '%{1}' ", conditionFieldValue, conditionValueValue);
-                                        break;
-                                    case "like":
-                                        sb.AppendFormat(" {0} like '%{1}%' ", conditionFieldValue, conditionValueValue);
-                                        break;
-                                    default:
-                                        sb.AppendFormat(" {0} {1} '{2}' ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
-                                        break;
+                                    switch (conditionOperatorValue.ToLower())
+                                    {
+                                        case "likeleft":
+                                            sb.AppendFormat(" {0} like '{1}%' ", conditionFieldValue, conditionValueValue);
+                                            break;
+                                        case "likeright":
+                                            sb.AppendFormat(" {0} like '%{1}' ", conditionFieldValue, conditionValueValue);
+                                            break;
+                                        case "like":
+                                            sb.AppendFormat(" {0} like '%{1}%' ", conditionFieldValue, conditionValueValue);
+                                            break;
+                                        case "":
+                                            sb.AppendFormat("  {0} = '{1}' ", conditionFieldValue, conditionValueValue);
+                                            break;
+                                        default:
+                                            sb.AppendFormat(" {0} {1} '{2}' ", conditionFieldValue, conditionOperatorValue, conditionValueValue);
+                                            break;
+                                    }
+                                }
+                                else
+                                {
+                                    sb.AppendFormat(" ({0} >= '{1}'  AND {0} <= '{2}')  ", conditionFieldValue, conditionValueValue, conditionPostValueValue);
                                 }
                             }
                         }

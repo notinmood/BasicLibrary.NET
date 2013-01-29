@@ -109,8 +109,23 @@ namespace HiLand.Utility4.MVC.Controls
                     sb.AppendFormat("<td >{0}</td>", GetLeftBracketsString(i));
                 }
                 sb.AppendFormat("<td >{0}</td>", GetConditionNameString(currentItem, i));
-                sb.AppendFormat("<td >{0}</td>", GetConditionOperatorString(currentItem, i));
-                sb.AppendFormat("<td >{0}</td>", GetConditionValueString(currentItem, i));
+
+                bool isRegionSelector = Converter.ChangeType(currentItem.GetAddonItem("isRegionSelector"), false);
+                if (isRegionSelector == true)
+                {
+                    string regionSelectorContent = string.Empty;
+                    //regionSelectorContent = GetConditionValueString(currentItem, i);
+                    //regionSelectorContent +=" - " +GetConditionValueString(currentItem, i, "two");
+                    //sb.AppendFormat("<td colspan=\"2\">{0}</td>", regionSelectorContent);
+
+                    sb.AppendFormat("<td >{0} - </td>", GetConditionValueString(currentItem, i));
+                    sb.AppendFormat("<td >{0}</td>", GetConditionValueString(currentItem, i, "_post"));
+                }
+                else
+                {
+                    sb.AppendFormat("<td >{0}</td>", GetConditionOperatorString(currentItem, i));
+                    sb.AppendFormat("<td >{0}</td>", GetConditionValueString(currentItem, i));
+                }
                 if (this.isDisplayBrackets == true)
                 {
                     sb.AppendFormat("<td >{0}</td>", GetRightBracketsString(i));
@@ -272,15 +287,25 @@ namespace HiLand.Utility4.MVC.Controls
         /// </summary>
         /// <param name="queryConditionItem"></param>
         /// <param name="number"></param>
+        /// <param name="postFixer"></param>
         /// <returns></returns>
-        private string GetConditionValueString(QueryConditionItem queryConditionItem, int number)
+        private string GetConditionValueString(QueryConditionItem queryConditionItem, int number, string postFixer = "")
         {
             StringBuilder result = new StringBuilder();
 
+            string ConditionTypeFullName = this.name + QueryControlHelper.ConditionTypeNameStringConst + number;
+            if (string.IsNullOrWhiteSpace(postFixer) == false)
+            {
+                ConditionTypeFullName += postFixer;
+            }
             //记录查询条件值的类型
-            result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", this.name + QueryControlHelper.ConditionTypeNameStringConst + number, TypeHelper.GetTypeShortDescription(queryConditionItem.ConditionType));
+            result.AppendFormat("<input type=\"hidden\" name=\"{0}\" value=\"{1}\">", ConditionTypeFullName, TypeHelper.GetTypeShortDescription(queryConditionItem.ConditionType));
 
             string conditionValueFullName = this.name + QueryControlHelper.ConditionValueNameStringConst + number;
+            if (string.IsNullOrWhiteSpace(postFixer) == false)
+            {
+                conditionValueFullName += postFixer;
+            }
             string conditionValueValue = MVCHelper.GetParam(conditionValueFullName);
 
             if (queryConditionItem.ConditionType.IsEnum == true)
@@ -339,10 +364,10 @@ namespace HiLand.Utility4.MVC.Controls
                     {
                         innerInputClass = "innerDateControl";
                         string dateInputOptions = "{format: 'yyyy/mm/dd'}";
-                        string dateFormat = queryConditionItem.GetAddonItem("dateFormat",string.Empty);
+                        string dateFormat = queryConditionItem.GetAddonItem("dateFormat", string.Empty);
                         if (dateFormat != string.Empty)
                         {
-                            dateInputOptions = "{format: '"+ dateFormat +"'}";
+                            dateInputOptions = "{format: '" + dateFormat + "'}";
                         }
                         StringBuilder sb = new StringBuilder();
                         sb.Append("<script type=\"text/javascript\">");
@@ -418,7 +443,7 @@ namespace HiLand.Utility4.MVC.Controls
         /// <param name="compareMode"></param>
         /// <param name="selectedValue"></param>
         /// <returns></returns>
-        private string GetCompareModeOptionString(CompareModes compareMode, string selectedValue,string displayTextCategory="")
+        private string GetCompareModeOptionString(CompareModes compareMode, string selectedValue, string displayTextCategory = "")
         {
             string itemSelectedString = string.Empty;
             string text = EnumHelper.GetDisplayValue(compareMode, displayTextCategory);
