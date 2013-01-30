@@ -295,6 +295,16 @@ namespace HiLand.Utility.Data
         /// 获取安全的字符串显示
         /// </summary>
         /// <param name="data"></param>
+        /// <returns></returns>
+        public static string ToSaftString(DateTime data)
+        {
+            return ToSaftString(data, "yyyy/MM/dd");
+        }
+
+        /// <summary>
+        /// 获取安全的字符串显示
+        /// </summary>
+        /// <param name="data"></param>
         /// <param name="format"></param>
         /// <returns></returns>
         public static string ToSaftString(DateTime data, string format)
