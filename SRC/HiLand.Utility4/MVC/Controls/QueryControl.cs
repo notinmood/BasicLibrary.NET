@@ -359,10 +359,17 @@ namespace HiLand.Utility4.MVC.Controls
                     //    queryConditionItem.ConditionType == typeof(DateTime))
 
                     string innerInputClass = string.Empty;
+                    string innerInputID = "innerInputID"+Guid.NewGuid().ToString();
 
                     if (queryConditionItem.ConditionType == typeof(DateTime))
                     {
                         innerInputClass = "innerDateControl";
+                    }
+
+                    result.AppendFormat("<input id=\"{3}\" type=\"text\" name=\"{0}\" class=\"{2}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue, innerInputClass, innerInputID);
+
+                    if (queryConditionItem.ConditionType == typeof(DateTime))
+                    {
                         string dateInputOptions = "{format: 'yyyy/mm/dd'}";
                         string dateFormat = queryConditionItem.GetAddonItem("dateFormat", string.Empty);
                         if (dateFormat != string.Empty)
@@ -372,12 +379,10 @@ namespace HiLand.Utility4.MVC.Controls
                         StringBuilder sb = new StringBuilder();
                         sb.Append("<script type=\"text/javascript\">");
                         sb.Append(" jQuery(document).ready(function () {");
-                        sb.AppendFormat("$(\".{0}\").dateinput({1});", innerInputClass, dateInputOptions);
+                        sb.AppendFormat("$(\"#{0}\").dateinput({1});", innerInputID, dateInputOptions);
                         sb.Append("});</script>");
                         result.Append(sb.ToString());
                     }
-
-                    result.AppendFormat("<input type=\"text\" name=\"{0}\" class=\"{2}\" value=\"{1}\" />", conditionValueFullName, conditionValueValue, innerInputClass);
                 }
             }
 

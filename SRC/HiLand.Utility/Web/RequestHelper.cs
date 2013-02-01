@@ -433,5 +433,18 @@ namespace HiLand.Utility.Web
                 nvc.Add(m.Result("$2").ToLower(), m.Result("$3"));
             }
         }
+
+        /// <summary>
+        /// 去除特殊的转义字符
+        /// </summary>
+        /// <param name="url"></param>
+        /// <returns></returns>
+        public static string DecodeUrl(string url)
+        {
+            url = url.ToLower();
+            url = url.Replace("&amp;","&");
+
+            return url;
+        }
     }
 }

@@ -52,7 +52,8 @@ namespace HiLand.Utility4.MVC.Controls
             StringBuilder sb = new StringBuilder();
             sb.Append("<script type=\"text/javascript\">");
             sb.Append(" jQuery(document).ready(function () {");
-            sb.AppendFormat("$(\".{0}\").dateinput({1});",MvcControlCssPrefix+cssClassName,dateInputOptions);
+            //sb.AppendFormat("$(\".{0}\").dateinput({1});",MvcControlCssPrefix+cssClassName,dateInputOptions);
+            sb.AppendFormat("$(\"#{0}\").dateinput({1});", this.ID, dateInputOptions);
             sb.Append("});</script>");
 
             return sb.ToString();
