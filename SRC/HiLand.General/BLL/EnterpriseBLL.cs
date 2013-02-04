@@ -159,7 +159,7 @@ namespace HiLand.General.BLL
         private EnterpriseEntity ConfirmTrimSpaceInCompanyName(EnterpriseEntity model)
         {
             bool isTrimSpaceInCompanyName = Config.GetAppSetting<bool>("isTrimSpaceInCompanyName", true);
-            if (isTrimSpaceInCompanyName == true)
+            if (isTrimSpaceInCompanyName == true && model.CompanyName!=null)
             {
                 model.CompanyName = model.CompanyName.Replace(" ", "");
             }

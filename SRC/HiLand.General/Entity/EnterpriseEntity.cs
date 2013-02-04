@@ -558,6 +558,157 @@ namespace HiLand.General.Entity
                 ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("BusGuide", value);
             }
         }
+
+        /// <summary>
+        /// 劳务合同中的混合费用企业应该担负部分的确实的计算公式Key 
+        /// </summary>
+        public string DefaultEnterpriseMixCostFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultEnterpriseMixCostFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultEnterpriseMixCostFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的保险企业应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultEnterpriseInsuranceFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultEnterpriseInsuranceFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultEnterpriseInsuranceFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的公积金企业应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultEnterpriseReserveFundFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultEnterpriseReserveFundFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultEnterpriseReserveFundFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的管理费企业应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultEnterpriseManageFeeFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultEnterpriseManageFeeFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultEnterpriseManageFeeFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的其他费用企业应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultEnterpriseOtherCostFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultEnterpriseOtherCostFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultEnterpriseOtherCostFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的保险个人应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultPersonInsuranceFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultPersonInsuranceFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultPersonInsuranceFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的公积金个人应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultPersonReserveFundFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultPersonReserveFundFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultPersonReserveFundFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的管理费个人应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultPersonManageFeeFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultPersonManageFeeFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultPersonManageFeeFormularKey", value);
+            }
+        }
+
+
+        /// <summary>
+        /// 劳务合同中的混合费用个人应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultPersonMixCostFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultPersonMixCostFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultPersonMixCostFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的其他费用个人应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultPersonOtherCostFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultPersonOtherCostFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultPersonOtherCostFormularKey", value);
+            }
+        }
         #endregion
     }
 }
