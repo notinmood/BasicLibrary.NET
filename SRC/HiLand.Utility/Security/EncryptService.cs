@@ -346,5 +346,29 @@ namespace HiLand.Utility.Security
         }
 
         #endregion
+
+        #region 5.Base64轉碼
+        /// <summary>
+        /// 转码为Base64字符串（内部编码基础为UTF8）
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static string ToBase64(string data)
+        {
+            byte[] uArray = Encoding.UTF8.GetBytes(data);
+            return Convert.ToBase64String(uArray);
+        }
+
+        /// <summary>
+        /// 从Base64解码为明文字符串（内部编码基础为UTF8）
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        public static string FromBase64(string data)
+        {
+            byte[] uArray = Convert.FromBase64String(data);
+            return Encoding.UTF8.GetString(uArray);
+        }
+        #endregion
     }
 }

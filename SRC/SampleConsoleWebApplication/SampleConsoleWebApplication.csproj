@@ -80,6 +80,7 @@
     <Content Include="CompressHelperTest.aspx" />
     <Content Include="ContentTypes测试.aspx" />
     <Content Include="ConverterTest.aspx" />
+    <Content Include="EncryptServiceTest.aspx" />
     <Content Include="FlagHelperTest.aspx" />
     <Content Include="RegionHelperTest.aspx" />
     <Content Include="脏词过滤测试.txt" />
@@ -223,6 +224,13 @@
     </Compile>
     <Compile Include="CurrentUserDemo\Index.aspx.designer.cs">
       <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EncryptServiceTest.aspx.cs">
+      <DependentUpon>EncryptServiceTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EncryptServiceTest.aspx.designer.cs">
+      <DependentUpon>EncryptServiceTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="EnumHelperTest.aspx.cs">
       <DependentUpon>EnumHelperTest.aspx</DependentUpon>

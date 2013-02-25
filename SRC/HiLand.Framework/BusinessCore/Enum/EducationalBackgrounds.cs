@@ -19,7 +19,7 @@ namespace HiLand.Framework.BusinessCore.Enum
         /// <summary>
         /// 未读书
         /// </summary>
-        [EnumItemDescription("zh-CN", "未设置")]
+        [EnumItemDescription("zh-CN", "未读书")]
         NoSchool=1,
         
         /// <summary>
