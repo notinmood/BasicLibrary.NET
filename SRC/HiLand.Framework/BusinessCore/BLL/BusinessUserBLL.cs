@@ -724,7 +724,7 @@ namespace HiLand.Framework.BusinessCore.BLL
                     if (IsLogined == true)
                     {
                         string cacheKey = CoreCacheKeys.GetUserByNameKey(CurrentUserName);
-                        entity = CacheHelper.Access<String, BusinessUser>(cacheKey, CacheHelper.TenMintues, DALSave.GetByUserName, CurrentUserName);
+                        entity = CacheHelper.Access<String, BusinessUser>(cacheKey, CacheHelper.TenMintues, DALSave.Get, CurrentUserName);
                     }
 
                     //即便是未登录用户也给其赋一个临时的Guid

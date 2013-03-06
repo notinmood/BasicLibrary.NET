@@ -136,6 +136,48 @@ namespace HiLand.Utility.Data
 
             return defaultValue;
         }
+
+        /// <summary>
+        /// 根据枚举项的前缀获取枚举项列表
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="itemPrefixer"></param>
+        /// <returns></returns>
+        public static List<TEnum> GetItems<TEnum>(string itemPrefixer)
+        {
+            return GetItems<TEnum>(itemPrefixer, true);
+        }
+
+        /// <summary>
+        /// 根据枚举项的前缀获取枚举项列表
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="itemPrefixer"></param>
+        /// <returns></returns>
+        public static List<TEnum> GetItems<TEnum>(string itemPrefixer,bool ignoreCase)
+        {
+            List<TEnum> result = new List<TEnum>();
+            Type enumType = typeof(TEnum);
+            Array array = Enum.GetValues(enumType);
+            for (int i = 0; i < array.Length; i++)
+            {
+                Object currentEnumItem = array.GetValue(i);
+                string currentEnumItemString = currentEnumItem.ToString();
+
+                if (ignoreCase == true)
+                {
+                    currentEnumItemString = currentEnumItemString.ToLower();
+                    itemPrefixer = itemPrefixer.ToLower();
+                }
+
+                if (currentEnumItemString.StartsWith(itemPrefixer))
+                {
+                    result.Add((TEnum)currentEnumItem);
+                }
+            }
+
+            return result;
+        }
         #endregion
     }
 }

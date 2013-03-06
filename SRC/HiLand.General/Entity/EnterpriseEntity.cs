@@ -709,6 +709,36 @@ namespace HiLand.General.Entity
                 ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultPersonOtherCostFormularKey", value);
             }
         }
+
+        /// <summary>
+        /// 劳务合同中的其他保险企业应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultEnterpriseOtherInsuranceFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultEnterpriseOtherInsuranceFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultEnterpriseOtherInsuranceFormularKey", value);
+            }
+        }
+
+        /// <summary>
+        /// 劳务合同中的各种税费企业应该担负部分的计算公式Key
+        /// </summary>
+        public string DefaultEnterpriseTaxFeeFormularKey
+        {
+            get
+            {
+                return ((IModelExtensible)this).ExtensiableRepository.GetExtentibleProperty("DefaultEnterpriseTaxFeeFormularKey");
+            }
+            set
+            {
+                ((IModelExtensible)this).ExtensiableRepository.SetExtentibleProperty("DefaultEnterpriseTaxFeeFormularKey", value);
+            }
+        }
         #endregion
     }
 }

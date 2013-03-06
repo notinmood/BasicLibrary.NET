@@ -21,5 +21,11 @@ namespace WebApplicationConsole
             Sexes sex= EnumHelper.GetItem<Sexes>("男");
             int i = 9;
         }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            List<CreateUserRoleStatuses> result = EnumHelper.GetItems<CreateUserRoleStatuses>("Failure");
+            int i = 9;
+        }
     }
 }
