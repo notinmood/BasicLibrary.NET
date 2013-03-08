@@ -37,7 +37,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
         /// <param name="userName"></param>
         /// <param name="userEMail"></param>
         /// <returns></returns>
-        public virtual bool IsExistUser(string userName, string userEMail,string userIDCard)
+        public virtual bool IsExistUser(string userName, string userEMail, string userIDCard)
         {
             bool isSuccessful = true;
             isSuccessful = IsExistUserName(userName);
@@ -559,27 +559,28 @@ namespace HiLand.Framework.BusinessCore.DALCommon
         public virtual BusinessUser Login(string userAccount, string password, out LoginStatuses status)
         {
             BusinessUser entity = null;// IBusinessUser.Empty;
+            status = LoginStatuses.Successful;
             LoginStatuses statusForLoginWithUserName = LoginStatuses.Successful;
             entity = LoginWithUserName(userAccount, password, out statusForLoginWithUserName);
+            status = statusForLoginWithUserName;
             if (statusForLoginWithUserName == LoginStatuses.Successful || statusForLoginWithUserName == LoginStatuses.FailureUserDenied)
             {
-                status = statusForLoginWithUserName;
                 return entity;
             }
 
             LoginStatuses statusForLoginWithUserEMail = LoginStatuses.Successful;
             entity = LoginWithUserEMail(userAccount, password, out statusForLoginWithUserEMail);
+            status = statusForLoginWithUserEMail;
             if (statusForLoginWithUserEMail == LoginStatuses.Successful || statusForLoginWithUserName == LoginStatuses.FailureUserDenied)
             {
-                status = statusForLoginWithUserEMail;
                 return entity;
             }
 
             LoginStatuses statusForLoginWithUserIDCard = LoginStatuses.Successful;
             entity = LoginWithUserIDCard(userAccount, password, out statusForLoginWithUserIDCard);
+            status = statusForLoginWithUserIDCard;
             if (statusForLoginWithUserIDCard == LoginStatuses.Successful || statusForLoginWithUserName == LoginStatuses.FailureUserDenied)
             {
-                status = statusForLoginWithUserIDCard;
                 return entity;
             }
 
@@ -591,7 +592,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 return entity;
             }
 
-            status = LoginStatuses.FailureNotMatchPassword;
+            //status = LoginStatuses.FailureNotMatchPassword;
             return entity;
         }
 
@@ -635,15 +636,22 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                     return BusinessUser.Empty;
                 }
 
-                if (entity.UserStatus != UserStatuses.Normal)
+                switch (entity.UserStatus)
                 {
-                    status = LoginStatuses.FailureUserDenied;
-                    return BusinessUser.Empty;
+                    case UserStatuses.Normal:
+                        status = LoginStatuses.Successful;
+                        return GetByUserName(userName);
+                    case UserStatuses.Unactivated:
+                        status = LoginStatuses.FailureUnactive;
+                        return BusinessUser.Empty;
+                    default:
+                        status = LoginStatuses.FailureUserDenied;
+                        return BusinessUser.Empty;
                 }
             }
 
-            status = LoginStatuses.Successful;
-            return GetByUserName(userName);
+            status = LoginStatuses.FailureUnknowReason;
+            return BusinessUser.Empty;
         }
 
         /// <summary>
@@ -686,15 +694,22 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                     return BusinessUser.Empty;
                 }
 
-                if (entity.UserStatus != UserStatuses.Normal)
+                switch (entity.UserStatus)
                 {
-                    status = LoginStatuses.FailureUserDenied;
-                    return BusinessUser.Empty;
+                    case UserStatuses.Normal:
+                        status = LoginStatuses.Successful;
+                        return GetByUserEMail(userEMail);
+                    case UserStatuses.Unactivated:
+                        status = LoginStatuses.FailureUnactive;
+                        return BusinessUser.Empty;
+                    default:
+                        status = LoginStatuses.FailureUserDenied;
+                        return BusinessUser.Empty;
                 }
             }
 
-            status = LoginStatuses.Successful;
-            return GetByUserEMail(userEMail);
+            status = LoginStatuses.FailureUnknowReason;
+            return BusinessUser.Empty;
         }
 
         /// <summary>
@@ -737,15 +752,22 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                     return BusinessUser.Empty;
                 }
 
-                if (entity.UserStatus != UserStatuses.Normal)
+                switch (entity.UserStatus)
                 {
-                    status = LoginStatuses.FailureUserDenied;
-                    return BusinessUser.Empty;
+                    case UserStatuses.Normal:
+                        status = LoginStatuses.Successful;
+                        return GetByUserIDCard(userIDCard);
+                    case UserStatuses.Unactivated:
+                        status = LoginStatuses.FailureUnactive;
+                        return BusinessUser.Empty;
+                    default:
+                        status = LoginStatuses.FailureUserDenied;
+                        return BusinessUser.Empty;
                 }
             }
 
-            status = LoginStatuses.Successful;
-            return GetByUserIDCard(userIDCard);
+            status = LoginStatuses.FailureUnknowReason;
+            return BusinessUser.Empty;
         }
 
         /// <summary>
@@ -1092,7 +1114,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
 
         #region 辅助方法
         //TODO:xieran20121108 口令处理这个地方考虑加一个重载，参数为口令，口令加密算法，口令加密盐的简单实体
-        
+
         /// <summary>
         /// 处理用户口令的加密逻辑
         /// </summary>
