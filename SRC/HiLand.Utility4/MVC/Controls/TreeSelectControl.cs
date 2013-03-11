@@ -352,8 +352,6 @@ namespace HiLand.Utility4.MVC.Controls
 
 
             sb.Append("|>|");
-
-
             sb.AppendLine();
 
             if (this.isInPopupWindow == true)
