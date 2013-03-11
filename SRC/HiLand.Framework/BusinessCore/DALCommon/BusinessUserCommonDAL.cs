@@ -640,14 +640,16 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 {
                     case UserStatuses.Normal:
                         status = LoginStatuses.Successful;
-                        return GetByUserName(userName);
+                        break;
                     case UserStatuses.Unactivated:
                         status = LoginStatuses.FailureUnactive;
-                        return BusinessUser.Empty;
+                        break;
                     default:
                         status = LoginStatuses.FailureUserDenied;
-                        return BusinessUser.Empty;
+                        break;
                 }
+
+                return GetByUserName(userName);
             }
 
             status = LoginStatuses.FailureUnknowReason;
@@ -698,14 +700,16 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 {
                     case UserStatuses.Normal:
                         status = LoginStatuses.Successful;
-                        return GetByUserEMail(userEMail);
+                        break;
                     case UserStatuses.Unactivated:
                         status = LoginStatuses.FailureUnactive;
-                        return BusinessUser.Empty;
+                        break;
                     default:
                         status = LoginStatuses.FailureUserDenied;
-                        return BusinessUser.Empty;
+                        break;
                 }
+                
+                return GetByUserEMail(userEMail);
             }
 
             status = LoginStatuses.FailureUnknowReason;
@@ -756,14 +760,16 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 {
                     case UserStatuses.Normal:
                         status = LoginStatuses.Successful;
-                        return GetByUserIDCard(userIDCard);
+                        break;
                     case UserStatuses.Unactivated:
                         status = LoginStatuses.FailureUnactive;
-                        return BusinessUser.Empty;
+                        break;
                     default:
                         status = LoginStatuses.FailureUserDenied;
-                        return BusinessUser.Empty;
+                        break;
                 }
+
+                return GetByUserIDCard(userIDCard);
             }
 
             status = LoginStatuses.FailureUnknowReason;

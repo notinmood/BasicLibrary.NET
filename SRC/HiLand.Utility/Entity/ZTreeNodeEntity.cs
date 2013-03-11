@@ -33,5 +33,15 @@ namespace HiLand.Utility.Entity
         /// 节点前是否出现选择框
         /// </summary>
         public bool nocheck { get; set; }
+
+        private string _addonData = string.Empty;
+        /// <summary>
+        /// 节点上的附加信息
+        /// </summary>
+        public string addonData
+        {
+            get { return this._addonData; }
+            set { this._addonData = value; }
+        }
     }
 }

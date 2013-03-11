@@ -26,6 +26,7 @@ namespace HiLand.Utility4.MVC.Controls
             InputTag.Attributes["value"] = this.text;
             string result = InputTag.ToString();
             result += WriterHiddenField();
+            result += WriterAddonData();
             result += WriterTreeContainer();
             result += WriteTreeScript();
 
@@ -69,6 +70,19 @@ namespace HiLand.Utility4.MVC.Controls
         }
 
         /// <summary>
+        /// 绘制保存附加信息的隐藏域
+        /// </summary>
+        /// <returns></returns>
+        private string WriterAddonData()
+        {
+            string result = string.Empty;
+            TagBuilder tagInput = CreateTag("input", addonDataName, addonDataID);
+            tagInput.Attributes["type"] = "hidden";
+            result = tagInput.ToString();
+            return result;
+        }
+
+        /// <summary>
         /// 保存实际值的隐藏域的名称
         /// </summary>
         public string hiddenFieldName
@@ -82,6 +96,22 @@ namespace HiLand.Utility4.MVC.Controls
         private string hiddenFieldID
         {
             get { return string.Format("{0}_Value", this.ID); }
+        }
+
+        /// <summary>
+        /// 保存选中节点附加信息的Name
+        /// </summary>
+        private string addonDataName
+        {
+            get { return string.Format("{0}_AddonData", this.name); }
+        }
+
+        /// <summary>
+        /// 保存选中节点附加信息的ID
+        /// </summary>
+        private string addonDataID
+        {
+            get { return string.Format("{0}_AddonData",this.ID); }
         }
 
         private string _text = string.Empty;
@@ -291,22 +321,28 @@ namespace HiLand.Utility4.MVC.Controls
             }
 
             sb.AppendLine();
-            sb.AppendFormat(@"function {3}_onCheck(e, treeId, treeNode) |<|
-			    var zTree = $.fn.zTree.getZTreeObj('{0}'),
+            sb.AppendFormat(@"function {0}_onCheck(e, treeId, treeNode) |<|
+			    var zTree = $.fn.zTree.getZTreeObj('{1}'),
 			    nodes = zTree.getCheckedNodes(true),
-			    displayValue = '';
-                realValue= '';
+			    displayValue = '',
+                realValue= '',
+                addonValue='';
                 
 			    for (var i=0, l=nodes.length; i<l; i++) |<|
 				    displayValue += nodes[i].name + ',';
                     realValue+= nodes[i].id +',';
+                    addonValue+= nodes[i].addonData +',';
 			    |>|
 			    if (displayValue.length > 0 ) displayValue = displayValue.substring(0, displayValue.length-1);
                 if (realValue.length > 0 ) realValue= realValue.substring(0,realValue.length-1);
-			    var cityObj = $('#{1}');
+                if (addonValue.length > 0 ) addonValue= addonValue.substring(0,addonValue.length-1);
+			    var cityObj = $('#{2}');
 			    cityObj.attr('value', displayValue);
-                var realObj= $('#{2}');
-                realObj.val(realValue);", treeID, ID, hiddenFieldID, this.name);
+                var realObj= $('#{3}');
+                realObj.val(realValue);
+                var addonObj= $('#{4}');
+                addonObj.val(addonValue);
+                ", this.name, treeID, ID, hiddenFieldID, addonDataID);
 
             //如果是单选类型，那么点击选择后就可以立即关闭弹出树了。
             if (dataSelectType == DataSelectTypes.Radio)
@@ -359,8 +395,6 @@ namespace HiLand.Utility4.MVC.Controls
 			    |>|
 			    return childNodes;
 		    |>|");
-
-
 
             sb.AppendLine();
             if (dataLoadType == DataLoadTypes.Dynamic)

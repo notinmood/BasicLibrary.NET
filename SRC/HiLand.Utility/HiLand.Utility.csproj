@@ -191,6 +191,7 @@
     <Compile Include="Enums\PermissionDataTypes.cs" />
     <Compile Include="Enums\PermissionValidateStatuses.cs" />
     <Compile Include="Enums\SystemStatuses.cs" />
+    <Compile Include="Enums\TreeNodeSelecteModes.cs" />
     <Compile Include="Enums\UserStatuses.cs" />
     <Compile Include="Environments\ComputerHelper.cs" />
     <Compile Include="Event\EventHelper.cs" />
