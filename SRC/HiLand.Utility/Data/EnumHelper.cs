@@ -138,6 +138,51 @@ namespace HiLand.Utility.Data
         }
 
         /// <summary>
+        /// 根据枚举项的值获取枚举项
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="itemValue"></param>
+        /// <param name="defaultValue"></param>
+        /// <returns></returns>
+        public static TEnum GetItem<TEnum>(string itemValue, TEnum defaultValue)
+        {
+            return GetItem<TEnum>( itemValue,  defaultValue,true);
+        }
+
+        /// <summary>
+        /// 根据枚举项的值获取枚举项
+        /// </summary>
+        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="itemValue"></param>
+        /// <param name="defaultValue"></param>
+        /// <param name="ignoreCase"></param>
+        /// <returns></returns>
+        public static TEnum GetItem<TEnum>(string itemValue, TEnum defaultValue, bool ignoreCase)
+        {
+            List<TEnum> result = new List<TEnum>();
+            Type enumType = typeof(TEnum);
+            Array array = Enum.GetValues(enumType);
+            for (int i = 0; i < array.Length; i++)
+            {
+                Object currentEnumItem = array.GetValue(i);
+                string currentEnumItemString = currentEnumItem.ToString();
+
+                if (ignoreCase == true)
+                {
+                    currentEnumItemString = currentEnumItemString.ToLower();
+                    itemValue = itemValue.ToLower();
+                }
+
+                if (currentEnumItemString== itemValue)
+                {
+                    return (TEnum)currentEnumItem;
+                }
+            }
+
+            return defaultValue;
+        }
+
+        /// <summary>
         /// 根据枚举项的前缀获取枚举项列表
         /// </summary>
         /// <typeparam name="TEnum"></typeparam>
@@ -153,6 +198,7 @@ namespace HiLand.Utility.Data
         /// </summary>
         /// <typeparam name="TEnum"></typeparam>
         /// <param name="itemPrefixer"></param>
+        /// <param name="ignoreCase"></param>
         /// <returns></returns>
         public static List<TEnum> GetItems<TEnum>(string itemPrefixer,bool ignoreCase)
         {

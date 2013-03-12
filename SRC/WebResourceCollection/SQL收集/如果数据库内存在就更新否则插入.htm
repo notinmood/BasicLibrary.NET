@@ -7,6 +7,6 @@
     string sqlUpdate="UPDATE [Table] SET ColumnA='valuesA' WHERE Key='KeyValue'"; <br />
     string sqlInsert="Insert [Table] (ColumnA) VALUES ('valuesA') WHERE Key='KeyValue'";<br /><br />
 
-    string sqlClause= string.Format("{}\nIF@@ROWCOUNT=0\nBEGIN\n{1}\nEND");
+    string sqlClause= string.Format("{0}\nIF@@ROWCOUNT=0\nBEGIN\n{1}\nEND",sqlUpdate,sqlInsert);
 </body>
 </html>

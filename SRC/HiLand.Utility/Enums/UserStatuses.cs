@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using HiLand.Utility.Attributes;
 using HiLand.Utility.Enums.OP;
 
 namespace HiLand.Utility.Enums
@@ -11,27 +12,34 @@ namespace HiLand.Utility.Enums
     public enum UserStatuses
     {
         /// <summary>
+        /// 未设置（仅用于查询）
+        /// </summary>
+        [EnumItemDescription("zh-CN", "未设置")]
+        [EnumItemIsDisplayInList(false)]
+        UnSet = -1,
+
+        /// <summary>
         /// 注册后未激活
         /// </summary>
         [EnumItemDescription("zh-CN", "未激活")]
-        Unactivated =0,
-        
+        Unactivated = 0,
+
         /// <summary>
         /// 正常
         /// </summary>
-         [EnumItemDescription("zh-CN", "正常")]
-        Normal=1,
-        
+        [EnumItemDescription("zh-CN", "正常")]
+        Normal = 1,
+
         /// <summary>
         /// 停用（表示计算机逻辑上的删除）
         /// </summary>
-         [EnumItemDescription("zh-CN", "停用")]
-        Stopped=2,
-        
+        [EnumItemDescription("zh-CN", "停用")]
+        Stopped = 2,
+
         /// <summary>
         /// 被删除(表示业务逻辑上的物理删除，实际并未删除)
         /// </summary>
-         [EnumItemDescription("zh-CN", "被删除")]
-        Deleted=3,
+        [EnumItemDescription("zh-CN", "被删除")]
+        Deleted = 3,
     }
 }

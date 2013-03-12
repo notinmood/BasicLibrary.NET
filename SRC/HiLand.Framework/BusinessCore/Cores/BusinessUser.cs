@@ -16,6 +16,9 @@ namespace HiLand.Framework.BusinessCore
     public class BusinessUser : IBusinessUser, IExecutorObject, IModelExtensible
     {
         private static BusinessUser empty = null;
+        /// <summary>
+        /// 空实体
+        /// </summary>
         public static BusinessUser Empty
         {
             get
@@ -543,11 +546,45 @@ namespace HiLand.Framework.BusinessCore
         /// <summary>
         /// 如果是部门内的用户，那么记录包括部门在内的全路径
         /// </summary>
-        /// <remarks>全路径信息的结构类似如下：根部门名称/子部门名称/子子部门名称/.../当前部门名称/用户名称</remarks>
+        /// <remarks>全路径信息的结构类似如下：根部门名称//子部门名称//子子部门名称//...//当前部门名称||用户名称</remarks>
         public virtual string UserFullPath
         {
             get { return this.userFullPath; }
             set { this.userFullPath = value; }
+        }
+
+        private string departmentFullPath = string.Empty;
+        /// <summary>
+        /// 所在部门的全路径
+        /// </summary>
+        public virtual string DepartmentFullPath
+        {
+            get
+            {
+                if (this.departmentFullPath == string.Empty && string.IsNullOrEmpty(this.UserFullPath) == false)
+                {
+                    this.departmentFullPath = this.UserFullPath.Substring(0,this.UserFullPath.LastIndexOf("||") );
+                }
+
+                return this.departmentFullPath;
+            }
+        }
+
+        private string departmentName = string.Empty;
+        /// <summary>
+        /// 所在部门的名称
+        /// </summary>
+        public virtual string DepartmentName
+        {
+            get
+            {
+                if (this.departmentName == string.Empty && string.IsNullOrEmpty(this.UserFullPath))
+                {
+                    this.departmentName = this.DepartmentFullPath.Substring(this.DepartmentFullPath.LastIndexOf("//")+2);
+                }
+
+                return this.departmentName;
+            }
         }
 
         private string areaCode = string.Empty;
@@ -751,7 +788,7 @@ namespace HiLand.Framework.BusinessCore
         /// </remarks>
         public virtual int UserAge
         {
-            get 
+            get
             {
                 if (this.userBirthDay == DateTimeHelper.Min)
                 {
@@ -1140,6 +1177,9 @@ namespace HiLand.Framework.BusinessCore
 
 
         private ExtentiblePropertyRepository extensiableRepository = null;
+        /// <summary>
+        /// 可扩展的属性库
+        /// </summary>
         public ExtentiblePropertyRepository ExtensiableRepository
         {
             get
