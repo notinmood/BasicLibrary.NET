@@ -60,7 +60,14 @@ namespace HiLand.Utility.DataBase
             if (IsExistFieldAndNotNull(reader, fieldName) == true)
             {
                 object obj = reader[fieldName];
-                return (T)obj;
+
+                T result= default(T);
+                try
+                {
+                    result = (T)obj;
+                }
+                catch {}
+                return result;
             }
             else
             {
