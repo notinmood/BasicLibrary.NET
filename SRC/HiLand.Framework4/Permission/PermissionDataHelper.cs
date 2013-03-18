@@ -123,10 +123,21 @@ namespace HiLand.Framework4.Permission
                     result = false;
                     break;
                 case PermissionDataTypes.Self:
+                    result = IsIncludeSpecialOwnerKey(resource.OwnerKeys);
+                    if (result == true)
+                    {
+                        return result;
+                    }
                     result = resource.OwnerKeys.Contains(BusinessUserBLL.CurrentUser.UserGuid.ToString());
                     break;
                 case PermissionDataTypes.DepatmentWithSub:
                     {
+                         result = IsIncludeSpecialOwnerKey(resource.OwnerKeys);
+                        if (result == true)
+                        {
+                            return result;
+                        }
+                        
                         List<Guid> guidList = BusinessUserBLL.GetUserGuidsByDepartment(BusinessUserBLL.CurrentUser.Department.DepartmentFullPath, true);
                         List<string> stringList = guidList.ConvertAll<string>(item => item.ToString());
                         result = CollectionHelper.IsExistAtLeastOneElement(stringList, resource.OwnerKeys);
@@ -134,6 +145,12 @@ namespace HiLand.Framework4.Permission
                     break;
                 case PermissionDataTypes.DepartmentWithoutSub:
                     {
+                        result = IsIncludeSpecialOwnerKey(resource.OwnerKeys);
+                        if (result == true)
+                        {
+                            return result;
+                        }
+
                         List<Guid> guidList = BusinessUserBLL.GetUserGuidsByDepartment(BusinessUserBLL.CurrentUser.Department.DepartmentFullPath, false);
                         List<string> stringList = guidList.ConvertAll<string>(item => item.ToString());
                         result = CollectionHelper.IsExistAtLeastOneElement(stringList, resource.OwnerKeys);
@@ -144,6 +161,29 @@ namespace HiLand.Framework4.Permission
                     break;
                 default:
                     break;
+            }
+
+            return result;
+        }
+
+        private static bool IsIncludeSpecialOwnerKey(List<string> collection)
+        {
+            bool result= collection.Contains(string.Empty);
+            if (result == true)
+            {
+                return result;
+            }
+
+            result = collection.Contains(GuidHelper.EmptyString);
+            if (result == true)
+            {
+                return result;
+            }
+
+            result = collection.Contains(GuidHelper.SystemKeyString);
+            if (result == true)
+            {
+                return result;
             }
 
             return result;
