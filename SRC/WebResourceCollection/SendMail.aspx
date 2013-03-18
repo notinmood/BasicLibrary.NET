@@ -12,6 +12,7 @@
         <asp:Button ID="Button1" runat="server" Text="Config发送" 
             onclick="Button1_Click" />
         <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="手工配置发送" />
+        <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="dotnet1.1下发送" />
     </div>
     </form>
 </body>

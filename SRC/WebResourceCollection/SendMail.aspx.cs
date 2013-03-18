@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Net.Mail;
 using System.Net;
+using System.Configuration;
 
 namespace WebResourceCollection
 {
@@ -89,6 +90,26 @@ namespace WebResourceCollection
              */
 
             return mailMessage;
+        }
+
+        protected void Button3_Click(object sender, EventArgs e)
+        {
+            System.Web.Mail.MailMessage mm = new System.Web.Mail.MailMessage();
+            mm.BodyFormat = System.Web.Mail.MailFormat.Html;
+            mm.From = "cashsolution.com.au@gmail.com";//ConfigurationSettings.AppSettings["mailFrom"];
+            mm.To = "notinmood@gmail.com";
+            mm.Subject = "mail testing..."+ DateTime.Now.ToString();
+            mm.Body = "mail body";
+            mm.Fields["http://schemas.microsoft.com/cdo/configuration/sendusing"] = 2;
+            mm.Fields["http://schemas.microsoft.com/cdo/configuration/smtpaccountname"] = "cashsolution.com.au@gmail.com";// ConfigurationSettings.AppSettings["mailAccount"];
+            mm.Fields["http://schemas.microsoft.com/cdo/configuration/sendusername"] = "cashsolution.com.au@gmail.com";//ConfigurationSettings.AppSettings["mailAccount"];//验证账号：发送者邮箱账号
+            mm.Fields["http://schemas.microsoft.com/cdo/configuration/sendpassword"] = "lily03591@hotmail.com";//ConfigurationSettings.AppSettings["mailPassword"]; //验证密码：发送者邮箱密码
+            mm.Fields["http://schemas.microsoft.com/cdo/configuration/smtpauthenticate"] = 1; //验证级别0,1,2
+            mm.Fields["http://schemas.microsoft.com/cdo/configuration/smtpserverport"] = "465";// ConfigurationSettings.AppSettings["mailPort"];
+            mm.Fields["http://schemas.microsoft.com/cdo/configuration/smtpusessl"] = "true";// ConfigurationSettings.AppSettings["mailSSL"];
+
+            System.Web.Mail.SmtpMail.SmtpServer = "smtp.gmail.com";
+            System.Web.Mail.SmtpMail.Send(mm);
         }
     }
 }
