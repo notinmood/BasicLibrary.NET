@@ -140,6 +140,7 @@
     <Compile Include="Data\CollectionHelper.cs" />
     <Compile Include="Data\CompressHelper.cs" />
     <Compile Include="Data\Converter.cs" />
+    <Compile Include="Data\DigitHelper.cs" />
     <Compile Include="Data\EnumHelper.cs" />
     <Compile Include="Data\ExceptionHelper.cs" />
     <Compile Include="Data\FlagHelper.cs" />
