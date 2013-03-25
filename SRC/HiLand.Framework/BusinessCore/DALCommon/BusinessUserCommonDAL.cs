@@ -591,6 +591,11 @@ namespace HiLand.Framework.BusinessCore.DALCommon
                 status = LoginStatuses.FailureNoAccount;
                 return entity;
             }
+            else
+            {
+                status = LoginStatuses.FailureNotMatchPassword;
+                return entity;
+            }
 
             //status = LoginStatuses.FailureNotMatchPassword;
             return entity;
@@ -735,7 +740,7 @@ namespace HiLand.Framework.BusinessCore.DALCommon
             isSuccessful = HelperExInstance.IsExist(commandText, sqlParas);
             if (isSuccessful == false)
             {
-                status = LoginStatuses.FailureNoEMail;
+                status = LoginStatuses.FailureNoIDCard;
                 return BusinessUser.Empty;
             }
 

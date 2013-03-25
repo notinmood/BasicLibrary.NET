@@ -19,7 +19,7 @@ namespace HiLand.Utility.Enums
         /// <summary>
         /// 登录失败(用户账号(用户名或者EMail)不存在)
         /// </summary>
-        [EnumItemDescription("zh-CN", "登录失败(用户账号(用户名或者EMail)不存在)")]
+        [EnumItemDescription("zh-CN", "登录失败(用户账号(用户名、身份证或者EMail)不存在)")]
         FailureNoAccount,
 
         /// <summary>
