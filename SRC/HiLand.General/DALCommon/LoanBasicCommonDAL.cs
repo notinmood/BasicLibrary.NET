@@ -140,7 +140,7 @@ namespace HiLand.General.DALCommon
 				[ReadUserID] = {0}ReadUserID,
 				[PropertyNames] = {0}PropertyNames,
 				[PropertyValues] = {0}PropertyValues
-        Where [LoanID] = {0}LoanID", ParameterNamePrefix);
+        Where [LoanGuid] = {0}LoanGuid", ParameterNamePrefix);
 
             TParameter[] sqlParas = PrepareParasAll(entity);
 
