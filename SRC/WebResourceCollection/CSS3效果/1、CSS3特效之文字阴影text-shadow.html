@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style type="text/css">
+            .text-shadow-1{
+    padding-left:30px;
+    font:18px/24px "Microsoft YaHei";
+    text-shadow:0 0 10px #000; /*阴影无偏移*/
+    }
+
+                .text-shadow-2{
+    padding-left:30px;
+    font:18px/24px "Microsoft YaHei";
+    text-shadow:3px 3px 5px #f00; /*阴影偏移3px 3px*/
+    }
+
+                    .text-shadow-3{
+    padding-left:30px;
+    font:18px/24px "Microsoft YaHei";
+    text-shadow:3px 3px 5px #f00; /*当然偏移也可以是负值*/
+    }
+
+                        .text-shadow-4{
+    padding-left:30px;
+    font:18px/24px "Microsoft YaHei";
+    text-shadow:0 0 5px rgba(0,0,0,.5);
+    }
+
+                            .text-shadow-5{
+    padding-left:30px;
+    font:18px/24px "Microsoft YaHei";
+    text-shadow:3px 3px 5px rgba(0,255,255,.3);
+    }
+
+                                .text-shadow-6{
+    padding-left:30px;
+    background-color:#999;
+    font:18px/24px "Microsoft YaHei";
+    text-shadow:-1px -1px 0 #fff, 1px 1px 0 #666;
+    }
+
+                                    .text-shadow-7{
+    padding:10px 30px;
+    font:bold 30px/40px "Microsoft YaHei";
+    background-color:#999;
+    color:#fff;
+    text-shadow: 1px 1px rgba(197, 223, 248,0.5),2px 2px rgba(197, 223, 248,0.5),3px 3px rgba(197, 223, 248,0.5),
+    4px 4px rgba(197, 223, 248,0.5),5px 5px rgba(197, 223, 248,0.5),6px 6px rgba(197, 223, 248,0.5);}
+
+                                        .text-shadow-8{
+    padding-left:30px;
+    font:bold 30px/40px "Microsoft YaHei";
+    background-color:#999; color:#fff;
+    text-shadow:-1px -1px 0 #f00, 1px 1px 0 #f00;
+    }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>text-shadow</h2>
+        <h3>语法</h3>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">：</span><span class="pln">none </span><span class="pun">|</span><span class="pln"> </span><span class="str">&lt;shadow&gt;</span><span class="pln"> </span><span class="pun">[</span><span class="pln"> </span><span class="pun">,</span><span class="pln"> </span><span class="str">&lt;shadow&gt;</span><span class="pln"> </span><span class="pun">]*</span></li>
+            <li class="L1"><span class="str">&lt;shadow&gt;</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="str">&lt;length&gt;</span><span class="pun">{</span><span class="lit">2</span><span class="pun">,</span><span class="lit">3</span><span class="pun">}</span><span class="pln"> </span><span class="pun">&amp;&amp;</span><span class="pln"> </span><span class="str">&lt;color&gt;</span><span class="pun">?</span><span class="pln"> </span></li>
+        </ol>
+        <pre></pre>
+        <h3>说明</h3>
+        <div class="alert alert-info">
+            值为none时表示无阴影<br />
+            &lt;shadow&gt;中可取2-3个长度值和一个颜色值<br />
+            1.第1个长度值用来设置对象的阴影水平偏移值。可以为负值<br />
+            2.第2个长度值用来设置对象的阴影垂直偏移值。可以为负值<br />
+            3.第3个值可选，如果提供了第3个长度值则用来设置对象的阴影模糊值。不允许负值 4.最后一个值为阴影颜色，也可用rgba或hsla的透明色 
+        </div>
+        <h3>举例</h3>
+        <p class="text-shadow-1">
+            我的前端实验室</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">1</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span><span class="pun">:</span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="lit">18px</span><span class="pun">/</span><span class="lit">24px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:</span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">10px</span><span class="pln"> </span><span class="com">#000; /*阴影无偏移*/</span></li>
+            <li class="L4"><span class="pun">}</span></li>
+        </ol>
+        <pre></pre>
+        <p class="text-shadow-2">
+            我的前端实验室</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">2</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span><span class="pun">:</span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="lit">18px</span><span class="pun">/</span><span class="lit">24px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:</span><span class="lit">3px</span><span class="pln"> </span><span class="lit">3px</span><span class="pln"> </span><span class="lit">5px</span><span class="pln"> </span><span class="com">#f00; /*阴影偏移3px 3px*/</span></li>
+            <li class="L4"><span class="pun">}</span></li>
+        </ol>
+        <pre></pre>
+        <p class="text-shadow-3">
+            我的前端实验室</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">3</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span><span class="pun">:</span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="lit">18px</span><span class="pun">/</span><span class="lit">24px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:</span><span class="lit">3px</span><span class="pln"> </span><span class="lit">3px</span><span class="pln"> </span><span class="lit">5px</span><span class="pln"> </span><span class="com">#f00; /*当然偏移也可以是负值*/</span></li>
+            <li class="L4"><span class="pun">}</span></li>
+        </ol>
+        <pre></pre>
+        <h4 class="alert alert-info">利用rgba实现阴影透明</h4>
+        <p class="text-shadow-4">
+            我的前端实验室</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">4</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span><span class="pun">:</span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="lit">18px</span><span class="pun">/</span><span class="lit">24px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:</span><span class="lit">0</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="lit">5px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,</span><span class="lit">0</span><span class="pun">,.</span><span class="lit">5</span><span class="pun">);</span></li>
+            <li class="L4"><span class="pun">}</span></li>
+        </ol>
+        <pre></pre>
+        <p class="text-shadow-5">
+            我的前端实验室</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">5</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span><span class="pun">:</span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="lit">18px</span><span class="pun">/</span><span class="lit">24px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:</span><span class="lit">3px</span><span class="pln"> </span><span class="lit">3px</span><span class="pln"> </span><span class="lit">5px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">0</span><span class="pun">,</span><span class="lit">255</span><span class="pun">,</span><span class="lit">255</span><span class="pun">,.</span><span class="lit">3</span><span class="pun">);</span></li>
+            <li class="L4"><span class="pun">}</span></li>
+        </ol>
+        <pre></pre>
+        <h4 class="alert alert-info">还可以通过设置多个阴影来实现一些特效</h4>
+        <pre></pre>
+        <p class="text-shadow-6">
+            浮雕效果</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">6</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span><span class="pun">:</span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="lit">18px</span><span class="pun">/</span><span class="lit">24px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:-</span><span class="lit">1px</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1px</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="com">#fff, 1px 1px 0 #666;</span></li>
+            <li class="L4"><span class="pun">}</span></li>
+        </ol>
+        <pre></pre>
+        <p class="text-shadow-7">
+            3D效果</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">7</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">:</span><span class="lit">10px</span><span class="pln"> </span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="pln">bold </span><span class="lit">30px</span><span class="pun">/</span><span class="lit">40px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">background</span><span class="pun">-</span><span class="pln">color</span><span class="pun">:#</span><span class="lit">999</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L4"><span class="pln">color</span><span class="pun">:#</span><span class="pln">fff</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L5"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:</span><span class="pln"> </span><span class="lit">1px</span><span class="pln"> </span><span class="lit">1px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">197</span><span class="pun">,</span><span class="pln"> </span><span class="lit">223</span><span class="pun">,</span><span class="pln"> </span><span class="lit">248</span><span class="pun">,</span><span class="lit">0.5</span><span class="pun">),</span><span class="lit">2px</span><span class="pln"> </span><span class="lit">2px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">197</span><span class="pun">,</span><span class="pln"> </span><span class="lit">223</span><span class="pun">,</span><span class="pln"> </span><span class="lit">248</span><span class="pun">,</span><span class="lit">0.5</span><span class="pun">),</span><span class="lit">3px</span><span class="pln">
+                </span><span class="lit">3px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">197</span><span class="pun">,</span><span class="pln"> </span><span class="lit">223</span><span class="pun">,</span><span class="pln"> </span><span class="lit">248</span><span class="pun">,</span><span class="lit">0.5</span><span class="pun">),</span></li>
+            <li class="L6"><span class="pln"></span><span class="lit">4px</span><span class="pln"> </span><span class="lit">4px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">197</span><span class="pun">,</span><span class="pln"> </span><span class="lit">223</span><span class="pun">,</span><span class="pln"> </span><span class="lit">248</span><span class="pun">,</span><span class="lit">0.5</span><span class="pun">),</span><span class="lit">5px</span><span class="pln"> </span><span class="lit">5px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">197</span><span class="pun">,</span><span class="pln"> </span><span class="lit">223</span><span class="pun">,</span><span class="pln"> </span><span class="lit">248</span><span class="pun">,</span><span class="lit">0.5</span><span class="pun">),</span><span class="lit">6px</span><span class="pln"> </span><span class="lit">6px</span><span class="pln"> rgba</span><span class="pun">(</span><span class="lit">197</span><span class="pun">,</span><span class="pln">
+                </span><span class="lit">223</span><span class="pun">,</span><span class="pln"> </span><span class="lit">248</span><span class="pun">,</span><span class="lit">0.5</span><span class="pun">);}</span></li>
+        </ol>
+        <pre></pre>
+        <p class="text-shadow-8">
+            描边效果</p>
+        <pre class="prettyprint linenums prettyprinted" style=""></pre>
+        <ol class="linenums">
+            <li class="L0"><span class="pun">.</span><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">-</span><span class="lit">8</span><span class="pun">{</span><span class="pln"> </span></li>
+            <li class="L1"><span class="pln">padding</span><span class="pun">-</span><span class="pln">left</span><span class="pun">:</span><span class="lit">30px</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L2"><span class="pln">font</span><span class="pun">:</span><span class="pln">bold </span><span class="lit">30px</span><span class="pun">/</span><span class="lit">40px</span><span class="pln"> </span><span class="str">&quot;Microsoft YaHei&quot;</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L3"><span class="pln">background</span><span class="pun">-</span><span class="pln">color</span><span class="pun">:#</span><span class="lit">999</span><span class="pun">;</span><span class="pln"> color</span><span class="pun">:#</span><span class="pln">fff</span><span class="pun">;</span><span class="pln"> </span></li>
+            <li class="L4"><span class="pln">text</span><span class="pun">-</span><span class="pln">shadow</span><span class="pun">:-</span><span class="lit">1px</span><span class="pln"> </span><span class="pun">-</span><span class="lit">1px</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="com">#f00; 1px 1px 0 #f00;</span></li>
+            <li class="L5"><span class="pun">}</span></li>
+        </ol>
+        <pre></pre>
+    </div>
+
+</body>
+</html>

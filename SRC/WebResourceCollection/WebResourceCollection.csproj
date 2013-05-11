@@ -79,6 +79,7 @@
     <Content Include="Content\Style\HlImages\hl_status_tip_256.png" />
     <Content Include="Content\Style\HlImages\hl_status_tip_48.png" />
     <Content Include="Content\Style\readme.txt" />
+    <Content Include="CSS3效果\1、CSS3特效之文字阴影text-shadow.html" />
     <Content Include="Images\AddEntry.ico" />
     <Content Include="Images\adm.gif" />
     <Content Include="Images\adm_arch.gif" />
