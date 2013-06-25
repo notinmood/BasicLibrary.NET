@@ -229,6 +229,7 @@
     <Compile Include="Mathes\StringParse\Operator.cs" />
     <Compile Include="Mathes\StringParse\OperatorTypes.cs" />
     <Compile Include="Mathes\StringParse\RPN.cs" />
+    <Compile Include="Mathes\StringParse\SimpleRPN.cs" />
     <Compile Include="Native\ControlHelper.cs" />
     <Compile Include="Native\DialogMisc.cs" />
     <Compile Include="Native\IdentityScope.cs" />
