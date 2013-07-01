@@ -157,6 +157,14 @@
     <Compile Include="Data\XmlHelper.cs" />
     <Compile Include="Drawing\WaterMarker.cs" />
     <Compile Include="Drawing\WaterMarkPositions.cs" />
+    <Compile Include="EntityCoding\CodeRuleGenerator.cs" />
+    <Compile Include="EntityCoding\CodeRuleInterpreter.cs" />
+    <Compile Include="EntityCoding\ICodeRuleGenerator.cs" />
+    <Compile Include="EntityCoding\ICodeRuleProvider.cs" />
+    <Content Include="EntityCoding\readme.txt" />
+    <Compile Include="EntityCoding\RuleProviders\DateRuleProvider.cs" />
+    <Compile Include="EntityCoding\RuleProviders\LiteralRuleProvider.cs" />
+    <Compile Include="EntityCoding\RuleProviders\PropertyRuleProvider.cs" />
     <Compile Include="Entity\AutoCompleteEntity.cs" />
     <Compile Include="Entity\CascadingCollection.cs" />
     <Compile Include="Entity\EntityHelper.cs" />
