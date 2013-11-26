@@ -211,6 +211,7 @@
     <Compile Include="Handler\Ajax\QueryStringAttribute.cs" />
     <Compile Include="IO\Extend\FileEnums.cs" />
     <Compile Include="IO\Extend\FileWrapper.cs" />
+    <Compile Include="IO\FileFormats.cs" />
     <Compile Include="IO\IOEnum.cs" />
     <Compile Include="IO\IOEnvent.cs" />
     <Compile Include="IO\IOHelper.cs" />

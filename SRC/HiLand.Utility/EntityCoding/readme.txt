@@ -1,5 +1,6 @@
-﻿本方法来源于http://www.cnblogs.com/happyframework/archive/2013/05/12/3073688.html
-以下为使用方法（其对外暴露的为CodeRuleInterpreter）：
+﻿1、本方法来源于http://www.cnblogs.com/happyframework/archive/2013/05/12/3073688.html
+2、以下为使用方法（其对外暴露的为CodeRuleInterpreter）：
+3、如果实现顺序号编号，请在配置文件内建立配置信息
 
 //using System;
 //using System.Collections.Generic;

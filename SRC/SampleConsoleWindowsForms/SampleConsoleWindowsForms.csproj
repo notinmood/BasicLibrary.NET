@@ -69,6 +69,12 @@
     <Compile Include="Tests\CurrentUserTest.Designer.cs">
       <DependentUpon>CurrentUserTest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tests\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +97,9 @@
     </Compile>
     <EmbeddedResource Include="Tests\CurrentUserTest.resx">
       <DependentUpon>CurrentUserTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">

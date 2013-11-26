@@ -83,6 +83,7 @@
     <Content Include="EncryptServiceTest.aspx" />
     <Content Include="EntityCodingTest\default.aspx" />
     <Content Include="FlagHelperTest.aspx" />
+    <Content Include="NewFolder1\文件扩展名测试.aspx" />
     <Content Include="RegionHelperTest.aspx" />
     <Content Include="脏词过滤测试.txt" />
     <Content Include="CacheUsing.aspx" />
@@ -394,6 +395,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="NewFolder1\文件扩展名测试.aspx.cs">
+      <DependentUpon>文件扩展名测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NewFolder1\文件扩展名测试.aspx.designer.cs">
+      <DependentUpon>文件扩展名测试.aspx</DependentUpon>
+    </Compile>
     <Compile Include="OfficeDemo\ExcelTest.aspx.cs">
       <DependentUpon>ExcelTest.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -519,7 +527,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="GeneralValidateDemo\ModuleB\ModuleB2\" />
     <Folder Include="GeneralValidateDemo\ModuleB\ModuleB3\" />
-    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Account\Web.config" />
@@ -563,7 +570,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>False</AutoAssignPort>
           <DevelopmentServerPort>5701</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

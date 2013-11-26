@@ -76,6 +76,39 @@ namespace HiLand.Utility.IO
                 return System.Text.Encoding.Default;
             }
         }
+
+        /// <summary>
+        /// 解析文件内部格式，获取文件真实的文件格式信息
+        /// </summary>
+        /// <param name="fileStream"></param>
+        /// <returns></returns>
+        public static FileFormats GetRealFormat(FileStream fileStream)
+        {
+            string fileclass = "-1";
+
+            using (System.IO.BinaryReader r = new System.IO.BinaryReader(fileStream))
+            {
+                //这里的位长要具体判断.
+                byte buffer;
+                try
+                {
+                    buffer = r.ReadByte();
+                    fileclass = buffer.ToString();
+                    buffer = r.ReadByte();
+                    fileclass += buffer.ToString();
+                }
+                catch
+                {
+                    // do nothing;
+                }
+                r.Close();
+            }
+
+            int outFileExtensionValue=-1;
+            int.TryParse(fileclass, out outFileExtensionValue);
+            FileFormats result= (FileFormats)outFileExtensionValue;
+            return result;
+        }
         #endregion
 
         #region 文件名称的处理
