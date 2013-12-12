@@ -17,7 +17,8 @@ namespace HiLand.Framework.WindowsFormsConsole
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new CacheTest());
-            Application.Run(new CurrentUserTest());
+            //Application.Run(new CurrentUserTest());
+            Application.Run(new TextBox中Validating事件验证());
         }
     }
 }

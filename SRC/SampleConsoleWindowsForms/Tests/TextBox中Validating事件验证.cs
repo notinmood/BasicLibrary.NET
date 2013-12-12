@@ -15,5 +15,13 @@ namespace HiLand.Framework.WindowsFormsConsole.Tests
         {
             InitializeComponent();
         }
+
+        private void textBox1_Validating(object sender, CancelEventArgs e)
+        {
+            if ((TextBox)sender == textBox1)
+            {
+                this.label1.Text = textBox1.Text;
+            }
+        }
     }
 }

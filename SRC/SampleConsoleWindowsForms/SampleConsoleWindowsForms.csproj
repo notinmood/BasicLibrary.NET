@@ -75,6 +75,12 @@
     <Compile Include="Tests\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Tests\TextBox中Validating事件验证.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tests\TextBox中Validating事件验证.Designer.cs">
+      <DependentUpon>TextBox中Validating事件验证.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
     </EmbeddedResource>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Tests\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tests\TextBox中Validating事件验证.resx">
+      <DependentUpon>TextBox中Validating事件验证.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="Properties\Settings.settings">
