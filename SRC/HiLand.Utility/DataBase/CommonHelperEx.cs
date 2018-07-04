@@ -13,7 +13,7 @@ namespace HiLand.Utility.DataBase
     /// <typeparam name="TDataReader"></typeparam>
     /// <typeparam name="TParameter"></typeparam>
     /// <remarks>
-    /// 目前仅将连接包装了
+    /// 目前仅将“连接”包装了
     /// </remarks>
     public class CommonHelperEx<TTransaction, TConnection, TCommand, TDataReader, TParameter>
         where TConnection : class,IDbConnection, new()

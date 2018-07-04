@@ -10,7 +10,6 @@ namespace HiLand.Utility.DataBase
     /// <summary>
     /// 通用的数据访问类（兼容各个数据库类型）
     /// </summary>
-    /// <typeparam name="THelper"></typeparam>
     /// <typeparam name="TTransaction"></typeparam>
     /// <typeparam name="TConnection"></typeparam>
     /// <typeparam name="TCommand"></typeparam>
@@ -44,7 +43,7 @@ namespace HiLand.Utility.DataBase
                 string connectionString = Config.ConnectionString;
                 if (string.IsNullOrEmpty(connectionString))
                 {
-                    connectionString = ConfigurationManager.AppSettings["ConnectionString"];
+                    connectionString = ConfigurationManager.AppSettings["mainConnection"];
                 }
                 return connectionString;
             }
@@ -93,7 +92,7 @@ namespace HiLand.Utility.DataBase
         /// e.g.:  
         ///  int result = ExecuteNonQuery(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
         /// </remarks>
-        /// <param name="conn">an existing database connection</param>
+        /// <param name="connection">an existing database connection</param>
         /// <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
         /// <param name="commandText">the stored procedure name or T-SQL command</param>
         /// <param name="commandParameters">an array of SqlParamters used to execute the command</param>
@@ -175,7 +174,7 @@ namespace HiLand.Utility.DataBase
         /// e.g.:  
         ///  SqlDataReader r = ExecuteReader(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
         /// </remarks>
-        /// <param name="connectionString">a valid connection string for a SqlConnection</param>
+        /// <param name="connection">a valid connection string for a SqlConnection</param>
         /// <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
         /// <param name="commandText">the stored procedure name or T-SQL command</param>
         /// <param name="commandParameters">an array of SqlParamters used to execute the command</param>
@@ -232,7 +231,7 @@ namespace HiLand.Utility.DataBase
         /// e.g.:  
         ///  Object obj = ExecuteScalar(connString, CommandType.StoredProcedure, "PublishOrders", new SqlParameter("@prodid", 24));
         /// </remarks>
-        /// <param name="conn">an existing database connection</param>
+        /// <param name="connection">an existing database connection</param>
         /// <param name="commandType">the CommandType (stored procedure, text, etc.)</param>
         /// <param name="commandText">the stored procedure name or T-SQL command</param>
         /// <param name="commandParameters">an array of SqlParamters used to execute the command</param>
@@ -337,7 +336,7 @@ namespace HiLand.Utility.DataBase
         /// <param name="singleRowCommandText">影响数据库单行的sql语句</param>
         /// <param name="commandParameters"></param>
         /// <param name="commandType"></param>
-        /// <param name="connection"></param>
+        /// <param name="connectionString"></param>
         /// <returns></returns>
         public virtual bool ExecuteSingleRowNonQuery(string connectionString, CommandType commandType, string singleRowCommandText, params TParameter[] commandParameters)
         {
@@ -352,7 +351,7 @@ namespace HiLand.Utility.DataBase
         /// add parameter array to the cache
         /// </summary>
         /// <param name="cacheKey">Key to the parameter cache</param>
-        /// <param name="cmdParms">an array of SqlParamters to be cached</param>
+        /// <param name="commandParameters">an array of SqlParamters to be cached</param>
         public void CacheParameters(string cacheKey, params TParameter[] commandParameters)
         {
             parmCache[cacheKey] = commandParameters;

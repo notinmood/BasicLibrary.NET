@@ -60,7 +60,7 @@ namespace HiLand.Utility4.Data
         public static List<SelectListItem> BuildSelectItemList(Type enumType, string displayTextCategory = "", string selectedValue = "")
         {
             List<SelectListItem> itemList = new List<SelectListItem>();
-            ListItemCollection itemCollection= EnumBuilder.BuildItemCollection(enumType, displayTextCategory);
+            ListItemCollection itemCollection = EnumBuilder.BuildItemCollection(enumType, displayTextCategory);
             foreach (ListItem currentItem in itemCollection)
             {
                 SelectListItem item = new SelectListItem();

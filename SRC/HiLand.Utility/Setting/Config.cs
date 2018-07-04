@@ -20,7 +20,7 @@ namespace HiLand.Utility.Setting
             get
             {
                 string connectionString = string.Empty;
-                ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["ConnectionString"];
+                ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["mainConnection"];
                 if (settings != null)
                 {
                     connectionString = settings.ConnectionString;
