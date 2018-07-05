@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2018
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleWebApplication", "SampleConsoleWebApplication\SampleConsoleWebApplication.csproj", "{2004B1A8-5A1C-4310-B95B-5E792399E823}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleWindowsForms", "SampleConsoleWindowsForms\SampleConsoleWindowsForms.csproj", "{1C021D74-B690-4B5C-BC44-C7E513147328}"
@@ -122,5 +124,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E4DB5F6-4EE9-452D-8E13-5C2E927C48FF}
 	EndGlobalSection
 EndGlobal

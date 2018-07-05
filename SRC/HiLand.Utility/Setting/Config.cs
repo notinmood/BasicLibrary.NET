@@ -40,7 +40,6 @@ namespace HiLand.Utility.Setting
         }
         #endregion
 
-
         #region 基础应用程序配置节点读取
         /// <summary>
         /// 读取配置节点

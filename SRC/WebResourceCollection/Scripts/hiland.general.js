@@ -26,8 +26,8 @@ http://www.cnblogs.com/l_nh/archive/2012/08/11/2633264.html
 */
 Object.prototype.tryGetValue = function (exp, defaultValue) {
     var value = this,
-    regex = /(\w+)[\.\[\]]?/g,
-    result;
+        regex = /(\w+)[\.\[\]]?/g,
+        result;
     if (typeof exp !== 'string') {
         throw new Error("路径表达式必须是字符串！");
     }
@@ -44,7 +44,7 @@ Object.prototype.tryGetValue = function (exp, defaultValue) {
 
 
 /*说明：使用本js文件，需要首先引入jQuery原始文件*/
-            
+
 //(function ($) {
 //    window.HlObject = function () {
 //        return new HlObject();
@@ -59,7 +59,7 @@ Object.prototype.tryGetValue = function (exp, defaultValue) {
 //    };
 //})(jQuery);
 
-            
+
 
 //            //加入收藏
 //            function  addBookmark(site, url) {
@@ -93,3 +93,14 @@ Object.prototype.tryGetValue = function (exp, defaultValue) {
 //                    prefs.setCharPref(‘browser.startup.homepage’,weburl);
 //                }　　　　　　　
 //            }
+
+
+//js获取网站根路径(站点及虚拟目录)，获得网站的根目录或虚拟目录的根地址     
+function getWebRootPath() {
+    var strFullPath = window.document.location.href;
+    var strPath = window.document.location.pathname;
+    var pos = strFullPath.indexOf(strPath);
+    var prePath = strFullPath.substring(0, pos);
+    var postPath = strPath.substring(0, strPath.substr(1).indexOf('/') + 1);
+    return (prePath + postPath);
+}
