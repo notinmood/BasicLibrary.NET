@@ -24,6 +24,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -2564,6 +2566,7 @@
     <Content Include="SQL收集\行转列的示例.htm" />
     <Content Include="Test\AttributeTest.aspx" />
     <Content Include="Test\CommonDBHelperTest.aspx" />
+    <Content Include="Test\Config测试.aspx" />
     <Content Include="Test\CSS测试.htm" />
     <Content Include="Test\DDLonChange事件.html" />
     <Content Include="Test\FunctionDemo.aspx" />
@@ -2695,6 +2698,13 @@
     </Compile>
     <Compile Include="Test\CommonDBHelperTest.aspx.designer.cs">
       <DependentUpon>CommonDBHelperTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Test\Config测试.aspx.cs">
+      <DependentUpon>Config测试.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Test\Config测试.aspx.designer.cs">
+      <DependentUpon>Config测试.aspx</DependentUpon>
     </Compile>
     <Compile Include="Test\FunctionDemo.aspx.cs">
       <DependentUpon>FunctionDemo.aspx</DependentUpon>

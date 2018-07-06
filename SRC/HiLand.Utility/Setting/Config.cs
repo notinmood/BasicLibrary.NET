@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Configuration;
 using HiLand.Utility.Data;
 
@@ -12,22 +11,61 @@ namespace HiLand.Utility.Setting
     public static class Config
     {
         #region 数据库连接字符串
+        private static string connectionString = null;
         /// <summary>
-        /// 获取缺省的数据库连接字符串
+        /// 数据库连接字符串
         /// </summary>
         public static string ConnectionString
         {
             get
             {
-                string connectionString = string.Empty;
-                ConnectionStringSettings settings = ConfigurationManager.ConnectionStrings["mainConnection"];
-                if (settings != null)
+                if (CacheConnectionStrings == true)
                 {
-                    connectionString = settings.ConnectionString;
+                    if (connectionString == null)
+                    {
+                        connectionString = ConfigurationManager.ConnectionStrings["mainConnection"].ConnectionString;
+                    }
+                    return connectionString;
                 }
-                return connectionString;
+                else
+                {
+                    return ConfigurationManager.ConnectionStrings["mainConnection"].ConnectionString;
+                }
+            }
+            set
+            {
+                connectionString = value;
             }
         }
+
+        private static Nullable<bool> cacheConnectionStrings = null;
+        /// <summary>
+        /// 是否要缓存数据库连接
+        /// </summary>
+        private static bool CacheConnectionStrings
+        {
+            get
+            {
+                if (cacheConnectionStrings == null)
+                {
+                    string temp = GetAppSetting("cacheConnectionStrings");
+                    if (temp == null)
+                    {
+                        cacheConnectionStrings = true;
+                    }
+                    else
+                    {
+                        bool cache = false;
+                        Boolean.TryParse(temp, out cache);
+                        cacheConnectionStrings = cache;
+                    }
+                }
+
+                return cacheConnectionStrings.Value;
+            }
+        }
+
+
 
         /// <summary>
         /// 获取某个指定名称的数据库连接字符串
@@ -41,6 +79,35 @@ namespace HiLand.Utility.Setting
         #endregion
 
         #region 基础应用程序配置节点读取
+        private static Nullable<bool> cacheAppSettings = null;
+        /// <summary>
+        /// 是否要缓存配置项
+        /// </summary>
+        private static bool CacheAppSettings
+        {
+            get
+            {
+                if (cacheAppSettings == null)
+                {
+                    string temp = ConfigurationManager.AppSettings["cacheAppSettings"];
+                    if (temp == null)
+                    {
+                        cacheAppSettings = true;
+                    }
+                    else
+                    {
+                        bool cache = false;
+                        Boolean.TryParse(temp, out cache);
+                        cacheAppSettings = cache;
+                    }
+                }
+
+                return cacheAppSettings.Value;
+            }
+        }
+
+        private static List<KeyValuePair<string, object>> appSettings = new List<KeyValuePair<string, object>>();
+
         /// <summary>
         /// 读取配置节点
         /// </summary>
@@ -51,6 +118,8 @@ namespace HiLand.Utility.Setting
             return GetAppSetting(settingName, string.Empty);
         }
 
+
+
         /// <summary>
         /// 读取配置节点
         /// </summary>
@@ -59,12 +128,7 @@ namespace HiLand.Utility.Setting
         /// <returns></returns>
         public static string GetAppSetting(string settingName, string defaultValue)
         {
-            string result = ConfigurationManager.AppSettings[settingName];
-            if (string.IsNullOrEmpty(result))
-            {
-                result = defaultValue;
-            }
-            return result;
+            return GetAppSetting<string>(settingName, defaultValue);
         }
 
         /// <summary>
@@ -85,14 +149,7 @@ namespace HiLand.Utility.Setting
         /// <returns></returns>
         public static int GetAppSettingInt(string settingName, int defaultValue)
         {
-            string result = ConfigurationManager.AppSettings[settingName];
-            int resultValue = 0;
-            bool isSuccessful = int.TryParse(result, out resultValue);
-            if (isSuccessful == false)
-            {
-                resultValue = defaultValue;
-            }
-            return resultValue;
+            return GetAppSetting<int>(settingName, defaultValue);
         }
 
         /// <summary>
@@ -113,14 +170,7 @@ namespace HiLand.Utility.Setting
         /// <returns></returns>
         public static bool GetAppSettingBool(string settingName, bool defaultValue)
         {
-            string result = ConfigurationManager.AppSettings[settingName];
-            bool resultValue = false;
-            bool isSuccessful = bool.TryParse(result, out resultValue);
-            if (isSuccessful == false)
-            {
-                resultValue = defaultValue;
-            }
-            return resultValue;
+            return GetAppSetting<bool>(settingName, defaultValue);
         }
 
         /// <summary>
@@ -134,6 +184,7 @@ namespace HiLand.Utility.Setting
             return GetAppSetting<T>(settingName, default(T));
         }
 
+
         /// <summary>
         /// 读取配置节点的值
         /// </summary>
@@ -143,14 +194,43 @@ namespace HiLand.Utility.Setting
         /// <returns></returns>
         public static T GetAppSetting<T>(string settingName, T defaultValue)
         {
+            if (CacheAppSettings == true)
+            {
+                int count = appSettings.Count;
+                foreach (KeyValuePair<string, object> kvpItem in appSettings)
+                {
+                    if (kvpItem.Key == settingName)
+                    {
+                        return Converter.ChangeType<T>(kvpItem.Value);
+                    }
+                }
+            }
+
+            T result = default(T);
             string resultString = ConfigurationManager.AppSettings[settingName];
-            return Converter.ChangeType<T>(resultString, defaultValue);
+
+            if (string.IsNullOrEmpty(resultString))
+            {
+                result = defaultValue;
+            }
+            else
+            {
+                result = Converter.ChangeType<T>(resultString, defaultValue);
+            }
+
+            if (CacheAppSettings == true)
+            {
+                KeyValuePair<string, object> kvp = new KeyValuePair<string, object>(settingName, result);
+                appSettings.Add(kvp);
+            }
+
+            return result;
         }
         #endregion
 
         #region 自定义应用程序配置项读取
         /// <summary>
-        /// 获取配置节信息
+        /// 获取配置节信息（因为同一个应用内调用的次数不多，暂时不做缓存处理）
         /// </summary>
         /// <typeparam name="T">配置节对应的数据类型</typeparam>
         /// <param name="sectionName">配置节的名称</param>
@@ -159,10 +239,10 @@ namespace HiLand.Utility.Setting
         {
             T result = default(T);
 
-            object section= ConfigurationManager.GetSection(sectionName);
+            object section = ConfigurationManager.GetSection(sectionName);
             if (section != null)
-            { 
-                result= (T)section;
+            {
+                result = (T)section;
             }
 
             return result;
@@ -170,7 +250,6 @@ namespace HiLand.Utility.Setting
         #endregion
 
         #region 常用配置
-        private static bool? isRecordOperateLog= null;
         /// <summary>
         /// 是否记录操作日志
         /// </summary>
@@ -178,12 +257,7 @@ namespace HiLand.Utility.Setting
         {
             get
             {
-                if (isRecordOperateLog.HasValue == false)
-                {
-                    isRecordOperateLog= GetAppSetting<bool>("isRecordOperateLog");
-                }
-
-                return isRecordOperateLog.Value;
+                return GetAppSetting<bool>("isRecordOperateLog");
             }
         }
         #endregion
