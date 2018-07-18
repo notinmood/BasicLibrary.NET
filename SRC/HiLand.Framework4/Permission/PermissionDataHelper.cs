@@ -84,6 +84,7 @@ namespace HiLand.Framework4.Permission
         /// </summary>
         /// <param name="areaName"></param>
         /// <param name="controllerName"></param>
+        /// <param name="config"></param>
         /// <returns></returns>
         /// <remarks>
         /// 通过areaName, controllerName获取其对应的子模块配置项是否存在
