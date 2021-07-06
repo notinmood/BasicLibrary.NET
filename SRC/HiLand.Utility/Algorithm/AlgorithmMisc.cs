@@ -4,6 +4,9 @@ using System.Text;
 
 namespace HiLand.Utility.Algorithm
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class AlgorithmMisc
     {
         /// <summary>

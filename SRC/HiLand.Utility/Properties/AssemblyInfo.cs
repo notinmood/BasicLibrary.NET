@@ -7,7 +7,7 @@ using System.Web.UI;
 // 控制。更改这些属性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("HiLandCommon")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("这是一个公司级别的项目库")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("china")]
 [assembly: AssemblyProduct("HiLandCommon")]
@@ -33,8 +33,8 @@ using System.Web.UI;
 // 可以指定所有这些值，也可以使用“内部版本号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyFileVersion("1.0.0.0")]
+[assembly: AssemblyVersion("0.7.12")]
+[assembly: AssemblyFileVersion("0.7.12.0")]
 
 //注册能够被web使用的资源信息(这些资源文件必须被设置为"嵌入资源",才能别封装进DLL中,被外部web使用)
 [assembly: WebResource("HiLand.Utility.Resources.CommonJavaScript.js", "application/javascript")]
