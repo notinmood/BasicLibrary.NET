@@ -47,7 +47,6 @@ namespace HiLand.Utility.Web
         /// <summary>
         /// 保存Cookies，过期时间为浏览器关闭则失效。
         /// </summary>
-        /// <param name="expiresTime">Cookies过期事件</param>
         /// <returns>是否保存成功</returns>
         public bool Save()
         {
@@ -72,6 +71,7 @@ namespace HiLand.Utility.Web
                 SessionCookie.Value = SesssionId;
 
             }
+
             //设定cookie 过期时间.
             DateTime dtExpiry = expiresTime;
             HttpContext.Current.Response.Cookies[CookieName].Expires = dtExpiry;
@@ -80,7 +80,6 @@ namespace HiLand.Utility.Web
             string domain = string.Empty;
             if (HttpContext.Current.Request.Params["HTTP_HOST"] != null)
             {
-                //domain = "www.elong.com";
                 domain = HttpContext.Current.Request.Params["HTTP_HOST"].ToString();
             }
 
@@ -153,7 +152,23 @@ namespace HiLand.Utility.Web
             {
                 try
                 {
-                    cookieValue = HttpUtility.UrlDecode(HttpContext.Current.Request.Cookies[CookieName][pi.Name].ToString());
+                    var wholeCookie = HttpContext.Current.Request.Cookies[CookieName];
+                    if (wholeCookie != null)
+                    {
+                        cookieValue = wholeCookie[pi.Name];
+                        if (cookieValue != null)
+                        {
+                            cookieValue = HttpUtility.UrlDecode(cookieValue.ToString());
+                        }
+                        else
+                        {
+                            cookieValue = string.Empty;
+                        }
+                    }
+                    else
+                    {
+                        cookieValue = string.Empty;
+                    }
                 }
                 catch
                 {
@@ -181,7 +196,7 @@ namespace HiLand.Utility.Web
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <returns></returns>
-        public static T Load<T>() where T : CookieInfo,new()
+        public static T Load<T>() where T : CookieInfo, new()
         {
             T t = new T();
             t.Load();

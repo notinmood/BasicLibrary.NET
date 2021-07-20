@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2018
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleWebApplication", "SampleConsoleWebApplication\SampleConsoleWebApplication.csproj", "{2004B1A8-5A1C-4310-B95B-5E792399E823}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleWindowsForms", "SampleConsoleWindowsForms\SampleConsoleWindowsForms.csproj", "{1C021D74-B690-4B5C-BC44-C7E513147328}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLand.Utility4", "HiLand.Utility4\HiLand.Utility4.csproj", "{DCEC4525-16E2-4A20-A816-E775E063E187}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleMvcApplication", "SampleConsoleMvcApplication\SampleConsoleMvcApplication.csproj", "{9537F502-447A-4281-86DD-C122A86BC2BB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLand.General", "HiLand.General\HiLand.General.csproj", "{E6B62810-D354-410E-B5D4-EFDE27C2C2C7}"
 EndProject
@@ -20,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLand.Utility", "HiLand.Utility\HiLand.Utility.csproj", "{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLand.Framework4", "HiLand.Framework4\HiLand.Framework4.csproj", "{6C27B7C7-9FEB-47AE-86B2-39C7B1647322}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleMvcLast", "SampleConsoleMvcLast\SampleConsoleMvcLast.csproj", "{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -61,16 +61,6 @@ Global
 		{DCEC4525-16E2-4A20-A816-E775E063E187}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DCEC4525-16E2-4A20-A816-E775E063E187}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DCEC4525-16E2-4A20-A816-E775E063E187}.Release|x86.ActiveCfg = Release|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{9537F502-447A-4281-86DD-C122A86BC2BB}.Release|x86.ActiveCfg = Release|Any CPU
 		{E6B62810-D354-410E-B5D4-EFDE27C2C2C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E6B62810-D354-410E-B5D4-EFDE27C2C2C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E6B62810-D354-410E-B5D4-EFDE27C2C2C7}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -121,6 +111,18 @@ Global
 		{6C27B7C7-9FEB-47AE-86B2-39C7B1647322}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{6C27B7C7-9FEB-47AE-86B2-39C7B1647322}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{6C27B7C7-9FEB-47AE-86B2-39C7B1647322}.Release|x86.ActiveCfg = Release|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Debug|x86.Build.0 = Debug|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|x86.ActiveCfg = Release|Any CPU
+		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
