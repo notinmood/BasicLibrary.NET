@@ -43,16 +43,19 @@ namespace HiLand.Utility.Cache
         }
 
         /// <summary>
-        /// 对象获取（首先从缓存池内获取，如果获取不到那么会调用func方法）
+        /// 对象获取（首先从缓存池内获取，如果获取不到那么会调用externallyGetFunc方法）
         /// </summary>
         /// <typeparam name="T"></typeparam>
         /// <typeparam name="TResult"></typeparam>
         /// <param name="cacheKey"></param>
         /// <param name="cacheSeconds"></param>
-        /// <param name="func"></param>
-        /// <param name="t"></param>
+        /// <param name="externallyGetFunc"></param>
+        /// <param name="externallyGetFuncParam"></param>
         /// <returns></returns>
-        public static TResult Access<T, TResult>(string cacheKey, int cacheSeconds, Funcs<T, TResult> func, T t)
+        public static TResult Access<T, TResult>(string cacheKey
+            , int cacheSeconds
+            , Funcs<T, TResult> externallyGetFunc
+            , T externallyGetFuncParam)
         {
             TResult cachedObject = default(TResult);
             if (IsUseCache == true)
@@ -63,13 +66,13 @@ namespace HiLand.Utility.Cache
 
                 if (object.Equals(cachedObject, defaultValue))
                 {
-                    cachedObject = func(t);
+                    cachedObject = externallyGetFunc(externallyGetFuncParam);
                     cache.Insert(cacheKey, cachedObject, cacheSeconds);
                 }
             }
             else
             {
-                cachedObject = func(t);
+                cachedObject = externallyGetFunc(externallyGetFuncParam);
             }
 
             return cachedObject;
@@ -83,11 +86,15 @@ namespace HiLand.Utility.Cache
         /// <typeparam name="TResult"></typeparam>
         /// <param name="cacheKey"></param>
         /// <param name="cacheSeconds"></param>
-        /// <param name="func"></param>
-        /// <param name="t1"></param>
-        /// <param name="t2"></param>
+        /// <param name="externallyGetFunc"></param>
+        /// <param name="externallyGetFuncParam1"></param>
+        /// <param name="externallyGetFuncParam2"></param>
         /// <returns></returns>
-        public static TResult Access<T1, T2, TResult>(string cacheKey, int cacheSeconds, Funcs<T1, T2, TResult> func, T1 t1, T2 t2)
+        public static TResult Access<T1, T2, TResult>(string cacheKey
+            , int cacheSeconds
+            , Funcs<T1, T2, TResult> externallyGetFunc
+            , T1 externallyGetFuncParam1
+            , T2 externallyGetFuncParam2)
         {
             TResult cachedObject = default(TResult);
             if (IsUseCache == true)
@@ -98,13 +105,13 @@ namespace HiLand.Utility.Cache
 
                 if (object.Equals(cachedObject, defaultValue))
                 {
-                    cachedObject = func(t1, t2);
+                    cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2);
                     cache.Insert(cacheKey, cachedObject, cacheSeconds);
                 }
             }
             else
             {
-                cachedObject = func(t1, t2);
+                cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2);
             }
 
             return cachedObject;
@@ -119,12 +126,17 @@ namespace HiLand.Utility.Cache
         /// <typeparam name="TResult"></typeparam>
         /// <param name="cacheKey"></param>
         /// <param name="cacheSeconds"></param>
-        /// <param name="func"></param>
-        /// <param name="t1"></param>
-        /// <param name="t2"></param>
-        /// <param name="t3"></param>
+        /// <param name="externallyGetFunc"></param>
+        /// <param name="externallyGetFuncParam1"></param>
+        /// <param name="externallyGetFuncParam2"></param>
+        /// <param name="externallyGetFuncParam3"></param>
         /// <returns></returns>
-        public static TResult Access<T1, T2, T3, TResult>(string cacheKey, int cacheSeconds, Funcs<T1, T2, T3, TResult> func, T1 t1, T2 t2, T3 t3)
+        public static TResult Access<T1, T2, T3, TResult>(string cacheKey
+            , int cacheSeconds
+            , Funcs<T1, T2, T3, TResult> externallyGetFunc
+            , T1 externallyGetFuncParam1
+            , T2 externallyGetFuncParam2
+            , T3 externallyGetFuncParam3)
         {
             TResult cachedObject = default(TResult);
             if (IsUseCache == true)
@@ -135,13 +147,13 @@ namespace HiLand.Utility.Cache
 
                 if (object.Equals(cachedObject, defaultValue))
                 {
-                    cachedObject = func(t1, t2, t3);
+                    cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2, externallyGetFuncParam3);
                     cache.Insert(cacheKey, cachedObject, cacheSeconds);
                 }
             }
             else
             {
-                cachedObject = func(t1, t2, t3);
+                cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2, externallyGetFuncParam3);
             }
 
             return cachedObject;
@@ -157,13 +169,19 @@ namespace HiLand.Utility.Cache
         /// <typeparam name="TResult"></typeparam>
         /// <param name="cacheKey"></param>
         /// <param name="cacheSeconds"></param>
-        /// <param name="func"></param>
-        /// <param name="t1"></param>
-        /// <param name="t2"></param>
-        /// <param name="t3"></param>
-        /// <param name="t4"></param>
+        /// <param name="externallyGetFunc"></param>
+        /// <param name="externallyGetFuncParam1"></param>
+        /// <param name="externallyGetFuncParam2"></param>
+        /// <param name="externallyGetFuncParam3"></param>
+        /// <param name="externallyGetFuncParam4"></param>
         /// <returns></returns>
-        public static TResult Access<T1, T2, T3, T4, TResult>(string cacheKey, int cacheSeconds, Funcs<T1, T2, T3, T4, TResult> func, T1 t1, T2 t2, T3 t3, T4 t4)
+        public static TResult Access<T1, T2, T3, T4, TResult>(string cacheKey
+            , int cacheSeconds
+            , Funcs<T1, T2, T3, T4, TResult> externallyGetFunc
+            , T1 externallyGetFuncParam1
+            , T2 externallyGetFuncParam2
+            , T3 externallyGetFuncParam3
+            , T4 externallyGetFuncParam4)
         {
             TResult cachedObject = default(TResult);
             if (IsUseCache == true)
@@ -174,13 +192,13 @@ namespace HiLand.Utility.Cache
 
                 if (object.Equals(cachedObject, defaultValue))
                 {
-                    cachedObject = func(t1, t2, t3, t4);
+                    cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2, externallyGetFuncParam3, externallyGetFuncParam4);
                     cache.Insert(cacheKey, cachedObject, cacheSeconds);
                 }
             }
             else
             {
-                cachedObject = func(t1, t2, t3, t4);
+                cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2, externallyGetFuncParam3, externallyGetFuncParam4);
             }
 
             return cachedObject;
@@ -197,14 +215,21 @@ namespace HiLand.Utility.Cache
         /// <typeparam name="TResult"></typeparam>
         /// <param name="cacheKey"></param>
         /// <param name="cacheSeconds"></param>
-        /// <param name="func"></param>
-        /// <param name="t1"></param>
-        /// <param name="t2"></param>
-        /// <param name="t3"></param>
-        /// <param name="t4"></param>
-        /// <param name="t5"></param>
+        /// <param name="externallyGetFunc"></param>
+        /// <param name="externallyGetFuncParam1"></param>
+        /// <param name="externallyGetFuncParam2"></param>
+        /// <param name="externallyGetFuncParam3"></param>
+        /// <param name="externallyGetFuncParam4"></param>
+        /// <param name="externallyGetFuncParam5"></param>
         /// <returns></returns>
-        public static TResult Access<T1, T2, T3, T4, T5, TResult>(string cacheKey, int cacheSeconds, Funcs<T1, T2, T3, T4, T5, TResult> func, T1 t1, T2 t2, T3 t3, T4 t4, T5 t5)
+        public static TResult Access<T1, T2, T3, T4, T5, TResult>(string cacheKey
+            , int cacheSeconds
+            , Funcs<T1, T2, T3, T4, T5, TResult> externallyGetFunc
+            , T1 externallyGetFuncParam1
+            , T2 externallyGetFuncParam2
+            , T3 externallyGetFuncParam3
+            , T4 externallyGetFuncParam4
+            , T5 externallyGetFuncParam5)
         {
             TResult cachedObject = default(TResult);
             if (IsUseCache == true)
@@ -215,13 +240,13 @@ namespace HiLand.Utility.Cache
 
                 if (object.Equals(cachedObject, defaultValue))
                 {
-                    cachedObject = func(t1, t2, t3, t4, t5);
+                    cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2, externallyGetFuncParam3, externallyGetFuncParam4, externallyGetFuncParam5);
                     cache.Insert(cacheKey, cachedObject, cacheSeconds);
                 }
             }
             else
             {
-                cachedObject = func(t1, t2, t3, t4, t5);
+                cachedObject = externallyGetFunc(externallyGetFuncParam1, externallyGetFuncParam2, externallyGetFuncParam3, externallyGetFuncParam4, externallyGetFuncParam5);
             }
 
             return cachedObject;

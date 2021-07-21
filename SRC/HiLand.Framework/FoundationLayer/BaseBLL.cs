@@ -345,6 +345,36 @@ namespace HiLand.Framework.FoundationLayer
             return result;
         }
 
+        ///// <summary>
+        /////  获取实体对象
+        ///// </summary>
+        ///// <param name="fieldValue"></param>
+        ///// <param name="fieldName"></param>
+        ///// <param name="isForceUseNoCache">是否强制不使用缓存</param>
+        ///// <returns></returns>
+        //public virtual TModel Get<T>(T fieldValue,string fieldName="", bool isForceUseNoCache=false)
+        //{
+        //    TModel result = default(TModel);
+        //    var fieldValueString = fieldValue.ToString();
+
+        //    if (isForceUseNoCache == true)
+        //    {
+        //        result = SaveDAL.Get(fieldValueString);
+        //    }
+        //    else
+        //    {
+        //        string cacheKey = GeneralCacheKeys<TModel>.GetEntityKey(fieldValueString);
+        //        result = CacheHelper.Access<string, TModel>(cacheKey, CacheMintues, SaveDAL.Get, fieldValueString);
+        //    }
+
+        //    if (result == null)
+        //    {
+        //        result = new TModel();
+        //        result.ForceSetEmpty();
+        //    }
+        //    return result;
+        //}
+
         /// <summary>
         /// 获取总的条目
         /// </summary>
