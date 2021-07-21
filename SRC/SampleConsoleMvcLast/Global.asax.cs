@@ -1,3 +1,4 @@
+using HiLand.Utility4.MVC.Engine;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,13 @@ namespace SampleConsoleMvcLast
     {
         protected void Application_Start()
         {
+            ExtendedRazorViewEngine engine = new ExtendedRazorViewEngine();
+            engine.AddViewLocationFormat("~/Views/AA/{1}/{0}.cshtml");
+
+            ViewEngines.Engines.Clear();
+            ViewEngines.Engines.Add(engine);
+
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);

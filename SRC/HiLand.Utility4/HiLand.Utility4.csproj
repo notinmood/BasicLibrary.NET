@@ -101,6 +101,7 @@
     <Compile Include="MVC\Controls\TreeSelectControl.cs" />
     <Compile Include="MVC\Data\ControllerEx.cs" />
     <Compile Include="MVC\Data\WebViewPageEx.cs" />
+    <Compile Include="MVC\Engine\ExtendedRazorViewEngine.cs" />
     <Compile Include="MVC\HtmlHelperEx.cs" />
     <Compile Include="MVC\Log\LogMessageAttribute.cs" />
     <Compile Include="MVC\MVCHelper.cs" />

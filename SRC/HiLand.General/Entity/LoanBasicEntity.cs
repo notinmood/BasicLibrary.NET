@@ -75,8 +75,8 @@ namespace HiLand.General.Entity
             set { loanPurpose = value; }
         }
 
-        private Guid loanUserID = Guid.Empty;
-        public Guid LoanUserID
+        private int loanUserID = 0;
+        public int LoanUserID
         {
             get { return loanUserID; }
             set { loanUserID = value; }

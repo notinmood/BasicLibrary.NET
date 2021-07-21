@@ -241,7 +241,7 @@ namespace HiLand.General.DALCommon
                 }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LoanUserID"))
                 {
-                    entity.LoanUserID = reader.GetGuid(reader.GetOrdinal("LoanUserID"));
+                    entity.LoanUserID = reader.GetInt32(reader.GetOrdinal("LoanUserID"));
                 }
 
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LoanOwnerKey"))
