@@ -39,73 +39,51 @@ namespace HiLand.General.BLL
         {
             if (loanBasicInfo != null)
             {
-                PaymentTermTypes loanTermTypeLocal = PaymentTermTypes.Monthly;
-
+                PaymentTermTypes monthly = PaymentTermTypes.Monthly;
                 if (loanTermType.HasValue)
                 {
-                    loanTermTypeLocal = loanTermType.Value;
+                    monthly = loanTermType.Value;
                 }
-
-                double rate = GetRate(loanBasicInfo, loanTermTypeLocal);
-
-                int loanTermCountLocal = 0;
-                if (loanTermCount.HasValue && loanTermCount.Value > 0)
+                double rate = this.GetRate(loanBasicInfo, monthly);
+                int paymentCount = 0;
+                if (loanTermCount.HasValue && (loanTermCount.Value > 0))
                 {
-                    loanTermCountLocal = loanTermCount.Value;
+                    paymentCount = loanTermCount.Value;
                 }
                 else
                 {
-                    loanTermCountLocal = loanBasicInfo.LoanTermCount;
+                    paymentCount = loanBasicInfo.LoanTermCount;
                 }
-
-                PaymentTermTypes paymentTermType = PaymentTermTypes.Monthly;
+                PaymentTermTypes paymentCircle = PaymentTermTypes.Monthly;
                 if (loanTermType.HasValue)
                 {
-                    paymentTermType = loanTermType.Value;
+                    paymentCircle = loanTermType.Value;
                 }
-
-                double totalAmount = (double)loanBasicInfo.LoanAmount;
-
-                if (paymentStartCalculateDate.HasValue && paymentStartCalculateDate.Value != DateTimeHelper.Min)
+                double loanAmount = (double)loanBasicInfo.LoanAmount;
+                if (!paymentStartCalculateDate.HasValue || (paymentStartCalculateDate.Value == DateTimeHelper.Min))
                 {
-                    //直接使用传入的日期作为计算还款日程的开始时间
+                    paymentStartCalculateDate = new DateTime?(loanBasicInfo.LoanDate);
                 }
-                else
+                List<Payment> list = CPMLoan.GetPaymentSchedule(rate, loanAmount, paymentCount, paymentCircle, paymentStartCalculateDate.Value);
+                BaseBLL<LoanScheduleBLL, LoanScheduleEntity, LoanScheduleDAL, IDAL<LoanScheduleEntity>>.Instance.DeleteList(string.Format(" LoanGuid='{0}' ", loanBasicInfo.LoanGuid));
+                for (int i = 0; i < list.Count; i++)
                 {
-                    paymentStartCalculateDate = loanBasicInfo.LoanDate;
-                }
-
-
-                List<Payment> paymentList = CPMLoan.GetPaymentSchedule(rate, totalAmount, loanTermCountLocal, paymentTermType, paymentStartCalculateDate.Value);
-
-                //using (TransactionScope transaction = new TransactionScope(TransactionScopeOption.Required))
-                {
-                    //1.首先清空原来的本贷款的还款日程
-                    LoanScheduleBLL.Instance.DeleteList(string.Format(" LoanGuid='{0}' ", loanBasicInfo.LoanGuid));
-
-                    //2.添加新的还款日程
-                    for (int i = 0; i < paymentList.Count; i++)
+                    Payment payment = list[i];
+                    LoanScheduleEntity model = new LoanScheduleEntity
                     {
-                        Payment payment = paymentList[i];
-                        LoanScheduleEntity scheduleEntity = new LoanScheduleEntity();
-
-                        scheduleEntity.LoanGuid = loanBasicInfo.LoanGuid;
-                        scheduleEntity.Interest = (decimal)payment.Interest;
-                        scheduleEntity.ScheduleNo = i.ToString().PadLeft(3, '0');
-                        scheduleEntity.ScheduleGuid = Guid.NewGuid();
-                        scheduleEntity.Principal = (decimal)payment.Principal;
-                        scheduleEntity.PrincipalBalance = (decimal)payment.PrincipalBalance;
-                        scheduleEntity.PaymentDate = payment.PaymentDate;
-                        scheduleEntity.ScheduleTimes = 1;
-                        scheduleEntity.ScheduleParentGuid = Guid.Empty;
-
-                        LoanScheduleBLL.Instance.Create(scheduleEntity);
-                    }
-
-                    //transaction.Complete();
+                        LoanGuid = loanBasicInfo.LoanGuid,
+                        Interest = (decimal)payment.Interest,
+                        ScheduleNo = i.ToString().PadLeft(3, '0'),
+                        ScheduleGuid = Guid.NewGuid(),
+                        Principal = (decimal)payment.Principal,
+                        PrincipalBalance = (decimal)payment.PrincipalBalance,
+                        PaymentDate = payment.PaymentDate,
+                        ScheduleTimes = 1,
+                        ScheduleParentGuid = Guid.Empty
+                    };
+                    BaseBLL<LoanScheduleBLL, LoanScheduleEntity, LoanScheduleDAL, IDAL<LoanScheduleEntity>>.Instance.Create(model);
                 }
             }
-
             return true;
         }
 

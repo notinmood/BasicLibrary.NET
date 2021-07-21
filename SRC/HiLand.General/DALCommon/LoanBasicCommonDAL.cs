@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using HiLand.Framework.FoundationLayer;
 using HiLand.General.Entity;
+using HiLand.General.Enums;
 using HiLand.Utility.Data;
 using HiLand.Utility.DataBase;
 using HiLand.Utility.Enums;
@@ -10,9 +11,9 @@ using HiLand.Utility.Finance;
 
 namespace HiLand.General.DALCommon
 {
-    public class LoanBasicCommonDAL< TTransaction, TConnection, TCommand, TDataReader, TParameter> 
-        : BaseDAL<LoanBasicEntity,  TTransaction, TConnection, TCommand, TDataReader, TParameter>
-        where TConnection : class,IDbConnection, new()
+    public class LoanBasicCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
+        : BaseDAL<LoanBasicEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>
+        where TConnection : class, IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction
         where TDataReader : class, IDataReader
@@ -65,44 +66,47 @@ namespace HiLand.General.DALCommon
             {
                 entity.LoanGuid = GuidHelper.NewGuid();
             }
-
-            string commandText = @"Insert Into [GeneralLoanBasic] (
-			        [LoanGuid],
-			        [LoanType],
-			        [LoanAmount],
-			        [LoanTermType],
-			        [LoanInterest],
-			        [LoanTermCount],
-			        [LoanPurpose],
-			        [LoanUserID],
-			        [LoanDate],
-			        [LoanStatus],
-			        [CheckUserID],
-			        [CheckDate],
-			        [PropertyNames],
-			        [PropertyValues]
-                ) 
-                Values (
-			        @LoanGuid,
-			        @LoanType,
-			        @LoanAmount,
-			        @LoanTermType,
-			        @LoanInterest,
-			        @LoanTermCount,
-			        @LoanPurpose,
-			        @LoanUserID,
-			        @LoanDate,
-			        @LoanStatus,
-			        @CheckUserID,
-			        @CheckDate,
-			        @PropertyNames,
-			        @PropertyValues
-                )";
-
-            TParameter[] sqlParas = PrepareParasAll(entity);
-
-            bool isSuccessful = HelperExInstance.ExecuteSingleRowNonQuery(commandText, sqlParas);
-            return isSuccessful;
+            string singleRowCommandText = string.Format(@"INSERT INTO [dbo].[GeneralLoanBasic]
+           ([LoanGuid]
+           ,[LoanType]
+           ,[LoanAmount]
+           ,[LoanTermType]
+           ,[LoanInterest]
+           ,[LoanTermCount]
+           ,[LoanPurpose]
+           ,[LoanOwnerKey]
+           ,[LoanOwnerType]
+           ,[LoanOwnerAddon]
+           ,[LoanDate]
+           ,[LoanStatus]
+           ,[CheckUserID]
+           ,[CheckDate]
+           ,[ReadDate]
+           ,[ReadUserID]
+           ,[PropertyNames]
+           ,[PropertyValues])
+     VALUES
+           (
+            {0}LoanGuid
+           ,{0}LoanType
+           ,{0}LoanAmount,
+           ,{0}LoanTermType
+           ,{0}LoanInterest
+           ,{0}LoanTermCount
+           ,{0}LoanPurpose
+           ,{0}LoanOwnerKey
+           ,{0}LoanOwnerType
+           ,{0}LoanOwnerAddon
+           ,{0}LoanDate
+           ,{0}LoanStatus
+           ,{0}CheckUserID
+           ,{0}CheckDate
+           ,{0}ReadDate
+           ,{0}ReadUserID
+           ,{0}PropertyNames
+           ,{0}PropertyValues)", this.ParameterNamePrefix);
+            TParameter[] commandParameters = this.PrepareParasAll(entity);
+            return BaseComputerDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>.HelperExInstance.ExecuteSingleRowNonQuery(singleRowCommandText, commandParameters);
         }
 
         /// <summary>
@@ -120,11 +124,15 @@ namespace HiLand.General.DALCommon
 					[LoanInterest] = @LoanInterest,
 					[LoanTermCount] = @LoanTermCount,
 					[LoanPurpose] = @LoanPurpose,
-					[LoanUserID] = @LoanUserID,
+					[LoanOwnerKey] = @LoanOwnerKey,
+                    [LoanOwnerType] = @LoanOwnerType,
+                    [LoanOwnerAddon] = @LoanOwnerAddon,
 					[LoanDate] = @LoanDate,
 					[LoanStatus] = @LoanStatus,
 					[CheckUserID] = @CheckUserID,
 					[CheckDate] = @CheckDate,
+                    [ReadDate] = @ReadDate,
+                    [ReadUserID] = @ReadUserID,
 					[PropertyNames] = @PropertyNames,
 					[PropertyValues] = @PropertyValues
              Where [LoanGuid] = @LoanGuid";
@@ -167,23 +175,26 @@ namespace HiLand.General.DALCommon
         /// <param name="paraList"></param>
         protected override void InnerPrepareParasAll(LoanBasicEntity entity, ref List<TParameter> paraList)
         {
-            List<TParameter> list = new List<TParameter>() 
-            {
-			    GenerateParameter("LoanGuid",entity.LoanGuid== Guid.Empty?Guid.NewGuid():entity.LoanGuid),
-			    GenerateParameter("LoanType",(int)entity.LoanType),
-			    GenerateParameter("LoanAmount",entity.LoanAmount),
-			    GenerateParameter("LoanTermType",(int)entity.LoanTermType),
-			    GenerateParameter("LoanInterest",entity.LoanInterest),
-			    GenerateParameter("LoanTermCount",entity.LoanTermCount),
-			    GenerateParameter("LoanPurpose",entity.LoanPurpose??string.Empty),
-			    GenerateParameter("LoanUserID",entity.LoanUserID),
-			    GenerateParameter("LoanDate",entity.LoanDate),
-			    GenerateParameter("LoanStatus",(int)entity.LoanStatus),
-			    GenerateParameter("CheckUserID",entity.CheckUserID),
-			    GenerateParameter("CheckDate",entity.CheckDate)
+            List<TParameter> collection = new List<TParameter> {
+                base.GenerateParameter<int>("LoanID", entity.LoanID),
+                base.GenerateParameter<Guid>("LoanGuid", entity.LoanGuid),
+                base.GenerateParameter<LoanTypes>("LoanType", entity.LoanType),
+                base.GenerateParameter<decimal>("LoanAmount", entity.LoanAmount),
+                base.GenerateParameter<PaymentTermTypes>("LoanTermType", entity.LoanTermType),
+                base.GenerateParameter<decimal>("LoanInterest", entity.LoanInterest),
+                base.GenerateParameter<int>("LoanTermCount", entity.LoanTermCount),
+                base.GenerateParameter<string>("LoanPurpose", entity.LoanPurpose ?? string.Empty),
+                base.GenerateParameter<string>("LoanOwnerKey", entity.LoanOwnerKey ?? string.Empty),
+                base.GenerateParameter<LoanOwnerTypes>("LoanOwnerType", entity.LoanOwnerType),
+                base.GenerateParameter<string>("LoanOwnerAddon", entity.LoanOwnerAddon ?? string.Empty),
+                base.GenerateParameter<DateTime>("LoanDate", entity.LoanDate),
+                base.GenerateParameter<LoanStatuses>("LoanStatus", entity.LoanStatus),
+                base.GenerateParameter<Guid>("CheckUserID", entity.CheckUserID),
+                base.GenerateParameter<DateTime>("CheckDate", entity.CheckDate),
+                base.GenerateParameter<DateTime>("ReadDate", entity.ReadDate),
+                base.GenerateParameter<Guid>("ReadUserID", entity.ReadUserID)
             };
-
-            paraList.AddRange(list);
+            paraList.AddRange(collection);
         }
 
         /// <summary>
@@ -232,6 +243,19 @@ namespace HiLand.General.DALCommon
                 {
                     entity.LoanUserID = reader.GetGuid(reader.GetOrdinal("LoanUserID"));
                 }
+
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LoanOwnerKey"))
+                {
+                    entity.LoanOwnerKey = reader.GetString(reader.GetOrdinal("LoanOwnerKey"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LoanOwnerType"))
+                {
+                    entity.LoanOwnerType = (LoanOwnerTypes)reader.GetInt32(reader.GetOrdinal("LoanOwnerType"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LoanOwnerAddon"))
+                {
+                    entity.LoanOwnerAddon = reader.GetString(reader.GetOrdinal("LoanOwnerAddon"));
+                }
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LoanDate"))
                 {
                     entity.LoanDate = reader.GetDateTime(reader.GetOrdinal("LoanDate"));
@@ -257,6 +281,15 @@ namespace HiLand.General.DALCommon
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "LoanUserRealID"))
                 {
                     entity.LoanUserRealID = reader.GetGuid(reader.GetOrdinal("LoanUserRealID"));
+                }
+
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ReadDate"))
+                {
+                    entity.ReadDate = reader.GetDateTime(reader.GetOrdinal("ReadDate"));
+                }
+                if (DataReaderHelper.IsExistFieldAndNotNull(reader, "ReadUserID"))
+                {
+                    entity.ReadUserID = reader.GetGuid(reader.GetOrdinal("ReadUserID"));
                 }
 
                 if (DataReaderHelper.IsExistFieldAndNotNull(reader, "PropertyNames"))

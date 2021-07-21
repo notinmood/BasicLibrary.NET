@@ -150,7 +150,8 @@
     <Compile Include="Entity\SimpleProductCategoryEntity.cs" />
     <Compile Include="Entity\SimpleProductEntity.cs" />
     <Compile Include="Entity\ImageEntity.cs" />
-    <Compile Include="GeneralEnum.cs" />
+    <Compile Include="Enums\LoanOwnerTypes.cs" />
+    <Compile Include="Enums\GeneralEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +168,7 @@
     <Content Include="ReaderMe.txt" />
     <Content Include="SettingList.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

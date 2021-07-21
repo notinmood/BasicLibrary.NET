@@ -13,6 +13,11 @@ namespace HiLand.General.BLL
     /// </summary>
     public class BankBLL : BaseBLL<BankBLL, BankEntity, BankDAL, IBankDAL>
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public override bool Create(BankEntity model)
         {
             bool isSuccessful = base.Create(model);
@@ -33,15 +38,14 @@ namespace HiLand.General.BLL
         /// <returns></returns>
         public override bool Update(BankEntity model)
         {
-            BankEntity originalModel = Get(model.BankGuid, true);
-            bool isSuccessful = base.Update(model);
-            if (isSuccessful == true && model.IsPrimary == Logics.True)
+            BankEntity originalEntity = this.Get(model.BankGuid, true);
+            bool flag = base.Update(model);
+            if (flag && (model.IsPrimary == Logics.True))
             {
-                UpdatePrimaryData(model);
+                this.UpdatePrimaryData(model);
             }
-
-            OperateLogBLL.RecordOperateLog(string.Format("修改银行账户信息{0}", isSuccessful == true ? "成功" : "失败"), "Bank", model.BankGuid.ToString(), model.User.UserNameDisplay, model, originalModel);
-            return isSuccessful;
+            OperateLogBLL.RecordOperateLog<BankEntity>(string.Format("修改银行账户信息{0}", flag ? "成功" : "失败"), "Bank", model.BankGuid.ToString(), model.User.UserNameDisplay, model, originalEntity);
+            return flag;
         }
 
         /// <summary>

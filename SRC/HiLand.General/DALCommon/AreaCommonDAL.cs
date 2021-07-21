@@ -19,7 +19,7 @@ namespace HiLand.General.DALCommon
     /// <typeparam name="TParameter"></typeparam>
     public class AreaCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
         : BaseDAL<AreaEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>
-        where TConnection : class,IDbConnection, new()
+        where TConnection : class, IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction
         where TDataReader : class, IDataReader
@@ -139,15 +139,15 @@ namespace HiLand.General.DALCommon
             List<TParameter> list = new List<TParameter>()
             {
                 GenerateParameter("AreaID",entity.AreaID),
-			    GenerateParameter("AreaCode",entity.AreaCode?? String.Empty),
-			    GenerateParameter("AreaName",entity.AreaName?? String.Empty),
-			    GenerateParameter("AreaLevel",entity.AreaLevel),
-			    GenerateParameter("TelephoneCode",entity.TelephoneCode?? String.Empty),
-			    GenerateParameter("ZipCode",entity.ZipCode?? String.Empty),
-			    GenerateParameter("CanUsable",entity.CanUsable),
-			    GenerateParameter("IsDisplay",entity.IsDisplay),
-			    GenerateParameter("AreaGroup",entity.AreaGroup?? String.Empty),
-			    GenerateParameter("Nation",entity.Nation?? String.Empty)
+                GenerateParameter("AreaCode",entity.AreaCode?? String.Empty),
+                GenerateParameter("AreaName",entity.AreaName?? String.Empty),
+                GenerateParameter("AreaLevel",entity.AreaLevel),
+                GenerateParameter("TelephoneCode",entity.TelephoneCode?? String.Empty),
+                GenerateParameter("ZipCode",entity.ZipCode?? String.Empty),
+                GenerateParameter("CanUsable",entity.CanUsable),
+                GenerateParameter("IsDisplay",entity.IsDisplay),
+                GenerateParameter("AreaGroup",entity.AreaGroup?? String.Empty),
+                GenerateParameter("Nation",entity.Nation?? String.Empty)
             };
 
             paraList.AddRange(list);

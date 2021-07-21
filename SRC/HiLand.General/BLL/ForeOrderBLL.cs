@@ -25,6 +25,11 @@ namespace HiLand.General.BLL
             return isSuccessful;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public override bool Update(ForeOrderEntity model)
         {
             ForeOrderEntity originalModel = Get(model.ForeOrderGuid, true);

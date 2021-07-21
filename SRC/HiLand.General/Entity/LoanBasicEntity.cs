@@ -4,6 +4,9 @@ using HiLand.Framework.BusinessCore;
 using HiLand.Framework.BusinessCore.BLL;
 using HiLand.Framework.FoundationLayer;
 using HiLand.Framework.FoundationLayer.Attributes;
+using HiLand.General.BLL;
+using HiLand.General.DAL;
+using HiLand.General.Enums;
 using HiLand.Utility.Data;
 using HiLand.Utility.Finance;
 
@@ -77,6 +80,69 @@ namespace HiLand.General.Entity
         {
             get { return loanUserID; }
             set { loanUserID = value; }
+        }
+
+        private string loanOwnerAddon = string.Empty;
+        private string loanOwnerDisplay = string.Empty;
+        private string loanOwnerKey = string.Empty;
+        public string LoanOwnerAddon
+        {
+            get
+            {
+                return this.loanOwnerAddon;
+            }
+            set
+            {
+                this.loanOwnerAddon = value;
+            }
+        }
+
+        public string LoanOwnerDisplay
+        {
+            get
+            {
+                if (this.loanOwnerDisplay == string.Empty)
+                {
+                    LoanOwnerTypes loanOwnerType = this.LoanOwnerType;
+                    if ((loanOwnerType != LoanOwnerTypes.Person) && (loanOwnerType == LoanOwnerTypes.Enterprise))
+                    {
+                        EnterpriseEntity entity = BaseBLL<EnterpriseBLL, EnterpriseEntity, EnterpriseDAL, IDAL<EnterpriseEntity>>.Instance.Get(GuidHelper.TryConvert(this.LoanOwnerKey));
+                        this.loanOwnerDisplay = entity.CompanyName;
+                    }
+                    else
+                    {
+                        BusinessUser user = BusinessUserBLL.Get(GuidHelper.TryConvert(this.LoanOwnerKey));
+                        this.loanOwnerDisplay = user.UserNameDisplay;
+                    }
+                }
+                return this.loanOwnerDisplay;
+            }
+        }
+
+        public string LoanOwnerKey
+        {
+            get
+            {
+                return this.loanOwnerKey;
+            }
+            set
+            {
+                this.loanOwnerKey = value;
+            }
+        }
+
+        private LoanOwnerTypes loanOwnerType = LoanOwnerTypes.Person;
+
+        public LoanOwnerTypes LoanOwnerType
+        {
+            get
+            {
+                return this.loanOwnerType;
+            }
+            set
+            {
+                this.loanOwnerType = value;
+            }
         }
 
         private DateTime loanDate = DateTimeHelper.Min;

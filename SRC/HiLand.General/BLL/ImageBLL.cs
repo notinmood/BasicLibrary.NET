@@ -54,6 +54,11 @@ namespace HiLand.General.BLL
             return result;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public override bool Delete(ImageEntity model)
         {
             if (model == null)

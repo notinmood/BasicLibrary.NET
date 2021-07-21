@@ -21,23 +21,29 @@ namespace HiLand.General.BLL
         /// </summary>
         public event CommonEventHandle<DataForChange<BasicSettingEntity>> BasicSettingChanged;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         public override bool Update(BasicSettingEntity model)
         {
-            BasicSettingEntity originalEntity = null;
+            BasicSettingEntity entity = null;
             if (this.BasicSettingChanged != null)
             {
-                originalEntity = BasicSettingBLL.Instance.Get(model.SettingID,true);
+                entity = BaseBLL<BasicSettingBLL, BasicSettingEntity, BasicSettingDAL, IBasicSettingDAL>.Instance.Get(model.SettingID, true);
             }
-
-            bool isSuccessful = base.Update(model);
-            if (isSuccessful == true && this.BasicSettingChanged!=null)
+            bool flag = base.Update(model);
+            if (flag && (this.BasicSettingChanged != null))
             {
-                DataForChange<BasicSettingEntity> dataForChange= new DataForChange<BasicSettingEntity>();
-                dataForChange.NewData= model;
-                dataForChange.OriginalData= originalEntity;
-                BasicSettingChanged(this, dataForChange);
+                DataForChange<BasicSettingEntity> args = new DataForChange<BasicSettingEntity>
+                {
+                    NewData = model,
+                    OriginalData = entity
+                };
+                this.BasicSettingChanged(this, args);
             }
-            return isSuccessful;
+            return flag;
         }
 
         /// <summary>
