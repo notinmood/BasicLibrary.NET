@@ -40,12 +40,7 @@ namespace HiLand.Utility.DataBase
         {
             get
             {
-                string connectionString = Config.ConnectionString;
-                if (string.IsNullOrEmpty(connectionString))
-                {
-                    connectionString = ConfigurationManager.AppSettings["mainConnection"];
-                }
-                return connectionString;
+                return Config.DefaultConnectionString;
             }
         }
 

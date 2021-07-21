@@ -12,3 +12,5 @@
 		<add key="doc" value="word" />
 	</contentTypeSection>
 5.isRecordOperateLog 是否记录操作日志 （Setting\Config.cs）
+6.defaultConnectionStringName 缺省的数据库连接字符串名称，可选（Setting\Config.cs）
+	如果不指定这个名称，那么系统使用的缺省数据库连接名称为 mainConnection

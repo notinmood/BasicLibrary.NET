@@ -11,6 +11,14 @@ using HiLand.Utility.Finance;
 
 namespace HiLand.General.DALCommon
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TTransaction"></typeparam>
+    /// <typeparam name="TConnection"></typeparam>
+    /// <typeparam name="TCommand"></typeparam>
+    /// <typeparam name="TDataReader"></typeparam>
+    /// <typeparam name="TParameter"></typeparam>
     public class LoanBasicCommonDAL<TTransaction, TConnection, TCommand, TDataReader, TParameter>
         : BaseDAL<LoanBasicEntity, TTransaction, TConnection, TCommand, TDataReader, TParameter>
         where TConnection : class, IDbConnection, new()
@@ -89,7 +97,7 @@ namespace HiLand.General.DALCommon
            (
             {0}LoanGuid
            ,{0}LoanType
-           ,{0}LoanAmount,
+           ,{0}LoanAmount
            ,{0}LoanTermType
            ,{0}LoanInterest
            ,{0}LoanTermCount

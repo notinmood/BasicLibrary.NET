@@ -205,27 +205,27 @@ namespace HiLand.General.Entity
             }
         }
 
-        public BusinessUser loadUserReal = null;
+        private BusinessUser loanUserReal = null;
         /// <summary>
         /// 贷款人信息（如果是企业用户，显示第一个企业负责人）
         /// </summary>
-        public BusinessUser LoadUserReal
+        public BusinessUser LoanUserReal
         {
             get
             {
-                if (this.loadUserReal == null)
+                if (this.loanUserReal == null)
                 {
                     if (usersInEnterprise == null || usersInEnterprise.Count == 0)
                     {
-                        loadUserReal = BusinessUser.Empty;
+                        loanUserReal = BusinessUser.Empty;
                     }
                     else
                     {
-                        loadUserReal = usersInEnterprise[0];
+                        loanUserReal = usersInEnterprise[0];
                     }
                 }
 
-                return this.loadUserReal;
+                return this.loanUserReal;
             }
         }
 
@@ -239,7 +239,7 @@ namespace HiLand.General.Entity
             {
                 if (string.IsNullOrEmpty(this.loanUserRealName))
                 {
-                    loanUserRealName = LoadUserReal.UserNameDisplay;
+                    loanUserRealName = LoanUserReal.UserNameDisplay;
                 }
 
                 return loanUserRealName;
@@ -257,7 +257,7 @@ namespace HiLand.General.Entity
             {
                 if (loanUserRealID == Guid.Empty)
                 {
-                    loanUserRealID = LoadUserReal.UserGuid;
+                    loanUserRealID = LoanUserReal.UserGuid;
                 }
 
                 return loanUserRealID;

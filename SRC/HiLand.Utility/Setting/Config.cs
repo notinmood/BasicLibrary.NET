@@ -11,30 +11,59 @@ namespace HiLand.Utility.Setting
     public static class Config
     {
         #region 数据库连接字符串
-        private static string connectionString = null;
+        private static string defaultConnectionString = null;
         /// <summary>
         /// 数据库连接字符串
         /// </summary>
-        public static string ConnectionString
+        public static string DefaultConnectionString
         {
             get
             {
-                if (CacheConnectionStrings == true)
+                if (defaultConnectionString == null)
                 {
-                    if (connectionString == null)
-                    {
-                        connectionString = ConfigurationManager.ConnectionStrings["mainConnection"].ConnectionString;
-                    }
-                    return connectionString;
+                    defaultConnectionString = GetConnectionString();
                 }
-                else
-                {
-                    return ConfigurationManager.ConnectionStrings["mainConnection"].ConnectionString;
-                }
+                return defaultConnectionString;
+
+                //TODO:需要加入缓存的判断和使用
+                //if (CacheConnectionStrings == true)
+                //{
+                //    if (connectionString == null)
+                //    {
+                //        connectionString = GetConnectionString();
+                //    }
+                //    return connectionString;
+                //}
+                //else
+                //{
+                //    if (connectionString == null)
+                //    {
+                //        connectionString = GetConnectionString();
+                //    }
+                //    return connectionString;
+                //}
             }
-            set
+        }
+
+        private static string defaultConnectionStringName = string.Empty;
+        /// <summary>
+        /// 系统缺省的连接字符串名称
+        /// </summary>
+        public static string DefaultConnectionStringName
+        {
+            get
             {
-                connectionString = value;
+                if (string.IsNullOrEmpty(defaultConnectionStringName))
+                {
+                    defaultConnectionStringName = Config.GetAppSetting<string>("defaultConnectionStringName");
+                }
+
+                if (string.IsNullOrEmpty(defaultConnectionStringName))
+                {
+                    defaultConnectionStringName = "mainConnection";
+                }
+
+                return defaultConnectionStringName;
             }
         }
 
@@ -65,7 +94,14 @@ namespace HiLand.Utility.Setting
             }
         }
 
-
+        /// <summary>
+        /// 获取系统缺省的连接字符串
+        /// </summary>
+        /// <returns></returns>
+        public static string GetConnectionString()
+        {
+            return GetConnectionString(DefaultConnectionStringName);
+        }
 
         /// <summary>
         /// 获取某个指定名称的数据库连接字符串
@@ -74,7 +110,16 @@ namespace HiLand.Utility.Setting
         /// <returns></returns>
         public static string GetConnectionString(string connectionStringName)
         {
-            return ConfigurationManager.ConnectionStrings[connectionStringName].ConnectionString;
+            var conn = ConfigurationManager.ConnectionStrings[connectionStringName];
+
+            if (conn == null)
+            {
+                return string.Empty;
+            }
+            else
+            {
+                return conn.ConnectionString;
+            }
         }
         #endregion
 
