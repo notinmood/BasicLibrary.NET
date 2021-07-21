@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace HiLand.Utility.Algorithm.Sort
+﻿namespace HiLand.Utility.Algorithm.Sort
 {
     /// <summary>
     /// 选择排序
     /// </summary>
-   public class SelectionSorter
+    public class SelectionSorter
     {
         private int min;
        /// <summary>

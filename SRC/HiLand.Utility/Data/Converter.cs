@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HiLand.Utility.Enums;
+using HiLand.Utility.Reflection;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,8 +8,6 @@ using System.Globalization;
 using System.IO;
 using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
-using HiLand.Utility.Enums;
-using HiLand.Utility.Reflection;
 
 namespace HiLand.Utility.Data
 {

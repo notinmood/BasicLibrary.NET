@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Data.SQLite;
+﻿using System.Data.SQLite;
 
 namespace HiLand.Utility.DataBase
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SQLiteGeneral : CommonHelperEx<SQLiteTransaction, SQLiteConnection, SQLiteCommand, SQLiteDataReader, SQLiteParameter>
     {
 

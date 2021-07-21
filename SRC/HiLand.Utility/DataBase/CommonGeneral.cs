@@ -7,8 +7,16 @@ using HiLand.Utility.Pattern;
 
 namespace HiLand.Utility.DataBase
 {
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="TTransaction"></typeparam>
+    /// <typeparam name="TConnection"></typeparam>
+    /// <typeparam name="TCommand"></typeparam>
+    /// <typeparam name="TDataReader"></typeparam>
+    /// <typeparam name="TParameter"></typeparam>
     public class CommonGeneral<TTransaction, TConnection, TCommand, TDataReader, TParameter>
-        where TConnection : class,IDbConnection, new()
+        where TConnection : class, IDbConnection, new()
         where TCommand : IDbCommand, new()
         where TTransaction : IDbTransaction
         where TDataReader : class, IDataReader
@@ -84,7 +92,7 @@ namespace HiLand.Utility.DataBase
         /// <param name="sqlParas"></param>
         /// <param name="loadEntityFunction">通过IDataReader组装业务实体的方法</param>
         /// <returns></returns>
-        public List<T> GetEntityList<T>(string commandText,TParameter[] sqlParas, Funcs<IDataReader, T> loadEntityFunction)
+        public List<T> GetEntityList<T>(string commandText, TParameter[] sqlParas, Funcs<IDataReader, T> loadEntityFunction)
         {
             List<T> list = new List<T>();
             using (TDataReader reader = HelperExInstance.ExecuteReader(commandText, sqlParas))

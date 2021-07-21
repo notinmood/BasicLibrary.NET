@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HiLand.Utility.Enums;
+﻿using HiLand.Utility.Enums;
 using HiLand.Utility.Setting;
+using System;
 
 namespace HiLand.Utility.Data
 {

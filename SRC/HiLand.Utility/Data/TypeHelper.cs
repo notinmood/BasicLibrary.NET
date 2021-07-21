@@ -1,7 +1,6 @@
-﻿using System;
+﻿using HiLand.Utility.Reflection;
+using System;
 using System.Collections.Generic;
-using System.Text;
-using HiLand.Utility.Reflection;
 
 namespace HiLand.Utility.Data
 {

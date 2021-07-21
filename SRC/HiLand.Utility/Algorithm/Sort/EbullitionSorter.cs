@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace HiLand.Utility.Algorithm.Sort
+﻿namespace HiLand.Utility.Algorithm.Sort
 {
     /// <summary>
     /// 冒泡排序
     /// </summary>
-   public class EbullitionSorter
+    public class EbullitionSorter
     {
        /// <summary>
         /// 冒泡排序

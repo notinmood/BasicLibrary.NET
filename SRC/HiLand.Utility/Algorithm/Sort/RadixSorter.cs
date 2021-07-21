@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace HiLand.Utility.Algorithm.Sort
 {
     /// <summary>
     /// 基数排序
     /// </summary>
-   public class RadixSorter
+    public class RadixSorter
     {
         /// <summary>
         /// 基数排序

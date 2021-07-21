@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using HiLand.Utility.Enums;
+using System.Collections.Generic;
 using System.Data;
 using System.Text;
-using HiLand.Utility.Enums;
 
 namespace HiLand.Utility.DataBase
 {

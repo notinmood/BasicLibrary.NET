@@ -69,6 +69,7 @@ namespace HiLand.Utility.Data
         /// </summary>
         public static string PostCodeFormat = @"[1-9]\d{5}(?!\d)";
         #endregion
+
         /* 
         匹配特定数字：
         ^[1-9]\d*$　 　 //匹配正整数

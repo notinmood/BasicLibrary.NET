@@ -15,6 +15,9 @@ using System.Text;
 
 namespace HiLand.Utility.DataBase
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CPQuery
     {
         /// <summary>

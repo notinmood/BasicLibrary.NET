@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Data;
 
 namespace HiLand.Utility.DataBase
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class DataReaderHelper
     {
         /// <summary>

@@ -1,7 +1,6 @@
-﻿using System;
+﻿using HiLand.Utility.Enums.OP;
+using System;
 using System.Collections.Generic;
-using System.Reflection;
-using HiLand.Utility.Enums.OP;
 
 namespace HiLand.Utility.Data
 {

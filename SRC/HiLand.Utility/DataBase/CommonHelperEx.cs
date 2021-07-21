@@ -1,6 +1,6 @@
-﻿using System.Data;
-using HiLand.Utility.Pattern;
+﻿using HiLand.Utility.Pattern;
 using HiLand.Utility.Setting;
+using System.Data;
 
 namespace HiLand.Utility.DataBase
 {

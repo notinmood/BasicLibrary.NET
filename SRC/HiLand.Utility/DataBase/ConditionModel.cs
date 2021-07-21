@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using HiLand.Utility.Enums;
+﻿using HiLand.Utility.Enums;
+using System;
 
 namespace HiLand.Utility.DataBase
 {
+    /// <summary>
+    /// 
+    /// </summary>
     internal class ConditionModel
     {
         public string FieldName { get; set; }

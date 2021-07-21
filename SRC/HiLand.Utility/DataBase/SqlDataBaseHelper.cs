@@ -1,10 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Data;
 
 namespace HiLand.Utility.DataBase
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SqlDataBaseHelper
     {
         #region 1.数据库中数据类型与DotNet中的数据类型的互转

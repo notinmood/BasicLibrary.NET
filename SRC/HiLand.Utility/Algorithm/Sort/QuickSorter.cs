@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace HiLand.Utility.Algorithm.Sort
+﻿namespace HiLand.Utility.Algorithm.Sort
 {
     /// <summary>
     /// 快速排序
     /// </summary>
-   public class QuickSorter
+    public class QuickSorter
     {
         private void swap(ref int l, ref int r)
         {

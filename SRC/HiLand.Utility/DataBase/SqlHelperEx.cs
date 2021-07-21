@@ -1,6 +1,4 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using HiLand.Utility.Setting;
+﻿using System.Data.SqlClient;
 
 namespace HiLand.Utility.DataBase
 {
