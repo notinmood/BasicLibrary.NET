@@ -2,3 +2,11 @@
 ===============================
 1、SQLMode: SQL语句的模式（标准sql语句、或者其他单独某数据库厂商的模式，可选，默认值为stand-SQL）(MVC\Controls\QueryControl.cs)
 2、mvcControlCssPrefix：MVC空间的Css名称前缀 （MVC\Controls\BaseControl.cs）
+
+3、（MVC\Engine\ExtendedRazorViewEngine.cs）
+   ViewSearchPath.Full.x    完全视图搜索路径（x可以是任何值，可以有多条，但x不要重复）
+   ViewSearchPath.Partial.y 部分视图搜索路径（y可以是任何值，可以有多条，但y不要重复）
+
+   例如 
+   <add  key="ViewSearchPath.Full.1" value="~/Views/AA/{1}/{0}.cshtml"/>
+   <add  key="ViewSearchPath.Full.2" value="~/Views/BB/{1}/{0}.cshtml"/>

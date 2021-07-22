@@ -14,10 +14,9 @@ namespace SampleConsoleMvcLast
         protected void Application_Start()
         {
             ExtendedRazorViewEngine engine = new ExtendedRazorViewEngine();
-            engine.AddViewLocationFormat("~/Views/AA/{1}/{0}.cshtml");
+            engine.AddViewLocationFormat("~/Views/CC/{1}/{0}.cshtml");
 
-            ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(engine);
+            engine.Act();
 
 
             AreaRegistration.RegisterAllAreas();

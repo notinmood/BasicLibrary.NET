@@ -20,11 +20,23 @@ namespace HiLand.Utility.Algorithm
             return currentValue / totalValue * 100;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="percent"></param>
+        /// <param name="totalValue"></param>
+        /// <returns></returns>
         public static double GetRealValue(double percent,double totalValue)
         {
             return totalValue * percent / 100;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="percent"></param>
+        /// <param name="totalValue"></param>
+        /// <returns></returns>
         public static double GetRestValue(double percent, double totalValue)
         {
             return totalValue - GetRealValue(percent, totalValue);

@@ -163,8 +163,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\AA\Home\bar.cshtml" />
-    <Content Include="Views\Home\bar.cshtml" />
+    <Content Include="Views\AA\Home\-bar.cshtml" />
+    <Content Include="Views\Home\_bar.cshtml" />
+    <Content Include="Views\BB\Home\bar.cshtml" />
+    <Content Include="Views\CC\Home\bar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

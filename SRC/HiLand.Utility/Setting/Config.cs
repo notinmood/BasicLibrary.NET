@@ -53,11 +53,13 @@ namespace HiLand.Utility.Setting
         {
             get
             {
+                //1、先从web.config配置内读取
                 if (string.IsNullOrEmpty(defaultConnectionStringName))
                 {
                     defaultConnectionStringName = Config.GetAppSetting<string>("defaultConnectionStringName");
                 }
 
+                //2、如果配置文件内没有设置，则使用缺省的连接名称
                 if (string.IsNullOrEmpty(defaultConnectionStringName))
                 {
                     defaultConnectionStringName = "mainConnection";
