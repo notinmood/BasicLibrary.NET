@@ -7,6 +7,9 @@ using HiLand.Utility.Data;
 
 namespace HiLand.Utility.AOP.Interceptor
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class SQLInjectionBeforeSaveInterceptor : IInterceptor
     {
         public void Intercept(IInvocation invocation)
@@ -32,6 +35,9 @@ namespace HiLand.Utility.AOP.Interceptor
         }
     }
 
+    /// <summary>
+    /// 
+    /// </summary>
     public class SQLInjectionAfterLoadInterceptor : IInterceptor
     {
         public void Intercept(IInvocation invocation)

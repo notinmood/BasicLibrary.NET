@@ -27,7 +27,9 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
         private int m_lastIndex;
         private Slot[] m_slots;
 
-
+        /// <summary>
+        /// 
+        /// </summary>
         public HashStringSet()
         {
             this.m_lastIndex = 0;
@@ -35,6 +37,11 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
             this.m_freeList = -1;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public bool Add(String value)
         {
             int freeList;
@@ -98,6 +105,9 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
             this.m_buckets = numArray;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public void Clear()
         {
             if (this.m_lastIndex > 0)
@@ -110,6 +120,11 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
             }
         }
 
+        /// <summary>
+        /// 判断是否包含
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Contains(String item)
         {
             if (this.m_buckets != null)
@@ -139,6 +154,11 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
             return InternalGetHashCode(item, 0, item.Length);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns></returns>
         public bool Remove(String item)
         {
             if (this.m_buckets != null)
@@ -180,6 +200,13 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
         }
 
         #region 新增方法,避免字符分割
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        /// <param name="offset"></param>
+        /// <param name="len"></param>
+        /// <returns></returns>
         public bool Contains(String item, int offset, int len)
         {
             if (this.m_buckets != null)

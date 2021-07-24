@@ -5,6 +5,9 @@ using Castle.Core.Interceptor;
 
 namespace HiLand.Utility.AOP.Interceptor
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class EmptyObjectInterceptor : IInterceptor
     {
         /// <summary>

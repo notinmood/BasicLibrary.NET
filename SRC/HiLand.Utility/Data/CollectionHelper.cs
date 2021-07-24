@@ -42,7 +42,7 @@ namespace HiLand.Utility.Data
         /// <param name="targetValue"></param>
         /// <param name="collection"></param>
         /// <returns></returns>
-        /// <remarks>在dotnet4中，直接请直接使用IEnumerable<T>的扩展方法Contains</remarks>
+        /// <remarks>在dotnet4中，直接请直接使用IEnumerable`T`的扩展方法Contains</remarks>
         public static bool IsExist<T>(T targetValue, IEnumerable<T> collection)
         {
             foreach (T currentItem in collection)

@@ -309,9 +309,8 @@ namespace HiLand.Utility.Data
         /// <summary>
         /// 将某个枚举项的字符串值转化成其对应的枚举类型
         /// </summary>
-        /// <typeparam name="TEnum"></typeparam>
+        /// <param name="enumType"></param>
         /// <param name="enumItemValue"></param>
-        /// <param name="defaultValue"></param>
         /// <returns></returns>
         public static object TryToEnum(Type enumType, string enumItemValue)
         {
@@ -578,7 +577,7 @@ namespace HiLand.Utility.Data
         }
 
         /// <summary>
-        /// 将位于DataTable内的实体集合转换为List<T>集合
+        /// 将位于DataTable内的实体集合转换为List`T`集合
         /// </summary>
         /// <param name="data">待转换的DataTable数据</param>
         /// <returns></returns>

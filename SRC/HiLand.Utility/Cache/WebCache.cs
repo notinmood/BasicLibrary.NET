@@ -7,6 +7,9 @@ using HiLand.Utility.Pattern;
 
 namespace HiLand.Utility.Cache
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class WebCache : ICache
     {
         /// <summary>

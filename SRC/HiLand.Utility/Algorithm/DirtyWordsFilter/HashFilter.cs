@@ -15,7 +15,7 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
         /// <summary>
         /// 插入新的Key.
         /// </summary>
-        /// <param name="name"></param>
+        /// <param name="key"></param>
         public void AddKey(string key)
         {
             if ((!string.IsNullOrEmpty(key)) && m_keys.Add(key) && key.Length > m_maxLen)
@@ -65,7 +65,12 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
             return string.Empty;
         }
 
-        //查找所有非法字符
+        
+        /// <summary>
+        /// 查找所有非法字符
+        /// </summary>
+        /// <param name="text"></param>
+        /// <returns></returns>
         public List<string> FindAll(string text)
         {
             List<string> result = new List<string>();
@@ -87,7 +92,6 @@ namespace HiLand.Utility.Algorithm.DirtyWordsFilter
         /// 替换非法字符
         /// </summary>
         /// <param name="text"></param>
-        /// <param name="c">用于代替非法字符</param>
         /// <returns>替换后的字符串</returns>
         public string Replace(string text)
         {

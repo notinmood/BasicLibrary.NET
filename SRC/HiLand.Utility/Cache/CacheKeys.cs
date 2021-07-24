@@ -4,6 +4,9 @@ using System.Text;
 
 namespace HiLand.Utility.Cache
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class CacheKeys
     {
         /// <summary>

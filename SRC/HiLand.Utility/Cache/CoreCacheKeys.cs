@@ -41,10 +41,19 @@ namespace HiLand.Utility.Cache
         #endregion
 
         #region 权限功能
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static string GetPermissionKey()
         {
             return string.Format("{0}-Permission", GetCoreKey());
         }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public static string GetNoPermissionControlDisplayModeConfigKey()
         {
             return string.Format("{0}-NoPermissionControlDisplayMode", GetPermissionKey());

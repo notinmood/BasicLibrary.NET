@@ -48,7 +48,7 @@ namespace SampleConsoleMvcLast.Controllers
             //entity.LoanPurpose = "okkk!";
             //var isOk=  LoanBasicBLL.Instance.Create(entity);
 
-
+            //JsonHelper.
 
             ViewBag.Message = "Your application description page.";
 
