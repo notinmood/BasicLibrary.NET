@@ -15,7 +15,7 @@ namespace HiLand.Utility.Web
         private Dictionary<string,string> urlParamDic= new Dictionary<string,string>();
 
         /// <summary>
-        /// 是否仅用"&"进行连接
+        /// 是否仅用`&`进行连接
         /// </summary>
         private bool isOnlyUseAndConcat = false;
 

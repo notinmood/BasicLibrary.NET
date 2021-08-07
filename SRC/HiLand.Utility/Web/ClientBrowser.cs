@@ -6,6 +6,9 @@ using HiLand.Utility.Data;
 
 namespace HiLand.Utility.Web
 {
+    /// <summary>
+    /// 客户端浏览器
+    /// </summary>
     public class ClientBrowser
     {
         /// <summary>

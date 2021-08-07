@@ -2,6 +2,7 @@
 using HiLand.General.Entity;
 using HiLand.Utility.Data;
 using HiLand.Utility.Setting;
+using HiLand.Utility.Web;
 using HiLand.Utility4.MVC.Engine;
 using SampleConsoleMvcLast.Models;
 using System;
@@ -49,6 +50,9 @@ namespace SampleConsoleMvcLast.Controllers
             //var isOk=  LoanBasicBLL.Instance.Create(entity);
 
             //JsonHelper.
+
+            var ss= ServerHelper.IsRunning("http://www.veryhuo.com");
+            var pp = ServerHelper.IsRunning("http://www.baidu.com"); 
 
             ViewBag.Message = "Your application description page.";
 

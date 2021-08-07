@@ -5,6 +5,9 @@ using System.Web;
 
 namespace HiLand.Utility.Web
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class WebHelper
     {
         /// <summary>

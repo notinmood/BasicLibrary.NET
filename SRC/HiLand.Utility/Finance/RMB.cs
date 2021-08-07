@@ -6,7 +6,7 @@ namespace HiLand.Utility.Finance
     public class RMB
     {
         /// <summary> 
-        /// 获取财物数据的人民币表示形式
+        /// 获取财务数据的人民币表示形式
         /// </summary> 
         /// <param name="financeValue">金额</param> 
         /// <returns>返回大写形式</returns> 

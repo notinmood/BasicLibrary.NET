@@ -1,4 +1,6 @@
-﻿1.人员组的功能，
+﻿20210807 本项目下，页面效果部分，迁移进入https://github.com/notinmood/BasicLibrary.Web
+
+1.人员组的功能，
 2.人员权限按照组进行计算的逻辑
 4.考虑WebResourceCollection\PageEffect\20个具有代表性的web2.0配色方案.htm中提取出一个统一的样式放入Hiland.css中
 5.BrowserEx内要将加入收藏和设置首页测试弄通(WebResourceCollection\Scripts\jQuery.PlugIn\jQuery.hiland.general.js)

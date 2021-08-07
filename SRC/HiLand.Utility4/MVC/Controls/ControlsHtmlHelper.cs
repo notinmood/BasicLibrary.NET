@@ -121,7 +121,6 @@ namespace HiLand.Utility4.MVC.Controls
         /// 将枚举类型转换成下拉列表
         /// </summary>
         /// <typeparam name="T">必须为枚举类型</typeparam>
-        /// <param name="htmlHelper"></param>
         /// <param name="selectedValue"></param>
         /// <param name="name">控件的name值</param>
         /// <returns></returns>

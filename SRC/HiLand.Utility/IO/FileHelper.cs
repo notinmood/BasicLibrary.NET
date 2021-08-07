@@ -8,6 +8,9 @@ using Microsoft.Win32.SafeHandles;
 
 namespace HiLand.Utility.IO
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class FileHelper
     {
         #region 文件基本信息
@@ -115,8 +118,8 @@ namespace HiLand.Utility.IO
         /// <param name="fileFullName"></param>
         /// <returns></returns>
         public static string GeFileExtensionNameWithoutDot(string fileFullName)
-        { 
-            string extensionName= GetFileExtensionName(fileFullName);
+        {
+            string extensionName = GetFileExtensionName(fileFullName);
 
             string fileExtensionWithoutDot = string.Empty;
             if (extensionName.StartsWith("."))
@@ -140,7 +143,7 @@ namespace HiLand.Utility.IO
         /// <returns></returns>
         public static string GenerateYearMonthSeperatedFileFullName(string basePath, string fileShortName, DatePathFormaters datePathFormater)
         {
-            string pathWithDateInfo= IOHelper.EnsureDatePath(basePath,datePathFormater);
+            string pathWithDateInfo = IOHelper.EnsureDatePath(basePath, datePathFormater);
 
             if (string.IsNullOrEmpty(fileShortName) == true)
             {
@@ -193,6 +196,67 @@ namespace HiLand.Utility.IO
                     sw.Close();
                     fs.Close();
                 }
+            }
+        }
+
+
+        /// <summary>
+        /// 读取文本文件最后的内容
+        /// </summary>
+        /// <param name="fileWithFullPath">文件名</param>
+        /// <param name="lineCount">行数</param>
+        /// <param name="encoding">字符编码</param>
+        /// <returns>返回读取的内容</returns>
+        public static string ReadLastLine(string fileWithFullPath, int lineCount = 1, Encoding encoding = null)
+        {
+            if (lineCount <= 0) return string.Empty;
+            if (!File.Exists(fileWithFullPath)) return string.Empty; // 文件不存在
+            if (encoding == null) encoding = Encoding.UTF8;
+            using (FileStream fileStream = new FileStream(fileWithFullPath,
+                FileMode.Open, FileAccess.Read, FileShare.Read))
+            {
+
+                if (fileStream.Length <= 0) return string.Empty; // 空文件
+                byte[] buffers = new byte[0x1000]; // 缓冲区
+                int readLength; // 读取到的大小
+                int readLineCount = 0; // 读取的行数
+                int readCount = 0; // 读取的次数
+                int scanCount = 0; // 扫描过的字符数
+                long offset;
+                do
+                {
+                    offset = buffers.Length * ++readCount;
+                    int space = 0; // 偏移超出的空间
+                    if (offset >= fileStream.Length) // 超出范围
+                    {
+                        space = (int)(offset - fileStream.Length);
+                        offset = fileStream.Length;
+                    }
+                    fileStream.Seek(-offset, SeekOrigin.End); //“SeekOrigin.End”反方向偏移读取位置
+
+                    readLength = fileStream.Read(buffers, 0, buffers.Length - space);
+                    #region 所读的缓冲里有多少行
+                    for (int i = readLength - 1; i >= 0; i--)
+                    {
+                        if (buffers[i] == 10)
+                        {
+                            if (scanCount > 0) readLineCount++; // #13#10为回车换行
+                            if (readLineCount >= lineCount) break;
+                        }
+                        scanCount++;
+                    }
+                    #endregion 所读的缓冲里有多少行
+                } while (readLength >= buffers.Length && offset < fileStream.Length &&
+                    readLineCount < lineCount);
+
+                if (readCount > 1) // 读的次数超过一次，则需重分配缓冲区
+                {
+                    buffers = new byte[scanCount];
+                    fileStream.Seek(-scanCount, SeekOrigin.End);
+                    readLength = fileStream.Read(buffers, 0, buffers.Length);
+                }
+
+                return encoding.GetString(buffers, readLength - scanCount, scanCount);
             }
         }
         #endregion
@@ -320,7 +384,7 @@ namespace HiLand.Utility.IO
         /// <returns></returns>
         public static Stream GetStreamFromFile(string fileFullName)
         {
-            FileStream fileStream = new FileStream(fileFullName,FileMode.Open,FileAccess.Read);
+            FileStream fileStream = new FileStream(fileFullName, FileMode.Open, FileAccess.Read);
             return fileStream;
         }
 
@@ -341,8 +405,8 @@ namespace HiLand.Utility.IO
 
         private static bool BlocklyWriteToFileStream(object sender, OperateStreamEnventArgs args)
         {
-            FileStream fileStream= (FileStream)args.CallBackObject;
-            fileStream.Write(args.BytesReaded,0,args.BytesReaded.Length);
+            FileStream fileStream = (FileStream)args.CallBackObject;
+            fileStream.Write(args.BytesReaded, 0, args.BytesReaded.Length);
             fileStream.Flush();
             return true;
         }

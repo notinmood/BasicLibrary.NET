@@ -339,6 +339,7 @@
     <Compile Include="Web\ClientPage.cs" />
     <Compile Include="Web\CookieInfo.cs" />
     <Compile Include="Web\ResponseHelper.cs" />
+    <Compile Include="Web\ServerHelper.cs" />
     <Compile Include="Web\SessionHelper.cs" />
     <Compile Include="Web\UrlInfo.cs" />
     <Compile Include="Web\WebHelper.cs" />

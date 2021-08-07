@@ -216,7 +216,9 @@ namespace HiLand.Utility.Web
         /// <summary>
         /// 获取请求信息的参数值
         /// </summary>
+        /// <param name="sourceType"></param>
         /// <param name="paramName">参数名称</param>
+        /// <param name="defaultValue"></param>
         /// <returns></returns>
         /// <remarks>
         /// 其会从指定的数据源集合里面获取传递的参数信息，数据源包括：From，Cookie，Session，QueryString，ServerVariables等
@@ -268,7 +270,6 @@ namespace HiLand.Utility.Web
         /// <typeparam name="T"></typeparam>
         /// <param name="sourceType"></param>
         /// <param name="paramName"></param>
-        /// <param name="defaultValue"></param>
         /// <returns></returns>
         /// <remarks>
         /// 其会从指定的数据源集合里面获取传递的参数信息，数据源包括：From，Cookie，Session，QueryString，ServerVariables等

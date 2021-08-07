@@ -5,6 +5,9 @@ using System.Web;
 
 namespace HiLand.Utility.Web
 {
+    /// <summary>
+    /// 客户端页面
+    /// </summary>
     public static class ClientPage
     {
         /// <summary>

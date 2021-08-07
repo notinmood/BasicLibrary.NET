@@ -6,6 +6,9 @@ using HiLand.Utility.Data;
 
 namespace HiLand.Utility.Web
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public static class SessionHelper
     {
         /// <summary>

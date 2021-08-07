@@ -4,8 +4,7 @@ using System.Text;
 
 namespace HiLand.Utility.Event
 {
-    public class EventArgs<T> : EventArgs
-        where T:new()
+    public class EventArgs<T> : EventArgs where T : new()
     {
         private T data;
 
@@ -19,6 +18,9 @@ namespace HiLand.Utility.Event
             this.data = data;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         public T Data
         {
             get { return this.data; }
