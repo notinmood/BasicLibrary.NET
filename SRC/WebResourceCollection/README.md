@@ -1,4 +1,8 @@
-﻿20210807 本项目下，页面效果部分，迁移进入https://github.com/notinmood/BasicLibrary.Web
+﻿说明
+--
+目前各项目采用dotNET4.8和2.0版本。
+
+20210807 本项目下，页面效果部分，迁移进入https://github.com/notinmood/BasicLibrary.Web
 
 1.人员组的功能，
 2.人员权限按照组进行计算的逻辑
