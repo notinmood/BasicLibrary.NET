@@ -10,7 +10,12 @@
       "ProjectGuid": "4f9dec6f-2ada-4fd7-a7aa-9e133bcaca75",
       "DisplayName": "WebResourceCollection",
       "ColorIndex": 1
+    },
+    "2004b1a8-5a1c-4310-b95b-5e792399e823": {
+      "ProjectGuid": "2004b1a8-5a1c-4310-b95b-5e792399e823",
+      "DisplayName": "SampleConsoleWebApplication",
+      "ColorIndex": 2
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 3
 }
