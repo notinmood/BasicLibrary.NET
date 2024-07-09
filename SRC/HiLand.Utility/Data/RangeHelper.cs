@@ -6,12 +6,20 @@ namespace HiLand.Utility.Data
     /// 表示区间的数据
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class RegionData<T> where T : IComparable
+    public class RangeData<T> where T : IComparable
     {
-        public RegionData()
+        /// <summary>
+        /// 
+        /// </summary>
+        public RangeData()
         { }
 
-        public RegionData(T min, T max)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="min"></param>
+        /// <param name="max"></param>
+        public RangeData(T min, T max)
         {
             this.Min = min;
             this.Max = max;
@@ -30,7 +38,7 @@ namespace HiLand.Utility.Data
     /// <summary>
     /// 区间使用辅助器
     /// </summary>
-    public static class RegionHelper
+    public static class RangeHelper
     {
         /// <summary>
         /// 判断两个区间是否有重叠部分
@@ -39,7 +47,7 @@ namespace HiLand.Utility.Data
         /// <param name="regionDataA"></param>
         /// <param name="regionDataB"></param>
         /// <returns></returns>
-        public static bool HasOverlap<T>(RegionData<T> regionDataA, RegionData<T> regionDataB)
+        public static bool HasOverlap<T>(RangeData<T> regionDataA, RangeData<T> regionDataB)
             where T : IComparable
         {
             //TIP:xieran20121218 重叠规则可以参考RegionHelper.vsdx

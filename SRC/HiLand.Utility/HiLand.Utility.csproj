@@ -153,7 +153,7 @@
     <Compile Include="Data\OperatorHelper.cs" />
     <Compile Include="Data\ProxyClassHelper.cs" />
     <Compile Include="Data\RegexHelper.cs" />
-    <Compile Include="Data\RegionHelper.cs" />
+    <Compile Include="Data\RangeHelper.cs" />
     <Compile Include="Data\TypeHelper.cs" />
     <Compile Include="Data\XmlHelper.cs" />
     <Compile Include="Drawing\WaterMarker.cs" />
@@ -415,7 +415,7 @@
     <Folder Include="Logging\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Data\RegionHelper.vsdx" />
+    <None Include="Data\RangeHelper.vsdx" />
     <None Include="Mathes\Coordinate\三维空间中直角坐标与球坐标的相互转换.docx" />
     <None Include="Security\.NET提供的加密算法概述.doc" />
   </ItemGroup>
