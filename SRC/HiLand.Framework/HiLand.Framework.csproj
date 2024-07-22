@@ -126,12 +126,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HiLand.Utility\HiLand.Utility.csproj">
-      <Project>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</Project>
-      <Name>HiLand.Utility</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="FoundationLayer\给实体添加扩展属性的注意事项.txt" />
     <Content Include="SettingList.txt" />
   </ItemGroup>

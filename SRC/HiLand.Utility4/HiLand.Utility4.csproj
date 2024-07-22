@@ -74,66 +74,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AOP\Interceptor\SQLInjectionInterceptor.cs" />
-    <Compile Include="DataBase\DataReaderEx.cs" />
-    <Compile Include="DataBase\DataRowEx.cs" />
-    <Compile Include="Data\FlagEx.cs" />
-    <Compile Include="Data\EnumEx.cs" />
-    <Compile Include="Data\ExceptionEx.cs" />
-    <Compile Include="Data\ObjectEx.cs" />
-    <Compile Include="Data\StringEx.cs" />
-    <Compile Include="Data\XmlEx.cs" />
-    <Compile Include="MVC\Controls\BaseControl.cs" />
-    <Compile Include="MVC\Controls\CascadingDropDownListControl.cs" />
-    <Compile Include="MVC\Controls\CheckBoxControl.cs" />
-    <Compile Include="MVC\Controls\CheckBoxListControl.cs" />
-    <Compile Include="MVC\Controls\ControlHelper.cs" />
-    <Compile Include="MVC\Controls\DateTimeControl.cs" />
-    <Compile Include="MVC\Controls\DropDownListControl.cs" />
-    <Compile Include="MVC\Controls\HiddenControl.cs" />
-    <Compile Include="MVC\Controls\ControlsHtmlHelper.cs" />
-    <Compile Include="MVC\Controls\InputControl.cs" />
-    <Compile Include="MVC\Controls\MultiStatusSelectControl.cs" />
-    <Compile Include="MVC\Controls\MvcControlEnum.cs" />
-    <Compile Include="MVC\Controls\QueryControl.cs" />
-    <Compile Include="MVC\Controls\QueryControlHelper.cs" />
-    <Compile Include="MVC\Controls\RadioButtonControl.cs" />
-    <Compile Include="MVC\Controls\RadioButtonListControl.cs" />
-    <Compile Include="MVC\Controls\StatusSelectControl.cs" />
-    <Compile Include="MVC\Controls\TextAreaControl.cs" />
-    <Compile Include="MVC\Controls\TextBoxControl.cs" />
-    <Compile Include="MVC\Controls\TreeSelectControl.cs" />
-    <Compile Include="MVC\Data\ControllerEx.cs" />
-    <Compile Include="MVC\Data\WebViewPageEx.cs" />
-    <Compile Include="MVC\Engine\ExtendedRazorViewEngine.cs" />
-    <Compile Include="MVC\HtmlHelperEx.cs" />
-    <Compile Include="MVC\Log\LogMessageAttribute.cs" />
-    <Compile Include="MVC\MVCHelper.cs" />
-    <Compile Include="MVC\Paging\PagedListEx.cs" />
-    <Compile Include="MVC\SectionHandler\PermissionValidateConfig.cs" />
-    <Compile Include="MVC\SectionHandler\PermissionValidateEntity.cs" />
-    <Compile Include="MVC\SectionHandler\PermissionValidateSectionHandler.cs" />
-    <Compile Include="MVC\UrlHelperEx.cs" />
-    <Compile Include="Native\ControlEx.cs" />
-    <Compile Include="Office\WordHelper.cs" />
-    <Compile Include="Paging\PagedEntityCollectionEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resource\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Web\HttpPostedFileEx.cs" />
-    <Compile Include="Web\ResponseEx.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HiLand.Utility\HiLand.Utility.csproj">
-      <Project>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</Project>
-      <Name>HiLand.Utility</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="MVC\SectionHandler\readme.txt" />
-    <Content Include="Office\WordHelper.txt" />
     <Content Include="ReadmeAndTODO.txt" />
     <Content Include="SettingList.txt" />
   </ItemGroup>
@@ -150,11 +98,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="MVC\Controls\MVC控件继承关系图.vsd" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="MVC\Web\" />
+    <Folder Include="DataBase\" />
+    <Folder Include="Data\" />
+    <Folder Include="Native\" />
+    <Folder Include="Office\" />
+    <Folder Include="Paging\" />
+    <Folder Include="Web\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

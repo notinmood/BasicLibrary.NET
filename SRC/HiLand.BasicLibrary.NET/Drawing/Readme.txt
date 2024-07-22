@@ -1,0 +1,2 @@
+﻿目前无论是Thumbnail（缩略图）还是WaterMarker（水印）返回的都是Strem（流）信息。
+如果要将流转换成文件，请调用FileHelper下的WriteStreamToFile方法

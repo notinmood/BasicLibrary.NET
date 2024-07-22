@@ -1,0 +1,29 @@
+﻿配置项列表
+===============================
+
+1.cacheClassType 表示一个能提供缓存功能的类型描述，可选 （Cache\CacheFactory.cs）
+2.taskExcuteHour 系统任务缺省的执行时刻中小时点值 ，可选（Setting\SectionHandler\SystemTaskSectionHandler.cs）
+3.taskExcuteMinute系统任务缺省的执行时刻中分钟数值，可选（Setting\SectionHandler\SystemTaskSectionHandler.cs）
+4.contentTypeSection 除了系统已经提供的MIME类型外，可以通过这个Section添加新的信息，其是一个NameValueSectionHandler类型
+	<section name="contentTypeSection" type="System.Configuration.NameValueSectionHandler"/>
+	
+	<contentTypeSection>
+		<add key=".xieran" value="hilandsoft" />
+		<add key="doc" value="word" />
+	</contentTypeSection>
+5.isRecordOperateLog 是否记录操作日志 （Setting\Config.cs）
+6.defaultConnectionStringName 缺省的数据库连接字符串名称，可选（Setting\Config.cs）
+	如果不指定这个名称，那么系统使用的缺省数据库连接名称为 mainConnection
+
+
+	===============================
+1、SQLMode: SQL语句的模式（标准sql语句、或者其他单独某数据库厂商的模式，可选，默认值为stand-SQL）(MVC\Controls\QueryControl.cs)
+2、mvcControlCssPrefix：MVC空间的Css名称前缀 （MVC\Controls\BaseControl.cs）
+
+3、（MVC\Engine\ExtendedRazorViewEngine.cs）
+   ViewSearchPath.Full.x    完全视图搜索路径（x可以是任何值，可以有多条，但x不要重复）
+   ViewSearchPath.Partial.y 部分视图搜索路径（y可以是任何值，可以有多条，但y不要重复）
+
+   例如 
+   <add  key="ViewSearchPath.Full.1" value="~/Views/AA/{1}/{0}.cshtml"/>
+   <add  key="ViewSearchPath.Full.2" value="~/Views/BB/{1}/{0}.cshtml"/>

@@ -109,14 +109,6 @@
       <Project>{461EC125-8906-4F63-96FF-17B4B10A65E0}</Project>
       <Name>HiLand.Framework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HiLand.Utility4\HiLand.Utility4.csproj">
-      <Project>{DCEC4525-16E2-4A20-A816-E775E063E187}</Project>
-      <Name>HiLand.Utility4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HiLand.Utility\HiLand.Utility.csproj">
-      <Project>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</Project>
-      <Name>HiLand.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Misc\Readme.txt" />

@@ -522,14 +522,6 @@
       <Project>{E6B62810-D354-410E-B5D4-EFDE27C2C2C7}</Project>
       <Name>HiLand.General</Name>
     </ProjectReference>
-    <ProjectReference Include="..\HiLand.Utility4\HiLand.Utility4.csproj">
-      <Project>{DCEC4525-16E2-4A20-A816-E775E063E187}</Project>
-      <Name>HiLand.Utility4</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\HiLand.Utility\HiLand.Utility.csproj">
-      <Project>{D7D5A5AA-C68E-48C6-A768-B76D33CC04FA}</Project>
-      <Name>HiLand.Utility</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AuthCodeDemo\Web.config" />

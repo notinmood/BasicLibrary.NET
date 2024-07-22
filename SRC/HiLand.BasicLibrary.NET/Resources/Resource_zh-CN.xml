@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<data>
+  <!--Core_Common-->
+  <item key="PleaseChoose">请选择...</item>
+  
+  <!--Core_Permission-->
+  <item key="NoPermissionDisplayInfo">由于没有权限,此功能不可使用</item>
+
+</data>
