@@ -22,7 +22,7 @@ namespace HiLand.Utility.AOP
             }
             catch
             {
-
+                // do something
             }
         }
 
@@ -41,7 +41,7 @@ namespace HiLand.Utility.AOP
             }
             catch
             {
-
+                // do something
             }
             finally
             {
@@ -66,7 +66,7 @@ namespace HiLand.Utility.AOP
             }
             catch
             {
-
+                // do something
             }
 
             return r;
@@ -91,7 +91,7 @@ namespace HiLand.Utility.AOP
             }
             catch
             {
-
+                // do something
             }
 
             return r;
@@ -115,7 +115,7 @@ namespace HiLand.Utility.AOP
             }
             catch
             {
-
+                // do something
             }
             finally
             {

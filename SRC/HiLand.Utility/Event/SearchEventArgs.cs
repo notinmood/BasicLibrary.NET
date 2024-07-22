@@ -5,6 +5,9 @@ using HiLand.Utility.Enums;
 
 namespace HiLand.Utility.Event
 {
+     /// <summary>
+     /// 
+     /// </summary>
     public class SearchEventArgs : EventArgs
     {
         private string selectedSearchKey = string.Empty;

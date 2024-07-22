@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLand.Framework4", "HiLand
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleMvcLast", "SampleConsoleMvcLast\SampleConsoleMvcLast.csproj", "{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiland.BasicLibrary.NET", "Hiland.NET\Hiland.BasicLibrary.NET.csproj", "{79F1E412-CBD5-402C-BE35-D5303056079E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -123,6 +125,18 @@ Global
 		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|x86.ActiveCfg = Release|Any CPU
 		{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}.Release|x86.Build.0 = Release|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Debug|x86.Build.0 = Debug|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Release|x86.ActiveCfg = Release|Any CPU
+		{79F1E412-CBD5-402C-BE35-D5303056079E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
