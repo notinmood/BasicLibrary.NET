@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HiLand.Framework4", "HiLand
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsoleMvcLast", "SampleConsoleMvcLast\SampleConsoleMvcLast.csproj", "{E92CC210-AB5E-49A1-9F10-D6BCD739B0A8}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiland.BasicLibrary.NET", "Hiland.BasicLibrary.NET\Hiland.BasicLibrary.NET.csproj", "{79F1E412-CBD5-402C-BE35-D5303056079E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hiland.BasicLibrary", "Hiland.BasicLibrary\Hiland.BasicLibrary.csproj", "{79F1E412-CBD5-402C-BE35-D5303056079E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
