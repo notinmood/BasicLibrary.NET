@@ -1,8 +1,8 @@
 ﻿//using System.Collections.Generic;
 //using System.Web;
-//using HiLand.Utility.Cache;
+//using Hiland.BasicLibrary.Cache;
 
-//namespace HiLand.Utility.Web
+//namespace Hiland.BasicLibrary.Web
 //{
 //    public class BrowseHistory
 //    {

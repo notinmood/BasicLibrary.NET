@@ -4,7 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Text;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// 压缩解压帮助器

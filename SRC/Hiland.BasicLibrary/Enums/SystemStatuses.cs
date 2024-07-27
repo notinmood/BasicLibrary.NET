@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Enums
+namespace Hiland.BasicLibrary.Enums
 {
     /// <summary>
     /// 系统级别的状态

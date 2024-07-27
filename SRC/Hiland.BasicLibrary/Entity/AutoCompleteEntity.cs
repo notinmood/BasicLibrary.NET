@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HiLand.Utility.Data;
+using Hiland.BasicLibrary.Data;
 
-namespace HiLand.Utility.Entity
+namespace Hiland.BasicLibrary.Entity
 {
     /// <summary>
     /// 自动完成功能传递的数据实体

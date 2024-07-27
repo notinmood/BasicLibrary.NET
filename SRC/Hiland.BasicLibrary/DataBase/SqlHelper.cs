@@ -1,6 +1,6 @@
 ﻿//using System.Data.SqlClient;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// MS Sql Server 数据库类型访问帮助器

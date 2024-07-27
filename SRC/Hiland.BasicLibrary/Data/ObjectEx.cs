@@ -1,6 +1,6 @@
-﻿using HiLand.Utility.Data;
+﻿using Hiland.BasicLibrary.Data;
 
-namespace HiLand.Utility4.Data
+namespace Hiland.BasicLibrary4.Data
 {
     /// <summary>
     /// 对象帮助器的扩展

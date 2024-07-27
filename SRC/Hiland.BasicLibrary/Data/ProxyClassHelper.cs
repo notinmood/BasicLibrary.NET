@@ -1,8 +1,8 @@
 ﻿//using Castle.DynamicProxy;
-//using HiLand.Utility.AOP.Interceptor;
-//using HiLand.Utility.Entity;
+//using Hiland.BasicLibrary.AOP.Interceptor;
+//using Hiland.BasicLibrary.Entity;
 
-//namespace HiLand.Utility.Data
+//namespace Hiland.BasicLibrary.Data
 //{
 //    /// <summary>
 //    /// 代理类操作辅助类

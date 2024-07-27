@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Enums
+namespace Hiland.BasicLibrary.Enums
 {
     /// <summary>
     /// 参数值来源类型（数据传递的方式）

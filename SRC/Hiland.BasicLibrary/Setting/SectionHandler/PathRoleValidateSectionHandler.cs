@@ -1,7 +1,7 @@
 ﻿using System.Configuration;
 using System.Xml;
 
-namespace HiLand.Utility.Setting.SectionHandler
+namespace Hiland.BasicLibrary.Setting.SectionHandler
 {
     /// <summary>
     /// 读取站点验证配置节点section的处理程序

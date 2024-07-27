@@ -1,10 +1,10 @@
 ﻿//using System;
 //using System.Configuration;
 //using System.Xml;
-//using HiLand.Utility.Data;
-//using HiLand.Utility4.Data;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary4.Data;
 
-//namespace HiLand.Utility4.MVC.SectionHandler
+//namespace Hiland.BasicLibrary4.MVC.SectionHandler
 //{
 //    /// <summary>
 //    /// 权限控制配置节点读取工具

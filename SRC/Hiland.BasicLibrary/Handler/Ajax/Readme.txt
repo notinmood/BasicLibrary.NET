@@ -9,12 +9,12 @@
   
   <system.web>
     <httpHandlers>
-      <add path="*.aspx" validate="false" type="HiLand.Utility.Handler.Ajax.AjaxHandler,HiLand.Utility" verb="*"/>
+      <add path="*.aspx" validate="false" type="Hiland.BasicLibrary.Handler.Ajax.AjaxHandler,Hiland.BasicLibrary" verb="*"/>
     </httpHandlers>
   </system.web>
   <system.webServer>
     <handlers>
-      <add name="AjaxRequestFactory" path="*.aspx" type="HiLand.Utility.Handler.Ajax.AjaxHandler,HiLand.Utility" verb="*"/>
+      <add name="AjaxRequestFactory" path="*.aspx" type="Hiland.BasicLibrary.Handler.Ajax.AjaxHandler,Hiland.BasicLibrary" verb="*"/>
     </handlers>
   </system.webServer>
 

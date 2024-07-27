@@ -2,9 +2,9 @@
 //using System.Collections.Generic;
 //using System.Web.Mvc;
 //using System.Web.UI.WebControls;
-//using HiLand.Utility.Enums.OP;
+//using Hiland.BasicLibrary.Enums.OP;
 
-//namespace HiLand.Utility4.Data
+//namespace Hiland.BasicLibrary4.Data
 //{
 //    /// <summary>
 //    /// 枚举辅助类

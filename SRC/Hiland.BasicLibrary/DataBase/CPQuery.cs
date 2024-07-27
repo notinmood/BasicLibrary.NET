@@ -13,7 +13,7 @@ using System.Text;
 // 【 删除开源代码中的注释是可耻的行为！ 】
 //========================================================
 
-namespace HiLand.Utility.DataBase
+namespace Hiland.BasicLibrary.DataBase
 {
     /// <summary>
     /// 

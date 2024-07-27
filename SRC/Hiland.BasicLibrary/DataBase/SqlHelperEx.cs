@@ -1,6 +1,6 @@
 ﻿//using System.Data.SqlClient;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// SqlHelper包装器

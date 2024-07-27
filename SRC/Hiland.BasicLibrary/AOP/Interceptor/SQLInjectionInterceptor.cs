@@ -3,9 +3,9 @@
 //using System.Text;
 //using Castle.Core.Interceptor;
 //using System.Reflection;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.AOP.Interceptor
+//namespace Hiland.BasicLibrary.AOP.Interceptor
 //{
 //    /// <summary>
 //    /// 

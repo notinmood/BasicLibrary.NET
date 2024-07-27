@@ -1,4 +1,4 @@
-﻿namespace HiLand.Utility.Algorithm.Sort
+﻿namespace Hiland.BasicLibrary.Algorithm.Sort
 {
     /// <summary>
     /// 冒泡排序

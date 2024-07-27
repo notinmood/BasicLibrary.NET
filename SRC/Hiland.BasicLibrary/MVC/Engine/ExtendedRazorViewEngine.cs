@@ -5,7 +5,7 @@
 //using System.Text;
 //using System.Web.Mvc;
 
-//namespace HiLand.Utility4.MVC.Engine
+//namespace Hiland.BasicLibrary4.MVC.Engine
 //{
 //    /// <summary>
 //    /// 为Razor的视图引擎扩展view的查找路径功能

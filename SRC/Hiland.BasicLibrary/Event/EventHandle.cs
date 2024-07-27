@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Event
+namespace Hiland.BasicLibrary.Event
 {
     /// <summary>
     /// 事件委托（arg 参数有格式的要求）

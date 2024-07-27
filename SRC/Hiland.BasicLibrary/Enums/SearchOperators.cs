@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Text;
-//using HiLand.Utility.Enums.OP;
+//using Hiland.BasicLibrary.Enums.OP;
 
-//namespace HiLand.Utility.Enums
+//namespace Hiland.BasicLibrary.Enums
 //{
 //    public enum SearchOperators
 //    {

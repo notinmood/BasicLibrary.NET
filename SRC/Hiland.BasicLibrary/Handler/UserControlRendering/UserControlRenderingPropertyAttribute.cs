@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Handler
+namespace Hiland.BasicLibrary.Handler
 {
     [AttributeUsage(AttributeTargets.Property, AllowMultiple = true, Inherited = true)]
     public class UserControlRenderingPropertyAttribute : Attribute

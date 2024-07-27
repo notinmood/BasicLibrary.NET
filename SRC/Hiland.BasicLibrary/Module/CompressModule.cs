@@ -2,9 +2,9 @@
 //using System.IO.Compression;
 //using System.Web;
 //using System.Web.UI;
-//using HiLand.Utility.Enums;
+//using Hiland.BasicLibrary.Enums;
 
-//namespace HiLand.Utility.Module
+//namespace Hiland.BasicLibrary.Module
 //{
 //    /// <summary>
 //    /// 处理页面压缩的Module

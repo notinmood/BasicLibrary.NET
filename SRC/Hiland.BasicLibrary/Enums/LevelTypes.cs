@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Enums
+namespace Hiland.BasicLibrary.Enums
 {
     /// <summary>
     /// (紧急性、重要性)程度类型

@@ -1,4 +1,4 @@
 ﻿------------------------------------------------------------
 权限验证有两套体系
 1.本目录下的适用于WebForm场景之下执行的验证，可用验证到页面
-2.HiLand.Utility4\MVC\SectionHandler 目录下的适用于MVC场景之下执行的验证，可用验证到具体的操作
+2.Hiland.BasicLibrary4\MVC\SectionHandler 目录下的适用于MVC场景之下执行的验证，可用验证到具体的操作

@@ -2,10 +2,10 @@
 //using System.Collections.Generic;
 //using System.Text;
 //using System.Reflection;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.Entity;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.Entity;
 
-//namespace HiLand.Utility.Reflection
+//namespace Hiland.BasicLibrary.Reflection
 //{
 //    /// <summary>
 //    /// 反射技术辅助类

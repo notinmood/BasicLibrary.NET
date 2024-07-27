@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Event
+namespace Hiland.BasicLibrary.Event
 {
     //由于微软的某些Predicate泛型委托在.Net2.0下不能使用，因此此处自定义此委托
     public delegate bool Predicates();

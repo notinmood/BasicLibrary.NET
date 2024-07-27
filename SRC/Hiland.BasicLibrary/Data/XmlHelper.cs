@@ -3,7 +3,7 @@
 //using System.Xml;
 //using System.Xml.Serialization;
 
-//namespace HiLand.Utility.Data
+//namespace Hiland.BasicLibrary.Data
 //{
 //    /// <summary>
 //    /// XML操作辅助类

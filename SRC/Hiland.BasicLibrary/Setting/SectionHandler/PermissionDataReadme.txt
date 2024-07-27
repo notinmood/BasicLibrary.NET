@@ -1,6 +1,6 @@
 ﻿这是设置数据权限的几个类，config中的节点信息如下：
 1、
-	<section name="permissionData" type="HiLand.Utility.Setting.SectionHandler.PermissionDataSectionHandler,HiLand.Utility"/>
+	<section name="permissionData" type="Hiland.BasicLibrary.Setting.SectionHandler.PermissionDataSectionHandler,Hiland.BasicLibrary"/>
 2、
 	<permissionData>
 		<application guid="6E3C9CA4-3288-47E8-B851-42F040826060" name="数据库管理系统">

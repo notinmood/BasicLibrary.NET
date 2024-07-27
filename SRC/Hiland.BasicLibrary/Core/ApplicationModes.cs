@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Core
+namespace Hiland.BasicLibrary.Core
 {
     /// <summary>
     /// 当前运行的系统是Web模式还是Windows模式

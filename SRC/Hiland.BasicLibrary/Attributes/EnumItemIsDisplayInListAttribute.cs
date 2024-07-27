@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Attributes
+namespace Hiland.BasicLibrary.Attributes
 {
     /// <summary>
     /// 枚举项是否允许出现在列表中

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Entity
+namespace Hiland.BasicLibrary.Entity
 {
     /// <summary>
     /// 信息改变时使用的数据

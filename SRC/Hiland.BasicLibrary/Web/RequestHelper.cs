@@ -3,11 +3,11 @@
 //using System.Collections.Specialized;
 //using System.Text.RegularExpressions;
 //using System.Web;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.Enums;
-//using HiLand.Utility.IO;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.Enums;
+//using Hiland.BasicLibrary.IO;
 
-//namespace HiLand.Utility.Web
+//namespace Hiland.BasicLibrary.Web
 //{
 //    /// <summary>
 //    /// 请求对象帮助器

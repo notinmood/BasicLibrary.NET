@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Enums
+namespace Hiland.BasicLibrary.Enums
 {
     /// <summary>
     /// 数据（被）使用的方式

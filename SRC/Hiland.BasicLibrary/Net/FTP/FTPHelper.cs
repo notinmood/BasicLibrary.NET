@@ -4,7 +4,7 @@ using System.Text;
 using System.IO;
 using System.Net;
 
-namespace HiLand.Utility.Net.FTP
+namespace Hiland.BasicLibrary.Net.FTP
 {
     public class FTPHelper
     {

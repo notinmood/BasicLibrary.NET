@@ -3,7 +3,7 @@
 //using System.Text;
 //using System.Runtime.InteropServices;
 
-//namespace HiLand.Utility.Native
+//namespace Hiland.BasicLibrary.Native
 //{
 //    /// <summary>
 //    /// 局域网账号模拟登录

@@ -5,7 +5,7 @@ using System.Globalization;
 using System.Reflection;
 using System.Threading;
 
-namespace HiLand.Utility.Enums.OP
+namespace Hiland.BasicLibrary.Enums.OP
 {
     /// <summary>
     /// 枚举项描述的特性

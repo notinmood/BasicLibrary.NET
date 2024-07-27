@@ -1,5 +1,5 @@
 ﻿
-namespace HiLand.Utility.Algorithm
+namespace Hiland.BasicLibrary.Algorithm
 {
     /// <summary>
     /// 判断一个整数是奇数还是偶数。

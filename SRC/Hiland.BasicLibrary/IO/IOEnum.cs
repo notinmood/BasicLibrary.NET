@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.IO
+namespace Hiland.BasicLibrary.IO
 {
     public enum DatePathFormaters
     {

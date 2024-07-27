@@ -1,7 +1,7 @@
 ﻿//using System.Web.Mvc;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility4.MVC.Data
+//namespace Hiland.BasicLibrary4.MVC.Data
 //{
 //    public static class WebViewPageEx
 //    {

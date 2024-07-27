@@ -3,10 +3,10 @@
 //using System.IO;
 //using System.Web;
 //using System.Web.SessionState;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.UI;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.UI;
 
-//namespace HiLand.Utility.Handler
+//namespace Hiland.BasicLibrary.Handler
 //{
 //    public class AuthCodeHandler : IHttpHandler, IRequiresSessionState
 //    {

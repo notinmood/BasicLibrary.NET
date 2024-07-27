@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HiLand.Utility.Enums;
+using Hiland.BasicLibrary.Enums;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// Guid操作辅助类

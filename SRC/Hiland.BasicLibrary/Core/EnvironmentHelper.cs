@@ -3,7 +3,7 @@
 //using System.Text;
 //using System.Web;
 
-//namespace HiLand.Utility.Core
+//namespace Hiland.BasicLibrary.Core
 //{
 //    /// <summary>
 //    /// 系统环境操作辅助类

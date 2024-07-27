@@ -4,7 +4,7 @@
 //using System.IO;
 //using System.Web;
 
-//namespace HiLand.Utility.IO
+//namespace Hiland.BasicLibrary.IO
 //{
 //    public static class PathHelper
 //    {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Runtime.InteropServices;
 using Microsoft.Win32.SafeHandles;
 
-namespace HiLand.Utility.IO.Extend
+namespace Hiland.BasicLibrary.IO.Extend
 {
     public class FileWrapper
     {

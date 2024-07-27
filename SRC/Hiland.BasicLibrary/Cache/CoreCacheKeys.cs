@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HiLand.Utility.Enums;
+using Hiland.BasicLibrary.Enums;
 
-namespace HiLand.Utility.Cache
+namespace Hiland.BasicLibrary.Cache
 {
     /// <summary>
     /// 缓存在系统中以字典的形式保存

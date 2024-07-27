@@ -2,11 +2,11 @@
 //using System.IO;
 //using System.Text;
 //using System.Threading;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.IO.Extend;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.IO.Extend;
 //using Microsoft.Win32.SafeHandles;
 
-//namespace HiLand.Utility.IO
+//namespace Hiland.BasicLibrary.IO
 //{
 //    /// <summary>
 //    /// 

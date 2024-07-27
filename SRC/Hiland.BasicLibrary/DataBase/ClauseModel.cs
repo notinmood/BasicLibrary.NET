@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 
-namespace HiLand.Utility.DataBase
+namespace Hiland.BasicLibrary.DataBase
 {
     /// <summary>
     /// SQL语句实体

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Reflection;
-using HiLand.Utility.Data;
+using Hiland.BasicLibrary.Data;
 
-namespace HiLand.Utility.Entity
+namespace Hiland.BasicLibrary.Entity
 {
     public class EntityValidation
     {

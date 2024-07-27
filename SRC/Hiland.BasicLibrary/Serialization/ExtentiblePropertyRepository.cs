@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Collections.Specialized;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Serialization
+//namespace Hiland.BasicLibrary.Serialization
 //{
 //    /// <summary>
 //    /// 可扩展属性的库

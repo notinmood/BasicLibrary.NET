@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HiLand.Utility.Enums;
+using Hiland.BasicLibrary.Enums;
 
-namespace HiLand.Utility.Event
+namespace Hiland.BasicLibrary.Event
 {
      /// <summary>
      /// 

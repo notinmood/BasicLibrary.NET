@@ -3,10 +3,10 @@
 //using System.Reflection;
 //using System.Text;
 //using System.Web.UI.WebControls;
-//using HiLand.Utility.Attributes;
-//using HiLand.Utility.Reflection;
+//using Hiland.BasicLibrary.Attributes;
+//using Hiland.BasicLibrary.Reflection;
 
-//namespace HiLand.Utility.Enums.OP
+//namespace Hiland.BasicLibrary.Enums.OP
 //{
 //    /// <summary>
 //    /// 将枚举项构建成选择项的辅助工具类

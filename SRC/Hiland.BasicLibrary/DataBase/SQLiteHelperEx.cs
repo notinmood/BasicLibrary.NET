@@ -1,6 +1,6 @@
 ﻿//using System.Data.SQLite;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// 

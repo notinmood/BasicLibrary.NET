@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HiLand.Utility.Enums;
+using Hiland.BasicLibrary.Enums;
 
-namespace HiLand.Utility.Entity.Status
+namespace Hiland.BasicLibrary.Entity.Status
 {
     /// <summary>
     /// 系统级别的状态接口

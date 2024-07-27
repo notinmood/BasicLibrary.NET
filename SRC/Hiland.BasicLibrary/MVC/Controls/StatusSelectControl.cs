@@ -4,7 +4,7 @@
 //using System.Text;
 //using System.Web.Mvc;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //    /// <summary>
 //    /// 状态选择控件（CheckBox，RadioButton等）的基类

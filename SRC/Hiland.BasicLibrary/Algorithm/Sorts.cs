@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Algorithm
+namespace Hiland.BasicLibrary.Algorithm
 {
     //TODO:Sort文件夹下的各种排序方法均应整理到这个类中
     /// <summary>

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using HiLand.Utility.Event;
+using Hiland.BasicLibrary.Event;
 using Microsoft.VisualBasic;
 
-namespace HiLand.Utility.Finance
+namespace Hiland.BasicLibrary.Finance
 {
     public static class LoanHelper
     {

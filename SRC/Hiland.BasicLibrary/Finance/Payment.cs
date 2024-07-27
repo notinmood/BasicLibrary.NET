@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HiLand.Utility.Finance
+namespace Hiland.BasicLibrary.Finance
 {
     /// <summary>
     /// 还款日程中，某一次还款的信息

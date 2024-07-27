@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Handler
+namespace Hiland.BasicLibrary.Handler
 {
     public enum UserControlRenderingPropertySource
     {

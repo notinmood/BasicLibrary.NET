@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HiLand.Utility.Pattern
+namespace Hiland.BasicLibrary.Pattern
 {
     /// <summary>
     /// 

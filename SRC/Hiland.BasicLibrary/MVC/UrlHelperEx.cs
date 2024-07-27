@@ -5,7 +5,7 @@
 //using System.Web.Mvc;
 //using System.Web;
 
-//namespace HiLand.Utility4.MVC
+//namespace Hiland.BasicLibrary4.MVC
 //{
 //    /// <summary>
 //    /// UrlHelper扩展类

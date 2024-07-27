@@ -1,5 +1,5 @@
-﻿//using HiLand.Utility.Enums;
-//using HiLand.Utility.Reflection;
+﻿//using Hiland.BasicLibrary.Enums;
+//using Hiland.BasicLibrary.Reflection;
 //using System;
 //using System.Collections.Generic;
 //using System.ComponentModel;
@@ -9,7 +9,7 @@
 //using System.Reflection;
 //using System.Runtime.Serialization.Formatters.Binary;
 
-//namespace HiLand.Utility.Data
+//namespace Hiland.BasicLibrary.Data
 //{
 //    /// <summary>
 //    /// 数据类型转换器

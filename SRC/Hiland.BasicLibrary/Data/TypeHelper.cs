@@ -1,8 +1,8 @@
-﻿//using HiLand.Utility.Reflection;
+﻿//using Hiland.BasicLibrary.Reflection;
 //using System;
 //using System.Collections.Generic;
 
-//namespace HiLand.Utility.Data
+//namespace Hiland.BasicLibrary.Data
 //{
 //    /// <summary>
 //    /// 类型操作辅助类

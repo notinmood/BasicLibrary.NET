@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Algorithm.DirtyWordsFilter
+namespace Hiland.BasicLibrary.Algorithm.DirtyWordsFilter
 {
     /// <summary>
     /// hash运算辅助器（从.net 编译出来的.）

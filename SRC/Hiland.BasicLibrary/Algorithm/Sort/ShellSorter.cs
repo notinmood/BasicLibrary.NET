@@ -3,7 +3,7 @@
 //using System.Linq;
 //using System.Text;
 
-//namespace HiLand.Utility.Algorithm.Sort
+//namespace Hiland.BasicLibrary.Algorithm.Sort
 //{
 //    /// <summary>
 //    /// 希尔排序 

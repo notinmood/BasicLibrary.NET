@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Reflection;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// 应用程序集操作辅助类

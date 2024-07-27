@@ -3,7 +3,7 @@
 //using System.Text;
 //using Castle.Core.Interceptor;
 
-//namespace HiLand.Utility.AOP.Interceptor
+//namespace Hiland.BasicLibrary.AOP.Interceptor
 //{
 //    /// <summary>
 //    /// 

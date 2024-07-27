@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Configuration;
 
-namespace HiLand.Utility4.MVC.SectionHandler
+namespace Hiland.BasicLibrary4.MVC.SectionHandler
 {
     /// <summary>
     /// 权限验证的配置类

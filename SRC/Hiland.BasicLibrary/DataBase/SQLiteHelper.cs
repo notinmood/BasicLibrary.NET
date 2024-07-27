@@ -1,6 +1,6 @@
 ﻿//using System.Data.SQLite;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// SQLite 数据库类型访问帮助器

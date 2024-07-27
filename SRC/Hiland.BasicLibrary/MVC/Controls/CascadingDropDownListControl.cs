@@ -1,7 +1,7 @@
 ﻿//using System.Text;
 //using System.Web.UI;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //    /// <summary>
 //    /// 级联更新的列表控件
@@ -25,7 +25,7 @@
 
 //        private string dynamicSelectItemsLoadUrl = string.Empty;
 //        /// <summary>
-//        /// 当前下拉列表控件选择性的动态获取地址（这个地址返回的值必须是CascadingCollection（HiLand.Utility\Entity\CascadingCollection.cs）转成JSON的字符串）
+//        /// 当前下拉列表控件选择性的动态获取地址（这个地址返回的值必须是CascadingCollection（Hiland.BasicLibrary\Entity\CascadingCollection.cs）转成JSON的字符串）
 //        /// </summary>
 //        /// <param name="data"></param>
 //        /// <returns></returns>

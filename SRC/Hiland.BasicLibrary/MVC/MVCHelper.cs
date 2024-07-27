@@ -1,9 +1,9 @@
 ﻿//using System.Web;
 //using System.Web.Routing;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.Web;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.Web;
 
-//namespace HiLand.Utility4.MVC
+//namespace Hiland.BasicLibrary4.MVC
 //{
 //    /// <summary>
 //    /// MVC辅助类

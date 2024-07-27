@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading;
 
-namespace HiLand.Utility.Enums.OP
+namespace Hiland.BasicLibrary.Enums.OP
 {
     public static class EnumItemDescriptionHelper
     {

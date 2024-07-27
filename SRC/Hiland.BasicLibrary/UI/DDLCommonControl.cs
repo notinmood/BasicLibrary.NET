@@ -2,11 +2,11 @@
 //using System.Collections.Generic;
 //using System.Text;
 //using System.Web.UI.WebControls;
-//using HiLand.Utility.Enums.OP;
-//using HiLand.Utility.Setting;
-//using HiLand.Utility.Resources;
+//using Hiland.BasicLibrary.Enums.OP;
+//using Hiland.BasicLibrary.Setting;
+//using Hiland.BasicLibrary.Resources;
 
-//namespace HiLand.Utility.UI
+//namespace Hiland.BasicLibrary.UI
 //{
 //    /// <summary>
 //    /// 通用的下拉列表控件(不可实例化,作为其他枚举列表控件的基类使用)

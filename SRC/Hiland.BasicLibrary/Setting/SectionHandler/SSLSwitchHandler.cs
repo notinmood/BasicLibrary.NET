@@ -1,8 +1,8 @@
 ﻿//using System.Configuration;
 //using System.Xml;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Setting.SectionHandler
+//namespace Hiland.BasicLibrary.Setting.SectionHandler
 //{
 //    /// <summary>
 //    /// 获取config节点，创建配置信息实体

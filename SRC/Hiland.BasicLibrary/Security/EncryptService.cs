@@ -4,7 +4,7 @@
 //using System.Text;
 //using System.Web.Security;
 
-//namespace HiLand.Utility.Security
+//namespace Hiland.BasicLibrary.Security
 //{
 //    public class EncryptService
 //    {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Net.Mail;
 
-namespace HiLand.Utility.Net.Mail
+namespace Hiland.BasicLibrary.Net.Mail
 {
     public static class MailHelper
     {

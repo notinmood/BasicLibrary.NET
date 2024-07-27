@@ -2,7 +2,7 @@
 //using System.Collections.Generic;
 //using System.Text;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// 数据操作时的条件连接器

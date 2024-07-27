@@ -1,8 +1,8 @@
-﻿//using HiLand.Utility.Enums;
-//using HiLand.Utility.Setting;
+﻿//using Hiland.BasicLibrary.Enums;
+//using Hiland.BasicLibrary.Setting;
 //using System;
 
-//namespace HiLand.Utility.Data
+//namespace Hiland.BasicLibrary.Data
 //{
 //    /// <summary>
 //    /// 日期操作辅助类

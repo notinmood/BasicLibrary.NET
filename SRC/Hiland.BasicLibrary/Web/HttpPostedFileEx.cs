@@ -4,7 +4,7 @@
 //using System.Text;
 //using System.Web;
 
-//namespace HiLand.Utility4.Web
+//namespace Hiland.BasicLibrary4.Web
 //{
 //    /// <summary>
 //    /// 用户提交的文件扩展

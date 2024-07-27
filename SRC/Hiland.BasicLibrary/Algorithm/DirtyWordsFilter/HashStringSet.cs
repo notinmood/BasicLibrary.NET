@@ -3,7 +3,7 @@
 //using System.Runtime.InteropServices;
 //using System.Text;
 
-//namespace HiLand.Utility.Algorithm.DirtyWordsFilter
+//namespace Hiland.BasicLibrary.Algorithm.DirtyWordsFilter
 //{
 //    /// <summary>
 //    /// 参考了MONO的HashSet,针对字符串进行优化

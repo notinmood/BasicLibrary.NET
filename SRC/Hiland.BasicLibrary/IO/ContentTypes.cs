@@ -1,9 +1,9 @@
 ﻿//using System.Collections.Generic;
 //using System.Collections.Specialized;
 //using System.Configuration;
-//using HiLand.Utility.Setting;
+//using Hiland.BasicLibrary.Setting;
 
-//namespace HiLand.Utility.IO
+//namespace Hiland.BasicLibrary.IO
 //{
 //    /// <summary>
 //    /// 文件MINE类型

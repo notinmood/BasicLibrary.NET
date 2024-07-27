@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using HiLand.Utility.Data;
+using Hiland.BasicLibrary.Data;
 
-namespace HiLand.Utility4.Data
+namespace Hiland.BasicLibrary4.Data
 {
     /// <summary>
     /// 枚举扩展类

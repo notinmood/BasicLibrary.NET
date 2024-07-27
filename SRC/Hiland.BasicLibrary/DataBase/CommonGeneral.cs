@@ -1,11 +1,11 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Data;
-//using HiLand.Utility.Event;
-//using HiLand.Utility.Paging;
-//using HiLand.Utility.Pattern;
+//using Hiland.BasicLibrary.Event;
+//using Hiland.BasicLibrary.Paging;
+//using Hiland.BasicLibrary.Pattern;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// 

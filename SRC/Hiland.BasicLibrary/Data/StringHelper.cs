@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// 字符串操作辅助类

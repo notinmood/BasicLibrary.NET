@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Text;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Setting.SectionHandler
+//namespace Hiland.BasicLibrary.Setting.SectionHandler
 //{
 //    /// <summary>
 //    /// 每日执行的系统任务实体

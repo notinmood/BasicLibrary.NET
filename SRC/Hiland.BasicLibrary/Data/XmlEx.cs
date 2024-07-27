@@ -1,8 +1,8 @@
 ﻿//using System.Xml;
 //using System.Xml.Linq;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility4.Data
+//namespace Hiland.BasicLibrary4.Data
 //{
 //    /// <summary>
 //    /// XML信息扩展类

@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace HiLand.Utility.Web
+namespace Hiland.BasicLibrary.Web
 {
     /// <summary>
     /// 

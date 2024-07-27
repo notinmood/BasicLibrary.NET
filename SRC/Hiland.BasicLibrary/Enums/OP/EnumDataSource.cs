@@ -3,9 +3,9 @@
 //using System.Text;
 //using System.Globalization;
 //using System.Threading;
-//using HiLand.Utility.Setting;
+//using Hiland.BasicLibrary.Setting;
 
-//namespace HiLand.Utility.Enums.OP
+//namespace Hiland.BasicLibrary.Enums.OP
 //{
 //    /// <summary>
 //    ///   Wrapper a data source object for enumerator <paramref name="EnumType"/>.

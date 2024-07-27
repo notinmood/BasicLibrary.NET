@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Text;
-//using HiLand.Utility.Setting.SectionHandler;
+//using Hiland.BasicLibrary.Setting.SectionHandler;
 
-//namespace HiLand.Utility.Finance
+//namespace Hiland.BasicLibrary.Finance
 //{
 //    /*
 //     本类需要配置文件的支持

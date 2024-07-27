@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Pattern
+namespace Hiland.BasicLibrary.Pattern
 {
     /// <summary>
     /// 通用的单例模式类

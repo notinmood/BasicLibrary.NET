@@ -1,7 +1,7 @@
 ﻿//using System.Collections.Generic;
-//using HiLand.Utility.Web;
+//using Hiland.BasicLibrary.Web;
 
-//namespace HiLand.Utility.Setting.SectionHandler
+//namespace Hiland.BasicLibrary.Setting.SectionHandler
 //{
 //    public class SSLSwitchConfig
 //    {

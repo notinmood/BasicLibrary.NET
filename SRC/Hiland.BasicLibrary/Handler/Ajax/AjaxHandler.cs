@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.IO;
 //using System.Web;
-//using HiLand.Utility.Setting;
+//using Hiland.BasicLibrary.Setting;
 
-//namespace HiLand.Utility.Handler.Ajax
+//namespace Hiland.BasicLibrary.Handler.Ajax
 //{
 //    /* 可以设置的配置项
 //     * ·AjaxHandlerTypeDescriptionPrefix 表示需要调用方法所在类型的前缀命名空间（可以省略，但是需要在URL中指定全名称）

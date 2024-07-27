@@ -3,7 +3,7 @@
 //using System.Text;
 //using System.Web;
 
-//namespace HiLand.Utility.UI
+//namespace Hiland.BasicLibrary.UI
 //{
 //    public class HttpPostedFileHelper
 //    {

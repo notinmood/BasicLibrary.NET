@@ -1,7 +1,7 @@
-﻿using HiLand.Utility.Enums;
+﻿using Hiland.BasicLibrary.Enums;
 using System;
 
-namespace HiLand.Utility.DataBase
+namespace Hiland.BasicLibrary.DataBase
 {
     /// <summary>
     /// 

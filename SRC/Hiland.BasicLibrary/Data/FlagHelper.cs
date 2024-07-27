@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// Flag类型的数据操作辅助类

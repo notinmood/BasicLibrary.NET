@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Mathes.StringParse
+namespace Hiland.BasicLibrary.Mathes.StringParse
 {
     /// <summary>
     /// 运算符类

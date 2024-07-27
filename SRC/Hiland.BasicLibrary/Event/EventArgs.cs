@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Event
+namespace Hiland.BasicLibrary.Event
 {
     public class EventArgs<T> : EventArgs where T : new()
     {

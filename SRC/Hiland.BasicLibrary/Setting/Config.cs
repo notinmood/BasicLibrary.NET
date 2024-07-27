@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Configuration;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Setting
+//namespace Hiland.BasicLibrary.Setting
 //{
 //    /// <summary>
 //    /// config配置文件读取工具

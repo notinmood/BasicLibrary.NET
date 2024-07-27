@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Text;
 
-namespace HiLand.Utility.Setting.SectionHandler
+namespace Hiland.BasicLibrary.Setting.SectionHandler
 {
     /// <summary>
     /// 数据权限配置项信息

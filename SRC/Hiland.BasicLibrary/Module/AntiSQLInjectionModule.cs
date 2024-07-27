@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Configuration;
 //using System.Web;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Module
+//namespace Hiland.BasicLibrary.Module
 //{
 //    /// <summary>
 //    /// 阻止SQL标本注入的模块

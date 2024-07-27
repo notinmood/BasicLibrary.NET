@@ -1,7 +1,7 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text;
 
-namespace HiLand.Utility.Setting
+namespace Hiland.BasicLibrary.Setting
 {
     /// <summary>
     /// ini配置文件读写工具

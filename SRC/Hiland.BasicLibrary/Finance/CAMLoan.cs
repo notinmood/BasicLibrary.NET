@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.VisualBasic;
 
-namespace HiLand.Utility.Finance
+namespace Hiland.BasicLibrary.Finance
 {
     /// <summary>
     /// Constant Amoritization Mortgage 等额本金还款（固定摊薄（本金）的抵押贷款）

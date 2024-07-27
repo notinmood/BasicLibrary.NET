@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Algorithm.DirtyWordsFilter
+namespace Hiland.BasicLibrary.Algorithm.DirtyWordsFilter
 {
     /// <summary>
     /// 脏词过滤接口

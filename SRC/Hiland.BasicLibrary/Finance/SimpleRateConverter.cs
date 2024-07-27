@@ -1,4 +1,4 @@
-﻿namespace HiLand.Utility.Finance
+﻿namespace Hiland.BasicLibrary.Finance
 {
     public class SimpleRateConverter:RateConverter
     {

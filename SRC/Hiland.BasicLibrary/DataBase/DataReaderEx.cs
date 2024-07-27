@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using HiLand.Utility.DataBase;
+using Hiland.BasicLibrary.DataBase;
 
-namespace HiLand.Utility4.DataBase
+namespace Hiland.BasicLibrary4.DataBase
 {
     /// <summary>
     /// DataReader扩展类

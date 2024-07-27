@@ -2,9 +2,9 @@
 //using System.Collections.Generic;
 //using System.Text;
 //using System.Windows.Forms;
-//using HiLand.Utility.Event;
+//using Hiland.BasicLibrary.Event;
 
-//namespace HiLand.Utility.Native
+//namespace Hiland.BasicLibrary.Native
 //{
 //    //TODO:目前仅实行了带一个参数的委托（有返回值、无返回值），如果需要传递多个参数请重载CrossThreadInvoke方法
 

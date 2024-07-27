@@ -2,9 +2,9 @@
 //using System.Collections.Generic;
 //using System.Collections.Specialized;
 //using System.Text;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Web
+//namespace Hiland.BasicLibrary.Web
 //{
 //    /// <summary>
 //    /// 对Url的参数进行拼接

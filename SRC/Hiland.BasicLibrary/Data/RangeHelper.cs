@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// 表示区间的数据

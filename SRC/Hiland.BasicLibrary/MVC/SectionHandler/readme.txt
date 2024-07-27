@@ -1,13 +1,13 @@
 ﻿权限验证有两套体系
 1.本目录下的适用于MVC场景之下执行的验证，可用验证到具体的操作
-2.HiLand.Utility\Setting\SectionHandler 目录下的适用于WebForm场景之下执行的验证，可用验证到页面
+2.Hiland.BasicLibrary\Setting\SectionHandler 目录下的适用于WebForm场景之下执行的验证，可用验证到页面
 
 
 使用时，需做如下配置
 1.（本段配置，各数值精确确定为如下内容）
   <configSections>
     <sectionGroup name="permissionValidate">
-      <section name="generalValidate" type="HiLand.Utility4.MVC.SectionHandler.PermissionValidateSectionHandler,HiLand.Utility4" />
+      <section name="generalValidate" type="Hiland.BasicLibrary4.MVC.SectionHandler.PermissionValidateSectionHandler,Hiland.BasicLibrary4" />
     </sectionGroup>
   </configSections>
 2.  （本段配置，使用时文档结构确定，同时请适当调整各个属性的值）

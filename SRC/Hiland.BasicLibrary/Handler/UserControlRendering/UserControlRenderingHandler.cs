@@ -4,9 +4,9 @@
 //using System.Web.UI;
 //using System.Reflection;
 //using System.ComponentModel;
-//using HiLand.Utility.UI;
+//using Hiland.BasicLibrary.UI;
 
-//namespace HiLand.Utility.Handler
+//namespace Hiland.BasicLibrary.Handler
 //{
 //    /// <summary>
 //    /// 将用户控件转化成HTML代码的处理程序

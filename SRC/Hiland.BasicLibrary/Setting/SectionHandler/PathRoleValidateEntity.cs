@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace HiLand.Utility.Setting.SectionHandler
+namespace Hiland.BasicLibrary.Setting.SectionHandler
 {
     public class PathRoleValidateEntity
     {

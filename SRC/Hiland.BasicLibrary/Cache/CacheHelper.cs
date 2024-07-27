@@ -1,10 +1,10 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Text;
-//using HiLand.Utility.Event;
-//using HiLand.Utility.Setting;
+//using Hiland.BasicLibrary.Event;
+//using Hiland.BasicLibrary.Setting;
 
-//namespace HiLand.Utility.Cache
+//namespace Hiland.BasicLibrary.Cache
 //{
 //    /// <summary>
 //    /// 缓存应用辅助类

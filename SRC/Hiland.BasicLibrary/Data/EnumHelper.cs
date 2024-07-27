@@ -1,8 +1,8 @@
-﻿using HiLand.Utility.Enums.OP;
+﻿using Hiland.BasicLibrary.Enums.OP;
 using System;
 using System.Collections.Generic;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// 枚举操作辅助类

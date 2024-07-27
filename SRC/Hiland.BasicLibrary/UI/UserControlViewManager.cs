@@ -5,7 +5,7 @@
 //using System.IO;
 //using System.Web;
 
-//namespace HiLand.Utility.UI
+//namespace Hiland.BasicLibrary.UI
 //{
 //    /// <summary>
 //    /// 获取User Control生成的HTML代码

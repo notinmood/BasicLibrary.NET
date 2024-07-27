@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HiLand.Utility.Entity
+namespace Hiland.BasicLibrary.Entity
 {
     /// <summary>
     /// 为元素添加验证信息的特性类

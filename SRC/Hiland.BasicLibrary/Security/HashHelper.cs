@@ -2,7 +2,7 @@
 using System.IO;
 using System.Security.Cryptography;
 
-namespace HiLand.Utility.Security
+namespace Hiland.BasicLibrary.Security
 {
     /// <summary>
     /// 哈希算法辅助器

@@ -3,9 +3,9 @@
 //using System.Web;
 //using System.Web.UI;
 //using System.Web.UI.WebControls;
-//using HiLand.Utility.Enums;
+//using Hiland.BasicLibrary.Enums;
 
-//namespace HiLand.Utility.UI
+//namespace Hiland.BasicLibrary.UI
 //{
 //    /// <summary>
 //    /// 验证码控件
@@ -13,7 +13,7 @@
 //    /// <remarks>
 //    /// 本验证控件要跟AuthCodeHandler一起使用，关于AuthCodeHandler在web.config中的配置，请使用如下格式：
 //    ///     <httpHandlers>
-//    ///         <add path="*.authcode" verb="*" type="HiLand.Utility.Handler.AuthCodeHandler,HiLand.Utility"/>
+//    ///         <add path="*.authcode" verb="*" type="Hiland.BasicLibrary.Handler.AuthCodeHandler,Hiland.BasicLibrary"/>
 //    ///     </httpHandlers>
 //    /// </remarks>
 //    [ToolboxData("<{0}:AuthCode runat=\"server\"></{0}:AuthCode>")]

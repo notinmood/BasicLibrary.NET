@@ -1,6 +1,6 @@
-﻿using HiLand.Utility.Enums.OP;
+﻿using Hiland.BasicLibrary.Enums.OP;
 
-namespace HiLand.Utility.Enums
+namespace Hiland.BasicLibrary.Enums
 {
     /// <summary>
     /// 部门内的人员职责类型

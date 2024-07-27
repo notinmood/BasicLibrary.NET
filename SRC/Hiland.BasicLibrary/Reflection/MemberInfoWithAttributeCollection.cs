@@ -3,7 +3,7 @@
 //using System.Text;
 //using System.Reflection;
 
-//namespace HiLand.Utility.Reflection
+//namespace Hiland.BasicLibrary.Reflection
 //{
 //    /// <summary>
 //    /// 

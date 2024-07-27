@@ -3,9 +3,9 @@
 //using System.Text.RegularExpressions;
 //using System.Web;
 //using System.Web.Caching;
-//using HiLand.Utility.Pattern;
+//using Hiland.BasicLibrary.Pattern;
 
-//namespace HiLand.Utility.Cache
+//namespace Hiland.BasicLibrary.Cache
 //{
 //    /// <summary>
 //    /// 

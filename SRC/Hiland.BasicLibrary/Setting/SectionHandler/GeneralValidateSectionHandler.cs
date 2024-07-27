@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Xml;
 
-namespace HiLand.Utility.Setting.SectionHandler
+namespace Hiland.BasicLibrary.Setting.SectionHandler
 {
     public class GeneralValidateSectionHandler : IConfigurationSectionHandler
     {

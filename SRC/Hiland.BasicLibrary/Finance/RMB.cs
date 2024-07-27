@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace HiLand.Utility.Finance
+namespace Hiland.BasicLibrary.Finance
 {
     public class RMB
     {

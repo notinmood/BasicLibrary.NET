@@ -4,7 +4,7 @@
 //using System.Text;
 //using System.Web.Mvc;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //    /// <summary>
 //    /// 需要收集用户输入信息的MVC控件基类

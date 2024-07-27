@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HiLand.Utility.Entity
+namespace Hiland.BasicLibrary.Entity
 {
     [Flags]
     public enum ValidateTypes

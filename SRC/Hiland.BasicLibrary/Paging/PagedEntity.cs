@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Paging
+namespace Hiland.BasicLibrary.Paging
 {
     public class PagedEntityCollection<T>// where T : new()
     {

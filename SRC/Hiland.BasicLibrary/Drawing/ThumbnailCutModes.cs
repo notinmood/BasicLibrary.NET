@@ -1,4 +1,4 @@
-﻿namespace HiLand.Utility.Drawing
+﻿namespace Hiland.BasicLibrary.Drawing
 {
     public enum ThumbnailCutModes
     {

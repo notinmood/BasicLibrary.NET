@@ -1,8 +1,8 @@
 ﻿//using System.IO;
 //using System.Web;
-//using HiLand.Utility.IO;
+//using Hiland.BasicLibrary.IO;
 
-//namespace HiLand.Utility.Web
+//namespace Hiland.BasicLibrary.Web
 //{
 //    public class DownloadHelper
 //    {

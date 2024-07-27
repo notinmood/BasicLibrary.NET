@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.VisualBasic;
 
-namespace HiLand.Utility.Finance
+namespace Hiland.BasicLibrary.Finance
 {
     /// <summary>
     /// constant payment mortgage等额本息还款(每期均为固定支付费用的抵押贷款)

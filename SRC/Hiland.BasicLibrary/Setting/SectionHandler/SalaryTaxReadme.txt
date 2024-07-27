@@ -14,7 +14,7 @@
 
 1、config配置
 	1.1、
-		<section name="SalaryTaxSection" type="HiLand.Utility.Setting.SectionHandler.SalaryTaxSectionHandler,HiLand.Utility"/>
+		<section name="SalaryTaxSection" type="Hiland.BasicLibrary.Setting.SectionHandler.SalaryTaxSectionHandler,Hiland.BasicLibrary"/>
 	1.2、
 		<SalaryTaxSection taxThreshold="3500">
 			<add name="Level0" min="-9999999999" max="0" rate="0" expressCalcValue="0" />
@@ -27,7 +27,7 @@
 			<add name="Level7" min="80000" max="9999999999" rate="0.45" expressCalcValue="13505" />
 		</SalaryTaxSection>
 
-2、调用，使用SalaryTaxHelper进行计算应缴税（HiLand.Utility\Finance\SalaryTaxHelper.cs）
+2、调用，使用SalaryTaxHelper进行计算应缴税（Hiland.BasicLibrary\Finance\SalaryTaxHelper.cs）
 	SalaryTaxHelper.GetSalaryTax(inputData);
 	
 

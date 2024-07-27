@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Cache
+namespace Hiland.BasicLibrary.Cache
 {
     /// <summary>
     /// 

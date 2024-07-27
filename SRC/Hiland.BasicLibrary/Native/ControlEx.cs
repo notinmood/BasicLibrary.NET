@@ -1,8 +1,8 @@
 ﻿//using System.Windows.Forms;
-//using HiLand.Utility.Event;
-//using HiLand.Utility.Native;
+//using Hiland.BasicLibrary.Event;
+//using Hiland.BasicLibrary.Native;
 
-//namespace HiLand.Utility4.Native
+//namespace Hiland.BasicLibrary4.Native
 //{
 //    /// <summary>
 //    /// 控件操作扩展器

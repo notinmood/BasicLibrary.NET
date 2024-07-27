@@ -3,13 +3,13 @@
 //using System.Data;
 //using System.IO;
 //using System.Reflection;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.DataBase;
-//using HiLand.Utility.Reflection;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.DataBase;
+//using Hiland.BasicLibrary.Reflection;
 //using NPOI.HSSF.UserModel;
 //using NPOI.SS.UserModel;
 
-//namespace HiLand.Utility.Office
+//namespace Hiland.BasicLibrary.Office
 //{
 //    /// <summary>
 //    /// Excel操作辅助类

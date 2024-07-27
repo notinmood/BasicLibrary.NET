@@ -2,12 +2,12 @@
 //using System.Collections.Generic;
 //using System.Text;
 //using System.Web.UI.WebControls;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.Enums;
-//using HiLand.Utility.Enums.OP;
-//using HiLand.Utility.Setting;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.Enums;
+//using Hiland.BasicLibrary.Enums.OP;
+//using Hiland.BasicLibrary.Setting;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //    /// <summary>
 //    /// 综合查询控件

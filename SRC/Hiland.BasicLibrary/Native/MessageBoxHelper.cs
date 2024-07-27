@@ -3,7 +3,7 @@
 //using System.Text;
 //using System.Windows.Forms;
 
-//namespace HiLand.Utility.Native
+//namespace Hiland.BasicLibrary.Native
 //{
 //    /// <summary>
 //    /// 对话框辅助器

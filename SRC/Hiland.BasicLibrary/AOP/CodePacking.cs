@@ -1,7 +1,7 @@
 ﻿using System;
-using HiLand.Utility.Event;
+using Hiland.BasicLibrary.Event;
 
-namespace HiLand.Utility.AOP
+namespace Hiland.BasicLibrary.AOP
 {
     /// <summary>
     /// 代码包装工具类

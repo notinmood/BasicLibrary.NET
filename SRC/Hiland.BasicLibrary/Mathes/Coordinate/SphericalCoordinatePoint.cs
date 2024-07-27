@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Mathes.Coordinate
+namespace Hiland.BasicLibrary.Mathes.Coordinate
 {
     /// <summary>
     /// 球坐标点

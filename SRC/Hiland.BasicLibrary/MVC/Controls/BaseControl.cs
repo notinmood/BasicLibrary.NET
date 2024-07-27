@@ -5,9 +5,9 @@
 //using System.Web.Mvc;
 //using System.Web.Routing;
 //using System.Web.UI;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //    /// <summary>
 //    /// MVC控件基类

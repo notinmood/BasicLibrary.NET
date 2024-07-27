@@ -1,10 +1,10 @@
 ﻿//using System;
 //using System.Text;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.Enums;
-//using HiLand.Utility.Web;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.Enums;
+//using Hiland.BasicLibrary.Web;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //    /// <summary>
 //    /// 查询控件辅助工具

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Misc
+namespace Hiland.BasicLibrary.Misc
 {
     public struct MenuInfo
     {

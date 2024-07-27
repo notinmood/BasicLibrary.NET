@@ -1,7 +1,7 @@
 ﻿//using System;
 //using System.Management;
 
-//namespace HiLand.Utility.Environments
+//namespace Hiland.BasicLibrary.Environments
 //{
 //    /// <summary>
 //    /// 计算机本身信息

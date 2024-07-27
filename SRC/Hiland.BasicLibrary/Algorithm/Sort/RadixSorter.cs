@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HiLand.Utility.Algorithm.Sort
+namespace Hiland.BasicLibrary.Algorithm.Sort
 {
     /// <summary>
     /// 基数排序

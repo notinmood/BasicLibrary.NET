@@ -2,9 +2,9 @@
 //using System.Collections.Generic;
 //using System.Linq;
 //using System.Text;
-//using HiLand.Utility.Web;
+//using Hiland.BasicLibrary.Web;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //    /// <summary>
 //    /// 控件使用中的辅助类工具

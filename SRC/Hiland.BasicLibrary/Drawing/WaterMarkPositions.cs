@@ -1,4 +1,4 @@
-﻿namespace HiLand.Utility.Drawing
+﻿namespace Hiland.BasicLibrary.Drawing
 {
     /// <summary>
     /// 水印出现的位置

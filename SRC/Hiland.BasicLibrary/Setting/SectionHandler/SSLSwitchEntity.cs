@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Setting.SectionHandler
+namespace Hiland.BasicLibrary.Setting.SectionHandler
 {
     /// <summary>
     /// SSL对站点页面的控制模式

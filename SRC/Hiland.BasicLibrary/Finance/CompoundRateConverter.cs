@@ -2,7 +2,7 @@
 //using System.Collections.Generic;
 //using System.Text;
 
-//namespace HiLand.Utility.Finance
+//namespace Hiland.BasicLibrary.Finance
 //{
 //    /// <summary>
 //    /// 复利转换器(暂未实现)

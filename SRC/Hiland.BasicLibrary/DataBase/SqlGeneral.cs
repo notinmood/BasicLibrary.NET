@@ -1,6 +1,6 @@
 ﻿//using System.Data.SqlClient;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// 常用的SQL执行逻辑

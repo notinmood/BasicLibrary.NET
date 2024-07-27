@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HiLand.Utility.Data;
+using Hiland.BasicLibrary.Data;
 
-namespace HiLand.Utility.Controls
+namespace Hiland.BasicLibrary.Controls
 {
     /// <summary>
     /// 

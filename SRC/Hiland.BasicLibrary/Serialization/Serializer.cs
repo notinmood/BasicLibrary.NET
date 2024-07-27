@@ -5,10 +5,10 @@
 //using System.Security.Permissions;
 //using System.Text;
 //using System.Xml;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.IO;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.IO;
 
-//namespace HiLand.Utility.Serialization
+//namespace Hiland.BasicLibrary.Serialization
 //{
 //    /// <summary>
 //    /// Summary description for Serializer.

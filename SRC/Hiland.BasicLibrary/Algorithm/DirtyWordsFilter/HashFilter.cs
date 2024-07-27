@@ -2,7 +2,7 @@
 //using System.Collections.Generic;
 //using System.Text;
 
-//namespace HiLand.Utility.Algorithm.DirtyWordsFilter
+//namespace Hiland.BasicLibrary.Algorithm.DirtyWordsFilter
 //{
 //    /// <summary>
 //    /// 哈希过滤方式

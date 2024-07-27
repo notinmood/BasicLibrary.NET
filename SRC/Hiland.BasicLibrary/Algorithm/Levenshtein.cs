@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace HiLand.Utility.Algorithm
+namespace Hiland.BasicLibrary.Algorithm
 {
     /// <summary>
     /// 编辑距离算法(计算两个文档的相似度)

@@ -4,9 +4,9 @@
 //using System.IO.Packaging;
 //using System.Linq;
 //using System.Text;
-//using HiLand.Utility.IO;
+//using Hiland.BasicLibrary.IO;
 
-//namespace HiLand.Utility4.Office
+//namespace Hiland.BasicLibrary4.Office
 //{
 //    /// <summary>
 //    /// Word文档操作辅助器

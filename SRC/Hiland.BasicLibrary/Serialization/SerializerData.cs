@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.Serialization
+namespace Hiland.BasicLibrary.Serialization
 {
     /// <summary>
     /// Container for get/set data from the CS datastore

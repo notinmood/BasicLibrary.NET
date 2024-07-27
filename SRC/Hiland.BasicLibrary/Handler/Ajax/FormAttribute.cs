@@ -2,7 +2,7 @@
 //using System.Collections.Generic;
 //using System.Text;
 
-//namespace HiLand.Utility.Handler.Ajax
+//namespace Hiland.BasicLibrary.Handler.Ajax
 //{
 //    public class FormAttribute:ParameterAttribute
 //    {

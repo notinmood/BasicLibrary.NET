@@ -1,8 +1,8 @@
-﻿//using HiLand.Utility.Pattern;
-//using HiLand.Utility.Setting;
+﻿//using Hiland.BasicLibrary.Pattern;
+//using Hiland.BasicLibrary.Setting;
 //using System.Data;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// 数据库执行逻辑包装器

@@ -2,10 +2,10 @@
 //using System.Collections.Generic;
 //using System.Text;
 //using System.Text.RegularExpressions;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.Enums;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.Enums;
 
-//namespace HiLand.Utility.Entity
+//namespace Hiland.BasicLibrary.Entity
 //{
 //    /// <summary>
 //    /// 身份证号码解析类

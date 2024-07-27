@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HiLand.Utility.IO
+namespace Hiland.BasicLibrary.IO
 {
     public class OperateStreamEnventArgs : EventArgs
     {

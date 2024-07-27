@@ -1,4 +1,4 @@
-﻿namespace HiLand.Utility.Algorithm.Sort
+﻿namespace Hiland.BasicLibrary.Algorithm.Sort
 {
     /// <summary>
     /// 归并排序

@@ -3,7 +3,7 @@
 //using System.Text;
 //using System.Web;
 
-//namespace HiLand.Utility.Web
+//namespace Hiland.BasicLibrary.Web
 //{
 //    /// <summary>
 //    /// 

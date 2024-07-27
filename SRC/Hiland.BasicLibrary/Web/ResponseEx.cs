@@ -3,9 +3,9 @@
 //using System.Linq;
 //using System.Text;
 //using System.Web;
-//using HiLand.Utility.Web;
+//using Hiland.BasicLibrary.Web;
 
-//namespace HiLand.Utility4.Web
+//namespace Hiland.BasicLibrary4.Web
 //{
 //    public static class ResponseEx
 //    {

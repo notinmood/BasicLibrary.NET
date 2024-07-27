@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Text;
-//using HiLand.Utility.Enums;
+//using Hiland.BasicLibrary.Enums;
 
-//namespace HiLand.Utility.UI
+//namespace Hiland.BasicLibrary.UI
 //{
 //    public class DDLLogics : DDLCommonControl<Logics>
 //    {

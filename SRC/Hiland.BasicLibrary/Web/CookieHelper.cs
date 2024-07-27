@@ -2,9 +2,9 @@
 //using System.Collections.Generic;
 //using System.Text;
 //using System.Web;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Web
+//namespace Hiland.BasicLibrary.Web
 //{
 //    /// <summary>
 //    /// 

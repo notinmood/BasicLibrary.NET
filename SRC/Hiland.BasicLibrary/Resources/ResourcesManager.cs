@@ -8,9 +8,9 @@
 //using System.Web;
 //using System.Web.UI;
 //using System.Xml;
-//using HiLand.Utility.Setting;
+//using Hiland.BasicLibrary.Setting;
 
-//namespace HiLand.Utility.Resources
+//namespace Hiland.BasicLibrary.Resources
 //{
 //    /// <summary>
 //    /// 语言资源管理器
@@ -161,7 +161,7 @@
 //            Page currentPage =HttpContext.Current.CurrentHandler as Page;
 //            if (currentPage != null)
 //            {
-//                string resourceFileFullName = string.Format("HiLand.Utility.Resources.{0}",resourceFileName);
+//                string resourceFileFullName = string.Format("Hiland.BasicLibrary.Resources.{0}",resourceFileName);
 //                result = currentPage.ClientScript.GetWebResourceUrl(typeof(ResourcesManager), resourceFileFullName);
 //            }
 //            return result;

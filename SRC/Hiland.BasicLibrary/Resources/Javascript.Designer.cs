@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace HiLand.Utility.Resources {
+namespace Hiland.BasicLibrary.Resources {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace HiLand.Utility.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("HiLand.Utility.Resources.Javascript", typeof(Javascript).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Hiland.BasicLibrary.Resources.Javascript", typeof(Javascript).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

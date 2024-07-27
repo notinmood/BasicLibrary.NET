@@ -4,7 +4,7 @@
 //using System.Text;
 //using System.Resources;
 
-//namespace HiLand.Utility4.MVC.Controls
+//namespace Hiland.BasicLibrary4.MVC.Controls
 //{
 //   /// <summary>
 //   /// 日期显示控件

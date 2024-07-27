@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility.IO.Extend
+namespace Hiland.BasicLibrary.IO.Extend
 {
     [Flags]
     public enum FileAccesses : uint

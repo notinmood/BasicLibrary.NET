@@ -1,8 +1,8 @@
 ﻿//using System.Collections.Generic;
-//using HiLand.Utility.Paging;
+//using Hiland.BasicLibrary.Paging;
 //using Webdiyer.WebControls.Mvc;
 
-//namespace HiLand.Utility4.Paging
+//namespace Hiland.BasicLibrary4.Paging
 //{
 //    public static class PagedEntityCollectionEx
 //    {

@@ -1,6 +1,6 @@
 ﻿using System.Data;
 
-namespace HiLand.Utility.DataBase
+namespace Hiland.BasicLibrary.DataBase
 {
     /// <summary>
     /// 数据库语句杂项

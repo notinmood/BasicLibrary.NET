@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json;
 
-namespace HiLand.Utility.Entity
+namespace Hiland.BasicLibrary.Entity
 {
     /// <summary>
     /// 表示状态的信息

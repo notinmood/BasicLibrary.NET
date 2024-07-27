@@ -1,10 +1,10 @@
 ﻿//using System.Collections.Generic;
 //using System.IO;
 //using System.Runtime.Serialization.Formatters.Binary;
-//using HiLand.Utility.Data;
-//using HiLand.Utility.Reflection;
+//using Hiland.BasicLibrary.Data;
+//using Hiland.BasicLibrary.Reflection;
 
-//namespace HiLand.Utility.Entity
+//namespace Hiland.BasicLibrary.Entity
 //{
 //    public class EntityHelper
 //    {

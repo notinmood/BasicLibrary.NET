@@ -1,7 +1,7 @@
 ﻿//using System;
 //using System.Web;
 
-//namespace HiLand.Utility.Module
+//namespace Hiland.BasicLibrary.Module
 //{
 //    //TODO:xieran20121024 尚未完成
 //    /// <summary>

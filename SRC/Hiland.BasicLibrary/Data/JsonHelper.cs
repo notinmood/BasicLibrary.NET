@@ -2,7 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// JSON数据操作辅助类

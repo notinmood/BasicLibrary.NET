@@ -1,7 +1,7 @@
 ﻿using System.Data;
-using HiLand.Utility.DataBase;
+using Hiland.BasicLibrary.DataBase;
 
-namespace HiLand.Utility4.DataBase
+namespace Hiland.BasicLibrary4.DataBase
 {
     /// <summary>
     ///  DataRow扩展类

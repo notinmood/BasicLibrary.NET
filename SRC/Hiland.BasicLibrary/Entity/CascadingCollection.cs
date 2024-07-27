@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using HiLand.Utility.Data;
+using Hiland.BasicLibrary.Data;
 
-namespace HiLand.Utility.Entity
+namespace Hiland.BasicLibrary.Entity
 {
     /// <summary>
     /// 配合jquery.cascadingDropDown.js使用的选择项集合

@@ -4,7 +4,7 @@
 //using System.Reflection;
 //using System.Web;
 
-//namespace HiLand.Utility.Web
+//namespace Hiland.BasicLibrary.Web
 //{
 //    /// <summary>
 //    /// Cookies基类。将需要保存Cookies的数据类此类派生，可以将强类型对象在Cookies中的保存和读取。

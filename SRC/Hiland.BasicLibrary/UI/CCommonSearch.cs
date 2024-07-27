@@ -6,7 +6,7 @@
 //using System.Web.UI;
 //using System.Web.UI.WebControls;
 
-//namespace HiLand.Utility.UI
+//namespace Hiland.BasicLibrary.UI
 //{
 //    /// <summary>
 //    /// 这个通用搜索功能需要继续完成，目前项目使用Web项目中的UCommonSearch控件

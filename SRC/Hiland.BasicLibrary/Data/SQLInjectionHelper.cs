@@ -2,7 +2,7 @@
 using System.Configuration;
 using System.Reflection;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     //TODO:还需要另外考虑转义编码 %27等
     /// <summary>

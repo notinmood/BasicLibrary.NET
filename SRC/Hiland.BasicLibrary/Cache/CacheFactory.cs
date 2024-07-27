@@ -1,9 +1,9 @@
 ﻿//using System;
 //using System.Collections.Generic;
 //using System.Text;
-//using HiLand.Utility.Setting;
+//using Hiland.BasicLibrary.Setting;
 
-//namespace HiLand.Utility.Cache
+//namespace Hiland.BasicLibrary.Cache
 //{
 //    /// <summary>
 //    /// 缓存实例工厂

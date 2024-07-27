@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace HiLand.Utility.Data
+namespace Hiland.BasicLibrary.Data
 {
     /// <summary>
     /// HTML操作辅助类

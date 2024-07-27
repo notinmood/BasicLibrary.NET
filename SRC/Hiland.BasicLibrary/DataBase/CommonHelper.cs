@@ -2,10 +2,10 @@
 //using System.Collections;
 //using System.Configuration;
 //using System.Data;
-//using HiLand.Utility.Setting;
-//using HiLand.Utility.Pattern;
+//using Hiland.BasicLibrary.Setting;
+//using Hiland.BasicLibrary.Pattern;
 
-//namespace HiLand.Utility.DataBase
+//namespace Hiland.BasicLibrary.DataBase
 //{
 //    /// <summary>
 //    /// 通用的数据访问类（兼容各个数据库类型）

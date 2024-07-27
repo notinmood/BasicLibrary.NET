@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace HiLand.Utility4.MVC.SectionHandler
+namespace Hiland.BasicLibrary4.MVC.SectionHandler
 {
     /// <summary>
     /// 权限控制的应用程序

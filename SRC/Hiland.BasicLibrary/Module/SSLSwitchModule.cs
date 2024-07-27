@@ -1,10 +1,10 @@
 ﻿//using System;
 //using System.Configuration;
 //using System.Web;
-//using HiLand.Utility.Setting.SectionHandler;
-//using HiLand.Utility.Web;
+//using Hiland.BasicLibrary.Setting.SectionHandler;
+//using Hiland.BasicLibrary.Web;
 
-//namespace HiLand.Utility.Module
+//namespace Hiland.BasicLibrary.Module
 //{
 //    /// <summary>
 //    /// 根据需求进行http和https之间进行切换的模块

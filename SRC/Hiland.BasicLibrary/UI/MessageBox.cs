@@ -5,7 +5,7 @@
 //using System.Web.UI.WebControls;
 //using System.Web;
 
-//namespace HiLand.Utility.UI
+//namespace Hiland.BasicLibrary.UI
 //{
 //    public class MessageBox
 //    {

@@ -1,4 +1,4 @@
-﻿namespace HiLand.Utility.Finance
+﻿namespace Hiland.BasicLibrary.Finance
 {
     /// <summary>
     /// 利率转换器

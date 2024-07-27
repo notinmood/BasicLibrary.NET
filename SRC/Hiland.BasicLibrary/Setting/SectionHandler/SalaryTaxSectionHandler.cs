@@ -3,9 +3,9 @@
 //using System.Configuration;
 //using System.Text;
 //using System.Xml;
-//using HiLand.Utility.Data;
+//using Hiland.BasicLibrary.Data;
 
-//namespace HiLand.Utility.Setting.SectionHandler
+//namespace Hiland.BasicLibrary.Setting.SectionHandler
 //{
 //    /// <summary>
 //    /// 工资税配置节获取器
